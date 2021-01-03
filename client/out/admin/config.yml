@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: samuel-ping/personal-website-v3
+  branch: main
+  site_domain: https://samuelping.glitch.me
+
+media_folder: "public/images"
+public_folder: "images/"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "src/_projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "projects",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image Thumbnail", name: "thumbnail", widget: "image" }
+      - { label: "Timeframe", name: "timeframe", widget: "string" }
+      - { label: "Technologies Used", name: "technologies", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
