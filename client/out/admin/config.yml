@@ -29,7 +29,7 @@ collections:
               media_library:
                 config:
                   multiple: false
-          }
+            }
 
   - name: "projects"
     label: "Projects"
