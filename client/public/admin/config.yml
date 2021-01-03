@@ -2,9 +2,8 @@ backend:
   name: github
   repo: samuel-ping/personal-website-v3
   branch: main
-  site_domain: angry-visvesvaraya-fa47e2.netlify.app
+  site_domain: https://samuelping.glitch.me
 
-publish_mode: editorial_workflow
 media_folder: "public/images"
 public_folder: "images/"
 
