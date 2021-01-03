@@ -7,15 +7,20 @@ backend:
 media_folder: "public/uploads/images/"
 public_folder: "uploads/images/"
 
+site_url: https://samuel-ping.github.io/personal-website-v3
+
 collections:
   - name: "about-me"
     label: "About Me"
+    description: "My about me blurb. Introduces me to the reader."
     file: "src/content/about-me.md"
     fields:
-      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Description", name: "description", widget: "text" }
 
   - name: "resume"
     label: "Resume"
+    description: "My latest resume, in PDF form."
+    folder: "public/uploads"
     widget: "file"
     media_library:
       config:
@@ -23,6 +28,7 @@ collections:
 
   - name: "projects"
     label: "Projects"
+    description: "My personal projects!"
     folder: "src/content/projects"
     create: true
     slug: "{{slug}}"
@@ -37,4 +43,4 @@ collections:
       - { label: "Image Thumbnail", name: "thumbnail", widget: "image" }
       - { label: "Timeframe", name: "timeframe", widget: "string" }
       - { label: "Technologies Used", name: "technologies", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "text" }
