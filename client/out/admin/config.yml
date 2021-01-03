@@ -20,11 +20,16 @@ collections:
           - { label: "Description", name: "description", widget: "text" }
       - name: "resume"
         label: "Resume"
-        folder: "public/uploads"
-        widget: "file"
-        media_library:
-          config:
-            multiple: false
+        file: "public/uploads/08062020_Ping_Samuel.pdf"
+        fields:
+          - {
+              label: "Resume",
+              name: "resume",
+              widget: "file"
+              media_library:
+              config:
+                multiple: false
+          }
 
   - name: "projects"
     label: "Projects"
