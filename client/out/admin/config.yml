@@ -2,7 +2,7 @@ backend:
   name: github
   repo: samuel-ping/personal-website-v3
   branch: main
-  site_domain: https://samuelping.glitch.me
+  base_url: https://samuelping.glitch.me
 
 media_folder: "public/images"
 public_folder: "images/"
