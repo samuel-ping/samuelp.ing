@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hey! I'm Sam, a sophomore at Rutgers University- New Brunswick.</p>
-        <p>I'm currently struggling to set up Netlify CMS for my website :\</p>
+        <p>This website is currently a work in progress!</p>
       </section>
     </Layout>
   );
