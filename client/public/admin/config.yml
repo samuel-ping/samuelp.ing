@@ -25,10 +25,10 @@ collections:
           - {
               label: "Resume",
               name: "resume",
-              widget: "file"
+              widget: "file",
               media_library:
-              config:
-                multiple: false
+                config:
+                  multiple: false
           }
 
   - name: "projects"
