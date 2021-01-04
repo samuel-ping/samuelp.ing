@@ -69,3 +69,5 @@ app.get("/callback", async (req, res) => {
     console.log(err);
   }
 });
+
+app.listen();
