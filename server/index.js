@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 
 // Netlify CMS makes a request to /auth, so I redirect the user to GitHub login
 app.get("/auth", (req, res) => {
+  console.log("Redirecting to: ", authURL);
   res.redirect(authURL);
 });
 
@@ -68,5 +69,3 @@ app.get("/callback", async (req, res) => {
     console.log(err);
   }
 });
-
-app.listen(process.env.PORT);
