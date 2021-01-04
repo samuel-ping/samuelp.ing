@@ -4,7 +4,7 @@ backend:
   branch: main
   base_url: https://samuelping.glitch.me
 
-media_folder: "client/public/uploads/images/"
+media_folder: "client/public/uploads/"
 public_folder: "uploads/"
 
 site_url: https://samuel-ping.github.io/personal-website-v3
@@ -20,7 +20,7 @@ collections:
           - { label: "Description", name: "description", widget: "markdown" }
       - name: "resume"
         label: "Resume"
-        file: "client/public/uploads/08062020_Ping_Samuel.pdf"
+        file: "client/public/uploads/Ping_Samuel_Resume.pdf"
         fields:
           - { label: "Resume", name: "resume", widget: "file" }
       - name: "contact-information"
