@@ -2,7 +2,7 @@ backend:
   name: github
   repo: samuel-ping/personal-website-v3
   branch: main
-  base_url: https://samuelping.glitch.me
+  base_url: https://samuelping.herokuapp.com/
 
 media_folder: "client/public/uploads/"
 public_folder: "uploads/"
