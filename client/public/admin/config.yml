@@ -1,5 +1,5 @@
 backend:
-  name: test-repo
+  name: github
   repo: samuel-ping/personal-website-v3
   branch: main
   base_url: https://samuelping.glitch.me
