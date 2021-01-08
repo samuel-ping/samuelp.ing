@@ -6,7 +6,13 @@ const app = express();
 
 const githubClientId = process.env.GITHUB_OAUTH_CLIENT_ID;
 const githubSecretKey = process.env.GITHUB_OAUTH_SECRET_KEY;
-const oauthURL = `https://github.com/login/oauth/authorize?client_id=${githubClientId}&scope=repo,user`;
+
+// building OAuth URL
+var oauthURL = new URL("https://github.com/login/oauth/authorize");
+oauthURL.searchParams.append("client_id", githubClientId);
+oauthURL.searchParams.append("scope", "repo,user");
+oauthURL.searchParams.append("allow_signup", false);
+
 const tokenURL = "https://github.com/login/oauth/access_token";
 
 // if someone tries to views this, redirect them to my website
@@ -39,23 +45,24 @@ app.get("/callback", async (req, res) => {
       provider: "github",
     };
 
-    const script = `
-      <script>
-        (function() {
-            function receiveMessage(e) {
-              console.log("receiveMessage %o", e);
-          
-              // send message to main window with the app
-              window.opener.postMessage(
-                'authorization:github:success:${JSON.stringify(postContent)}', 
-                e.origin
-              );
-            }
+    const script = `<script>
+                      (function() {
+                          function receiveMessage(e) {
+                            console.log("receiveMessage %o", e);
+                        
+                            // send message to main window with the app
+                            window.opener.postMessage(
+                              'authorization:github:success:${JSON.stringify(
+                                postContent
+                              )}', 
+                              e.origin
+                            );
+                          }
 
-            window.addEventListener("message", receiveMessage, false);
-            window.opener.postMessage("authorizing:github", "*");
-          })()
-      </script>`;
+                          window.addEventListener("message", receiveMessage, false);
+                          window.opener.postMessage("authorizing:github", "*");
+                        })()
+                    </script>`;
 
     return res.send(script);
   } catch (err) {
