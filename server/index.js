@@ -1,9 +1,9 @@
 const express = require("express");
 const tiny = require("tiny-json-http");
 
-const githubClientId = process.env.GITHUB_OAUTH_CLIENT_ID;
-const githubSecretKey = process.env.GITHUB_OAUTH_SECRET_KEY;
-const authUrl = `https://github.com/login/oauth/authorize?client_id=${githubClientId}&scope=repo,user`;
+const client_id = process.env.GITHUB_OAUTH_CLIENT_ID;
+const client_secret = process.env.GITHUB_OAUTH_SECRET_KEY;
+const authUrl = `https://github.com/login/oauth/authorize?client_id=${client_id}&scope=repo,user`;
 const tokenUrl = "https://github.com/login/oauth/access_token";
 
 const app = express();
@@ -19,8 +19,8 @@ app.get("/auth", (req, res) => res.redirect(authUrl));
 app.get("/callback", async (req, res) => {
   const data = {
     code: req.query.code,
-    githubClientId,
-    githubSecretKey,
+    client_id,
+    client_secret,
   };
 
   try {
