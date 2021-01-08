@@ -18,18 +18,25 @@ jobs:
   client-integration:
     name: integrate-client
     runs-on: ubuntu-latest
+#     defaults:
+#       run:
+#         working-directory: ./client
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - run: cd client
 
       # Building the website
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
       - run: npm ci
+        working-directory: ./client
       - run: npm run export
+        working-directory: ./client
       - run: echo "# Hi!" > out/README.md
+        working-directory: ./client
       - run: echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the Main branch!" >> out/README.md
+        working-directory: ./client
       - run: echo "#### Note - This message was automatically generated." >> out/README.md
+        working-directory: ./client
