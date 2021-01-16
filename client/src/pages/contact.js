@@ -1,14 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout from "../../components/layout";
+import Layout from "../components/layout";
 
-export default function FirstPost() {
+export default function Contact() {
   return (
     <Layout>
       <Head>
-        <title>First Post</title>
+        <title>Contact Me</title>
       </Head>
-      <h1>First Post</h1>
+      <h1>Contact Me</h1>
       <h2>
         <Link href="/">
           <a>Back to home</a>

@@ -1,14 +1,13 @@
 import Head from "next/head";
-import Layout, { siteTitle } from "../components/layout";
-import utilStyles from "../styles/utils.module.css";
+import Layout from "../components/layout";
 
 export default function Home() {
   return (
-    <Layout home>
+    <Layout>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Samuel Ping</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      <section>
         <p>Hey! I'm Sam, a sophomore at Rutgers University- New Brunswick.</p>
         <p>This website is currently a work in progress!</p>
       </section>
