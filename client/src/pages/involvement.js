@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 
 export default function Involvement() {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Involvement</title>
       </Head>
@@ -14,6 +14,6 @@ export default function Involvement() {
           <a>Back to home</a>
         </Link>
       </h2>
-    </Layout>
+    </>
   );
 }

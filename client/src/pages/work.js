@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 
 export default function Work() {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Work Experience</title>
       </Head>
@@ -14,6 +14,6 @@ export default function Work() {
           <a>Back to home</a>
         </Link>
       </h2>
-    </Layout>
+    </>
   );
 }

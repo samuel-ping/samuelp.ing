@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 
 export default function About() {
   return (
-    <Layout>
+    <>
       <Head>
         <title>About Me</title>
       </Head>
@@ -14,6 +14,6 @@ export default function About() {
           <a>Back to home</a>
         </Link>
       </h2>
-    </Layout>
+    </>
   );
 }

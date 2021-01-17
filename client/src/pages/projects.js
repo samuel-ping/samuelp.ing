@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 
 export default function Projects() {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Projects</title>
       </Head>
@@ -14,6 +14,6 @@ export default function Projects() {
           <a>Back to home</a>
         </Link>
       </h2>
-    </Layout>
+    </>
   );
 }
