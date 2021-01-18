@@ -1,4 +1,5 @@
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
+import NavbarButtons from "../config/NavbarButtons";
 
 const layoutStyle = {
   display: "flex",
@@ -10,7 +11,7 @@ const layoutStyle = {
 export default function Layout({ children }) {
   return (
     <div className="Layout" style={layoutStyle}>
-      <Navbar />
+      <Navbar navbarButtons={NavbarButtons} />
       <div className="Content">{children}</div>
     </div>
   );
