@@ -6,9 +6,10 @@ export default function Home() {
       <Head>
         <title>Samuel Ping</title>
       </Head>
+
       <section>
         <p>Hey! I'm Sam, a sophomore at Rutgers University- New Brunswick.</p>
-        <p>This website is currently a work in progress!</p>
+        <p>This site is still a work in progress!</p>
       </section>
     </>
   );

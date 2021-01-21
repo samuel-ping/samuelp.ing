@@ -3,6 +3,7 @@ import NavbarButton from "./NavbarButton";
 const navbarStyle = {
   display: "flex",
   flexDirection: "row",
+  justifyContent: "center",
   backgroundColor: "#387759",
   width: "100%",
   height: "80px",
