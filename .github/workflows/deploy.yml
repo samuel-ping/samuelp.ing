@@ -32,7 +32,7 @@ jobs:
         run: |
           npm ci
           npm run export
-          touch out/_next/.nojekyll
+          touch out/.nojekyll
           echo "# Hi!" > out/README.md
           echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the Main branch!" >> out/README.md
           echo "#### Note - This message was automatically generated." >> out/README.md
