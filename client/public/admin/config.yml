@@ -18,6 +18,7 @@ collections:
         file: "src/content/about-me.md"
         fields:
           - { label: "Description", name: "description", widget: "markdown" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
       - name: "resume"
         label: "Resume"
         file: "client/public/uploads/Ping_Samuel_Resume.pdf"

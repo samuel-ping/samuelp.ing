@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 import styles from "../styles/Button.module.css";
 
-const NavbarButton = ({ key, title, route }) => {
+const NavbarButton = ({ title, route }) => {
   const router = useRouter();
   return (
     <Link href={route}>
