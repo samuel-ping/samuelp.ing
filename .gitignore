@@ -1,5 +1,4 @@
 # Frontend
-
 # Next.js
 .next/
 out/
@@ -9,17 +8,13 @@ out/
 **/public/sw.js
 **/public/worker-*.js
 
-# production
-/build
+
+# Frontend & Backend
+# Dependencies
+node_modules/
+
+# env files
+.env
 
 # debug
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Frontend & Backend
-# dependencies
-node_modules/
-
-# local env files
-.env
