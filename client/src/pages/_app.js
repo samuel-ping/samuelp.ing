@@ -9,14 +9,20 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
         <meta name="author" content="Samuel Ping" />
         <meta name="description" content="Samuel Ping's website!" />
         <meta
           name="keywords"
           content="Samuel, Ping, personal, website, intern, software, engineering"
         />
+        <meta name="theme-color" content="#bdd9c8" />
+
         <link rel="manifest" href="site.webmanifest" />
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
         <link

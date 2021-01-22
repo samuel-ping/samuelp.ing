@@ -1,12 +1,14 @@
 const withPWA = require("next-pwa");
 
+const debug = process.env.NODE_ENV !== "production";
+
 module.exports = withPWA({
-  basePath: "/personal-website-v3",
-  assetPrefix: "/personal-website-v3",
+  basePath: !debug ? "/personal-website-v3" : "",
+  assetPrefix: !debug ? "/personal-website-v3" : "",
   target: "serverless",
   pwa: {
     dest: "public",
-    disable: process.env.NODE_ENV !== "production",
+    disable: debug,
   },
   webpack: function (config) {
     config.module.rules.push({
