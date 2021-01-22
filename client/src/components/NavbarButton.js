@@ -1,22 +1,24 @@
-import Link from "next/link";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 
-import classNames from "classnames";
-
-import styles from "../styles/Button.module.css";
+import { Box, Link, Text } from "@chakra-ui/react";
 
 const NavbarButton = ({ title, route }) => {
   const router = useRouter();
+  // console.log(route, router.pathname === route);
   return (
-    <Link href={route}>
-      <div
-        className={classNames(
-          styles["navbarbutton"],
-          router.pathname === route ? styles.active : ""
-        )}
+    <Link as={NextLink} href={route}>
+      <Box
+        bg={router.pathname === route ? "theme.600" : "theme.500"}
+        display="flex"
+        width="auto"
+        alignItems="center"
+        justifyContent="center"
+        cursor="pointer"
+        // flexGrow={1}
       >
-        <span className="title">{title}</span>
-      </div>
+        <Text>{title}</Text>
+      </Box>
     </Link>
   );
 };

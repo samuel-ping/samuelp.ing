@@ -1,13 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
 
+import { Heading } from "@chakra-ui/react";
+
 export default function Work() {
   return (
     <>
       <Head>
         <title>Work Experience</title>
       </Head>
-      <h1>Work Experience</h1>
+      <Heading>Work Experience</Heading>
       <h2>
         <Link href="/">
           <a>Back to home</a>

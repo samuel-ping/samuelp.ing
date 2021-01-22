@@ -1,28 +1,51 @@
-import { useState } from "react";
-
 import ReactMarkdown from "react-markdown";
-import { Modal } from "react-responsive-modal";
-
-import "react-responsive-modal/styles.css";
+import {
+  Button,
+  Box,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 
 export default function ProjectCard({ project }) {
-  const [modalState, setModalState] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const scrollBehavior = "inside";
 
   if (!project.frontmatter) return <></>;
 
   return (
     <>
-      <button onClick={() => setModalState(true)}>
+      <Button colorScheme="theme" onClick={onOpen}>
         {project.frontmatter.title}
-      </button>
+      </Button>
 
-      <Modal open={modalState} onClose={() => setModalState(false)}>
-        <div>
-          <h1>{project.frontmatter.title}</h1>
-          <div>
-            <ReactMarkdown source={project.markdownBody} />
-          </div>
-        </div>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        scrollBehavior={scrollBehavior}
+        size="5xl"
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{project.frontmatter.title}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Box>
+              <ReactMarkdown source={project.markdownBody} />
+            </Box>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="theme" onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
       </Modal>
     </>
   );

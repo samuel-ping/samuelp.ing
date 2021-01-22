@@ -9,8 +9,11 @@
     "export": "npm run build && next export"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.1.5",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
     "chalk": "^4.1.0",
-    "classnames": "^2.2.6",
+    "framer-motion": "^3.2.1",
     "gray-matter": "^4.0.2",
     "next": "^10.0.4",
     "next-pwa": "^5.0.4",
