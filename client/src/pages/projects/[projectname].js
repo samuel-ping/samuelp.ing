@@ -1,24 +1,28 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
+
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import Modal from "react-modal";
 
-import Layout from "../../components/Layout";
-
-export default function Project({ siteTitle, frontmatter, markdownBody }) {
+export default function Project({ frontmatter, markdownBody }) {
+  const router = useRouter();
   if (!frontmatter) return <></>;
 
   return (
     <>
-      <Link href="/projects">
-        <a>Back to projects list</a>
-      </Link>
-      <article>
-        <h1>{frontmatter.title}</h1>
-        <p>By {frontmatter.author}</p>
+      <Modal
+        isOpen={true}
+        contentLabel={frontmatter.title}
+        onRequestClose={() => router.push("/projects")}
+        closeTimeoutMS={0}
+      >
         <div>
-          <ReactMarkdown source={markdownBody} />
+          <h1>{frontmatter.title}</h1>
+          <div>
+            <ReactMarkdown source={markdownBody} />
+          </div>
         </div>
-      </article>
+      </Modal>
     </>
   );
 }
