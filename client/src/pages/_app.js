@@ -1,9 +1,21 @@
 import Head from "next/head";
 
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
 import Layout from "../components/Layout";
 
 import "../styles/globals.css";
+
+const styles = {
+  global: {
+    "html, body": {
+      fontSize: "l",
+      fontFamily:
+        "Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif",
+      lineHeight: "tall",
+    },
+  },
+};
 
 const colors = {
   theme: {
@@ -19,7 +31,7 @@ const colors = {
     900: "#1c4532",
   },
 };
-const theme = extendTheme({ colors });
+const theme = extendTheme({ styles, colors });
 
 function MyApp({ Component, pageProps }) {
   return (

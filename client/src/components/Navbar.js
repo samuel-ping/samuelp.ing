@@ -1,15 +1,7 @@
-import { Box, Heading, Flex, Text, Button } from "@chakra-ui/react";
+import { Flex, Spacer } from "@chakra-ui/react";
 
+import Logo from "./Logo";
 import NavbarButton from "./NavbarButton";
-
-const navbarStyle = {
-  display: "flex",
-  // flexDirection: "row",
-  justifyContent: "center",
-  // backgroundColor: "#347050",
-  width: "100%",
-  height: "80px",
-};
 
 export default function Navbar(props) {
   return (
@@ -20,11 +12,28 @@ export default function Navbar(props) {
       justifyContent="space-around"
       color="#ffffff"
     >
-      {props.navbarButtons.map((button, index) => {
-        return (
-          <NavbarButton key={index} title={button.title} route={button.route} />
-        );
-      })}
+      <Flex
+        flexDirection="row"
+        align="center"
+        justifyContent="space-around"
+        color="#ffffff"
+      >
+        <Logo isAnimated="true" />
+      </Flex>
+
+      <Spacer />
+
+      <Flex flexDirection="row" align="center" mr="5">
+        {props.navbarButtons.map((button, index) => {
+          return (
+            <NavbarButton
+              key={index}
+              title={button.title}
+              route={button.route}
+            />
+          );
+        })}
+      </Flex>
     </Flex>
   );
 }
