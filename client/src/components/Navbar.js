@@ -10,6 +10,7 @@ export default function Navbar(props) {
       flexDirection="row"
       align="center"
       justifyContent="space-around"
+      fontSize="l"
       color="#ffffff"
     >
       <Flex

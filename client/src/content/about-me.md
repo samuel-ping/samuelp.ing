@@ -11,5 +11,4 @@ description: >-
 
 
   Apart from programming, I love playing tennis, acting, and tinkering with computer hardware. I'm also a fan of all things green! Except boogers.
-tagline: a CS major at Rutgers University- New Brunswick.
 ---

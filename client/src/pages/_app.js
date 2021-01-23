@@ -10,8 +10,9 @@ const styles = {
       bg: "#c3dacd",
       fontSize: "l",
       fontFamily:
-        "Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif",
+        "Open Sans, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif",
       lineHeight: "tall",
+      overflow: "hidden",
     },
   },
 };

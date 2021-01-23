@@ -1,20 +1,13 @@
+import { Box } from "@chakra-ui/react";
+
 import Navbar from "./Navbar";
 import NavbarButtons from "../config/NavbarButtons";
 
-const layoutStyle = {
-  display: "flex",
-  flexDirection: "column",
-  height: "100%",
-  width: "100%",
-};
-
-export default function Layout({ children, pageTitle, ...props }) {
+export default function Layout({ children }) {
   return (
-    <>
-      <div className="layout" style={layoutStyle}>
-        <Navbar navbarButtons={NavbarButtons} />
-        <div className="content">{children}</div>
-      </div>
-    </>
+    <Box display="flex" flexDirection="column" height="100%" width="100%">
+      <Navbar navbarButtons={NavbarButtons} />
+      <div className="content">{children}</div>
+    </Box>
   );
 }
