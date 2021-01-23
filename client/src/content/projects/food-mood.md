@@ -1,6 +1,6 @@
 ---
 layout: projects
-title: Food Mood v3
+title: Food Mood
 thumbnail: images/food-mood-thumbnail.jpg
 timeframe: March 2020 - August 2020
 repo-url: https://github.com/samuel-ping/food-mood
@@ -8,6 +8,7 @@ website-url: https://foodmood.samuelping.me/
 technologies: React.js, Express.js, Node.js, Nginx, AWS EC2, CodePipeline &
   CodeDeploy, S3, Amplify
 ---
+
 A web app that takes your photo, detects your visible mood, and suggests a restaurant based off of that mood!
 
 v3 (current): The frontend is built with React.js, while I created an API using AWS Lambda for the "backend." It is currently deployed using AWS Amplify.

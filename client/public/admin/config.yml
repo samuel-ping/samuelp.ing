@@ -1,7 +1,8 @@
 backend:
   name: github
+  # name: test-repo
   repo: samuel-ping/personal-website-v3
-  branch: main
+  branch: cms_updates
   base_url: https://samuelping.herokuapp.com/
 
 media_folder: "client/public/uploads/"
@@ -10,22 +11,35 @@ public_folder: "uploads/"
 site_url: https://samuel-ping.github.io/personal-website-v3
 
 collections:
-  - name: "personal-information"
-    label: "Personal Information"
-    files:
-      - name: "about-me"
-        label: "About Me"
-        file: "client/src/content/about-me.md"
-        fields:
-          - { label: "Description", name: "description", widget: "markdown" }
+  - name: "taglines"
+    label: "Taglines"
+    description: "The taglines that go on the landing page!"
+    folder: "client/src/content/home"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Job Title", name: "job-title", widget: "string" }
+      - { label: "Company", name: "company", widget: "string" }
+      - { label: "Company Website URL", name: "website-url", widget: "string" }
+  - name: "about"
+    label: "About Me"
+    description: "My about me blurb!"
+    folder: "client/src/content/about"
+    fields:
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "contact"
+    label: "Contact Information"
+    description: "My contact information!"
+    folder: "client/src/content/contact"
+    fields:
       - name: "resume"
         label: "Resume"
         file: "client/public/uploads/Ping_Samuel_Resume.pdf"
         fields:
           - { label: "Resume", name: "resume", widget: "file" }
-      - name: "contact-information"
-        label: "Contact Information"
-        file: "client/src/content/contact-information.md"
+      - name: "links"
+        label: "Links"
+        file: "client/src/content/links.md"
         fields:
           - {
               label: "GitHub Profile URL",
@@ -38,9 +52,23 @@ collections:
               widget: "string",
             }
           - { label: "Email Address", name: "email-address", widget: "string" }
-
+  - name: "work"
+    label: "Work Experience"
+    description: "My work experiences!"
+    folder: "client/src/content/work"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Company", name: "company", widget: "string" }
+      - { label: "Job Title", name: "job-title", widget: "string" }
+      - { label: "Image Thumbnail", name: "thumbnail", widget: "image" }
+      - { label: "Timeframe", name: "timeframe", widget: "string" }
+      - { label: "Live Website URL", name: "website-url", widget: "string" }
+      - { label: "Technologies Used", name: "technologies", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
   - name: "projects"
-    label: "Projects"
+    label: "Personal Projects"
+    description: "Personal projects!"
     folder: "client/src/content/projects"
     create: true
     slug: "{{slug}}"
@@ -51,4 +79,17 @@ collections:
       - { label: "Repository URL", name: "repo-url", widget: "string" }
       - { label: "Live Website URL", name: "website-url", widget: "string" }
       - { label: "Technologies Used", name: "technologies", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "involvement"
+    label: "Involvement"
+    description: "Clubs and extracurriculars!"
+    folder: "client/src/content/involvement"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Activity", name: "activity", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image Thumbnail", name: "thumbnail", widget: "image" }
+      - { label: "Timeframe", name: "timeframe", widget: "string" }
+      - { label: "Live Website URL", name: "website-url", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }

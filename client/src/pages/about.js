@@ -12,10 +12,7 @@ export default function About({ aboutMe }) {
         <title>About Me</title>
       </Head>
       <Heading>About Me</Heading>
-      <Text>
-        {aboutMe}
-        {"\n"}hello
-      </Text>
+      <Text>{aboutMe}</Text>
       <h2>
         <Link as={NextLink} href="/">
           <a>Back to home</a>
@@ -26,8 +23,8 @@ export default function About({ aboutMe }) {
 }
 
 export async function getStaticProps() {
-  const aboutMeContent = getFileContent("about-me.md");
-  console.log(aboutMeContent.data);
+  const aboutMeContent = getFileContent("about/about-me.md");
+  // console.log(aboutMeContent.data);
   return {
     props: {
       aboutMe: aboutMeContent.data.description,
