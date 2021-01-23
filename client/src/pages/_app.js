@@ -4,11 +4,10 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 import Layout from "../components/Layout";
 
-import "../styles/globals.css";
-
 const styles = {
   global: {
     "html, body": {
+      bg: "#c3dacd",
       fontSize: "l",
       fontFamily:
         "Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif",
@@ -17,6 +16,7 @@ const styles = {
   },
 };
 
+// https://coolors.co/1c4532-2c5c44-347050-4d8f6d-4e7560-70907e-68d391-94ecbe-b3efb2-c3dacd
 const colors = {
   theme: {
     50: "#c3dacd",
