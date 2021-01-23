@@ -15,7 +15,7 @@ collections:
     files:
       - name: "about-me"
         label: "About Me"
-        file: "src/content/about-me.md"
+        file: "client/src/content/about-me.md"
         fields:
           - { label: "Description", name: "description", widget: "markdown" }
           - { label: "Tagline", name: "tagline", widget: "string" }
