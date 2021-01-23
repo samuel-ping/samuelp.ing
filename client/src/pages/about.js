@@ -24,10 +24,9 @@ export default function About({ aboutMe }) {
 
 export async function getStaticProps() {
   const aboutMeContent = getFileContent("about/about-me.md");
-  // console.log(aboutMeContent.data);
   return {
     props: {
-      aboutMe: aboutMeContent.data.description,
+      aboutMe: aboutMeContent.content,
     },
   };
 }
