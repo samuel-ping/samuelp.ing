@@ -13,6 +13,7 @@ site_url: https://samuel-ping.github.io/personal-website-v3
 collections:
   - name: "taglines"
     label: "Taglines"
+    label_singular: "Tagline"
     description: "The taglines that go on the landing page!"
     folder: "client/src/content/home"
     create: true
@@ -24,14 +25,16 @@ collections:
   - name: "about"
     label: "About Me"
     description: "My about me blurb!"
-    folder: "client/src/content/about"
-    fields:
-      - { label: "Body", name: "body", widget: "markdown" }
+    files:
+      - name: "about-description"
+        label: "About Me Description"
+        file: "client/src/content/about/about-me.md"
+        fields:
+          - { label: "Body", name: "body", widget: "markdown" }
   - name: "contact"
     label: "Contact Information"
     description: "My contact information!"
-    folder: "client/src/content/contact"
-    fields:
+    files:
       - name: "resume"
         label: "Resume"
         file: "client/public/uploads/Ping_Samuel_Resume.pdf"
@@ -39,7 +42,7 @@ collections:
           - { label: "Resume", name: "resume", widget: "file" }
       - name: "links"
         label: "Links"
-        file: "client/src/content/links.md"
+        file: "client/src/content/contact/links.md"
         fields:
           - {
               label: "GitHub Profile URL",
@@ -61,27 +64,48 @@ collections:
     fields:
       - { label: "Company", name: "company", widget: "string" }
       - { label: "Job Title", name: "job-title", widget: "string" }
-      - { label: "Image Thumbnail", name: "thumbnail", widget: "image" }
+      - {
+          label: "Image Thumbnail",
+          name: "thumbnail",
+          widget: "image",
+          required: false,
+        }
       - { label: "Timeframe", name: "timeframe", widget: "string" }
-      - { label: "Live Website URL", name: "website-url", widget: "string" }
-      - { label: "Technologies Used", name: "technologies", widget: "string" }
+      - {
+          label: "Live Website URL",
+          name: "website-url",
+          widget: "string",
+          required: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
   - name: "projects"
     label: "Personal Projects"
+    label_singular: "Personal Project"
     description: "Personal projects!"
     folder: "client/src/content/projects"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Image Thumbnail", name: "thumbnail", widget: "image" }
+      - {
+          label: "Image Thumbnail",
+          name: "thumbnail",
+          widget: "image",
+          required: false,
+        }
       - { label: "Timeframe", name: "timeframe", widget: "string" }
       - { label: "Repository URL", name: "repo-url", widget: "string" }
-      - { label: "Live Website URL", name: "website-url", widget: "string" }
+      - {
+          label: "Live Website URL",
+          name: "website-url",
+          widget: "string",
+          required: false,
+        }
       - { label: "Technologies Used", name: "technologies", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
   - name: "involvement"
     label: "Involvement"
+    label_singular: "Extracurricular"
     description: "Clubs and extracurriculars!"
     folder: "client/src/content/involvement"
     create: true
@@ -89,7 +113,17 @@ collections:
     fields:
       - { label: "Activity", name: "activity", widget: "string" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Image Thumbnail", name: "thumbnail", widget: "image" }
+      - {
+          label: "Image Thumbnail",
+          name: "thumbnail",
+          widget: "image",
+          required: false,
+        }
       - { label: "Timeframe", name: "timeframe", widget: "string" }
-      - { label: "Live Website URL", name: "website-url", widget: "string" }
+      - {
+          label: "Live Website URL",
+          name: "website-url",
+          widget: "string",
+          required: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
