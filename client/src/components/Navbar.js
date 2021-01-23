@@ -1,22 +1,39 @@
-import NavbarButton from "./NavbarButton";
+import { Flex, Spacer } from "@chakra-ui/react";
 
-const navbarStyle = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  backgroundColor: "#387759",
-  width: "100%",
-  height: "80px",
-};
+import Logo from "./Logo";
+import NavbarButton from "./NavbarButton";
 
 export default function Navbar(props) {
   return (
-    <div style={navbarStyle}>
-      {props.navbarButtons.map((button, index) => {
-        return (
-          <NavbarButton key={index} title={button.title} route={button.route} />
-        );
-      })}
-    </div>
+    <Flex
+      bg="theme.800"
+      flexDirection="row"
+      align="center"
+      justifyContent="space-around"
+      color="#ffffff"
+    >
+      <Flex
+        flexDirection="row"
+        align="center"
+        justifyContent="space-around"
+        color="#ffffff"
+      >
+        <Logo isAnimated="true" />
+      </Flex>
+
+      <Spacer />
+
+      <Flex flexDirection="row" align="center" mr="5">
+        {props.navbarButtons.map((button, index) => {
+          return (
+            <NavbarButton
+              key={index}
+              title={button.title}
+              route={button.route}
+            />
+          );
+        })}
+      </Flex>
+    </Flex>
   );
 }

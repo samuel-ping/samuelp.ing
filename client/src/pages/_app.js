@@ -1,8 +1,37 @@
 import Head from "next/head";
 
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
 import Layout from "../components/Layout";
 
-import "../styles/globals.css";
+const styles = {
+  global: {
+    "html, body": {
+      bg: "#c3dacd",
+      fontSize: "l",
+      fontFamily:
+        "Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif",
+      lineHeight: "tall",
+    },
+  },
+};
+
+// https://coolors.co/1c4532-2c5c44-347050-4d8f6d-4e7560-70907e-68d391-94ecbe-b3efb2-c3dacd
+const colors = {
+  theme: {
+    50: "#c3dacd",
+    100: "#b3efb2",
+    200: "#94ecbe",
+    300: "#68d391",
+    400: "#70907e",
+    500: "#4e7560",
+    600: "#4d8f6d",
+    700: "#347050",
+    800: "#2c5c44",
+    900: "#1c4532",
+  },
+};
+const theme = extendTheme({ styles, colors });
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -39,9 +68,11 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="apple-touch-icon" href="apple-touch-icon.png"></link>
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <ChakraProvider theme={theme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
     </>
   );
 }

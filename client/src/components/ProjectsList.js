@@ -1,18 +1,19 @@
+import { Box, Wrap, WrapItem } from "@chakra-ui/react";
 import ProjectCard from "./ProjectCard";
 
 export default function PostList({ projects }) {
   if (projects === "undefined") return null;
 
   return (
-    <div>
+    <Wrap>
       {projects &&
         projects.map((project, index) => {
           return (
-            <div key={index}>
+            <WrapItem key={index}>
               <ProjectCard project={project} />
-            </div>
+            </WrapItem>
           );
         })}
-    </div>
+    </Wrap>
   );
 }

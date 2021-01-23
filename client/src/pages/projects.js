@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
+import { Heading } from "@chakra-ui/react";
 import matter from "gray-matter";
 
 import ProjectsList from "../components/ProjectsList";
@@ -18,7 +19,7 @@ export default function Projects({ projects }) {
       <Head>
         <title>Projects</title>
       </Head>
-      <h1>Projects</h1>
+      <Heading>Projects</Heading>
       <ProjectsList projects={projects} />
       <h2>
         <Link href="/">
