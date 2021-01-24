@@ -4,8 +4,8 @@ My personal website! Built with Next.js and ChakraUI. The backend uses Netlify C
 
 ## Notes
 
-#### Converting SVG to JSX (using svgr)
+#### Converting SVG to JSX (using svgr):
 
 ```
-npx @svgr/cli < ../temp/<svg file>.svg > ../temp/<output file name>.js
+npx @svgr/cli < path/to/<svg file>.svg > path/to/<output file name>.js
 ```
