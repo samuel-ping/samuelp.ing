@@ -10,7 +10,7 @@ export default function Navbar(props) {
       flexDirection="row"
       align="center"
       justifyContent="space-around"
-      fontSize="l"
+      fontSize="lg"
       color="#ffffff"
     >
       <Flex
@@ -19,7 +19,7 @@ export default function Navbar(props) {
         justifyContent="space-around"
         color="#ffffff"
       >
-        <Logo isAnimated="true" />
+        <Logo isAnimated="true" size="50" />
       </Flex>
 
       <Spacer />

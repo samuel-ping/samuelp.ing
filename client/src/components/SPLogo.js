@@ -1,7 +1,8 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 
 import { chakra } from "@chakra-ui/react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, usePresence } from "framer-motion";
 
 function SvgComponent({ isAnimated, color, size }) {
   if (!isAnimated)
@@ -22,6 +23,16 @@ function SvgComponent({ isAnimated, color, size }) {
     );
 
   const MotionBox = chakra(motion.svg);
+  const controls = useAnimation();
+
+  const [animationComplete, setAnimationComplete] = useState(false);
+
+  useEffect(async () => {
+    controls.set("hidden");
+    controls.start("visible").then(() => {
+      setAnimationComplete(true);
+    });
+  });
 
   const pathVariants = {
     hidden: {
@@ -55,10 +66,18 @@ function SvgComponent({ isAnimated, color, size }) {
       viewBox="0 0 14.249 22.02"
       stroke={color}
       strokeWidth={2.425}
-      initial="hidden"
-      animate="visible"
-      // onHoverStart={() => (initial = "hidden")}
-      // whileHover={pathVariants}
+      initial={controls}
+      animate={controls}
+      onHoverStart={async () => {
+        console.log(animationComplete);
+        if (animationComplete) {
+          setAnimationComplete(false);
+          controls.set("hidden");
+          controls.start("visible").then(() => {
+            setAnimationComplete(true);
+          });
+        }
+      }}
     >
       <motion.path
         fill="none"
@@ -68,7 +87,6 @@ function SvgComponent({ isAnimated, color, size }) {
       <motion.path
         fill="none"
         variants={delayedPathVariants}
-        // transition={{ pathLength: { delay: "1" } }}
         d="M3.354 11.296V22.02"
       />
     </MotionBox>

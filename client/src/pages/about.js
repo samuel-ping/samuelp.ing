@@ -3,6 +3,7 @@ import NextLink from "next/link";
 
 import { Container, Heading, Link, Text } from "@chakra-ui/react";
 
+import AboutCard from "../components/AboutCard";
 import { getFileContent } from "../lib/api";
 
 export default function About({ aboutMe }) {
@@ -11,13 +12,13 @@ export default function About({ aboutMe }) {
       <Head>
         <title>About Me</title>
       </Head>
+
       <Heading>About Me</Heading>
-      <Text>{aboutMe}</Text>
-      <h2>
-        <Link as={NextLink} href="/">
-          <a>Back to home</a>
-        </Link>
-      </h2>
+      <AboutCard description={aboutMe} />
+
+      <Link as={NextLink} href="/">
+        <a>Back to home</a>
+      </Link>
     </>
   );
 }

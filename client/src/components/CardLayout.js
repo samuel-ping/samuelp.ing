@@ -1,11 +1,14 @@
 import { Box } from "@chakra-ui/react";
 
 const CardLayout = ({ children }) => {
+  // give onhover scale 1.3? framer motion
   return (
     <>
-      <Box border="5px">{children}</Box>
+      <Box bg="#ffffff" borderRadius="7px" boxSize="lg">
+        {children}
+      </Box>
     </>
   );
 };
 
-export default Card;
+export default CardLayout;

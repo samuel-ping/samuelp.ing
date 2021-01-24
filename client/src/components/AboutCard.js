@@ -1,9 +1,15 @@
 import { Box } from "@chakra-ui/react";
 
-const AboutCard = (props) => {
+import CardLayout from "./CardLayout";
+
+const AboutCard = ({ description }) => {
   return (
     <>
-      <Box>stuff stuff</Box>
+      <CardLayout>
+        <Box>{description}</Box>
+      </CardLayout>
     </>
   );
 };
+
+export default AboutCard;
