@@ -37,10 +37,17 @@ collections:
     files:
       - name: "resume"
         label: "Resume"
-        file: "client/public/uploads/Ping_Samuel_Resume.pdf"
-        slug: "{{month}}-{{day}}-{{year}}_Ping_Samuel_Resume"
+        file: "client/public/uploads/Ping_Samuel-Resume.pdf"
         fields:
           - { label: "Resume", name: "resume", widget: "file" }
+          - {
+              label: "Date",
+              name: "date",
+              widget: "datetime",
+              date_format: "MM-DD-YYYY",
+              time_format: false,
+              picker_utc: true,
+            }
       - name: "links"
         label: "Links"
         file: "client/src/content/contact/links.md"
