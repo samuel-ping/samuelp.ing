@@ -38,6 +38,17 @@ function SvgComponent({ isAnimated, color, size }) {
     },
   };
 
+  const delayedPathVariants = {
+    ...pathVariants,
+    visible: {
+      ...pathVariants.visible,
+      transition: {
+        ...pathVariants.visible.transition,
+        delay: 0.6,
+      },
+    },
+  };
+
   return (
     <MotionBox
       xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +69,8 @@ function SvgComponent({ isAnimated, color, size }) {
       />
       <motion.path
         fill="none"
-        variants={pathVariants}
+        variants={delayedPathVariants}
+        // transition={{ pathLength: { delay: "1" } }}
         d="M3.354 11.296V22.02"
       />
     </MotionBox>
