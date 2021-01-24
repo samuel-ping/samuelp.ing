@@ -2,7 +2,7 @@ backend:
   name: github
   # name: test-repo
   repo: samuel-ping/personal-website-v3
-  branch: cms_updates
+  branch: main
   base_url: https://samuelping.herokuapp.com/
 
 media_folder: "client/public/uploads/"
