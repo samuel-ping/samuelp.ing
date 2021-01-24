@@ -5,15 +5,6 @@ const debug = process.env.NODE_ENV !== "production";
 module.exports = withPWA({
   basePath: !debug ? "/personal-website-v3" : "",
   assetPrefix: !debug ? "/personal-website-v3" : "",
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/",
-  //       destination: "/about",
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
   target: "serverless",
   pwa: {
     dest: "public",

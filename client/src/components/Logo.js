@@ -8,7 +8,7 @@ const Logo = ({ isAnimated }) => {
   return (
     <>
       <Link as={NextLink} href="/">
-        <Box cursor="pointer" ml="5" my="0">
+        <Box cursor="pointer" ml="5" my="5">
           <SPLogo isAnimated={true} color="#ffffff" size="100" />
         </Box>
       </Link>

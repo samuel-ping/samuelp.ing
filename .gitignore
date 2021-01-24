@@ -8,6 +8,9 @@ out/
 **/public/sw.js
 **/public/worker-*.js
 
+# Testing
+temp/
+
 
 # Frontend & Backend
 # Dependencies
