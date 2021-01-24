@@ -17,7 +17,7 @@ export default function Projects({ projects }) {
   return (
     <>
       <Head>
-        <title>Projects</title>
+        <title>Samuel Ping | Projects</title>
       </Head>
       <Heading>Projects</Heading>
       <ProjectsList projects={projects} />

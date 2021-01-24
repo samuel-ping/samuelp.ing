@@ -7,7 +7,7 @@ export default function Involvement() {
   return (
     <>
       <Head>
-        <title>Involvement</title>
+        <title>Samuel Ping | Involvement</title>
       </Head>
       <Heading>Involvement</Heading>
       <h2>

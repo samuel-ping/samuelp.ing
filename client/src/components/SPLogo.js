@@ -27,7 +27,7 @@ function SvgComponent({ isAnimated, color, size }) {
 
   const [animationComplete, setAnimationComplete] = useState(false);
 
-  useEffect(async () => {
+  useEffect(() => {
     controls.set("hidden");
     controls.start("visible").then(() => {
       setAnimationComplete(true);
@@ -69,7 +69,6 @@ function SvgComponent({ isAnimated, color, size }) {
       initial={controls}
       animate={controls}
       onHoverStart={async () => {
-        console.log(animationComplete);
         if (animationComplete) {
           setAnimationComplete(false);
           controls.set("hidden");

@@ -26,6 +26,10 @@ collections:
     label: "About Me"
     description: "My about me blurb!"
     files:
+      - name: "profile-picture"
+        label: "Profile Picture"
+        file: "client/public/uploads/profile.jpg"
+
       - name: "about-description"
         label: "About Me Description"
         file: "client/src/content/about/about-me.md"
@@ -37,9 +41,13 @@ collections:
     files:
       - name: "resume"
         label: "Resume"
-        file: "client/public/uploads/Ping_Samuel-Resume.pdf"
         fields:
-          - { label: "Resume", name: "resume", widget: "file" }
+          - {
+              label: "Resume",
+              name: "resume",
+              widget: "file",
+              default: "client/public/uploads/Ping_Samuel-Resume.pdf",
+            }
           - {
               label: "Upload Date",
               name: "date",

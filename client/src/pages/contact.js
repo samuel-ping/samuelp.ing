@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact Me</title>
+        <title>Samuel Ping | Contact Me</title>
       </Head>
       <Heading>Contact Me</Heading>
       <h2>

@@ -7,7 +7,7 @@ export default function Work() {
   return (
     <>
       <Head>
-        <title>Work Experience</title>
+        <title>Samuel Ping | Work Experience</title>
       </Head>
       <Heading>Work Experience</Heading>
       <h2>
