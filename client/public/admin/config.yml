@@ -41,12 +41,13 @@ collections:
         fields:
           - { label: "Resume", name: "resume", widget: "file" }
           - {
-              label: "Date",
+              label: "Upload Date",
               name: "date",
               widget: "datetime",
               date_format: "MM-DD-YYYY",
               time_format: false,
               picker_utc: true,
+              hint: "Date this resume was last updated.",
             }
       - name: "links"
         label: "Links"
