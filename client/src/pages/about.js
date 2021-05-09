@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <>
-      <h1>Hello World!</h1>
+      <h1 className="leading-normal">Hello World!</h1>
     </>
   );
 }

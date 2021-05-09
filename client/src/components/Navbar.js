@@ -4,7 +4,7 @@ import NavbarButton from './NavbarButton';
 export default function Navbar(props) {
   return (
     <>
-      <nav className="flex flex-row ">
+      <nav className="flex flex-row justify-center content-center">
         <NavbarButton title="about" route="/about" />
         <NavbarButton title="experience" route="/work" />
         <NavbarButton title="projects" route="/projects" />
