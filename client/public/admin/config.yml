@@ -2,145 +2,185 @@ backend:
   name: github
   # name: test-repo
   repo: samuel-ping/personal-website-v3
-  branch: main
+  branch: cms
   base_url: https://samuelping.herokuapp.com/
 
-media_folder: "client/public/uploads/"
-public_folder: "uploads/"
+media_folder: 'client/public/assets/'
+public_folder: 'assets/'
 
 site_url: https://samuel-ping.github.io/personal-website-v3
 
 collections:
-  - name: "taglines"
-    label: "Taglines"
-    label_singular: "Tagline"
-    description: "The taglines that go on the landing page!"
-    folder: "client/src/content/home"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Job Title", name: "job-title", widget: "string" }
-      - { label: "Company", name: "company", widget: "string" }
-      - { label: "Company Website URL", name: "website-url", widget: "string" }
-  - name: "about"
-    label: "About Me"
-    description: "My about me blurb!"
+  - label: 'Pages'
+    name: 'pages'
     files:
-      - name: "profile-picture"
-        label: "Profile Picture"
-        file: "client/public/uploads/profile.jpg"
+      - label: 'Home Page'
+        name: 'home'
+        file: 'client/src/content/home.yml'
+        fields:
+          - label: 'Taglines'
+            label_singular: 'Tagline'
+            name: 'taglines'
+            widget: list
+            fields:
+              - { label: 'Position', name: 'position', widget: string }
+              - { label: 'Place', name: 'place', widget: string }
+          - name: 'resume'
+            label: 'Resume'
+            widget: object
+            fields:
+              - {
+                  label: 'Resume File',
+                  name: 'resume-file',
+                  widget: 'file',
+                  allow_multiple: false,
+                }
+              - {
+                  label: 'Upload Date',
+                  name: 'date',
+                  widget: 'datetime',
+                  date_format: 'MM-DD-YYYY',
+                  time_format: false,
+                  picker_utc: true,
+                  hint: 'Date this resume was last updated.',
+                }
+          - label: 'Links'
+            name: 'links'
+            widget: object
+            fields:
+              - {
+                  label: 'GitHub Profile URL',
+                  name: 'github',
+                  widget: 'string',
+                }
+              - {
+                  label: 'LinkedIn Profile URL',
+                  name: 'linkedin',
+                  widget: 'string',
+                }
+              - { label: 'Email Address', name: 'email', widget: 'string' }
 
-      - name: "about-description"
-        label: "About Me Description"
-        file: "client/src/content/about/about-me.md"
+      - label: 'About Me Page'
+        name: 'about'
+        file: 'client/src/content/about.yml'
         fields:
-          - { label: "Body", name: "body", widget: "markdown" }
-  - name: "contact"
-    label: "Contact Information"
-    description: "My contact information!"
-    files:
-      - name: "resume"
-        label: "Resume"
-        fields:
-          - {
-              label: "Resume",
-              name: "resume",
-              widget: "file",
-              default: "client/public/uploads/Ping_Samuel-Resume.pdf",
-            }
-          - {
-              label: "Upload Date",
-              name: "date",
-              widget: "datetime",
-              date_format: "MM-DD-YYYY",
-              time_format: false,
-              picker_utc: true,
-              hint: "Date this resume was last updated.",
-            }
-      - name: "links"
-        label: "Links"
-        file: "client/src/content/contact/links.md"
-        fields:
-          - {
-              label: "GitHub Profile URL",
-              name: "github-url",
-              widget: "string",
-            }
-          - {
-              label: "LinkedIn Profile URL",
-              name: "linkedin-url",
-              widget: "string",
-            }
-          - { label: "Email Address", name: "email-address", widget: "string" }
-  - name: "work"
-    label: "Work Experience"
-    description: "My work experiences!"
-    folder: "client/src/content/work"
+          - { label: 'Profile Picture', name: 'profile-picture', widget: image }
+          - { label: 'Description', name: 'description', widget: markdown }
+
+  - name: 'work'
+    label: 'Work Experience'
+    folder: 'client/src/content/work'
     create: true
-    slug: "{{slug}}"
     fields:
-      - { label: "Company", name: "company", widget: "string" }
-      - { label: "Job Title", name: "job-title", widget: "string" }
+      - { label: 'Company', name: 'company', widget: 'string' }
+      - { label: 'Job Title', name: 'job-title', widget: 'string' }
       - {
-          label: "Image Thumbnail",
-          name: "thumbnail",
-          widget: "image",
+          label: 'Image Thumbnail',
+          name: 'thumbnail',
+          widget: 'image',
           required: false,
         }
-      - { label: "Timeframe", name: "timeframe", widget: "string" }
       - {
-          label: "Live Website URL",
-          name: "website-url",
-          widget: "string",
+          label: 'Start Date',
+          name: 'start-date',
+          widget: 'datetime',
+          date_format: 'MM-YYYY',
+          time_format: false,
+          picker_utc: true,
+        }
+      - {
+          label: 'End Date',
+          name: 'end-date',
+          widget: 'datetime',
+          date_format: 'MM-YYYY',
+          time_format: false,
+          picker_utc: true,
           required: false,
         }
-      - { label: "Body", name: "body", widget: "markdown" }
-  - name: "projects"
-    label: "Personal Projects"
-    label_singular: "Personal Project"
-    description: "Personal projects!"
-    folder: "client/src/content/projects"
+      - {
+          label: 'Company Website URL',
+          name: 'company-url',
+          widget: 'string',
+          required: false,
+        }
+      - { label: 'Description', name: 'description', widget: 'markdown' }
+
+  - label: 'Projects'
+    label_singular: 'Project'
+    name: 'projects'
+    description: 'My projects!'
+    folder: 'client/src/content/projects'
     create: true
-    slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: 'Title', name: 'title', widget: 'string' }
       - {
-          label: "Image Thumbnail",
-          name: "thumbnail",
-          widget: "image",
+          label: 'Image Thumbnail',
+          name: 'thumbnail',
+          widget: 'image',
           required: false,
         }
-      - { label: "Timeframe", name: "timeframe", widget: "string" }
-      - { label: "Repository URL", name: "repo-url", widget: "string" }
       - {
-          label: "Live Website URL",
-          name: "website-url",
-          widget: "string",
+          label: 'Start Date',
+          name: 'start-date',
+          widget: 'datetime',
+          date_format: 'MM-YYYY',
+          time_format: false,
+          picker_utc: true,
+        }
+      - {
+          label: 'End Date',
+          name: 'end-date',
+          widget: 'datetime',
+          date_format: 'MM-YYYY',
+          time_format: false,
+          picker_utc: true,
           required: false,
         }
-      - { label: "Technologies Used", name: "technologies", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-  - name: "involvement"
-    label: "Involvement"
-    label_singular: "Extracurricular"
-    description: "Clubs and extracurriculars!"
-    folder: "client/src/content/involvement"
+      - { label: 'Repository URL', name: 'repo-url', widget: 'string' }
+      - {
+          label: 'Live Website URL',
+          name: 'website-url',
+          widget: 'string',
+          required: false,
+        }
+      - { label: 'Technologies Used', name: 'technologies', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'markdown' }
+
+  - label: 'Involvement'
+    name: 'involvement'
+    description: 'Clubs and extracurriculars!'
+    folder: 'client/src/content/involvement'
     create: true
-    slug: "{{slug}}"
     fields:
-      - { label: "Activity", name: "activity", widget: "string" }
-      - { label: "Position", name: "position", widget: "string" }
+      - { label: 'Activity', name: 'activity', widget: 'string' }
+      - { label: 'Position', name: 'position', widget: 'string' }
       - {
-          label: "Image Thumbnail",
-          name: "thumbnail",
-          widget: "image",
+          label: 'Image Thumbnail',
+          name: 'thumbnail',
+          widget: 'image',
           required: false,
         }
-      - { label: "Timeframe", name: "timeframe", widget: "string" }
       - {
-          label: "Live Website URL",
-          name: "website-url",
-          widget: "string",
+          label: 'Start Date',
+          name: 'start-date',
+          widget: 'datetime',
+          date_format: 'MM-YYYY',
+          time_format: false,
+          picker_utc: true,
+        }
+      - {
+          label: 'End Date',
+          name: 'end-date',
+          widget: 'datetime',
+          date_format: 'MM-YYYY',
+          time_format: false,
+          picker_utc: true,
           required: false,
         }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: 'Website URL',
+          name: 'website-url',
+          widget: 'string',
+          required: false,
+        }
+      - { label: 'Description', name: 'description', widget: 'markdown' }
