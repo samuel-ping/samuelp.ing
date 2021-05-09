@@ -6,10 +6,8 @@ const NavbarButton = ({ title, route }) => {
 
   return (
     <Link href={route}>
-      <div className="flex items-center justify-items-center cursor-pointer hover:underline mx-2">
-        <span
-          className={'text-xl' + (router.pathname === route ? 'underline' : '')}
-        >
+      <div className="flex items-center justify-items-center cursor-pointer hover:underline mx-2 text-xl">
+        <span className={router.pathname === route ? 'underline' : ''}>
           {title}
         </span>
       </div>

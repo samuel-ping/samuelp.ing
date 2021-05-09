@@ -4,7 +4,7 @@ import NavbarButton from './NavbarButton';
 export default function Navbar(props) {
   return (
     <>
-      <nav className="flex flex-row justify-center content-center">
+      <nav className="flex flex-row justify-center content-center py-8">
         <NavbarButton title="about" route="/about" />
         <NavbarButton title="experience" route="/work" />
         <NavbarButton title="projects" route="/projects" />

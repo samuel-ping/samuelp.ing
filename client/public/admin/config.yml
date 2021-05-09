@@ -1,8 +1,8 @@
 backend:
-  # name: github
-  name: test-repo
+  name: github
+  # name: test-repo
   repo: samuel-ping/personal-website-v3
-  branch: main
+  branch: cms
   base_url: https://samuelping.herokuapp.com/
 
 media_folder: 'client/public/assets/'
