@@ -18,9 +18,16 @@ collections:
         name: 'home'
         file: 'client/src/content/home.yml'
         fields:
+          - label: 'Taglines'
+            label_singular: 'Tagline'
+            name: 'taglines'
+            widget: list
+            fields:
+              - { label: 'Position', name: 'position', widget: string }
+              - { label: 'Place', name: 'place', widget: string }
           - name: 'resume'
             label: 'Resume'
-            widget: list
+            widget: object
             fields:
               - {
                   label: 'Resume File',
@@ -39,7 +46,7 @@ collections:
                 }
           - label: 'Links'
             name: 'links'
-            widget: list
+            widget: object
             fields:
               - {
                   label: 'GitHub Profile URL',
