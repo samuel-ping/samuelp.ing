@@ -14,13 +14,17 @@
     "framer-motion": "^4.1.13",
     "gray-matter": "^4.0.3",
     "next": "10.2.0",
+    "raw-loader": "^4.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
-    "react-pdf": "^5.3.0"
+    "react-pdf": "^5.3.0",
+    "remark-rehype": "^8.1.0",
+    "superjson": "^1.7.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
+    "babel-plugin-superjson-next": "^0.3.0",
     "postcss": "^8.2.14",
     "serve": "^11.3.2",
     "tailwindcss": "^2.1.2"

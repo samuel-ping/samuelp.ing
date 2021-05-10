@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import Navbar from './Navbar';
-import NavbarButtons from '../config/NavbarButtons.config';
-import Footer from './Footer';
+import Navbar from '@components/Navbar';
+import NavbarButtons from '@config/NavbarButtons.config';
+import Footer from '@components/Footer';
 
 export default function Layout({ children, title }) {
   return (

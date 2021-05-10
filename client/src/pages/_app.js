@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import SiteLayout from '../components/SiteLayout';
+import SiteLayout from '@components/SiteLayout';
 
 import 'tailwindcss/tailwind.css';
 

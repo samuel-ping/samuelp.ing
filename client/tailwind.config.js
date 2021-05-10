@@ -1,6 +1,6 @@
 module.exports = {
   purge: {
-    enabled: true,
+    enabled: true, // without this, it purges all of my CSS D:
     layers: ['components', 'pages'],
     content: ['./pages/**/*.{js,jsx}', './components/**/*.{js,jsx}'],
   },

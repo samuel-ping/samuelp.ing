@@ -8,7 +8,7 @@ backend:
 media_folder: 'client/public/assets/'
 public_folder: 'assets/'
 
-site_url: https://samuel-ping.github.io/personal-website-v3
+site_url: https://dev.samuelping.me
 
 collections:
   - label: 'Pages'
@@ -16,7 +16,7 @@ collections:
     files:
       - label: 'Home Page'
         name: 'home'
-        file: 'client/src/content/home.yml'
+        file: 'client/src/content/home.json'
         fields:
           - label: 'Taglines'
             label_singular: 'Tagline'
@@ -62,18 +62,19 @@ collections:
 
       - label: 'About Me Page'
         name: 'about'
-        file: 'client/src/content/about.yml'
+        file: 'client/src/content/about.json'
         fields:
           - { label: 'Profile Picture', name: 'profile-picture', widget: image }
-          - { label: 'Description', name: 'description', widget: markdown }
+          - { label: 'Description', name: 'body', widget: markdown }
 
   - name: 'work'
     label: 'Work Experience'
     folder: 'client/src/content/work'
     create: true
+    slug: '{{company}}-{{job-title}}'
     fields:
       - { label: 'Company', name: 'company', widget: 'string' }
-      - { label: 'Job Title', name: 'job-title', widget: 'string' }
+      - { label: 'Job Title', name: 'title', widget: 'string' }
       - {
           label: 'Image Thumbnail',
           name: 'thumbnail',
@@ -103,7 +104,7 @@ collections:
           widget: 'string',
           required: false,
         }
-      - { label: 'Description', name: 'description', widget: 'markdown' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
 
   - label: 'Projects'
     label_singular: 'Project'
@@ -111,6 +112,7 @@ collections:
     description: 'My projects!'
     folder: 'client/src/content/projects'
     create: true
+    slug: '{{title}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - {
@@ -144,13 +146,14 @@ collections:
           required: false,
         }
       - { label: 'Technologies Used', name: 'technologies', widget: 'string' }
-      - { label: 'Description', name: 'description', widget: 'markdown' }
+      - { label: 'Description', name: 'body', widget: 'markdown' }
 
   - label: 'Involvement'
     name: 'involvement'
     description: 'Clubs and extracurriculars!'
     folder: 'client/src/content/involvement'
     create: true
+    slug: '{{activity}}-{{position}}'
     fields:
       - { label: 'Activity', name: 'activity', widget: 'string' }
       - { label: 'Position', name: 'position', widget: 'string' }
@@ -183,4 +186,4 @@ collections:
           widget: 'string',
           required: false,
         }
-      - { label: 'Description', name: 'description', widget: 'markdown' }
+      - { label: 'Description', name: 'body', widget: 'markdown' }

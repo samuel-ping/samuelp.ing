@@ -1,9 +1,9 @@
-import ContactBarButton from './ContactBarButton';
-import ContactBarButtons from '../config/ContactBarButtons.config';
+import ContactBarButton from '@components/ContactBarButton';
+import ContactBarButtons from '@config/ContactBarButtons.config';
 
 const ContactBar = () => {
   return (
-    <div className="flex flex-row content-start justify-evenly">
+    <div className="flex flex-row content-start justify-evenly my-10">
       {ContactBarButtons.map((buttonInfo, index) => {
         return (
           <ContactBarButton
