@@ -1,0 +1,23 @@
+{
+  "resume": {
+    "date": "2021-03-08T00:00:00.000Z",
+    "resume-file": "assets/samuel-ping_resume.pdf"
+  },
+  "taglines": [
+    {
+      "position": "Rising Junior",
+      "place": "Rutgers University- New Brunswick",
+      "website": "https://www.rutgers.edu/"
+    },
+    {
+      "position": "Student Systems Programmer",
+      "place": "Rutgers Open Systems Solutions",
+      "website": "https://oss.rutgers.edu/"
+    },
+    {
+      "position": "Incoming TIP Intern",
+      "place": "Capital One",
+      "website": "https://www.capitalone.com/bank/"
+    }
+  ]
+}

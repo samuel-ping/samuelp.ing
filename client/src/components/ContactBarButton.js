@@ -2,11 +2,11 @@ import Link from 'next/link';
 
 const ContactBarButton = ({ website, url, icon }) => {
   return (
-    <Link href={url}>
-      <span className="flex rounded-full border-2 border-green-600 p-5 justify-center content-center cursor-pointer">
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      <span className="flex rounded-full border-2 border-green-600 hover:bg-green-100 p-8 justify-center content-center cursor-pointer">
         {icon}
       </span>
-    </Link>
+    </a>
   );
 };
 

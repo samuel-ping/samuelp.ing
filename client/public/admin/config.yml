@@ -25,6 +25,7 @@ collections:
             fields:
               - { label: 'Position', name: 'position', widget: string }
               - { label: 'Place', name: 'place', widget: string }
+              - { label: 'Website', name: 'website', widget: string }
           - name: 'resume'
             label: 'Resume'
             widget: object
@@ -44,21 +45,6 @@ collections:
                   picker_utc: true,
                   hint: 'Date this resume was last updated.',
                 }
-          - label: 'Links'
-            name: 'links'
-            widget: object
-            fields:
-              - {
-                  label: 'GitHub Profile URL',
-                  name: 'github',
-                  widget: 'string',
-                }
-              - {
-                  label: 'LinkedIn Profile URL',
-                  name: 'linkedin',
-                  widget: 'string',
-                }
-              - { label: 'Email Address', name: 'email', widget: 'string' }
 
       - label: 'About Me Page'
         name: 'about'

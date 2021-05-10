@@ -3,7 +3,7 @@ import ContactBarButtons from '@config/ContactBarButtons.config';
 
 const ContactBar = () => {
   return (
-    <div className="flex flex-row content-start justify-evenly my-10">
+    <div className="flex flex-row content-start justify-evenly my-7">
       {ContactBarButtons.map((buttonInfo, index) => {
         return (
           <ContactBarButton
