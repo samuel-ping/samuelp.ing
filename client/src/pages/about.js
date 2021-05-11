@@ -1,28 +1,25 @@
-import superjson from 'superjson';
+// import { promises as fs } from 'fs';
+// import path from 'path';
 
 import Avatar from '@components/Avatar';
 import Description from '@components/Description';
 
 import AboutMeData from '@content/about.json';
-import { mdToHTML } from '@lib/mdToHTML';
 
 export default function About({ description, profilePicture }) {
   return (
-    <div className="flex-col items-center justify-center">
+    <article className="prose prose-2xl prose-green">
       <h1>About Me</h1>
       <Avatar imgSrc={profilePicture} alt="Photo of Sam" size={200} />
-      {/* <article className="prose prose-xl whitespace-pre-wrap"> */}
       <Description content={description} />
-      {/* </article> */}
-    </div>
+    </article>
   );
 }
 
 export async function getStaticProps() {
-  const description = await mdToHTML(AboutMeData['body']);
   return {
     props: {
-      description: description,
+      description: AboutMeData['body'],
       profilePicture: AboutMeData['profile-picture'],
     },
   };

@@ -12,17 +12,23 @@ export default function Home({ taglines }) {
         <ul className="flex flex-col items-center">
           {taglines.map((tagline, index) => {
             return (
-              <li key={index} className="leading-normal text-lg">
-                {tagline.position} @{' '}
-                <a
-                  href={tagline.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold hover:underline"
+              <div key={index}>
+                <li
+                  // key={index}
+                  className="leading-normal text-lg"
                 >
-                  {tagline.place}
-                </a>
-              </li>
+                  {tagline.position} @{' '}
+                  <a
+                    // key={index}
+                    href={tagline.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold hover:underline"
+                  >
+                    {tagline.place}
+                  </a>
+                </li>
+              </div>
             );
           })}
         </ul>

@@ -5,7 +5,13 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const PdfViewer = ({ url, width }) => {
   return (
-    <Document file={url}>
+    <Document
+      file={url}
+      error="Welp looks like I broke my PDF viewer, sorry about that! Feel free to send me an email or message to notify me."
+      loading="Loading resume..."
+      externalLinkTarget="_blank"
+      // renderMode="svg"
+    >
       <Page pageNumber={1} width={width} />
     </Document>
   );

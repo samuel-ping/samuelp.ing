@@ -1,8 +1,5 @@
+import { mdToReact } from '@lib/MarkdownProcessor';
+
 export default function PostBody({ content }) {
-  return (
-    <article
-      className="prose max-w-none"
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  );
+  return <p>{mdToReact(content)}</p>;
 }
