@@ -1,11 +1,20 @@
+import React, { useEffect } from 'react';
+import App from 'next/app';
 import { useRouter } from 'next/router';
 
+import { init } from '@socialgouv/matomo-next';
+
 import SiteLayout from '@components/SiteLayout';
+import { MATOMO_URL, MATOMO_SITE_ID } from '@lib/matomo';
 
 import 'tailwindcss/tailwind.css';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+
+  useEffect(() => {
+    init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
+  }, []);
 
   /**
    * Formats a pathname to be shown in head title.

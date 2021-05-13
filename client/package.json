@@ -10,6 +10,7 @@
     "serve": "npm run export && serve out/"
   },
   "dependencies": {
+    "@socialgouv/matomo-next": "^1.2.2",
     "@tailwindcss/typography": "^0.4.0",
     "framer-motion": "^4.1.13",
     "gray-matter": "^4.0.3",
