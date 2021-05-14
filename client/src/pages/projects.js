@@ -1,15 +1,24 @@
+import { useState } from 'react';
 // import matter from 'gray-matter';
+import Modal from '@components/Modal';
 
 export default function Projects() {
+  const [modalVisible, toggleModalVisible] = useState(false);
+
   // {
   // projects
   // },
   return (
     <>
-      <h1 className="leading-normal">Hello World!</h1>
-      {/* {projects.map((project, index) => {
-        return <h1 key={index}>{project.title}</h1>;
-      })} */}
+      <h1 className="prose prose-lg">Hello World!</h1>
+      <button onClick={() => toggleModalVisible(!modalVisible)}>
+        Toggle Modal
+      </button>
+
+      <Modal
+        visible={modalVisible}
+        onClose={() => toggleModalVisible(!modalVisible)}
+      />
     </>
   );
 }
