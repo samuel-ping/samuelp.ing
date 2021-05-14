@@ -4,7 +4,7 @@ import markdown from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import rehype2react from 'rehype-react';
 
-export function mdToReact(rawMd) {
+export default function mdToReact(rawMd) {
   const content = unified()
     .use(markdown)
     .use(remark2rehype)

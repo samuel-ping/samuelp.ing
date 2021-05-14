@@ -7,30 +7,22 @@ export default function Home({ taglines }) {
     <>
       <div>
         <h1 className="leading-relaxed text-6xl font-bold">
-          Hi! I'm <span className="text-green-600">Sam Ping</span>, a...
+          Hi! I&rsquo;m <span className="text-green-600">Sam Ping</span>, a...
         </h1>
         <ul className="flex flex-col items-center">
-          {taglines.map((tagline, index) => {
-            return (
-              <div key={index}>
-                <li
-                  // key={index}
-                  className="leading-normal text-lg"
-                >
-                  {tagline.position} @{' '}
-                  <a
-                    // key={index}
-                    href={tagline.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold hover:underline"
-                  >
-                    {tagline.place}
-                  </a>
-                </li>
-              </div>
-            );
-          })}
+          {taglines.map((tagline) => (
+            <li key={tagline.position} className="leading-normal text-lg">
+              {tagline.position} @{' '}
+              <a
+                href={tagline.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold hover:underline"
+              >
+                {tagline.place}
+              </a>
+            </li>
+          ))}
         </ul>
         <ContactBar />
       </div>
@@ -41,7 +33,7 @@ export default function Home({ taglines }) {
 export async function getStaticProps() {
   return {
     props: {
-      taglines: HomeData['taglines'],
+      taglines: HomeData.taglines,
     },
   };
 }

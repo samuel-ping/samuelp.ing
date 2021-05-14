@@ -1,11 +1,11 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@components/*": ["src/components/*"],
-        "@config/*": ["src/config/*"],
-        "@content/*": ["src/content/*"],
-        "@lib/*":["src/lib/*"]
-      }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@content/*": ["src/content/*"],
+      "@lib/*": ["src/lib/*"]
     }
   }
+}

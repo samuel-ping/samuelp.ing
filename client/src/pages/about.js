@@ -1,6 +1,3 @@
-// import { promises as fs } from 'fs';
-// import path from 'path';
-
 import Avatar from '@components/Avatar';
 import Description from '@components/Description';
 
@@ -19,7 +16,7 @@ export default function About({ description, profilePicture }) {
 export async function getStaticProps() {
   return {
     props: {
-      description: AboutMeData['body'],
+      description: AboutMeData.body,
       profilePicture: AboutMeData['profile-picture'],
     },
   };

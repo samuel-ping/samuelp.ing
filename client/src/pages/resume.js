@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-import HyperLink from '@components/HyperLink';
+// import HyperLink from '@components/HyperLink';
 
 const PDFViewer = dynamic(() => import('../components/PdfViewer'), {
   ssr: false,

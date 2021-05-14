@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 function SPLogo({ isAnimated, color, size }) {
-  if (!isAnimated)
+  if (!isAnimated) {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -17,6 +17,7 @@ function SPLogo({ isAnimated, color, size }) {
         </g>
       </svg>
     );
+  }
 
   const pathVariants = {
     hidden: {

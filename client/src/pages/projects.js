@@ -1,6 +1,9 @@
-import matter from 'gray-matter';
+// import matter from 'gray-matter';
 
-export default function Projects({ projects }) {
+export default function Projects() {
+  // {
+  // projects
+  // },
   return (
     <>
       <h1 className="leading-normal">Hello World!</h1>

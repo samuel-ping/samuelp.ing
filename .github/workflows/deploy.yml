@@ -43,7 +43,7 @@ jobs:
           touch out/.nojekyll
           echo "dev.samuelping.me" > out/CNAME
           echo "# Hi!" > out/README.md
-          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the Main branch!" >> out/README.md
+          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the [Main branch](https://github.com/samuel-ping/personal-website-v3)!" >> out/README.md
           echo "#### Note - This message was automatically generated." >> out/README.md
         working-directory: ./client
 

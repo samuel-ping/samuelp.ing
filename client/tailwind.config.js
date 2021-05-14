@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   purge: {
     enabled: true, // without this, it purges all of my CSS D:

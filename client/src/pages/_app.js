@@ -1,5 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
-import App from 'next/app';
 import { useRouter } from 'next/router';
 
 import { init } from '@socialgouv/matomo-next';
@@ -21,13 +21,10 @@ function MyApp({ Component, pageProps }) {
    * @param {String} aRoute
    * @returns String
    */
-  const normalizeRoute = (aRoute) => {
-    return (
-      (aRoute === '/' ? '' : ' | ') +
-      aRoute.charAt(1).toLocaleUpperCase() +
-      aRoute.substring(1).slice(1)
-    );
-  };
+  const normalizeRoute = (aRoute) =>
+    (aRoute === '/' ? '' : ' | ') +
+    aRoute.charAt(1).toLocaleUpperCase() +
+    aRoute.substring(1).slice(1);
 
   return (
     <>
