@@ -1,19 +1,24 @@
-import AboutMeData from '@content/about.json';
-
 import Avatar from '@components/Avatar';
 
-export default function About({ profilePicture }) {
+import AboutMeData from '@content/about.json';
+import mdToReact from '@lib/MarkdownProcessor';
+
+export default function About({ description, profilePicture }) {
   return (
-    <div className="flex-col items-center justify-center">
+    <article className="prose prose-2xl prose-green">
       <h1>About Me</h1>
       <Avatar imgSrc={profilePicture} alt="Photo of Sam" size={200} />
-      <article className="prose prose-xl"></article>
-    </div>
+      {/* <Description content={description} /> */}
+      {mdToReact(description)}
+    </article>
   );
 }
 
 export async function getStaticProps() {
   return {
-    props: { profilePicture: AboutMeData['profile-picture'] },
+    props: {
+      description: AboutMeData.body,
+      profilePicture: AboutMeData['profile-picture'],
+    },
   };
 }

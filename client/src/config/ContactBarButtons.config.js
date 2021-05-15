@@ -24,7 +24,7 @@ const ContactBarButtons = [
     icon: <ResumeIcon size={iconSize} />,
   },
   {
-    website: 'LinkedIn',
+    website: 'Email',
     url: 'mailto:samuel.y.ping@gmail.com',
     icon: <EmailIcon size={iconSize} />,
   },
