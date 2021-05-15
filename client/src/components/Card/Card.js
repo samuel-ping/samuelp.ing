@@ -8,6 +8,7 @@ export default function Card({ info }) {
   return (
     <>
       <button
+        type="button"
         onClick={() => toggleModalVisible(!modalVisible)}
         className="rounded-lg overflow-hidden shadow-lg bg-white hover:bg-green-100"
       >

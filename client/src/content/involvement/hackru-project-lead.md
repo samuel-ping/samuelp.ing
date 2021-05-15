@@ -3,9 +3,10 @@ activity: HackRU
 position: Project Lead
 thumbnail: assets/hackrulogo.jpg
 start-date: 2020-09-15T03:53:30.070Z
-end-date: ""
+end-date: ''
 website-url: https://hackru.org/
 ---
+
 <ins>**April 2021 - Present: Project Lead**</ins>
 
 I'm currently the Project Lead for Sledge, which is HackRU's soon-to-be judging and submissions system.
