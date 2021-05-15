@@ -1,48 +1,42 @@
-import { useState } from 'react';
-// import matter from 'gray-matter';
-import Modal from '@components/Modal';
+import { promises as fs } from 'fs';
+import path from 'path';
 
-export default function Projects() {
-  const [modalVisible, toggleModalVisible] = useState(false);
+import matter from 'gray-matter';
 
-  // {
-  // projects
-  // },
+import Card from '@components/Card';
+
+export default function Projects({ projects }) {
   return (
-    <>
-      <h1 className="prose prose-lg">Hello World!</h1>
-      <button onClick={() => toggleModalVisible(!modalVisible)}>
-        Toggle Modal
-      </button>
-
-      <Modal
-        visible={modalVisible}
-        onClose={() => toggleModalVisible(!modalVisible)}
-      />
-    </>
+    <div className="prose prose-lg">
+      <h1>Projects</h1>
+      <div className="flex flex-wrap justify-evenly">
+        {projects.map((project) => (
+          <Card key={project.details.title} info={project} />
+        ))}
+      </div>
+    </div>
   );
 }
 
-// export async function getStaticProps() {
-//   const projects = ((context) => {
-//     const keys = context.keys();
-//     const values = keys.map(context);
-//     const data = keys.map((key, index) => {
-//       let slug = key.replace(/^.*[\\\/]/, '').slice(0, -3);
-//       const value = values[index];
-//       const document = matter(value.default);
-//       return {
-//         frontmatter: document.data,
-//         markdownBody: document.content,
-//         slug,
-//       };
-//     });
-//     return data;
-//   })(require.context('../content/projects', true, /\.md$/));
+// Fetches all project markdown files during build time
+export async function getStaticProps() {
+  const projectsDirectory = path.join(process.cwd(), 'src/content/projects');
+  const filenames = await fs.readdir(projectsDirectory);
 
-//   return {
-//     props: {
-//       projects,
-//     },
-//   };
-// }
+  const projects = filenames.map(async (filename) => {
+    const filePath = path.join(projectsDirectory, filename);
+    const fileContents = await fs.readFile(filePath, 'utf8');
+    const projectDetails = matter(fileContents);
+
+    return {
+      details: projectDetails.data,
+      description: projectDetails.content,
+    };
+  });
+
+  return {
+    props: {
+      projects: await Promise.all(projects),
+    },
+  };
+}

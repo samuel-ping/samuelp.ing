@@ -5,13 +5,17 @@ const NavbarButton = ({ title, route }) => {
   const router = useRouter();
 
   return (
-    <Link href={route}>
-      <div className="flex items-center justify-center cursor-pointer hover:underline text-xl">
+    <div
+      className="flex items-center justify-center cursor-pointer hover:underline text-xl"
+      // FIX: pressing enter key doesn't activate link
+      // tabIndex="0"
+    >
+      <Link href={route}>
         <span className={router.pathname === route ? 'underline' : ''}>
           {title}
         </span>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 
