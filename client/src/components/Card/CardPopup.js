@@ -8,7 +8,7 @@ const CardPopup = ({ visible, handleClose, info }) => (
   <>
     <Modal open={visible} onClose={handleClose} center animationDuration={125}>
       <article className="prose prose-xl prose-green">
-        <h1>{info.details.title}</h1>
+        <h1 className="leading-none">{info.details.title}</h1>
         <h3 className="italic">Technologies: {info.details.technologies}</h3>
         {mdToReact(info.description)}
       </article>

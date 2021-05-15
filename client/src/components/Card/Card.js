@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import Image from 'next/image';
 
-import CardPopup from '@components/CardPopup';
+import CardPopup from '@components/Card/CardPopup';
 
 export default function Card({ info }) {
   const [modalVisible, toggleModalVisible] = useState(false);
@@ -9,19 +8,21 @@ export default function Card({ info }) {
   return (
     <>
       <button
-        type="button"
         onClick={() => toggleModalVisible(!modalVisible)}
-        className="p-8 rounded-xl shadow-md bg-white hover:bg-green-100"
+        className="rounded-lg overflow-hidden shadow-lg bg-white hover:bg-green-100"
       >
         {info.details.thumbnail ? (
-          <Image
+          <img
             src={info.details.thumbnail}
             alt={`Thumbnail for ${info.details.title}`}
+            className="w-full object-cover"
           />
         ) : (
           <></>
         )}
-        <h2>{info.details.title}</h2>
+        <div className="">
+          <h2>{info.details.title}</h2>
+        </div>
       </button>
 
       <CardPopup

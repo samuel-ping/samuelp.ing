@@ -1,4 +1,6 @@
-module.exports = {
+const withPlugins = require('next-compose-plugins');
+
+module.exports = withPlugins([], {
   future: {
     webpack5: true,
   },
@@ -14,4 +16,4 @@ module.exports = {
     });
     return config;
   },
-};
+});

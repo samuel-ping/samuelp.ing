@@ -3,6 +3,7 @@ import unified from 'unified';
 import markdown from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import rehype2react from 'rehype-react';
+// TODO: support underlining
 
 export default function mdToReact(rawMd) {
   const content = unified()

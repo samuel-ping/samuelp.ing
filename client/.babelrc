@@ -1,6 +1,7 @@
 {
     "presets": ["next/babel"],
     "plugins": [
-      "superjson-next"
+      "superjson-next",
+      "react-optimized-image/plugin"
     ]
   }
