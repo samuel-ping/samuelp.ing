@@ -6,20 +6,18 @@
   "taglines": [
     {
       "position": "Rising Junior",
-      "place": "Rutgers University- New Brunswick"
+      "place": "Rutgers University- New Brunswick",
+      "website": "https://www.rutgers.edu/"
     },
     {
       "position": "Student Systems Programmer",
-      "place": "Rutgers Open Systems Solutions"
+      "place": "Rutgers Open Systems Solutions",
+      "website": "https://oss.rutgers.edu/"
     },
     {
       "position": "Incoming TIP Intern",
-      "place": "Capital One"
+      "place": "Capital One",
+      "website": "https://www.capitalone.com/bank/"
     }
-  ],
-  "links": {
-    "github": "https://github.com/samuel-ping",
-    "linkedin": "https://www.linkedin.com/in/samuelping/",
-    "email": "samuel.y.ping@gmail.com"
-  }
+  ]
 }

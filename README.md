@@ -5,11 +5,3 @@ My personal website! Built with Next.js and TailwindCSS. The backend uses Netlif
 ## Getting Started
 
 Go into client and run npm i then npm run dev to run site in development mode.
-
-## Notes
-
-#### Converting SVG to JSX (using svgr):
-
-```
-npx @svgr/cli < path/to/<svg file>.svg > path/to/<output file name>.js
-```

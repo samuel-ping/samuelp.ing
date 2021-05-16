@@ -28,6 +28,14 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: Create .env.local file
+        run: |
+          echo "NEXT_PUBLIC_MATOMO_URL=$NEXT_PUBLIC_MATOMO_URL" > .env.local
+          echo "NEXT_PUBLIC_MATOMO_SITE_ID=$NEXT_PUBLIC_MATOMO_SITE_ID" >> .env.local
+        env:
+          NEXT_PUBLIC_MATOMO_URL: ${{ secrets.NEXT_PUBLIC_MATOMO_URL }}
+          NEXT_PUBLIC_MATOMO_SITE_ID: ${{ secrets.NEXT_PUBLIC_MATOMO_SITE_ID }}
+        working-directory: ./client
       - name: build site
         run: |
           npm ci
@@ -35,7 +43,7 @@ jobs:
           touch out/.nojekyll
           echo "dev.samuelping.me" > out/CNAME
           echo "# Hi!" > out/README.md
-          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the Main branch!" >> out/README.md
+          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the [Main branch](https://github.com/samuel-ping/personal-website-v3)!" >> out/README.md
           echo "#### Note - This message was automatically generated." >> out/README.md
         working-directory: ./client
 

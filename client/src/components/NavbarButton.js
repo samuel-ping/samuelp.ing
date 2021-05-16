@@ -5,13 +5,15 @@ const NavbarButton = ({ title, route }) => {
   const router = useRouter();
 
   return (
-    <Link href={route}>
-      <div className="flex items-center justify-center cursor-pointer hover:underline text-xl">
-        <span className={router.pathname === route ? 'underline' : ''}>
-          {title}
-        </span>
-      </div>
-    </Link>
+    <div className="flex items-center justify-center cursor-pointer hover:underline text-xl">
+      <Link href={route}>
+        <a>
+          <span className={router.pathname === route ? 'underline' : ''}>
+            {title}
+          </span>
+        </a>
+      </Link>
+    </div>
   );
 };
 

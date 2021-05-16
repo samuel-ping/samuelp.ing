@@ -1,4 +1,6 @@
-module.exports = {
+const withPlugins = require('next-compose-plugins');
+
+module.exports = withPlugins([], {
   future: {
     webpack5: true,
   },
@@ -7,11 +9,11 @@ module.exports = {
     loader: 'imgix',
     path: '',
   },
-  webpack: function (config) {
+  webpack(config) {
     config.module.rules.push({
       test: /\.md$/,
       use: 'raw-loader',
     });
     return config;
   },
-};
+});

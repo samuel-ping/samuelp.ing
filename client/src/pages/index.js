@@ -1,17 +1,39 @@
 import ContactBar from '@components/ContactBar';
 
-export default function Home() {
+import HomeData from '@content/home.json';
+
+export default function Home({ taglines }) {
   return (
     <>
       <div>
-        <h1 className="leading-normal text-5xl font-bold">
-          Hey! I'm <span className="text-green-600">Sam Ping</span>, a...
+        <h1 className="leading-relaxed text-6xl font-bold">
+          Hi! I&rsquo;m <span className="text-green-600">Sam Ping</span>, a...
         </h1>
-        <ul>
-          <li>Student Systems Programmer @ Rutgers Open Systems Solutions</li>
+        <ul className="flex flex-col items-center">
+          {taglines.map((tagline) => (
+            <li key={tagline.position} className="leading-normal text-lg">
+              {tagline.position} @{' '}
+              <a
+                href={tagline.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold hover:underline"
+              >
+                {tagline.place}
+              </a>
+            </li>
+          ))}
         </ul>
         <ContactBar />
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      taglines: HomeData.taglines,
+    },
+  };
 }

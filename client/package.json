@@ -7,26 +7,47 @@
     "build": "next build",
     "start": "next start",
     "export": "npm run build && next export",
-    "serve": "npm run export && serve out/"
+    "serve": "npm run export && serve out/",
+    "lint": "eslint . --ignore-path ./.gitignore",
+    "lint-fix": "eslint --fix . --ignore-path ./.gitignore",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.js --ignore-path ./.gitignore"
   },
   "dependencies": {
+    "@socialgouv/matomo-next": "^1.2.2",
     "@tailwindcss/typography": "^0.4.0",
+    "autoprefixer": "^10.2.5",
     "framer-motion": "^4.1.13",
     "gray-matter": "^4.0.3",
     "next": "10.2.0",
+    "next-compose-plugins": "^2.2.1",
+    "postcss": "^8.2.15",
     "raw-loader": "^4.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
+    "react-modal": "^3.13.1",
     "react-pdf": "^5.3.0",
+    "react-responsive-modal": "^6.0.1",
+    "rehype-react": "^6.2.0",
+    "remark-parse": "^9.0.0",
     "remark-rehype": "^8.1.0",
-    "superjson": "^1.7.4"
+    "superjson": "^1.7.4",
+    "tailwindcss": "^2.1.2",
+    "unified": "^9.2.1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
+    "babel-eslint": "^10.1.0",
     "babel-plugin-superjson-next": "^0.3.0",
-    "postcss": "^8.2.14",
-    "serve": "^11.3.2",
-    "tailwindcss": "^2.1.2"
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.3.0",
+    "serve": "^11.3.2"
   }
 }
