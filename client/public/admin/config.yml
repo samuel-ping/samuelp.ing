@@ -40,7 +40,8 @@ collections:
                   label: 'Upload Date',
                   name: 'date',
                   widget: 'datetime',
-                  date_format: 'MM-DD-YYYY',
+                  format: 'LL',
+                  date_format: 'LL',
                   time_format: false,
                   picker_utc: true,
                   hint: 'Date this resume was last updated.',
@@ -56,11 +57,18 @@ collections:
   - name: 'work'
     label: 'Work Experience'
     folder: 'client/src/content/work'
+    extension: json
+    format: json-frontmatter
     create: true
     slug: '{{company}}-{{job-title}}'
     fields:
       - { label: 'Company', name: 'company', widget: 'string' }
       - { label: 'Job Title', name: 'title', widget: 'string' }
+      - {
+          label: 'Short Description',
+          name: 'short-description',
+          widget: 'string',
+        }
       - {
           label: 'Image Thumbnail',
           name: 'thumbnail',
@@ -71,7 +79,8 @@ collections:
           label: 'Start Date',
           name: 'start-date',
           widget: 'datetime',
-          date_format: 'MM-YYYY',
+          format: 'MMMM YYYY',
+          date_format: 'MMMM YYYY',
           time_format: false,
           picker_utc: true,
         }
@@ -79,7 +88,8 @@ collections:
           label: 'End Date',
           name: 'end-date',
           widget: 'datetime',
-          date_format: 'MM-YYYY',
+          format: 'MMMM YYYY',
+          date_format: 'MMMM YYYY',
           time_format: false,
           picker_utc: true,
           required: false,
@@ -97,6 +107,8 @@ collections:
     name: 'projects'
     description: 'My projects!'
     folder: 'client/src/content/projects'
+    extension: json
+    format: json-frontmatter
     create: true
     slug: '{{title}}'
     fields:
@@ -116,7 +128,8 @@ collections:
           label: 'Start Date',
           name: 'start-date',
           widget: 'datetime',
-          date_format: 'MM-YYYY',
+          format: 'MMMM YYYY',
+          date_format: 'MMMM YYYY',
           time_format: false,
           picker_utc: true,
         }
@@ -124,7 +137,8 @@ collections:
           label: 'End Date',
           name: 'end-date',
           widget: 'datetime',
-          date_format: 'MM-YYYY',
+          format: 'MMMM YYYY',
+          date_format: 'MMMM YYYY',
           time_format: false,
           picker_utc: true,
           required: false,
@@ -149,6 +163,11 @@ collections:
       - { label: 'Activity', name: 'activity', widget: 'string' }
       - { label: 'Position', name: 'position', widget: 'string' }
       - {
+          label: 'Short Description',
+          name: 'short-description',
+          widget: 'string',
+        }
+      - {
           label: 'Image Thumbnail',
           name: 'thumbnail',
           widget: 'image',
@@ -158,7 +177,8 @@ collections:
           label: 'Start Date',
           name: 'start-date',
           widget: 'datetime',
-          date_format: 'MM-YYYY',
+          format: 'MMMM YYYY',
+          date_format: 'MMMM YYYY',
           time_format: false,
           picker_utc: true,
         }
@@ -166,7 +186,8 @@ collections:
           label: 'End Date',
           name: 'end-date',
           widget: 'datetime',
-          date_format: 'MM-YYYY',
+          format: 'MMMM YYYY',
+          date_format: 'MMMM YYYY',
           time_format: false,
           picker_utc: true,
           required: false,
