@@ -1,3 +1,4 @@
+// CURRENTLY UNUSED
 import Link from 'next/link';
 
 const HyperLink = ({ url, text, color, download }) => {
@@ -13,7 +14,7 @@ const HyperLink = ({ url, text, color, download }) => {
             : ''
         }`}
       >
-        {text}
+        <a>{text}</a>
       </Link>
     );
   }
