@@ -3,8 +3,8 @@ title: Food Mood
 short-description: Web app that takes your photo, detects your visible mood, and
   suggests a restaurant based off that mood!
 thumbnail: assets/food-mood-thumbnail-raw.jpg
-start-date: 2020-03-01T00:00:00.000Z
-end-date: 2020-08-01T00:00:00.000Z
+start-date: March 2020
+end-date: August 2020
 repo-url: https://github.com/samuel-ping/food-mood
 website-url: https://foodmood.samuelping.me/
 technologies: React.js, Express.js, Node.js, AWS (Lambda, Amplify, EC2,

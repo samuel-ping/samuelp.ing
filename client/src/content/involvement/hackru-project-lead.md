@@ -2,7 +2,7 @@
 activity: HackRU
 position: Project Lead
 thumbnail: assets/hackrulogo.jpg
-start-date: 2020-09-15T03:53:30.070Z
+start-date: September 2020
 end-date: ''
 website-url: https://hackru.org/
 ---
