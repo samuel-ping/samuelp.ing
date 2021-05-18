@@ -57,10 +57,9 @@ collections:
   - name: 'work'
     label: 'Work Experience'
     folder: 'client/src/content/work'
-    extension: json
-    format: json-frontmatter
+    format: frontmatter
     create: true
-    slug: '{{company}}-{{job-title}}'
+    slug: '{{company}}'
     fields:
       - { label: 'Company', name: 'company', widget: 'string' }
       - { label: 'Job Title', name: 'title', widget: 'string' }
@@ -107,8 +106,7 @@ collections:
     name: 'projects'
     description: 'My projects!'
     folder: 'client/src/content/projects'
-    extension: json
-    format: json-frontmatter
+    format: frontmatter
     create: true
     slug: '{{title}}'
     fields:
@@ -157,6 +155,7 @@ collections:
     name: 'involvement'
     description: 'Clubs and extracurriculars!'
     folder: 'client/src/content/involvement'
+    format: frontmatter
     create: true
     slug: '{{activity}}-{{position}}'
     fields:

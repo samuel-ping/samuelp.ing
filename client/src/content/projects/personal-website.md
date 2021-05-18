@@ -1,8 +1,8 @@
 ---
 title: Personal Website
 short-description: My personal website!
-start-date: 2020-08-01T00:00:00.000Z
-end-date: 2020-08-01T00:00:00.000Z
+start-date: May 2020
+end-date: ''
 repo-url: https://github.com/samuel-ping/personal-website
 technologies: Next.js, Netlify CMS, Matomo Analytics
 ---

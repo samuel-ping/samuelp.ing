@@ -3,8 +3,8 @@ title: Street Cred
 short-description: Web app that calculates your credit score and generates
   feedback based on the five main categories that make up your credit score.
 thumbnail: assets/streetcredlogo.png
-start-date: 2020-08-01T00:00:00.000Z
-end-date: 2020-08-01T00:00:00.000Z
+start-date: August 2020
+end-date: August 2020
 repo-url: https://github.com/samuel-ping/street-cred
 technologies: React.js, Python, AWS API Gateway & Lambda
 ---
