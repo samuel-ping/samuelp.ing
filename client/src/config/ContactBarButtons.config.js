@@ -1,6 +1,8 @@
+import { BsFillPersonLinesFill as ResumeIcon } from 'react-icons/bs';
+import { FaGithub as GitHubIcon } from 'react-icons/fa';
 import {
-  GrDocumentUser as ResumeIcon,
-  GrGithub as GitHubIcon,
+  // GrDocumentUser as ResumeIcon,
+  // GrGithub as GitHubIcon,
   GrLinkedin as LinkedInIcon,
   GrMail as EmailIcon,
 } from 'react-icons/gr';

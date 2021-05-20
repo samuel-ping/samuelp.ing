@@ -12,7 +12,14 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      // tailwind-typography settings (unused at the moment)
+      typography: {
+        DEFAULT: {
+          css: {},
+        },
+      },
+    },
   },
   variants: {
     extend: {
