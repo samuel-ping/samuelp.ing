@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 
-// import superjson from "superjson"
+import { GrDocumentDownload } from 'react-icons/gr';
+import { MdOpenInNew } from 'react-icons/md';
 
 import HomeData from '@content/home.json';
 
@@ -11,32 +12,34 @@ const PDFViewer = dynamic(() => import('../components/PdfViewer'), {
 });
 
 export default function Resume({ resumePath, lastUpdated }) {
-  // console.log(resumePath);
+  const iconSize = 23;
+
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="flex flex-row items-center">
-        <span className="font-light text-gray-600 italic">
+    <div className="flex flex-col justify-center items-center max-w-full">
+      <div className="flex flex-row items-center justify-between min-w-full">
+        <span className="justify-self-start font-light italic">
           Last Updated: {lastUpdated}
         </span>
-        <a
-          href={resumePath}
-          download
-          className="leading-loose font-semibold hover:bg-blue-400 px-4 my-1"
-        >
-          Download Resume
-        </a>
-        |
-        <a
-          href={resumePath}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="leading-loose font-semibold hover:bg-blue-400 px-4 my-1"
-        >
-          View Resume in Browser
-        </a>
+        <div className="flex flex-row justify-self-end">
+          <a
+            href={resumePath}
+            download
+            className="leading-loose font-semibold hover:bg-blue-400 mx-1 my-1"
+          >
+            <GrDocumentDownload size={iconSize} />
+          </a>
+          <a
+            href={resumePath}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="leading-loose font-semibold hover:bg-blue-400 mx-1 my-1"
+          >
+            <MdOpenInNew size={iconSize} />
+          </a>
+        </div>
       </div>
 
-      <PDFViewer url={resumePath} width={1000} />
+      <PDFViewer url={resumePath} width={900} />
     </div>
   );
 }

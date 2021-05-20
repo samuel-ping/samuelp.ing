@@ -2,12 +2,17 @@ import Link from 'next/link';
 
 import SP from '@components/SP';
 
-const Logo = ({ isAnimated, size }) => (
+const Logo = ({ isAnimated, size, visible }) => (
   <>
     <Link href="/">
       <a>
-        <div className="cursor-pointer mx-10 my-3">
-          <SP isAnimated={isAnimated} color="#000000" size={size} />
+        <div className="cursor-pointer p-3">
+          <SP
+            isAnimated={isAnimated}
+            color="#000000"
+            size={size}
+            visible={visible}
+          />
         </div>
       </a>
     </Link>
