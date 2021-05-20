@@ -3,7 +3,7 @@ import path from 'path';
 
 import matter from 'gray-matter';
 
-import Card from '@components/Card/Card';
+import ProjectCard from '@components/CardVariants/ProjectCard/ProjectCard';
 
 export default function Projects({ projects }) {
   return (
@@ -11,7 +11,7 @@ export default function Projects({ projects }) {
       <h1 className="font-bold leading-loose text-5xl">Personal Projects</h1>
       <div className="w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-stretch">
         {projects.map((project) => (
-          <Card key={project.details.title} info={project} />
+          <ProjectCard key={project.details.title} info={project} />
         ))}
       </div>
     </div>
@@ -20,11 +20,11 @@ export default function Projects({ projects }) {
 
 // Fetches all project markdown files during build time
 export async function getStaticProps() {
-  const projectsDirectory = path.join(process.cwd(), 'src/content/projects');
-  const filenames = await fs.readdir(projectsDirectory);
+  const filesDirectory = path.join(process.cwd(), 'src/content/projects');
+  const filenames = await fs.readdir(filesDirectory);
 
   const projects = filenames.map(async (filename) => {
-    const filePath = path.join(projectsDirectory, filename);
+    const filePath = path.join(filesDirectory, filename);
     const fileContents = await fs.readFile(filePath, 'utf8');
     const projectDetails = matter(fileContents);
 

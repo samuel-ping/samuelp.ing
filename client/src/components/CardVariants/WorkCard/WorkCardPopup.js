@@ -6,7 +6,7 @@ import mdToReact from '@lib/MarkdownProcessor';
 
 import 'react-responsive-modal/styles.css';
 
-const CardPopup = ({ visible, handleClose, info }) => {
+const WorkCardPopup = ({ visible, handleClose, info }) => {
   const modalstyles = {
     modal: {
       'border-radius': '0.5rem',
@@ -29,25 +29,11 @@ const CardPopup = ({ visible, handleClose, info }) => {
         {/* https://github.com/tailwindlabs/tailwindcss-typography/issues/32#issuecomment-756687596 */}
         <span className="flex flex-row items-center">
           <h1 className="text-4xl font-bold leading-relaxed mr-4">
-            {info.details.title}
+            {info.details.company}
           </h1>
-          {info.details['repo-url'] ? (
+          {info.details['company-url'] ? (
             <a
-              href={info.details['repo-url']}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GitHubIcon
-                size={iconSize}
-                className="cursor-pointer hover:opacity-60 mx-2"
-              />
-            </a>
-          ) : (
-            <></>
-          )}
-          {info.details['website-url'] ? (
-            <a
-              href={info.details['website-url']}
+              href={info.details['company-url']}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -61,6 +47,7 @@ const CardPopup = ({ visible, handleClose, info }) => {
           )}
         </span>
         <article className="prose max-w-none">
+          <h3 className="italic">{info.details.title}</h3>
           <h3>
             {info.details['start-date']}
             {info.details['end-date'] === info.details['start-date'] ? (
@@ -71,11 +58,10 @@ const CardPopup = ({ visible, handleClose, info }) => {
               ' - ' + info.details['end-date']
             )}
           </h3>
-          <h3 className="italic">Technologies: {info.details.technologies}</h3>
           {mdToReact(info.description)}
         </article>
       </Modal>
     </>
   );
 };
-export default CardPopup;
+export default WorkCardPopup;
