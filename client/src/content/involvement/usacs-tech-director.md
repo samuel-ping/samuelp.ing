@@ -8,6 +8,8 @@ start-date: September 2019
 end-date: ""
 website-url: https://hackru.org/
 ---
+USACS (short for Undergraduate Student Alliance of Computer Scientists) is the largest computer science-related club at Rutgers.
+
 <ins>**April 2021 - Present: Tech Director**</ins>
 
 I'm currently the tech director for USACS for the next academic year. My job is to promote hacker culture and inspire project building in the Rutgers computer science community.
