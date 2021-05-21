@@ -4,12 +4,13 @@ import path from 'path';
 import matter from 'gray-matter';
 
 import ProjectCard from '@components/CardVariants/ProjectCard/ProjectCard';
+import SortCards from '@lib/CardSorter';
 
 export default function Projects({ projects }) {
   return (
     <div className="flex flex-col justify-center items-center">
       <h1 className="font-bold leading-loose text-5xl">Personal Projects</h1>
-      <div className="w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-stretch">
+      <div className="w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-4 gap-x-8 justify-items-stretch">
         {projects.map((project) => (
           <ProjectCard key={project.details.title} info={project} />
         ))}
@@ -34,9 +35,12 @@ export async function getStaticProps() {
     };
   });
 
+  const unsortedProjects = await Promise.all(projects);
+  const sortedProjects = SortCards(unsortedProjects);
+
   return {
     props: {
-      projects: await Promise.all(projects),
+      projects: sortedProjects,
     },
   };
 }

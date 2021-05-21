@@ -6,7 +6,7 @@ thumbnail: assets/streetcredlogo.png
 start-date: August 2020
 end-date: August 2020
 repo-url: https://github.com/samuel-ping/street-cred
-technologies: React.js, Python, AWS API Gateway & Lambda
+technologies: React.js, Python, AWS Lambda & API Gateway
 ---
 
 <ins>**Summary**</ins>

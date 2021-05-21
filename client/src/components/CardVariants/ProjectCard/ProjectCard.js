@@ -10,7 +10,7 @@ export default function ProjectCard({ info }) {
       <button
         type="button"
         onClick={() => toggleModalVisible(!modalVisible)}
-        className="w-9/12 rounded-lg overflow-hidden shadow-lg transition-colors bg-white hover:bg-green-100"
+        className="rounded-lg overflow-hidden shadow-lg transition-colors bg-white hover:bg-green-100"
       >
         {info.details.thumbnail ? (
           <div className="overflow-hidden">

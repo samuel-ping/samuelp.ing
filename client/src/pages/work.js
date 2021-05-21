@@ -4,12 +4,13 @@ import path from 'path';
 import matter from 'gray-matter';
 
 import WorkCard from '@components/CardVariants/WorkCard/WorkCard';
+import SortCards from '@lib/CardSorter';
 
 export default function Work({ workExperiences }) {
   return (
     <div className="flex flex-col justify-center items-center">
       <h1 className="font-bold leading-loose text-5xl">Work Experience</h1>
-      <div className="w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-stretch">
+      <div className="w-4/12 grid grid-cols-1 md:grid-cols-2 gap-11 justify-items-stretch">
         {workExperiences.map((workExperience) => (
           <WorkCard key={workExperience.details.title} info={workExperience} />
         ))}
@@ -34,9 +35,12 @@ export async function getStaticProps() {
     };
   });
 
+  const unsortedWorkExperiences = await Promise.all(workExperiences);
+  const sortedWorkExperiences = SortCards(unsortedWorkExperiences);
+
   return {
     props: {
-      workExperiences: await Promise.all(workExperiences),
+      workExperiences: sortedWorkExperiences,
     },
   };
 }

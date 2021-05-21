@@ -22,7 +22,7 @@ const WorkCardPopup = ({ visible, handleClose, info }) => {
         open={visible}
         onClose={handleClose}
         center
-        animationDuration={125}
+        animationDuration={150}
         styles={modalstyles}
       >
         {/* Can't center icons without separating <h1> from prose */}
