@@ -34,26 +34,28 @@ const DateSorter = (card1, card2) => {
   // Check which year is more recent
   if (card1EndDate[1] !== card2EndDate[1]) {
     return card2EndDate[1] - card1EndDate[1];
-  } else if (card1EndDate[0] !== card2EndDate[0]) {
+  }
+  if (card1EndDate[0] !== card2EndDate[0]) {
     // Compare the months if they are not the same.
     return months.indexOf(card2EndDate[0]) - months.indexOf(card1EndDate[0]);
-  } else {
-    // We reached here because the end dates are the same.
-    // Now check the start dates (basically the repeat the same function, but reverse everything because less recent start dates should come first).
-    // Tokenize end-dates. 0 index is month, 1 index is year.
-    const card1StartDate = card1.details['start-date'].split(' ');
-    const card2StartDate = card2.details['start-date'].split(' ');
-
-    // Check which year is more recent
-    if (card1StartDate[1] !== card2StartDate[1]) {
-      return card1StartDate[1] - card2StartDate[1];
-    } else if (card1StartDate[0] !== card2StartDate[0]) {
-      // Compare the months if they are not the same.
-      return (
-        months.indexOf(card1StartDate[0]) - months.indexOf(card2StartDate[0])
-      );
-    }
   }
+  // We reached here because the end dates are the same.
+  // Now check the start dates (basically the repeat the same function, but reverse everything because less recent start dates should come first).
+  // Tokenize end-dates. 0 index is month, 1 index is year.
+  const card1StartDate = card1.details['start-date'].split(' ');
+  const card2StartDate = card2.details['start-date'].split(' ');
+
+  // Check which year is more recent
+  if (card1StartDate[1] !== card2StartDate[1]) {
+    return card1StartDate[1] - card2StartDate[1];
+  }
+  if (card1StartDate[0] !== card2StartDate[0]) {
+    // Compare the months if they are not the same.
+    return (
+      months.indexOf(card1StartDate[0]) - months.indexOf(card2StartDate[0])
+    );
+  }
+
   // If we reach here, that means the two cards have the exact same start and end dates.
   return 0;
 };

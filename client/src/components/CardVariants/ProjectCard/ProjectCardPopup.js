@@ -68,7 +68,7 @@ const ProjectCardPopup = ({ visible, handleClose, info }) => {
             ) : info.details['end-date'] === '' ? (
               ' - Present'
             ) : (
-              ' - ' + info.details['end-date']
+              ` - ${info.details['end-date']}`
             )}
           </h3>
           <h3 className="italic">Technologies: {info.details.technologies}</h3>

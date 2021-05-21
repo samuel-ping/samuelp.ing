@@ -11,10 +11,10 @@ export default function Involvement({ involvement }) {
     <div className="flex flex-col justify-center items-center">
       <h1 className="font-bold leading-loose text-5xl">Involvement</h1>
       <div className="w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-11">
-        {involvement.map((involvement) => (
+        {involvement.map((anInvolvement) => (
           <InvolvementCard
-            key={involvement.details.activity}
-            info={involvement}
+            key={anInvolvement.details.activity}
+            info={anInvolvement}
           />
         ))}
       </div>

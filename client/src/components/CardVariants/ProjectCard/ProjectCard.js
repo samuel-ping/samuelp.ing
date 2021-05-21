@@ -33,7 +33,7 @@ export default function ProjectCard({ info }) {
               ) : info.details['end-date'] === '' ? (
                 ' - Present'
               ) : (
-                ' - ' + info.details['end-date']
+                ` - ${info.details['end-date']}`
               )}
             </h3>
             <h3 className="text-sm text-gray-600 italic">
