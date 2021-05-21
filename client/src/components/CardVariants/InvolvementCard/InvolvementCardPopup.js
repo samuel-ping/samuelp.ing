@@ -1,4 +1,3 @@
-// import { GrGithub as GitHubIcon } from 'react-icons/gr'; // maybe link org github repos in future? same goes with involvement card
 import { HiOutlineExternalLink as ExternalLinkIcon } from 'react-icons/hi';
 import { Modal } from 'react-responsive-modal';
 
@@ -6,7 +5,7 @@ import mdToReact from '@lib/MarkdownProcessor';
 
 import 'react-responsive-modal/styles.css';
 
-const WorkCardPopup = ({ visible, handleClose, info }) => {
+const InvolvementCardPopup = ({ visible, handleClose, info }) => {
   const modalstyles = {
     modal: {
       'border-radius': '0.5rem',
@@ -29,11 +28,11 @@ const WorkCardPopup = ({ visible, handleClose, info }) => {
         {/* https://github.com/tailwindlabs/tailwindcss-typography/issues/32#issuecomment-756687596 */}
         <span className="flex flex-row items-center">
           <h1 className="text-4xl font-bold leading-relaxed mr-4">
-            {info.details.company}
+            {info.details.activity}
           </h1>
-          {info.details['company-url'] ? (
+          {info.details['website-url'] ? (
             <a
-              href={info.details['company-url']}
+              href={info.details['website-url']}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -47,7 +46,7 @@ const WorkCardPopup = ({ visible, handleClose, info }) => {
           )}
         </span>
         <article className="prose max-w-none">
-          <h3 className="italic">{info.details.title}</h3>
+          <h3 className="italic">{info.details.position}</h3>
           <h3>
             {info.details['start-date']}
             {info.details['end-date'] === info.details['start-date'] ? (
@@ -64,4 +63,4 @@ const WorkCardPopup = ({ visible, handleClose, info }) => {
     </>
   );
 };
-export default WorkCardPopup;
+export default InvolvementCardPopup;

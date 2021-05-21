@@ -1,6 +1,7 @@
 ---
 activity: HackRU
 position: Project Lead
+short-description: I help build software for Rutgers University's largest hackathon!
 thumbnail: assets/hackrulogo.jpg
 start-date: September 2020
 end-date: ''

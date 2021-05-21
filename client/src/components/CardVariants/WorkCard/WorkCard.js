@@ -10,14 +10,14 @@ export default function WorkCard({ info }) {
       <button
         type="button"
         onClick={() => toggleModalVisible(!modalVisible)}
-        className="rounded-lg overflow-hidden shadow-lg transition-colors bg-white hover:bg-green-100"
+        className="min-w-full rounded-lg overflow-hidden shadow-lg transition-colors bg-white hover:bg-green-100"
       >
         {info.details.thumbnail ? (
-          <div className="overflow-hidden">
+          <div className="overflow-hidden max-h-56 flex justify-center">
             <img
               src={info.details.thumbnail}
               alt={`Thumbnail for ${info.details.company}`}
-              className="w-full object-cover transform scale-125"
+              className="w-full object-cover"
             />
           </div>
         ) : (
@@ -26,6 +26,7 @@ export default function WorkCard({ info }) {
         <div className="m-3 grid grid-rows-2 grid-cols-1 divide-y ">
           <div>
             <h2 className="text-xl font-bold">{info.details.company}</h2>
+            <h3 className="italic">{info.details.title}</h3>
             <h3>
               {info.details['start-date']}
               {info.details['end-date'] === info.details['start-date'] ? (
