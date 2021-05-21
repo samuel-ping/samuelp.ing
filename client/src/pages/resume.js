@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 
-import { GrDocumentDownload } from 'react-icons/gr';
-import { MdOpenInNew } from 'react-icons/md';
+import { GrDocumentDownload as DownloadIcon } from 'react-icons/gr';
+import { HiOutlineExternalLink as ExternalLinkIcon } from 'react-icons/hi';
 
 import HomeData from '@content/home.json';
 
@@ -26,7 +26,7 @@ export default function Resume({ resumePath, lastUpdated }) {
             download
             className="leading-loose font-semibold hover:bg-blue-400 mx-1 my-1"
           >
-            <GrDocumentDownload size={iconSize} />
+            <DownloadIcon size={iconSize} />
           </a>
           <a
             href={resumePath}
@@ -34,7 +34,7 @@ export default function Resume({ resumePath, lastUpdated }) {
             rel="noopener noreferrer"
             className="leading-loose font-semibold hover:bg-blue-400 mx-1 my-1"
           >
-            <MdOpenInNew size={iconSize} />
+            <ExternalLinkIcon size={iconSize} />
           </a>
         </div>
       </div>

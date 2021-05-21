@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import CardPopup from '@components/Card/CardPopup';
+import InvolvementCardPopup from '@components/CardVariants/InvolvementCard/InvolvementCardPopup';
 
-export default function Card({ info }) {
+export default function InvolvementCard({ info }) {
   const [modalVisible, toggleModalVisible] = useState(false);
 
   return (
@@ -10,14 +10,14 @@ export default function Card({ info }) {
       <button
         type="button"
         onClick={() => toggleModalVisible(!modalVisible)}
-        className="w-9/12 rounded-lg overflow-hidden shadow-lg transition-colors bg-white hover:bg-green-100"
+        className="min-w-full rounded-lg overflow-hidden shadow-lg transition-colors bg-white hover:bg-green-100"
       >
         {info.details.thumbnail ? (
-          <div className="overflow-hidden">
+          <div className="overflow-hidden max-h-56 flex justify-center">
             <img
               src={info.details.thumbnail}
-              alt={`Thumbnail for ${info.details.title}`}
-              className="w-full object-cover transform scale-125"
+              alt={`Thumbnail for ${info.details.activity}`}
+              className="w-full object-cover transform scale-75"
             />
           </div>
         ) : (
@@ -25,7 +25,8 @@ export default function Card({ info }) {
         )}
         <div className="m-3 grid grid-rows-2 grid-cols-1 divide-y ">
           <div>
-            <h2 className="text-xl font-bold">{info.details.title}</h2>
+            <h2 className="text-xl font-bold">{info.details.activity}</h2>
+            <h3 className="italic">{info.details.position}</h3>
             <h3>
               {info.details['start-date']}
               {info.details['end-date'] === info.details['start-date'] ? (
@@ -33,14 +34,7 @@ export default function Card({ info }) {
               ) : info.details['end-date'] === '' ? (
                 ' - Present'
               ) : (
-                ' - ' + info.details['end-date']
-              )}
-            </h3>
-            <h3 className="text-sm text-gray-600 italic">
-              {/* Regex gratefully snatched from https://beutelevision.com/blog2/2011/06/17/get-the-first-n-words-with-javascript/ */}
-              {info.details.technologies.replace(
-                /(([^\s]+\s\s*){5})(.*)/,
-                '$1…',
+                ` - ${info.details['end-date']}`
               )}
             </h3>
           </div>
@@ -48,7 +42,7 @@ export default function Card({ info }) {
         </div>
       </button>
 
-      <CardPopup
+      <InvolvementCardPopup
         visible={modalVisible}
         info={info}
         handleClose={() => toggleModalVisible(!modalVisible)}
