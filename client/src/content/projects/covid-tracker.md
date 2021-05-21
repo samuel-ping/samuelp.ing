@@ -1,14 +1,14 @@
 ---
 title: COVID Tracker
 short-description: A web app that quickly gives you COVID-19 data.
+thumbnail: https://raw.githubusercontent.com/samuel-ping/covid-tracker/master/screenshots/covid_tracker_banner.png
 start-date: October 2020
 end-date: November 2020
 repo-url: https://github.com/samuel-ping/covid-tracker
 website-url: https://covid-tracker-1.web.app/
 technologies: React.js, Express.js, Google Firebase
 ---
-
-**NOTE**: The deployed website doesn't work unless you run the backend locally on your computer!
+**NOTE**: The live website doesn't work unless you run the backend locally on your computer!
 
 <ins>**Summary**</ins>
 
