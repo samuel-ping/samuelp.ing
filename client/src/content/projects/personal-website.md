@@ -3,7 +3,7 @@ title: Personal Website
 short-description: My personal website!
 thumbnail: assets/personal-website.png
 start-date: May 2020
-end-date: ''
+end-date: ""
 repo-url: https://github.com/samuel-ping/personal-website
 website-url: https://samuelping.me
 technologies: Next.js, Tailwind CSS, Netlify CMS, Matomo Analytics
