@@ -6,13 +6,13 @@ import NavbarButton from '@components/NavbarButton';
 
 export default function Navbar({ navbarButtons }) {
   return (
-    <div className="min-w-full flex items-center justify-center">
-      <nav>
+    <div className="min-w-full sticky top-0 z-10 flex items-center justify-center">
+      <nav className="min-w-full backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
         <Popover>
           {({ open }) => (
             <>
-              <div className="flex my-4 px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
+              <div className="my-4 px-4 sm:mx-6 lg:mx-12 xl:mx-56 2xl:mx-96">
+                <div className="flex items-center justify-between  h-16">
                   <div className="flex-shrink-0">
                     <Logo isAnimated size="40" visible />
                   </div>
@@ -30,7 +30,7 @@ export default function Navbar({ navbarButtons }) {
 
                   <div className="md:hidden">
                     <Popover.Button>
-                      {open ? <GrClose size={40} /> : <GrMenu size={40} />}
+                      {open ? <GrClose size={35} /> : <GrMenu size={35} />}
                       {/* TODO: Animate the hamburger menu :) */}
                       {/* <Hamburger
                         toggled={open}
