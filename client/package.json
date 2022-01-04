@@ -34,7 +34,7 @@
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.1.0",
     "superjson": "^1.7.4",
-    "tailwindcss": "^2.1.2",
+    "tailwindcss": "^2.2.19",
     "unified": "^9.2.1"
   },
   "devDependencies": {
