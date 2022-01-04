@@ -4,11 +4,11 @@ module.exports = withPlugins([], {
   future: {
     webpack5: true,
   },
-  // fixes broken next export during deployment
-  // images: {
-  //   loader: 'imgix',
-  //   path: '',
-  // },
+  // Fixes broken next export for next/image: https://github.com/vercel/next.js/issues/21079#issuecomment-898732036
+  images: {
+    loader: 'imgix',
+    path: 'https://noop/',
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.md$/,
