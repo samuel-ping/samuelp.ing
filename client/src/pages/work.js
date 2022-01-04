@@ -12,7 +12,7 @@ export default function Work({ workExperiences }) {
       <h1 className="font-bold text-4xl leading-loose md:text-5xl md:my-7">
         Work Experience
       </h1>
-      <div className="w-10/12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:w-9/12 lg:w-6/12 xl:w-4/12 xl:gap-11 justify-items-stretch">
+      <div className="w-10/12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:w-11/12 lg:grid-cols-3 xl:w-8/12 justify-items-stretch">
         {workExperiences.map((workExperience) => (
           <WorkCard key={workExperience.details.title} info={workExperience} />
         ))}
