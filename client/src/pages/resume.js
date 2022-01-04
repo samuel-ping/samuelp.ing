@@ -22,7 +22,7 @@ export default function Resume({ resumePath, lastUpdated }) {
         probably download or open it in a new tab by tapping one of the
         following buttons:
       </div>
-      <div className="flex flex-row items-center justify-between min-w-full">
+      <div className="flex flex-row items-center justify-between min-w-full mt-3">
         <span className="justify-self-start font-light italic">
           Last Updated: {lastUpdated}
         </span>

@@ -56,7 +56,7 @@ export default function Navbar({ navbarButtons }) {
                         key={buttonInfo.title}
                         title={buttonInfo.title}
                         route={buttonInfo.route}
-                        mobile={true}
+                        mobile
                         close={close}
                       />
                     ))}
