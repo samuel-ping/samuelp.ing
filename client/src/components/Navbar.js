@@ -9,7 +9,7 @@ export default function Navbar({ navbarButtons }) {
     <div className="min-w-full sticky top-0 z-10 flex items-center justify-center">
       <nav className="min-w-full backdrop-filter backdrop-blur-lg bg-opacity-30 shadow-sm md:shadow-md">
         <Popover>
-          {({ open }) => (
+          {({ open, close }) => (
             <>
               <div className="my-4 px-4 sm:mx-6 lg:mx-12 xl:mx-56 2xl:mx-96">
                 <div className="flex items-center justify-between h-16">
@@ -57,6 +57,7 @@ export default function Navbar({ navbarButtons }) {
                         title={buttonInfo.title}
                         route={buttonInfo.route}
                         mobile={true}
+                        close={close}
                       />
                     ))}
                   </div>

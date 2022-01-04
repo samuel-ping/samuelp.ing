@@ -1,13 +1,16 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const NavbarButton = ({ title, route, mobile }) => {
+const NavbarButton = ({ title, route, mobile, close }) => {
   const router = useRouter();
 
   if (mobile) {
     return (
       <Link href={route}>
-        <div className="block px-4 py-2 text-md leading-10 font-medium">
+        <div
+          className="px-4 py-2 text-md leading-10 font-medium"
+          onClick={close}
+        >
           <span className={router.pathname === route ? 'underline' : ''}>
             {title}
           </span>
