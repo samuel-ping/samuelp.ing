@@ -6,16 +6,18 @@ const NavbarButton = ({ title, route, mobile, close }) => {
 
   if (mobile) {
     return (
-      <Link href={route}>
-        <div
-          className="px-4 py-2 text-md leading-10 font-medium"
-          onClick={close}
-        >
-          <span className={router.pathname === route ? 'underline' : ''}>
-            {title}
-          </span>
-        </div>
-      </Link>
+      <div
+        className="flex px-4 py-2 text-md leading-10 font-medium"
+        onClick={close}
+      >
+        <Link href={route}>
+          <a>
+            <span className={router.pathname === route ? 'underline' : ''}>
+              {title}
+            </span>
+          </a>
+        </Link>
+      </div>
     );
   } else {
     return (
