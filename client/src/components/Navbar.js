@@ -12,7 +12,7 @@ export default function Navbar({ navbarButtons }) {
           {({ open }) => (
             <>
               <div className="my-4 px-4 sm:mx-6 lg:mx-12 xl:mx-56 2xl:mx-96">
-                <div className="flex items-center justify-between  h-16">
+                <div className="flex items-center justify-between h-16">
                   <div className="flex-shrink-0">
                     <Logo isAnimated size="40" visible />
                   </div>
