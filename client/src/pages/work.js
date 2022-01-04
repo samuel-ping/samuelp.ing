@@ -8,9 +8,11 @@ import SortCards from '@lib/CardSorter';
 
 export default function Work({ workExperiences }) {
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h1 className="font-bold leading-loose text-5xl">Work Experience</h1>
-      <div className="w-4/12 grid grid-cols-1 md:grid-cols-2 gap-11 justify-items-stretch">
+    <div className="flex flex-col justify-center items-center mx-4">
+      <h1 className="font-bold text-4xl leading-loose md:text-5xl md:my-7">
+        Work Experience
+      </h1>
+      <div className="w-10/12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:w-9/12 lg:w-6/12 xl:w-4/12 xl:gap-11 justify-items-stretch">
         {workExperiences.map((workExperience) => (
           <WorkCard key={workExperience.details.title} info={workExperience} />
         ))}
