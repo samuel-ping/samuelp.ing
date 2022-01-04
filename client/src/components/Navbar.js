@@ -7,7 +7,7 @@ import NavbarButton from '@components/NavbarButton';
 export default function Navbar({ navbarButtons }) {
   return (
     <div className="min-w-full sticky top-0 z-10 flex items-center justify-center">
-      <nav className="min-w-full backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
+      <nav className="min-w-full backdrop-filter backdrop-blur-lg bg-opacity-30 shadow-sm md:shadow-md">
         <Popover>
           {({ open }) => (
             <>
@@ -49,14 +49,17 @@ export default function Navbar({ navbarButtons }) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Popover.Panel className="absolute">
-                  {navbarButtons.map((buttonInfo) => (
-                    <NavbarButton
-                      key={buttonInfo.title}
-                      title={buttonInfo.title}
-                      route={buttonInfo.route}
-                    />
-                  ))}
+                <Popover.Panel className="absolute min-w-full">
+                  <div className="px-4 py-3 shadow-lg bg-green-50 flex-col divide-y divide-gray-200">
+                    {navbarButtons.map((buttonInfo) => (
+                      <NavbarButton
+                        key={buttonInfo.title}
+                        title={buttonInfo.title}
+                        route={buttonInfo.route}
+                        mobile={true}
+                      />
+                    ))}
+                  </div>
                 </Popover.Panel>
               </Transition>
             </>
