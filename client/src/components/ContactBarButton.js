@@ -5,7 +5,7 @@ const ContactBarButton = ({
 }) => (
   <>
     <a href={url} target="_blank" rel="noopener noreferrer">
-      <span className="cursor-pointer flex justify-center items-center h-24 w-24 md:h-28 md:w-28 rounded-full transition-colors border-2 border-green-600 hover:bg-green-600 fill-current hover:text-green-50">
+      <span className="cursor-pointer flex justify-center items-center h-28 w-28 rounded-full transition-colors border-2 border-green-600 hover:bg-green-600 fill-current hover:text-green-50">
         {icon}
       </span>
     </a>
