@@ -3,9 +3,9 @@ import Avatar from '@components/Avatar';
 import AboutMeData from '@content/about.json';
 import mdToReact from '@lib/MarkdownProcessor';
 
-import ProfilePicture from '@public/assets/sam.jpg';
+import ProfilePicture from '../../public/assets/sam.jpg';
 
-export default function About({ description, profilePicture }) {
+export default function About({ description }) {
   return (
     <article className="prose prose-sm mx-4 my-2 sm:prose-2xl sm:m-0">
       <h1>About Me</h1>
