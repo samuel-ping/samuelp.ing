@@ -1,18 +1,21 @@
 import { Document, Page, pdfjs } from 'react-pdf';
+import { useWindowWidth } from '@wojtekmaj/react-hooks';
 
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const PdfViewer = ({ url, width }) => (
-  <Document
-    file={url}
-    error="Welp looks like I broke my PDF viewer, sorry about that! Feel free to send me an email or message to notify me."
-    loading="Loading resume..."
-    externalLinkTarget="_blank"
-  >
-    <Page pageNumber={1} width={width} />
-  </Document>
-);
+export default function Component({ url }) {
+  const width = useWindowWidth();
 
-export default PdfViewer;
+  return (
+    <Document file={url}>
+      <Page
+        pageNumber={1}
+        width={Math.min(width * 0.95, 1000)} // width: 90vw; max-width: 1000px
+        loading="Loading resume..."
+        externalLinkTarget="_blank"
+      />
+    </Document>
+  );
+}

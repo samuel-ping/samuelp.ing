@@ -9,8 +9,10 @@ import SortCards from '@lib/CardSorter';
 export default function Involvement({ involvement }) {
   return (
     <div className="flex flex-col justify-center items-center">
-      <h1 className="font-bold leading-loose text-5xl">Involvement</h1>
-      <div className="w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-11">
+      <h1 className="font-bold text-4xl leading-loose md:text-5xl md:my-7">
+        Involvement
+      </h1>
+      <div className="w-10/12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:w-11/12 lg:grid-cols-3 xl:w-8/12 justify-items-stretch">
         {involvement.map((anInvolvement) => (
           <InvolvementCard
             key={anInvolvement.details.activity}
