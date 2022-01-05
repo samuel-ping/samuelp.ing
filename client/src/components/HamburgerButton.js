@@ -3,13 +3,15 @@ import { motion } from 'framer-motion';
 export default function HamburgerButton({ isOpen }) {
   return (
     <motion.svg
-      width="27"
-      height="27"
-      viewBox="-2 -4 27 27"
+      width="35"
+      height="35"
+      viewBox="0 0 23 20"
       fill="none"
-      strokeWidth="2.5"
+      strokeWidth="2"
       stroke="#000000"
+      //   strokeLinecap="round"
       animate={isOpen ? 'open' : 'closed'}
+      className="text-center"
     >
       <motion.path
         variants={{
