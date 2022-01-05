@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",
+    "@plaiceholder/next": "^2.2.0",
     "@socialgouv/matomo-next": "^1.2.2",
     "@tailwindcss/typography": "^0.4.0",
     "@wojtekmaj/react-hooks": "^1.12.0",
@@ -23,6 +24,7 @@
     "hamburger-react": "^2.4.1",
     "next": "12.0.5",
     "next-compose-plugins": "^2.2.1",
+    "plaiceholder": "^2.2.0",
     "postcss": "^8.2.15",
     "raw-loader": "^4.0.2",
     "react": "17.0.2",
@@ -34,6 +36,7 @@
     "rehype-react": "^6.2.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.1.0",
+    "sharp": "^0.29.3",
     "superjson": "^1.7.4",
     "tailwindcss": "^2.2.19",
     "unified": "^9.2.1"

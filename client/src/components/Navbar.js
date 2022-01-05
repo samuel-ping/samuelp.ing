@@ -1,13 +1,13 @@
 import { Popover, Transition } from '@headlessui/react';
-import { GrClose, GrMenu } from 'react-icons/gr';
 
 import Logo from '@components/Logo';
+import HamburgerIcon from '@components/HamburgerButton';
 import NavbarButton from '@components/NavbarButton';
 
 export default function Navbar({ navbarButtons }) {
   return (
     <div className="min-w-full sticky top-0 z-10 flex items-center justify-center">
-      <nav className="min-w-full backdrop-filter backdrop-blur-lg bg-opacity-30 shadow-sm md:shadow-md">
+      <nav className="min-w-full bg-green-50 backdrop-filter backdrop-blur-lg bg-opacity-20 firefox:bg-opacity-90 shadow-sm md:shadow-md">
         <Popover>
           {({ open, close }) => (
             <>
@@ -30,18 +30,13 @@ export default function Navbar({ navbarButtons }) {
 
                   <div className="md:hidden">
                     <Popover.Button>
-                      {open ? <GrClose size={35} /> : <GrMenu size={35} />}
-                      {/* TODO: Animate the hamburger menu :) */}
-                      {/* <Hamburger
-                        toggled={open}
-                      /> */}
+                      {/* I literally have no idea why I have to cast it to a boolean when its already a boolean. */}
+                      <HamburgerIcon isOpen={Boolean(open)} />
                     </Popover.Button>
                   </div>
                 </div>
               </div>
-
               <Transition
-                show={open}
                 enter="transition ease-out duration-100 transform"
                 enterFrom="opacity-0 scale-95"
                 enterTo="opacity-100 scale-100"
@@ -50,7 +45,7 @@ export default function Navbar({ navbarButtons }) {
                 leaveTo="opacity-0 scale-95"
               >
                 <Popover.Panel className="absolute min-w-full">
-                  <div className="px-4 py-3 shadow-lg bg-green-50 flex-col divide-y divide-gray-200">
+                  <div className="px-4 py-3 shadow-lg bg-green-50 flex flex-col divide-y divide-gray-300">
                     {navbarButtons.map((buttonInfo) => (
                       <NavbarButton
                         key={buttonInfo.title}
