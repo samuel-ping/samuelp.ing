@@ -12,24 +12,16 @@ const PDFViewer = dynamic(() => import('../components/PdfViewer'), {
 });
 
 export default function Resume({ resumePath, lastUpdated }) {
-  const iconSize = 23;
+  const iconSize = 30;
 
   return (
-    <div className="flex flex-col justify-center items-center max-w-full">
-      <div className="font-semibold italic sm:hidden">
-        NOTE: Hey, thanks for (trying to) view my resume! Your screen looks a
-        little small though, so rather than strain your eyes, you should
-        probably download or open it in a new tab by tapping one of the
-        following buttons:
-      </div>
-      <div className="flex flex-row items-center justify-between min-w-full mt-3">
-        <span className="justify-self-start font-light italic">
+    <div className="flex flex-col max-w-full">
+      <div className="flex flex-row items-center justify-between min-w-full sm:mt-3">
+        <span className="justify-self-start text-xl font-light italic">
           Last Updated: {lastUpdated}
         </span>
+
         <div className="flex flex-row justify-self-end">
-          <span className="font-bold leading-none sm:hidden">
-            Download<span className="text-3xl">&rarr;</span>
-          </span>
           <a
             href={resumePath}
             download
@@ -37,9 +29,7 @@ export default function Resume({ resumePath, lastUpdated }) {
           >
             <DownloadIcon size={iconSize} />
           </a>
-          <span className="font-bold leading-none sm:hidden">
-            New Tab<span className="text-3xl">&rarr;</span>
-          </span>
+
           <a
             href={resumePath}
             target="_blank"
@@ -51,7 +41,7 @@ export default function Resume({ resumePath, lastUpdated }) {
         </div>
       </div>
 
-      <PDFViewer url={resumePath} width={1000} />
+      <PDFViewer url={resumePath} width={900} />
     </div>
   );
 }
