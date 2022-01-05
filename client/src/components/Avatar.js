@@ -7,6 +7,7 @@ export default function Avatar({ imgSrc, alt, size }) {
       alt={alt}
       width={size}
       height={size}
+      layout="intrinsic"
       priority
       className="rounded-full object-cover"
     />
