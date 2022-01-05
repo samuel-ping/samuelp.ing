@@ -45,7 +45,7 @@ export default function Navbar({ navbarButtons }) {
                 leaveTo="opacity-0 scale-95"
               >
                 <Popover.Panel className="absolute min-w-full">
-                  <div className="px-4 py-3 shadow-lg bg-green-50 flex-col divide-y divide-gray-200">
+                  <div className="px-4 py-3 shadow-lg bg-green-50 flex flex-col divide-y divide-gray-300">
                     {navbarButtons.map((buttonInfo) => (
                       <NavbarButton
                         key={buttonInfo.title}
