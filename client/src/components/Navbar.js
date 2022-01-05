@@ -2,6 +2,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { GrClose, GrMenu } from 'react-icons/gr';
 
 import Logo from '@components/Logo';
+import HamburgerIcon from '@components/HamburgerButton';
 import NavbarButton from '@components/NavbarButton';
 
 export default function Navbar({ navbarButtons }) {
@@ -30,18 +31,13 @@ export default function Navbar({ navbarButtons }) {
 
                   <div className="md:hidden">
                     <Popover.Button>
-                      {open ? <GrClose size={35} /> : <GrMenu size={35} />}
-                      {/* TODO: Animate the hamburger menu :) */}
-                      {/* <Hamburger
-                        toggled={open}
-                      /> */}
+                      {/* I literally have no idea why I have to cast it to a boolean when its already a boolean. */}
+                      <HamburgerIcon isOpen={Boolean(open)} />
                     </Popover.Button>
                   </div>
                 </div>
               </div>
-
               <Transition
-                show={open}
                 enter="transition ease-out duration-100 transform"
                 enterFrom="opacity-0 scale-95"
                 enterTo="opacity-100 scale-100"
