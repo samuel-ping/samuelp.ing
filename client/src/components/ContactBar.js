@@ -3,7 +3,7 @@ import ContactBarButtons from '@config/ContactBarButtons.config';
 
 const ContactBar = () => (
   <div className="flex items-center justify-center">
-    <div className="gap-1 my-7 grid grid-cols-2 md:grid-cols-4 md:gap-4">
+    <div className="gap-1 mt-3 sm:my-7 grid grid-cols-2 md:grid-cols-4 md:gap-4">
       {ContactBarButtons.map((buttonInfo) => (
         <ContactBarButton
           key={buttonInfo.website}
