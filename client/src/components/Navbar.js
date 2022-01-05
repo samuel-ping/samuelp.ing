@@ -1,5 +1,4 @@
 import { Popover, Transition } from '@headlessui/react';
-import { GrClose, GrMenu } from 'react-icons/gr';
 
 import Logo from '@components/Logo';
 import HamburgerIcon from '@components/HamburgerButton';

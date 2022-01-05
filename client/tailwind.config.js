@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
+/* eslint-disable global-require, prefer-arrow-callback, func-names, no-param-reassign */
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
