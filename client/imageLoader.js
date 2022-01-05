@@ -1,3 +1,4 @@
+// CURRENTLY UNUSED
 function imageLoader({ src }) {
   return `/public/${src}`;
 }
