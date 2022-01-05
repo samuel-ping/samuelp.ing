@@ -40,7 +40,7 @@ export default function Layout({ children, title }) {
         />
 
         {/* UA */}
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
         {/* Viewport */}
         <meta name="viewport" content="width=device-width" />
