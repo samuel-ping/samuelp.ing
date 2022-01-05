@@ -8,7 +8,7 @@ import NavbarButton from '@components/NavbarButton';
 export default function Navbar({ navbarButtons }) {
   return (
     <div className="min-w-full sticky top-0 z-10 flex items-center justify-center">
-      <nav className="min-w-full backdrop-filter backdrop-blur-lg bg-opacity-30 shadow-sm md:shadow-md">
+      <nav className="min-w-full bg-green-50 backdrop-filter backdrop-blur-lg bg-opacity-20 firefox:bg-opacity-90 shadow-sm md:shadow-md">
         <Popover>
           {({ open, close }) => (
             <>
