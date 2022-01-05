@@ -13,8 +13,8 @@ export default function Involvement({ involvement }) {
         Involvement
       </h1>
       <h4 className="text-center mb-5 mx-3 lg:hidden">
-        Tap on the cards to see more information about the organizations I've
-        been a part of!
+        Tap on the cards to see more information about the organizations
+        I&apos;ve been a part of!
       </h4>
       <div className="w-10/12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:w-11/12 lg:grid-cols-3 xl:w-8/12 justify-items-stretch">
         {involvement.map((anInvolvement) => (
