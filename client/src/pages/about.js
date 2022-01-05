@@ -7,7 +7,7 @@ import ProfilePicture from '../../public/assets/sam.jpg';
 
 export default function About({ description }) {
   return (
-    <article className="prose prose-sm mx-4 my-2 sm:prose-2xl sm:m-0">
+    <article className="prose prose-md mx-5 mt-3 lg:prose-lg">
       <h1>About Me</h1>
       <Avatar imgSrc={ProfilePicture} alt="Photo of Sam" size={200} />
       {/* <Description content={description} /> */}
