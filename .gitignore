@@ -3,9 +3,9 @@
 .next/
 out/
 
-# PWA
-**/public/workbox-*.js
-**/public/sw.js
+# service worker
+**/public/workbox-*.js*
+**/public/sw.js*
 **/public/worker-*.js
 
 # Testing
