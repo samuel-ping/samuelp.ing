@@ -19,3 +19,7 @@ I have 5 important branches in this repository:
 - `gh-pages` is my deployed website branch. After I push to `main`, my GitHub Actions pipeline automatically builds my website from the contents in `./client`, then pushes it to `gh-pages`.
 
 - `server` is my deployed server branch. I host my server on Heroku, and whenever I push to `main`, my GitHub Actions pipeline automatically pushes the contents of `./server` into this branch for Heroku to deploy.
+
+## Statuses
+
+[![Development](https://api.netlify.com/api/v1/badges/0b58abf3-fded-444a-8054-d7ded873bfbf/deploy-status)](https://app.netlify.com/sites/samuelping/deploys)
