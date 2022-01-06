@@ -23,6 +23,7 @@
     "gray-matter": "^4.0.3",
     "next": "12.0.5",
     "next-compose-plugins": "^2.2.1",
+    "next-pwa": "^5.4.4",
     "plaiceholder": "^2.2.0",
     "postcss": "^8.2.15",
     "raw-loader": "^4.0.2",
