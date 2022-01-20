@@ -49,8 +49,7 @@ export default function Layout({ children, title }) {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
         {/* Viewport */}
-        <meta name="viewport" content="width=device-width" />
-        <meta name="viewport" content="width=1024" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {/* More Open Graph */}
         <meta property="og:site_name" content="Samuel Ping" />
