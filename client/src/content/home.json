@@ -1,13 +1,23 @@
 {
   "resume": {
-    "date": "September 5, 2021",
+    "date": "August 16, 2022",
     "resume-file": "assets/samuel-ping_resume.pdf"
   },
   "taglines": [
     {
-      "position": "Junior",
+      "position": "Senior",
       "place": "Rutgers University- New Brunswick",
       "website": "https://www.rutgers.edu/"
+    },
+    {
+      "position": "SWE Intern",
+      "place": "MongoDB",
+      "website": "https://www.mongodb.com/"
+    },
+    {
+      "position": "Past SDE Intern",
+      "place": "Amazon",
+      "website": "https://www.amazon.com"
     },
     {
       "position": "Student Systems Programmer",
