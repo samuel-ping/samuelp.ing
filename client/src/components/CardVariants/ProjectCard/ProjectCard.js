@@ -36,7 +36,7 @@ export default function ProjectCard({ info }) {
                 ` - ${info.details['end-date']}`
               )}
             </h3>
-            <h3 className="text-sm text-gray-600 italic">
+            <h3 className="text-gray-600 italic">
               {/* Regex gratefully snatched from https://beutelevision.com/blog2/2011/06/17/get-the-first-n-words-with-javascript/ */}
               {info.details.technologies.replace(
                 /(([^\s]+\s\s*){5})(.*)/,

@@ -13,13 +13,18 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.js --ignore-path ./.gitignore"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.2",
+    "@plaiceholder/next": "^2.2.0",
     "@socialgouv/matomo-next": "^1.2.2",
     "@tailwindcss/typography": "^0.4.0",
+    "@wojtekmaj/react-hooks": "^1.12.0",
     "autoprefixer": "^10.2.5",
     "framer-motion": "^4.1.13",
     "gray-matter": "^4.0.3",
-    "next": "10.2.0",
+    "next": "12.0.5",
     "next-compose-plugins": "^2.2.1",
+    "next-pwa": "^5.4.4",
+    "plaiceholder": "^2.2.0",
     "postcss": "^8.2.15",
     "raw-loader": "^4.0.2",
     "react": "17.0.2",
@@ -31,8 +36,9 @@
     "rehype-react": "^6.2.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.1.0",
+    "sharp": "^0.29.3",
     "superjson": "^1.7.4",
-    "tailwindcss": "^2.1.2",
+    "tailwindcss": "^2.2.19",
     "unified": "^9.2.1"
   },
   "devDependencies": {

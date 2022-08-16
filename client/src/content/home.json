@@ -1,6 +1,6 @@
 {
   "resume": {
-    "date": "May 21, 2021",
+    "date": "September 5, 2021",
     "resume-file": "assets/samuel-ping_resume.pdf"
   },
   "taglines": [
@@ -11,11 +11,11 @@
     },
     {
       "position": "Student Systems Programmer",
-      "place": "Rutgers Open Systems Solutions",
+      "place": "Rutgers OSS",
       "website": "https://oss.rutgers.edu/"
     },
     {
-      "position": "TIP Intern",
+      "position": "Past TIP Intern",
       "place": "Capital One",
       "website": "https://www.capitalone.com/bank/"
     }

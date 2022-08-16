@@ -12,14 +12,15 @@ const PDFViewer = dynamic(() => import('../components/PdfViewer'), {
 });
 
 export default function Resume({ resumePath, lastUpdated }) {
-  const iconSize = 23;
+  const iconSize = 30;
 
   return (
-    <div className="flex flex-col justify-center items-center max-w-full">
-      <div className="flex flex-row items-center justify-between min-w-full">
-        <span className="justify-self-start font-light italic">
+    <div className="flex flex-col max-w-full">
+      <div className="flex flex-row items-center justify-between min-w-full sm:mt-3">
+        <span className="justify-self-start text-xl font-light italic">
           Last Updated: {lastUpdated}
         </span>
+
         <div className="flex flex-row justify-self-end">
           <a
             href={resumePath}
@@ -28,6 +29,7 @@ export default function Resume({ resumePath, lastUpdated }) {
           >
             <DownloadIcon size={iconSize} />
           </a>
+
           <a
             href={resumePath}
             target="_blank"

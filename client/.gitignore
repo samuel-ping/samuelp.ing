@@ -1,16 +1,21 @@
-# dependencies
-/node_modules
+# Need this gitignore file for linting (even though I have one in the root)
+# Next.js
+.next/
+out/
 
-# testing
-/coverage
+# service worker
+**/public/workbox-*.js*
+**/public/sw.js*
+**/public/worker-*.js
 
-# next.js
-/.next/
-/out/
+# Testing
+temp/
+
+# Dependencies
+node_modules/
+
+# env files
+.env
 
 # debug
 npm-debug.log*
-
-# local env files
-.env.local
-

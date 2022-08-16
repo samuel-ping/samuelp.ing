@@ -2,15 +2,17 @@ import ContactBarButton from '@components/ContactBarButton';
 import ContactBarButtons from '@config/ContactBarButtons.config';
 
 const ContactBar = () => (
-  <div className="flex flex-row content-start justify-evenly my-7">
-    {ContactBarButtons.map((buttonInfo) => (
-      <ContactBarButton
-        key={buttonInfo.website}
-        website={buttonInfo.website}
-        url={buttonInfo.url}
-        icon={buttonInfo.icon}
-      />
-    ))}
+  <div className="flex items-center justify-center">
+    <div className="gap-1 mt-3 sm:my-7 grid grid-cols-2 md:grid-cols-4 md:gap-4">
+      {ContactBarButtons.map((buttonInfo) => (
+        <ContactBarButton
+          key={buttonInfo.website}
+          website={buttonInfo.website}
+          url={buttonInfo.url}
+          icon={buttonInfo.icon}
+        />
+      ))}
+    </div>
   </div>
 );
 
