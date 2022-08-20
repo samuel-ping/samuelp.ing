@@ -1,7 +1,7 @@
 ---
 title: Street Cred
 short-description: Web app that calculates your credit score and generates
-  feedback based on the five main categories that make up your credit score.
+  feedback based on the five main categories that make up your credit score
 thumbnail: assets/streetcredlogo.png
 start-date: August 2020
 end-date: August 2020
