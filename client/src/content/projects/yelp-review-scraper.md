@@ -1,6 +1,6 @@
 ---
 title: Yelp Review Scraper
-short-description: A web scraper intended to gather a large dataset of restaurants.
+short-description: A web scraper intended to gather a large dataset of restaurants
 start-date: May 2020
 end-date: June 2020
 repo-url: https://github.com/samuel-ping/yelp-review-scraper
