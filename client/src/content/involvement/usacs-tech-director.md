@@ -6,7 +6,7 @@ short-description: I inspire the CS community at Rutgers to keep learning,
 thumbnail: assets/usacs-logo.jpeg
 start-date: September 2019
 end-date: ""
-website-url: https://hackru.org/
+website-url: http://usacs.rutgers.edu/
 ---
 USACS (short for Undergraduate Student Alliance of Computer Scientists) is the largest general computer science-related club at Rutgers.
 
