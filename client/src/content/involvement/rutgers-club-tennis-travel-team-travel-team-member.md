@@ -1,6 +1,6 @@
 ---
 activity: Rutgers Club Tennis Travel Team
-position: Travel Team Member
+position: Vice President
 short-description: I play tennis!
 thumbnail: assets/rutgers-tennis-logo.jpg
 start-date: September 2019
