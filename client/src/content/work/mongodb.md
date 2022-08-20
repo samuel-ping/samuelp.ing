@@ -1,7 +1,7 @@
 ---
 company: MongoDB
 title: SWE Intern
-short-description: Summer 2022 SWE intern!
+short-description: Summer 2022 SWE intern
 thumbnail: assets/mongodb-logo.png
 start-date: June 2022
 end-date: August 2022
