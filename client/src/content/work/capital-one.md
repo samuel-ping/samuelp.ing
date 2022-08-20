@@ -1,7 +1,7 @@
 ---
 company: Capital One
 title: TIP Intern
-short-description: I was a technology intern at Capital One for Summer 2021!
+short-description: I was a technology intern at Capital One for Summer 2021
 thumbnail: assets/c1-logo.png
 start-date: June 2021
 end-date: August 2021
