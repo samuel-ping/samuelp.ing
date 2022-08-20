@@ -10,7 +10,12 @@
       "website": "https://www.rutgers.edu/"
     },
     {
-      "position": "SWE Intern",
+      "position": "Student Systems Programmer",
+      "place": "Rutgers OSS",
+      "website": "https://oss.rutgers.edu/"
+    },
+    {
+      "position": "Past SWE Intern",
       "place": "MongoDB",
       "website": "https://www.mongodb.com/"
     },
@@ -18,11 +23,6 @@
       "position": "Past SDE Intern",
       "place": "Amazon",
       "website": "https://www.amazon.com"
-    },
-    {
-      "position": "Student Systems Programmer",
-      "place": "Rutgers OSS",
-      "website": "https://oss.rutgers.edu/"
     },
     {
       "position": "Past TIP Intern",
