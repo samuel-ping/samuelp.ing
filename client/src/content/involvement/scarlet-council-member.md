@@ -1,7 +1,7 @@
 ---
 activity: Scarlet Council
 position: Member
-short-description: Promoted Rutgers school spirit and bridged the gap between students and alumni.
+short-description: Promoted Rutgers school spirit and bridged the gap between students and alumni
 thumbnail: assets/scarlet-council-logo.jpg
 start-date: December 2019
 end-date: January 2021
