@@ -1,6 +1,7 @@
 ---
 title: COVID Tracker
-short-description: A web app that quickly gives you COVID-19 data.
+short-description: A web app that quickly gives you COVID-19 data. Best
+  Halloween Hack of TCNJ HackDown Fall 2020!
 thumbnail: https://raw.githubusercontent.com/samuel-ping/covid-tracker/master/screenshots/covid_tracker_banner.png
 start-date: October 2020
 end-date: November 2020

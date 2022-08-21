@@ -1,7 +1,7 @@
 ---
 company: Code Ninjas
 title: Code Sensei
-short-description: Introduced and taught Scratch and JavaScript to children ages 7 to 14.
+short-description: Introduced and taught Scratch and JavaScript to children ages 7 to 14
 thumbnail: assets/code-ninjas_logo.jpg
 start-date: March 2019
 end-date: August 2019
