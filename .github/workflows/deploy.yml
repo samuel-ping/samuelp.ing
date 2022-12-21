@@ -35,7 +35,7 @@ jobs:
           npm run export
           touch out/.nojekyll
           echo "# Hi!" > out/README.md
-          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the [Main branch](https://github.com/samuel-ping/personal-website-v3)!" >> out/README.md
+          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to my [personal-website repository!](https://github.com/samuel-ping/personal-website)!" >> out/README.md
           echo "#### Note - This message was automatically generated." >> out/README.md
         working-directory: ./client
 
@@ -53,7 +53,7 @@ jobs:
           REPO: git@github.com:samuel-ping/samuel-ping.github.io.git
           BRANCH: gh-pages
           FOLDER: ./client/out
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
 
   # pushes backend code to server branch
   server-integration:
