@@ -2,8 +2,7 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./src/**/*.js', './public/**/*.html'],
+  content: ['./src/**/*.js', './public/**/*.html'],
   // purge: {
   //   enabled: true, // without this, it purges all of my CSS D:
   //   layers: ['components', 'pages'],
@@ -14,7 +13,6 @@ module.exports = {
   //     },
   //   },
   // },
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       // tailwind-typography settings (unused at the moment)
@@ -23,12 +21,6 @@ module.exports = {
           css: {},
         },
       },
-    },
-  },
-  variants: {
-    extend: {
-      backgroundColor: ['active'],
-      textColor: ['active'],
     },
   },
   plugins: [
