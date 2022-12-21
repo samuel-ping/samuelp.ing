@@ -53,7 +53,7 @@ jobs:
           REPO: git@github.com:samuel-ping/samuel-ping.github.io.git
           BRANCH: gh-pages
           FOLDER: ./client/out
-          SSH_PRIVATE_KEY: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # pushes backend code to server branch
   server-integration:
