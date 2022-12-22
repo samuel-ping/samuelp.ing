@@ -7,6 +7,7 @@ end-date: November 2020
 repo-url: https://github.com/samuel-ping/chat_stat
 technologies: Python 3
 ---
+
 ## Summary
 
 Chat_Stat is a command-line tool that parses message history and displays charts and statistics about the messaging history. When I wrote this program, I made an effort to follow Python best practices, which included:

@@ -10,6 +10,7 @@ website-url: https://foodmood.samuelping.me/
 technologies: React.js, Express.js, Node.js, AWS (Lambda, Amplify, EC2,
   CodeDeploy+CodePipeline, S3), Nginx
 ---
+
 ## Summary
 
 Food Mood is a web app that takes your photo, detects your visible mood, and suggests a restaurant based off of that mood!

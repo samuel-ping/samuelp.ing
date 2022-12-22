@@ -4,9 +4,10 @@ position: Actor
 short-description: I perform in sketches and shows at Rutgers!
 thumbnail: assets/cap-logo.jpg
 start-date: February 2021
-end-date: ""
+end-date: ''
 website-url: https://www.collegeavenueplayers.com/
 ---
+
 **Past Shows:**
 
 Actor, Various Sketches, Wacky Hijinks: Law & Order Edition Spring 2022

@@ -10,6 +10,7 @@ const ContactBar = () => (
           website={buttonInfo.website}
           url={buttonInfo.url}
           icon={buttonInfo.icon}
+          openInNewTab={buttonInfo.openInNewTab}
         />
       ))}
     </div>

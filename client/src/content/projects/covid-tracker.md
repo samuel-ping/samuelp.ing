@@ -9,6 +9,7 @@ repo-url: https://github.com/samuel-ping/covid-tracker
 website-url: https://covid-tracker-1.web.app/
 technologies: React.js, Express.js, Google Firebase
 ---
+
 **NOTE**: The live website doesn't work unless you run the backend locally on your computer!
 
 ## Summary

@@ -5,9 +5,10 @@ short-description: I inspire the CS community at Rutgers to keep learning,
   coding, and building projects!
 thumbnail: assets/usacs-logo.jpeg
 start-date: September 2019
-end-date: ""
+end-date: ''
 website-url: http://usacs.rutgers.edu/
 ---
+
 USACS (short for Undergraduate Student Alliance of Computer Scientists) is the largest general computer science-related club at Rutgers.
 
 <ins>**April 2021 - May 2022: Tech Director**</ins>

@@ -7,6 +7,7 @@ end-date: May 2020
 repo-url: https://github.com/samuel-ping/wildwalk
 technologies: React.js, Express.js, MongoDB Atlas
 ---
+
 ## Summary
 
 A web app built for mobile devices, where you can check native species of plants and animals in your state, and upload pictures of them to your collection. You can view your collection to see the past species that you collected.

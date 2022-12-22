@@ -7,6 +7,7 @@ start-date: December 2019
 end-date: January 2021
 website-url: https://alumni.rutgers.edu/who-we-are/leadership-boards/scarlet-council/
 ---
+
 Scarlet Council is an organization that works with both students and Rutgers alumni.
 
 - Volunteered at multiple events, where I tabled for Scarlet Council and signed people into events.
