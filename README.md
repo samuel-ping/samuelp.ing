@@ -4,22 +4,23 @@ This is my personal website's repository! Hopefully you're here because you like
 
 ## Stack
 
-I built my website using Next.js and Tailwind CSS. I added Netlify CMS to provide easy edits to my site. The server's purpose is to authenticate me to access my CMS. I also set up Matomo Analytics for fun, to see where in the world people are looking at my website from!
+I built my website using Next.js and Tailwind CSS. 
 
 ## Branches
 
-I have 5 important branches in this repository:
+I have four important branches in this repository:
 
-- `main` is my production branch. What you see on [samuelping.me](https://samuelping.me) is compiled from here.
+- `main` is my production branch. What you see on [samuel-ping.github.io](samuel-ping.github.io) is built from here.
 
 - `dev` is my development branch. I add and test out features on this branch until I'm ready to deploy it to production.
 
 - `cms` is my content branch. I can make edits to my website's content here (like projects, work, involvement, etc.) and then merge it into `dev`.
 
-- `gh-pages` is my deployed website branch. After I push to `main`, my GitHub Actions pipeline automatically builds my website from the contents in `./client`, then pushes it to `gh-pages`.
-
 - `server` is my deployed server branch. I host my server on Heroku, and whenever I push to `main`, my GitHub Actions pipeline automatically pushes the contents of `./server` into this branch for Heroku to deploy.
 
-## Statuses
+## Past Stuff
+### Netlify CMS
+I originally added Netlify CMS to simplify content creation on my site. I hosted a server on Heroku to authenticate me to access my CMS. Unfortunately Heroku/Salesforce terminated their free hosting plan so I got rid of it.
 
-[![Development](https://api.netlify.com/api/v1/badges/0b58abf3-fded-444a-8054-d7ded873bfbf/deploy-status)](https://app.netlify.com/sites/samuelping/deploys)
+### Matomo Analytics
+In the past, I had also set up Matomo Analytics for fun, to see where in the world people are looking at my website from! But my server was secretly hosted on an anonymous AWS employee's account and sadly they don't work there anymore.

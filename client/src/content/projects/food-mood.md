@@ -10,8 +10,7 @@ website-url: https://foodmood.samuelping.me/
 technologies: React.js, Express.js, Node.js, AWS (Lambda, Amplify, EC2,
   CodeDeploy+CodePipeline, S3), Nginx
 ---
-
-<ins>**Summary**</ins>
+## Summary
 
 Food Mood is a web app that takes your photo, detects your visible mood, and suggests a restaurant based off of that mood!
 
@@ -19,7 +18,7 @@ The frontend is written in React.js, while the backend uses Express.js and Node.
 
 **v3**: My current and most likely final iteration of Food Mood is v3. I completely revamped the way the website looks, making it more visually appealing. I also switched over from hosting on AWS EC2 to AWS Amplify to see what Amplify is like.
 
-<ins>**Previous Versions**</ins>
+## Previous Versions
 
 **v2**: The frontend is built with React.js, while the backend uses Express.js and Node.js. The emotions are detected from the photo using Amazon's Rekognition API, and then I search for a restaurant using Yelp's Fusion API. The website is deployed on an AWS EC2 instance, using Nginx as a reverse proxy. Updates to the application are automatically deployed with AWS CodePipeline and CodeDeploy.
 

@@ -8,8 +8,7 @@ end-date: August 2020
 repo-url: https://github.com/samuel-ping/street-cred
 technologies: React.js, Python, AWS Lambda & API Gateway
 ---
-
-<ins>**Summary**</ins>
+## Summary
 
 A web application that calculates your credit score and generates feedback based on the five main categories that make up your credit score.
 

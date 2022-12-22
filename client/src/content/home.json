@@ -10,24 +10,9 @@
       "website": "https://www.rutgers.edu/"
     },
     {
-      "position": "Student Systems Programmer",
-      "place": "Rutgers OSS",
-      "website": "https://oss.rutgers.edu/"
-    },
-    {
-      "position": "Past SWE Intern",
+      "position": "Incoming Software Engineer",
       "place": "MongoDB",
       "website": "https://www.mongodb.com/"
-    },
-    {
-      "position": "Past SDE Intern",
-      "place": "Amazon",
-      "website": "https://www.amazon.com"
-    },
-    {
-      "position": "Past TIP Intern",
-      "place": "Capital One",
-      "website": "https://www.capitalone.com/bank/"
     }
   ]
 }

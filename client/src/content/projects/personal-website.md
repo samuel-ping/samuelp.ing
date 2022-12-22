@@ -8,14 +8,18 @@ repo-url: https://github.com/samuel-ping/personal-website
 website-url: https://samuelping.me
 technologies: Next.js, Tailwind CSS, Netlify CMS, Matomo Analytics
 ---
+## Summary
 
-<ins>**Summary**</ins>
+My personal website is built with Next.js and styled with Tailwind CSS. This is the third iteration of my personal website!
 
-My personal website is built with Next.js and styled with Tailwind CSS. I set up Netlify CMS to make simplify content creation, as well as Matomo on an AWS EC2 instance to keep track of page clicks.
+### Past Features
+#### Netlify CMS
+I originally added Netlify CMS to simplify content creation on my site. I hosted a server on Heroku to authenticate me to access my CMS. Unfortunately Heroku/Salesforce terminated their free hosting plan so I got rid of it.
 
-This is the third iteration of my personal website!
+#### Matomo Analytics
+In the past, I had also set up Matomo Analytics for fun, to see where in the world people are looking at my website from! But my server was secretly hosted on an anonymous AWS employee's account and sadly they don't work there anymore.
 
-<ins>**Previous Versions**</ins>
+## Previous Versions
 
 **v2**: I didn't like my first version, so I remade it.
 

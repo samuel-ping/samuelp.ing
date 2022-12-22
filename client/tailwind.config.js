@@ -3,16 +3,6 @@ const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   content: ['./src/**/*.js', './public/**/*.html'],
-  // purge: {
-  //   enabled: true, // without this, it purges all of my CSS D:
-  //   layers: ['components', 'pages'],
-  //   content: ['./pages/**/*.js', './components/**/*.js'],
-  //   options: {
-  //     safelist: {
-  //       deep: [/prose$/],
-  //     },
-  //   },
-  // },
   theme: {
     extend: {
       // tailwind-typography settings (unused at the moment)

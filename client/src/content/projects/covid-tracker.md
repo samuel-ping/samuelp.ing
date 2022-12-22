@@ -11,7 +11,7 @@ technologies: React.js, Express.js, Google Firebase
 ---
 **NOTE**: The live website doesn't work unless you run the backend locally on your computer!
 
-<ins>**Summary**</ins>
+## Summary
 
 This web app tells you the current number of COVID-19 cases in your state, as well as other useful information. It is intended to be a quick and easy tool that nearly instantly retrieves relevant data. This project was submitted to TCNJ HackDown Fall 2020, and we won Best Halloween Hack!
 
