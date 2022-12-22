@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "export": "npm run build && next export",
-    "serve": "npm run export && serve out/",
     "lint": "eslint . --ignore-path ./.gitignore",
     "lint-fix": "eslint --fix . --ignore-path ./.gitignore",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.js --ignore-path ./.gitignore"
