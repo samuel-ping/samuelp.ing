@@ -4,12 +4,12 @@ const NavbarButtons = [
     route: '/',
   },
   {
-    title: 'Resume',
-    route: '/resume',
-  },
-  {
     title: 'About Me',
     route: '/about',
+  },
+  {
+    title: 'Resume',
+    route: '/resume',
   },
   {
     title: 'Experience',

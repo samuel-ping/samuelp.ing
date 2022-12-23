@@ -11,7 +11,7 @@ export default function Home({ taglines }) {
         <h1 className="text-center leading-tight sm:leading-relaxed text-5xl sm:text-6xl font-semibold md:font-bold">
           Hey! I&rsquo;m <br className="sm:hidden" />
           <Link href="/about">
-            <span className="text-green-500 ease-in-out duration-300 hover:[text-shadow:-3px_3px_black] hover:cursor-pointer">
+            <span className="text-green-500 ease-in-out duration-300 hover:[text-shadow:-2px_2px_black] hover:cursor-pointer">
               Sam Ping
             </span>
           </Link>
