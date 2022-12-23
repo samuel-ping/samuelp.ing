@@ -1,6 +1,6 @@
 ---
 title: Shrimpify
-short-description: Image file size optimization API
+short-description: Image file size optimization API.
 start-date: June 2022
 end-date: June 2022
 repo-url: https://github.com/samuel-ping/shrimpify

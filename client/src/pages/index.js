@@ -7,7 +7,7 @@ import HomeData from '@content/home.json';
 export default function Home({ taglines }) {
   return (
     <>
-      <div>
+      <div className="flex flex-col grow justify-center">
         <h1 className="text-center leading-tight sm:leading-relaxed text-5xl sm:text-6xl font-semibold md:font-bold">
           Hey! I&rsquo;m <br className="sm:hidden" />
           <Link href="/about">

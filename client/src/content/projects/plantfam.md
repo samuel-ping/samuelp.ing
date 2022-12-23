@@ -1,6 +1,6 @@
 ---
 title: PlantFam
-short-description: Plant tracking mobile application
+short-description: Plant tracking mobile application.
 start-date: January 2022
 end-date: ''
 repo-url: https://github.com/samuel-ping/PlantFam-Android

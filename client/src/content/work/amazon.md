@@ -1,7 +1,7 @@
 ---
 company: Amazon
 title: SDE Intern
-short-description: Winter 2022 SDE intern
+short-description: Winter 2022 SDE intern.
 thumbnail: assets/amazon-logo.png
 start-date: January 2022
 end-date: April 2022

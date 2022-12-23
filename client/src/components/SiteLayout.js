@@ -93,10 +93,10 @@ export default function Layout({ children, title }) {
 
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <div className="flex flex-col min-h-screen items-center justify-between bg-green-100">
+      <div className="flex flex-col min-h-screen bg-green-100">
         <Navbar navbarButtons={NavbarButtons} />
 
-        <div>{children}</div>
+        <div className="flex flex-col grow">{children}</div>
 
         <Footer />
       </div>

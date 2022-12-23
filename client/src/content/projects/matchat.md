@@ -1,6 +1,6 @@
 ---
 title: matchat
-short-description: Coffee chat roulette Slack application
+short-description: Coffee chat roulette Slack application.
 start-date: July 2022
 end-date: July 2022
 repo-url: https://github.com/samuel-ping/matchat
