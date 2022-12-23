@@ -1,25 +1,43 @@
-const ContactBarButton = ({
-  // website, // TODO: turn into tooltip
-  url,
-  icon,
-  openInNewTab,
-}) =>
-  openInNewTab ? (
+import Link from 'next/link';
+
+import { Tooltip } from '@material-tailwind/react';
+
+function ContactBarButton({ tooltip, url, icon, openInNewTab }) {
+  return (
     <>
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        <span className="cursor-pointer flex justify-center items-center h-28 w-28 rounded-full transition-colors border-2 border-green-600 hover:bg-green-600 fill-current hover:text-green-50">
-          {icon}
-        </span>
-      </a>
-    </>
-  ) : (
-    <>
-      <a href={url}>
-        <span className="cursor-pointer flex justify-center items-center h-28 w-28 rounded-full transition-colors border-2 border-green-600 hover:bg-green-600 fill-current hover:text-green-50">
-          {icon}
-        </span>
-      </a>
+      {openInNewTab ? (
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          <Tooltip
+            content={tooltip}
+            className="bg-green-500 text-green-50"
+            animate={{
+              mount: { scale: 1, y: 0 },
+              unmount: { scale: 0, y: 25 },
+            }}
+          >
+            <span className="cursor-pointer flex justify-center items-center h-28 w-28 rounded-full transition-colors border-2 border-green-500 hover:bg-green-500 fill-current hover:text-green-100">
+              {icon}
+            </span>
+          </Tooltip>
+        </a>
+      ) : (
+        <Link href={url}>
+          <Tooltip
+            content={tooltip}
+            className="bg-green-500 text-green-50"
+            animate={{
+              mount: { scale: 1, y: 0 },
+              unmount: { scale: 0, y: 25 },
+            }}
+          >
+            <span className="cursor-pointer flex justify-center items-center h-28 w-28 rounded-full transition-colors border-2 border-green-500 hover:bg-green-500 fill-current hover:text-green-100">
+              {icon}
+            </span>
+          </Tooltip>
+        </Link>
+      )}
     </>
   );
+}
 
 export default ContactBarButton;

@@ -7,11 +7,11 @@ import NavbarButton from '@components/NavbarButton';
 export default function Navbar({ navbarButtons }) {
   return (
     <div className="min-w-full sticky top-0 z-10 flex items-center justify-center">
-      <nav className="min-w-full bg-green-50 backdrop-filter backdrop-blur-lg bg-opacity-20 firefox:bg-opacity-90 shadow-sm md:shadow-md">
+      <nav className="min-w-full bg-green-10 shadow-sm md:shadow-md">
         <Popover>
           {({ open, close }) => (
             <>
-              <div className="my-4 sm:mx-6 lg:mx-12 xl:mx-56 2xl:mx-96">
+              <div className="my-2 mx-6 ">
                 <div className="flex items-center justify-between h-16">
                   <div className="flex-shrink-0">
                     <Logo isAnimated size="40" visible />

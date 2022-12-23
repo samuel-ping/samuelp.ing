@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import ContactBar from '@components/ContactBar';
 
 import HomeData from '@content/home.json';
@@ -8,7 +10,12 @@ export default function Home({ taglines }) {
       <div>
         <h1 className="text-center leading-tight sm:leading-relaxed text-5xl sm:text-6xl font-semibold md:font-bold">
           Hey! I&rsquo;m <br className="sm:hidden" />
-          <span className="text-green-600 font-bold">Sam Ping</span>, a...
+          <Link href="/about">
+            <span className="text-green-500 ease-in-out duration-300 hover:[text-shadow:-3px_3px_black] hover:cursor-pointer">
+              Sam Ping
+            </span>
+          </Link>
+          , a...
         </h1>
         <ul className="flex flex-col items-center">
           {taglines.map((tagline) => (

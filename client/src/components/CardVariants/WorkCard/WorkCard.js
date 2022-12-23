@@ -10,7 +10,7 @@ export default function WorkCard({ info }) {
       <button
         type="button"
         onClick={() => toggleModalVisible(!modalVisible)}
-        className="min-w-full rounded-lg overflow-hidden shadow-lg transition-colors bg-white hover:bg-green-100"
+        className="min-w-full rounded-lg overflow-hidden shadow-lg transition-colors bg-white hover:bg-green-250"
       >
         {info.details.thumbnail ? (
           <div className="overflow-hidden max-h-56 flex justify-center">
