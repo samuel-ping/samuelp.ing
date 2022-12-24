@@ -1,0 +1,18 @@
+{
+  "resume": {
+    "date": "August 16, 2022",
+    "resume-file": "assets/samuel-ping_resume.pdf"
+  },
+  "taglines": [
+    {
+      "position": "Senior",
+      "place": "Rutgers University- New Brunswick",
+      "website": "https://www.rutgers.edu/"
+    },
+    {
+      "position": "Incoming Software Engineer",
+      "place": "MongoDB",
+      "website": "https://www.mongodb.com/"
+    }
+  ]
+}

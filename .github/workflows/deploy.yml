@@ -37,28 +37,12 @@ jobs:
           echo "# Hi!" > out/README.md
           echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to my [personal-website repository!](https://github.com/samuel-ping/personal-website)!" >> out/README.md
           echo "#### Note - This message was automatically generated." >> out/README.md
-        working-directory: ./client
+        working-directory: ./
 
       - name: push build artifacts to samuel-ping.github.io
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: git@github.com:samuel-ping/samuel-ping.github.io.git
           BRANCH: gh-pages
-          FOLDER: ./client/out
+          FOLDER: ./out
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-
-  # pushes backend code to server branch
-  server-integration:
-    name: server-integration
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: deploy to branch
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: server
-          FOLDER: ./server
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
