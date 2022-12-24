@@ -3,6 +3,7 @@ activity: College Avenue Players
 position: Actor
 short-description: I perform in sketches and shows at Rutgers!
 thumbnail: assets/cap-logo.jpg
+blur-rgb: 156,156,156
 start-date: February 2021
 end-date: ''
 website-url: https://www.collegeavenueplayers.com/

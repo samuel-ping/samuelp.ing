@@ -3,6 +3,7 @@ activity: Scarlet Council
 position: Member
 short-description: Promoted Rutgers school spirit and bridged the gap between students and alumni
 thumbnail: assets/scarlet-council-logo.jpg
+blur-rgb: 230,24,55
 start-date: December 2019
 end-date: January 2021
 website-url: https://alumni.rutgers.edu/who-we-are/leadership-boards/scarlet-council/

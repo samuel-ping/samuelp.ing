@@ -2,6 +2,7 @@
 title: Wild Walk
 short-description: A web app that encourages you to go exploring!
 thumbnail: assets/wildwalk-logo.jpg
+blur-rgb: 48,92,68
 start-date: May 2020
 end-date: May 2020
 repo-url: https://github.com/samuel-ping/wildwalk

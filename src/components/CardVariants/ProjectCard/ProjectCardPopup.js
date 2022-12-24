@@ -7,13 +7,11 @@ import mdToReact from '@lib/MarkdownProcessor';
 import 'react-responsive-modal/styles.css';
 
 const ProjectCardPopup = ({ visible, handleClose, info }) => {
-  // const modalstyles = {
-  //   modal: {
-  //     'border-radius': '0.5rem',
-  //     'max-width': '800px',
-  //     width: '100%',
-  //   },
-  // };
+  const modalstyles = {
+    modal: {
+      'border-radius': '0.5rem',
+    },
+  };
   const iconSize = 33;
 
   return (
@@ -23,7 +21,7 @@ const ProjectCardPopup = ({ visible, handleClose, info }) => {
         onClose={handleClose}
         center
         animationDuration={150}
-        // styles={modalstyles}
+        styles={modalstyles}
       >
         {/* Can't center icons without separating <h1> from prose */}
         {/* https://github.com/tailwindlabs/tailwindcss-typography/issues/32#issuecomment-756687596 */}

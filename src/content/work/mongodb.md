@@ -3,6 +3,7 @@ company: MongoDB
 title: Incoming Software Engineer II
 short-description: Summer 2022 SWE intern.
 thumbnail: assets/mongodb-logo.png
+blur-rgb: 1,104,75
 start-date: June 2022
 end-date: ''
 company-url: https://www.mongodb.com/

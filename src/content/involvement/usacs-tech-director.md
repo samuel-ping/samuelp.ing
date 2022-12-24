@@ -4,6 +4,7 @@ position: Tech Director
 short-description: I inspire the CS community at Rutgers to keep learning,
   coding, and building projects!
 thumbnail: assets/usacs-logo.jpeg
+blur-rgb: 175,47,46
 start-date: September 2019
 end-date: ''
 website-url: http://usacs.rutgers.edu/

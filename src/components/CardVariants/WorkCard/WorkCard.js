@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
+import Image from 'next/image';
+
 import WorkCardPopup from '@components/CardVariants/WorkCard/WorkCardPopup';
+import RGBStringToDataURL from '@lib/RGBStringToDataURL';
 
 export default function WorkCard({ info }) {
   const [modalVisible, toggleModalVisible] = useState(false);
@@ -12,14 +15,17 @@ export default function WorkCard({ info }) {
         onClick={() => toggleModalVisible(!modalVisible)}
         className="max-w-xs rounded overflow-hidden shadow-lg transition-colors bg-white hover:bg-green-250"
       >
-        {info.details.thumbnail ? (
-          <img
-            src={info.details.thumbnail}
-            alt={`Thumbnail for ${info.details.company}`}
-            className="w-full"
-          />
-        ) : (
-          <></>
+        {info.details.thumbnail && (
+          <div className="relative h-56">
+            <Image
+              src={info.details.thumbnail}
+              alt={`Thumbnail for ${info.details.company}`}
+              className="w-full object-contain"
+              layout="fill"
+              placeholder="blur"
+              blurDataURL={RGBStringToDataURL(info.details['blur-rgb'])}
+            />
+          </div>
         )}
         <div className="px-3 py-4">
           <h2 className="text-xl font-bold">{info.details.company}</h2>

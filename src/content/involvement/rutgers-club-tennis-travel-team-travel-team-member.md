@@ -3,6 +3,7 @@ activity: Rutgers Club Tennis Travel Team
 position: Vice President
 short-description: I play tennis!
 thumbnail: assets/rutgers-tennis-logo.jpg
+blur-rgb: 195,30,48
 start-date: September 2019
 end-date: ''
 website-url: https://rutgers.campuslabs.com/engage/organization/tennisclub

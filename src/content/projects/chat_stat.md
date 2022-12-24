@@ -2,6 +2,7 @@
 title: chat_stat
 short-description: Explore your messaging history with your friends!
 thumbnail: https://raw.githubusercontent.com/samuel-ping/chat_stat/main/screenshots/chat_stat-header-color-cropped.png
+blur-rgb: 224,20,60
 start-date: November 2020
 end-date: November 2020
 repo-url: https://github.com/samuel-ping/chat_stat

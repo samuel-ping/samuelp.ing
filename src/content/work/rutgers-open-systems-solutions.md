@@ -3,6 +3,7 @@ company: Rutgers Open Systems Solutions
 title: Student Systems Programmer
 short-description: Created and maintained software and packages for Rutgers University.
 thumbnail: assets/oss-logo.png
+blur-rgb: 156,156,156
 start-date: February 2020
 end-date: October 2022
 company-url: https://oss.rutgers.edu/
