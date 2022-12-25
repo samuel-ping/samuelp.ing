@@ -1,8 +1,8 @@
 // import { GrGithub as GitHubIcon } from 'react-icons/gr'; // maybe link org github repos in future? same goes with involvement card
-import { HiOutlineExternalLink as ExternalLinkIcon } from 'react-icons/hi';
 import { Modal } from 'react-responsive-modal';
 
 import mdToReact from '@lib/MarkdownProcessor';
+import OpenLinkIconButton from '@components/OpenLinkIconButton';
 
 import 'react-responsive-modal/styles.css';
 
@@ -10,9 +10,10 @@ const WorkCardPopup = ({ visible, handleClose, info }) => {
   const modalstyles = {
     modal: {
       'border-radius': '0.5rem',
+      // 'z-index': '-1',
+      'position': 'relative',
     },
   };
-  const iconSize = 33;
 
   return (
     <>
@@ -29,20 +30,7 @@ const WorkCardPopup = ({ visible, handleClose, info }) => {
           <h1 className="text-2xl md:text-4xl font-bold leading-relaxed mr-2">
             {info.details.company}
           </h1>
-          {info.details['company-url'] ? (
-            <a
-              href={info.details['company-url']}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLinkIcon
-                size={iconSize}
-                className="cursor-pointer hover:opacity-60"
-              />
-            </a>
-          ) : (
-            <></>
-          )}
+          {info.details['company-url'] && <OpenLinkIconButton path={info.details['company-url']} tooltip="Company Website" />}
         </span>
         <article className="prose max-w-none">
           <h3 className="italic">{info.details.title}</h3>

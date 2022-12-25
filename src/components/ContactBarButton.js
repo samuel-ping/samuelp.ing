@@ -22,7 +22,7 @@ function ContactBarButton({ tooltip, url, icon, openInNewTab }) {
         </a>
       ) : (
         <Link href={url}>
-          <a>
+          {/* <a> */}
             <Tooltip
               content={tooltip}
               className="bg-green-500 text-green-50"
@@ -35,7 +35,7 @@ function ContactBarButton({ tooltip, url, icon, openInNewTab }) {
                 {icon}
               </span>
             </Tooltip>
-          </a>
+          {/* </a> */}
         </Link>
       )}
     </>
