@@ -21,7 +21,7 @@ export default function ProjectCard({ info }) {
               src={info.details.thumbnail}
               alt={`Thumbnail for ${info.details.title}`}
               className="w-full object-contain"
-              layout="fill"
+              fill
               placeholder="blur"
               blurDataURL={RGBStringToDataURL(info.details['blur-rgb'])}
             />

@@ -61,18 +61,5 @@ module.exports = withMT({
       },
     },
   },
-  plugins: [
-    // require("daisyui"),
-    require('@tailwindcss/typography')
-  ],
-  // daisyui: {
-  //   styled: false,
-  //   themes: true,
-  //   base: true,
-  //   utils: true,
-  //   logs: true,
-  //   rtl: false,
-  //   prefix: "",
-  //   darkTheme: "dark",
-  // },
+  plugins: [require('@tailwindcss/typography')],
 });

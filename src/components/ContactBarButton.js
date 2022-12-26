@@ -22,20 +22,18 @@ function ContactBarButton({ tooltip, url, icon, openInNewTab }) {
         </a>
       ) : (
         <Link href={url}>
-          {/* <a> */}
-            <Tooltip
-              content={tooltip}
-              className="bg-green-500 text-green-50"
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: 25 },
-              }}
-            >
-              <span className="cursor-pointer flex justify-center items-center h-28 w-28 rounded-full transition-colors border-2 border-green-500 hover:bg-green-500 fill-current hover:text-green-100">
-                {icon}
-              </span>
-            </Tooltip>
-          {/* </a> */}
+          <Tooltip
+            content={tooltip}
+            className="bg-green-500 text-green-50"
+            animate={{
+              mount: { scale: 1, y: 0 },
+              unmount: { scale: 0, y: 25 },
+            }}
+          >
+            <span className="cursor-pointer flex justify-center items-center h-28 w-28 rounded-full transition-colors border-2 border-green-500 hover:bg-green-500 fill-current hover:text-green-100">
+              {icon}
+            </span>
+          </Tooltip>
         </Link>
       )}
     </>

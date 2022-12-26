@@ -10,10 +10,7 @@ export default function Layout({ children, title }) {
       <Head>
         {/* References: https://devhints.io/html-meta, https://github.com/shadowwalker/next-pwa#step-3-add-head-meta-example */}
         {/* Title */}
-        <title>
-          Samuel Ping
-          {title}
-        </title>
+        <title>{`Samuel Ping${title}`}</title>
         <meta property="og:title" content="Samuel Ping" />
         <meta name="twitter:title" content="Samuel Ping" />
 

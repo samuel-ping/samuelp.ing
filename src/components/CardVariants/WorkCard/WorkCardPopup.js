@@ -7,11 +7,10 @@ import OpenLinkIconButton from '@components/OpenLinkIconButton';
 import 'react-responsive-modal/styles.css';
 
 const WorkCardPopup = ({ visible, handleClose, info }) => {
-  const modalstyles = {
+  const modalStyles = {
     modal: {
       'border-radius': '0.5rem',
-      // 'z-index': '-1',
-      'position': 'relative',
+      // position: 'relative',
     },
   };
 
@@ -22,15 +21,21 @@ const WorkCardPopup = ({ visible, handleClose, info }) => {
         onClose={handleClose}
         center
         animationDuration={150}
-        styles={modalstyles}
+        styles={modalStyles}
       >
         {/* Can't center icons without separating <h1> from prose */}
         {/* https://github.com/tailwindlabs/tailwindcss-typography/issues/32#issuecomment-756687596 */}
-        <span className="flex flex-row items-center">
+        <span className="mt-5 flex flex-row items-center">
           <h1 className="text-2xl md:text-4xl font-bold leading-relaxed mr-2">
             {info.details.company}
           </h1>
-          {info.details['company-url'] && <OpenLinkIconButton path={info.details['company-url']} tooltip="Company Website" />}
+          {info.details['company-url'] && (
+            <OpenLinkIconButton
+              path={info.details['company-url']}
+              tooltip="Company Website"
+              tooltipPosition="right"
+            />
+          )}
         </span>
         <article className="prose max-w-none">
           <h3 className="italic">{info.details.title}</h3>
