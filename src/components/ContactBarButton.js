@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+// TODO: Migrate away from material-tailwind since only using the tooltip from it.
 import { Tooltip } from '@material-tailwind/react';
 
 function ContactBarButton({ tooltip, url, icon, openInNewTab }) {
