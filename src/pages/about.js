@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import PageHeader from '@components/PageHeader';
-
 import AboutMeData from '@content/about.json';
 import mdToReact from '@lib/MarkdownProcessor';
 import profilePic from '@public/assets/sam-2.jpg';

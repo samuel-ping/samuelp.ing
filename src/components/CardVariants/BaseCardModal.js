@@ -39,7 +39,7 @@ const BaseCardModal = ({ children, visible, handleClose }) => {
                 >
                   <span className="flex justify-end">
                     <button onClick={handleClose}>
-                      <CloseIcon />
+                      <CloseIcon className="hover:opacity-60"/>
                     </button>
                   </span>
                   {children}

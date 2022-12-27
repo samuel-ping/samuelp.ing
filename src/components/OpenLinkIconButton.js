@@ -6,7 +6,6 @@ import Tooltip from '@components/Tooltip';
 const IconButton = ({ path, tooltip, downloading }) => {
   const iconSize = 32;
   return (
-    <>
       <a
         href={path}
         target={downloading ? '' : '_blank'}
@@ -16,13 +15,12 @@ const IconButton = ({ path, tooltip, downloading }) => {
       >
         <Tooltip text={tooltip}>
           {downloading ? (
-            <DownloadIcon size={iconSize} className="fill-current" />
+            <DownloadIcon size={iconSize} className="hover:opacity-60" />
           ) : (
-            <ExternalLinkIcon size={iconSize} />
+            <ExternalLinkIcon size={iconSize} className="hover:opacity-60" />
           )}
         </Tooltip>
       </a>
-    </>
   );
 };
 
