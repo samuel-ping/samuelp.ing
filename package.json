@@ -24,7 +24,6 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.2.0",
     "react-pdf": "^6.2.0",
-    "react-responsive-modal": "^6.4.1",
     "rehype-react": "^6.2.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.1.0",

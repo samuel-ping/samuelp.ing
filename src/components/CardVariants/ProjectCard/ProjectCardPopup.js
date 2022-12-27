@@ -1,28 +1,14 @@
 import { GrGithub as GitHubIcon } from 'react-icons/gr';
 import { HiOutlineExternalLink as ExternalLinkIcon } from 'react-icons/hi';
-import { Modal } from 'react-responsive-modal';
 
+import BaseCardModal from '@components/CardVariants/BaseCardModal';
 import mdToReact from '@lib/MarkdownProcessor';
 
-import 'react-responsive-modal/styles.css';
-
 const ProjectCardPopup = ({ visible, handleClose, info }) => {
-  const modalstyles = {
-    modal: {
-      'border-radius': '0.5rem',
-    },
-  };
   const iconSize = 33;
 
   return (
-    <>
-      <Modal
-        open={visible}
-        onClose={handleClose}
-        center
-        animationDuration={150}
-        styles={modalstyles}
-      >
+      <BaseCardModal visible={visible} handleClose={handleClose}>
         {/* Can't center icons without separating <h1> from prose */}
         {/* https://github.com/tailwindlabs/tailwindcss-typography/issues/32#issuecomment-756687596 */}
         <span className="flex flex-row items-center">
@@ -43,7 +29,7 @@ const ProjectCardPopup = ({ visible, handleClose, info }) => {
           ) : (
             <></>
           )}
-          {info.details['website-url'] ? (
+          {info.details['website-url'] && (
             <a
               href={info.details['website-url']}
               target="_blank"
@@ -54,8 +40,6 @@ const ProjectCardPopup = ({ visible, handleClose, info }) => {
                 className="cursor-pointer hover:opacity-60"
               />
             </a>
-          ) : (
-            <></>
           )}
         </span>
         <article className="prose max-w-none">
@@ -72,8 +56,8 @@ const ProjectCardPopup = ({ visible, handleClose, info }) => {
           <h3 className="italic">Technologies: {info.details.technologies}</h3>
           {mdToReact(info.description)}
         </article>
-      </Modal>
-    </>
+      </BaseCardModal>
   );
 };
+
 export default ProjectCardPopup;
