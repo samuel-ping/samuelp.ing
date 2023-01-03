@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 import WorkCardPopup from '@components/CardVariants/WorkCard/WorkCardPopup';
-import RGBStringToDataURL from '@lib/RGBStringToDataURL';
+import RGBStringToDataURL from 'src/utils/RGBStringToDataURL';
 
 export default function WorkCard({ info }) {
   const [modalVisible, toggleModalVisible] = useState(false);

@@ -1,7 +1,8 @@
 import dynamic from 'next/dynamic';
 
+import DownloadIconButton from '@components/IconButtonVariants/DownloadIconButton';
+import ExternalWebsiteIconButton from '@components/IconButtonVariants/ExternalWebsiteIconButton';
 import HomeData from '@content/home.json';
-import OpenLinkIconButton from '@components/OpenLinkIconButton';
 import PageHeader from '@components/PageHeader';
 
 // https://github.com/wojtekmaj/react-pdf/issues/136#issuecomment-405393139
@@ -15,17 +16,16 @@ export default function Resume({ resumePath, lastUpdated }) {
       <PageHeader text="Resume" />
       <div className="w-fit flex flex-col">
         <div className="flex flex-row justify-between sm:mt-3">
-          <span className="justify-self-start text-xl font-light italic">
+          <span className="justify-self-start text-xl font-light italic leading-10">
             Last Updated: {lastUpdated}
           </span>
 
           <div className="flex flex-row justify-self-end">
-            <OpenLinkIconButton
+            <DownloadIconButton path={resumePath} tooltip="Download" />
+            <ExternalWebsiteIconButton
               path={resumePath}
-              tooltip="Download"
-              downloading
+              tooltip="Open in new tab"
             />
-            <OpenLinkIconButton path={resumePath} tooltip="Open in new tab" />
           </div>
         </div>
         <PDFViewer url={resumePath} />

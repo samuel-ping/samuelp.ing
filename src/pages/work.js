@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 
 import PageHeader from '@components/PageHeader';
 import WorkCard from '@components/CardVariants/WorkCard/WorkCard';
-import SortCards from '@lib/CardSorter';
+import SortCards from 'src/utils/CardSorter';
 
 export default function Work({ workExperiences }) {
   return (

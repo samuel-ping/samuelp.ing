@@ -4,7 +4,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 import InvolvementCard from '@components/CardVariants/InvolvementCard/InvolvementCard';
-import SortCards from '@lib/CardSorter';
+import SortCards from 'src/utils/CardSorter';
 import PageHeader from '@components/PageHeader';
 
 export default function Involvement({ involvement }) {

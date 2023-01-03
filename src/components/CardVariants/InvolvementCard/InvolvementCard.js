@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 import InvolvementCardPopup from '@components/CardVariants/InvolvementCard/InvolvementCardPopup';
-import RGBStringToDataURL from '@lib/RGBStringToDataURL';
+import RGBStringToDataURL from 'src/utils/RGBStringToDataURL';
 
 export default function InvolvementCard({ info }) {
   const [modalVisible, toggleModalVisible] = useState(false);

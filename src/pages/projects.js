@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 
 import PageHeader from '@components/PageHeader';
 import ProjectCard from '@components/CardVariants/ProjectCard/ProjectCard';
-import SortCards from '@lib/CardSorter';
+import SortCards from 'src/utils/CardSorter';
 
 export default function Projects({ projects }) {
   return (

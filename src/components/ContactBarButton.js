@@ -1,35 +1,26 @@
-import React from 'react';
-
 import Link from 'next/link';
 
-import Tooltip from '@components/Tooltip';
-
 // TODO: Migrate away from material-tailwind since only using the tooltip from it.
-// import { Tooltip } from '@material-tailwind/react';
+import { Tooltip } from '@material-tailwind/react';
 
 function ContactBarButton({ tooltip, url, icon, openInNewTab }) {
-  const buttonRef = React.createRef(null);
-  const setButtonRef = (ref) => {
-    buttonRef.current = ref;
-  }
   return (
     <>
       {openInNewTab ? (
-        <Tooltip text={tooltip} ref={setButtonRef}>
         <a href={url} target="_blank" rel="noopener noreferrer">
-          {/* <Tooltip
+          <Tooltip
             content={tooltip}
             className="bg-green-500 text-green-50"
             animate={{
               mount: { scale: 1, y: 0 },
               unmount: { scale: 0, y: 25 },
             }}
-          > */}
+          >
             <span className="cursor-pointer flex justify-center items-center h-28 w-28 rounded-full transition-colors border-2 border-green-500 hover:bg-green-500 fill-current hover:text-green-100">
               {icon}
             </span>
-          {/* </Tooltip> */}
-        </a></Tooltip>
+          </Tooltip>
+        </a>
       ) : (
         <Link href={url}>
           <Tooltip

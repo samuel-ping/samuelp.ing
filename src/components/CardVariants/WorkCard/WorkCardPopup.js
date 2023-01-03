@@ -1,6 +1,6 @@
 import BaseCardModal from '@components/CardVariants/BaseCardModal';
-import mdToReact from '@lib/MarkdownProcessor';
-import OpenLinkIconButton from '@components/OpenLinkIconButton';
+import mdToReact from 'src/utils/MarkdownProcessor';
+import ExternalWebsiteIconButton from '@components/IconButtonVariants/ExternalWebsiteIconButton';
 
 const WorkCardPopup = ({ visible, handleClose, info }) => {
   return (
@@ -8,10 +8,9 @@ const WorkCardPopup = ({ visible, handleClose, info }) => {
       <span className="text-2xl md:text-4xl font-bold leading-relaxed">
         {info.details.company}
         {info.details['company-url'] && (
-          <OpenLinkIconButton
+          <ExternalWebsiteIconButton
             path={info.details['company-url']}
             tooltip="Company Website"
-            tooltipPosition="right"
           />
         )}
       </span>

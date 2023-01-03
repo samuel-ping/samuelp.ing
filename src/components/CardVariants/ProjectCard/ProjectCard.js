@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 import ProjectCardPopup from '@components/CardVariants/ProjectCard/ProjectCardPopup';
-import RGBStringToDataURL from '@lib/RGBStringToDataURL';
+import RGBStringToDataURL from 'src/utils/RGBStringToDataURL';
 
 export default function ProjectCard({ info }) {
   const [modalVisible, toggleModalVisible] = useState(false);
