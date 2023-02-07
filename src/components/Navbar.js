@@ -44,6 +44,7 @@ export default function Navbar({ navbarButtons }) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
+              <div className="md:hidden">
                 <Popover.Panel className="absolute min-w-full">
                   <div className="px-4 py-3 shadow-lg bg-green-10 flex flex-col divide-y divide-gray-300">
                     {navbarButtons.map((buttonInfo) => (
@@ -57,6 +58,7 @@ export default function Navbar({ navbarButtons }) {
                     ))}
                   </div>
                 </Popover.Panel>
+              </div>
               </Transition>
             </>
           )}
