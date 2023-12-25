@@ -11,7 +11,6 @@ const ContactBar = () => (
           tooltip={buttonInfo.tooltip}
           url={buttonInfo.url}
           icon={buttonInfo.icon}
-          openInNewTab={buttonInfo.openInNewTab}
         />
       ))}
     </div>

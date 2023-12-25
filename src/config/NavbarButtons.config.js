@@ -8,10 +8,6 @@ const NavbarButtons = [
     route: '/about',
   },
   {
-    title: 'Resume',
-    route: '/resume',
-  },
-  {
     title: 'Experience',
     route: '/work',
   },
