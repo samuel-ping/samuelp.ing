@@ -1,11 +1,10 @@
 import Image from 'next/image';
 
-import Button from '@components/OutlineButton';
-import WorkCard from '@components/CardVariants/WorkCard/WorkCard';
+import Button from 'components/OutlineButton';
+import WorkCard from 'components/CardVariants/WorkCard/WorkCard';
 
-import profilePic from '@public/assets/sam.jpg';
-
-export default function Home({ experience, projects }) {
+import profilePic from 'public/assets/sam.jpg';
+export default async function Page() {
   return (
     <>
       {/* about me section */}

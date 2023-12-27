@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import Arrow from '@components/icons/RightArrowIcon';
+import Arrow from 'components/icons/RightArrowIcon';
 
 const ContactBarButton = ({ text, url }) => {
   return (

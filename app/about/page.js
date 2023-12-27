@@ -1,11 +1,11 @@
 import Image from 'next/image';
 
 import PageHeader from '@components/PageHeader';
-import AboutMeData from '@content/about.json';
-import mdToReact from 'src/utils/MarkdownProcessor';
+
+// import mdToReact from 'utils/MarkdownProcessor';
 import profilePic from '@public/assets/sam.jpg';
 
-export default function About({ description }) {
+export default async function Page() {
   return (
     <div className="flex flex-col items-center justify-center">
       <PageHeader text="About Me" />
@@ -19,16 +19,8 @@ export default function About({ description }) {
         className="rounded-full object-cover"
       />
       <article className="prose prose-md mx-5 lg:prose-lg">
-        {mdToReact(description)}
+        {'hello world'}
       </article>
     </div>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {
-      description: AboutMeData.body,
-    },
-  };
 }

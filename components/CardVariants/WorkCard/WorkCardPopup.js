@@ -1,5 +1,5 @@
-import BaseCardModal from '@components/CardVariants/BaseCardModal';
-import mdToReact from 'src/utils/MarkdownProcessor';
+import BaseCardModal from 'components/CardVariants/BaseCardModal';
+import mdToReact from 'utils/MarkdownProcessor';
 import ExternalWebsiteIconButton from '@components/IconButtonVariants/ExternalWebsiteIconButton';
 
 const WorkCardPopup = ({ visible, handleClose, info }) => {
