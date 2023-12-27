@@ -90,10 +90,10 @@ export default function Layout({ children, title }) {
 
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <div className="flex flex-col min-h-screen bg-green-100">
+      <div className="min-h-screen flex flex-col space-y-12 px-80 bg-green-100">
         <Navbar navbarButtons={NavbarButtons} />
 
-        <div className="flex flex-col grow">{children}</div>
+        <>{children}</>
 
         <Footer />
       </div>

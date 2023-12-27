@@ -1,42 +1,56 @@
-import Link from 'next/link';
+import Image from 'next/image';
 
-import ContactBar from '@components/ContactBar';
+import Button from '@components/OutlineButton';
+import WorkCard from '@components/CardVariants/WorkCard/WorkCard';
 
 import HomeData from '@content/home.json';
+
+import profilePic from '@public/assets/sam.jpg';
 
 export default function Home({ taglines }) {
   return (
     <>
-      <div className="flex flex-col grow justify-center">
-        <h1 className="text-center leading-tight sm:leading-relaxed text-5xl sm:text-6xl font-semibold md:font-bold">
-          Hey! I&rsquo;m <br className="sm:hidden" />
-          <Link href="/about">
-            <span className="text-green-500 ease-in-out duration-300 hover:[text-shadow:-2px_2px_black] hover:cursor-pointer">
-              Sam Ping
-            </span>
-          </Link>
-          , a...
-        </h1>
-        <ul className="flex flex-col items-center">
-          {taglines.map((tagline) => (
-            <li
-              key={tagline.position}
-              className="leading-normal text-md sm:text-lg"
-            >
-              {tagline.position} @{' '}
-              <a
-                href={tagline.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold sm:font-bold hover:underline"
-              >
-                {tagline.place}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <ContactBar />
+      {/* about me section */}
+      <div className="flex flex-row justify-between">
+        <div className="w-96 flex flex-col space-y-5">
+          <span className="text-4xl font-medium">
+            Hey! I&apos;m Sam Ping, a...
+          </span>
+          <span className="text-2xl font-light">
+            ... software engineer at MongoDB, Rutgers University graduate, avid
+            tennis player, budding boulderer, occasional theater performer, and
+            neglectful plant dad. I&apos;m currently based out of NYC.
+          </span>
+          <Button text={'more about me ->'} url={'/about'} />
+        </div>
+
+        <Image
+          src={profilePic}
+          alt="Photo of Sam"
+          width="264"
+          height="264"
+          priority
+          placeholder="blur"
+          className="rounded-full object-cover"
+        />
       </div>
+
+      {/* experience section */}
+      <div className="flex flex-col space-y-8">
+        <span className="text-4xl font-medium">Work Experience</span>
+        <WorkCard
+          title={'Software Engineer II'}
+          company={'MongoDB'}
+          dates={'Aug 2023 - Present'}
+          location={'New York, NY'}
+          tags={['golang', 'mongodb']}
+        />
+        <div className="flex justify-center">
+          <Button text={'see all experience ->'} url={'/work'} />
+        </div>
+      </div>
+
+      {/* projects section */}
     </>
   );
 }
