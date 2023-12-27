@@ -14,23 +14,15 @@ const WorkCard = ({ url, title, company, dates, location, tags }) => {
       >
         <div className="w-full flex flex-col">
           <div className="w-full flex flex-row justify-between">
-            <div className="flex flex-col text-left">
-              <span className="text-2xl font-light group-hover:text-green-100">
-                {title}
-              </span>
-              <span className="text-2xl font-medium group-hover:text-green-100">
-                {company}
-              </span>
+            <div className="flex flex-col text-left group-hover:text-green-100">
+              <span className="text-2xl font-light ">{title}</span>
+              <span className="text-2xl font-medium ">{company}</span>
             </div>
 
             <div className="flex flex-row items-center space-x-9">
-              <div className="flex flex-col text-right">
-                <span className="text-2xl font-light group-hover:text-green-100">
-                  {dates}
-                </span>
-                <span className="text-2xl font-light group-hover:text-green-100">
-                  {location}
-                </span>
+              <div className="flex flex-col text-right group-hover:text-green-100">
+                <span className="text-2xl font-light ">{dates}</span>
+                <span className="text-2xl font-light ">{location}</span>
               </div>
             </div>
           </div>

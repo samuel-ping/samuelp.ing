@@ -1,9 +1,10 @@
 import Image from 'next/image';
 
-import Button from 'components/OutlineButton';
+import Button from '@components/OutlineButton';
+import ProjectCard from '@components/ProjectCard';
 import WorkCard from '@components/WorkCard';
 
-import profilePic from 'public/assets/sam.jpg';
+import profilePic from '@public/assets/sam.jpg';
 export default async function Page() {
   return (
     <>
@@ -64,6 +65,37 @@ export default async function Page() {
       </div>
 
       {/* projects section */}
+      <div className="flex flex-col">
+        <span className="text-4xl font-medium">Projects</span>
+        <div className="flex flex-row space-x-2">
+          <ProjectCard
+            url={''}
+            title={'Personal Website'}
+            dates={'May 2020 - Present'}
+            blurb={"The website you're looking at right now!"}
+            tags={['react.js', 'figma']}
+          />
+          <ProjectCard
+            url={''}
+            title={'Personal Website'}
+            dates={'May 2020 - Present'}
+            blurb={"The website you're looking at right now!"}
+            tags={['react.js', 'figma']}
+          />
+          <ProjectCard
+            url={''}
+            title={'Personal Website'}
+            dates={'May 2020 - Present'}
+            blurb={"The website you're looking at right now!"}
+            tags={['react.js', 'figma']}
+          />
+          <Button
+            text={'view all'}
+            url={'projects'}
+            className={'h-96 rounded-xl'}
+          />
+        </div>
+      </div>
     </>
   );
 }

@@ -18,7 +18,7 @@ const NavbarButton = ({ title, route, mobile }) => {
   }
 
   return (
-    <div className="flex items-center justify-center cursor-pointer hover:underline text-md font-medium">
+    <div className="flex items-center justify-center cursor-pointer text-xl transition-colors hover:text-green-500">
       <Link href={route}>
         <span>{title}</span>
       </Link>
