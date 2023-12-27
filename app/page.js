@@ -92,7 +92,7 @@ export default async function Page() {
           <Button
             text={'view all'}
             url={'projects'}
-            className={'h-96 rounded-xl'}
+            className={'h-96 space-x-1 rounded-xl'}
           />
         </div>
       </div>

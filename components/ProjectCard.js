@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import Chip from '@components/chip';
-import Arrow from '@components/icons/RightArrowIcon';
+import { RightArrowIcon as Arrow } from '@components/icons';
 
 const ProjectCard = ({ url, title, dates, blurb, tags }) => {
   return (
