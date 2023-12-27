@@ -90,7 +90,7 @@ export default function Layout({ children, title }) {
 
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <div className="min-h-screen flex flex-col space-y-12 px-80 bg-green-100">
+      <div className="max-w-screen-lg m-auto p-5 flex flex-col space-y-12 bg-green-100">
         <Navbar navbarButtons={NavbarButtons} />
 
         <>{children}</>
