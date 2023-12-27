@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import Chip from '@components/Chip';
+import Chip from '@components/chip';
 import Arrow from '@components/icons/RightArrowIcon';
 
 const WorkCard = ({ url, title, company, dates, location, tags }) => {

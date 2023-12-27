@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import Chip from '@components/Chip';
+import Chip from '@components/chip';
 import Arrow from '@components/icons/RightArrowIcon';
 
 const ProjectCard = ({ url, title, dates, blurb, tags }) => {

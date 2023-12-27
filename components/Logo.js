@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 
-import SP from 'components/SP';
+import SP from '@components/sp';
 
 const Logo = ({ isAnimated, size, visible }) => (
   <>
     <Link href="/">
-      <div className="cursor-pointer p-3">
+      <div className="cursor-pointer">
         <SP
           isAnimated={isAnimated}
           color="#000000"

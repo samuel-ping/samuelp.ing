@@ -2,9 +2,9 @@
 
 // import { Popover, Transition } from '@headlessui/react';
 
-import Logo from '@components/Logo';
+import Logo from '@components/logo';
 // import HamburgerIcon from 'components/HamburgerButton';
-import NavbarButton from '@components/NavbarButton';
+import NavbarButton from '@components/navbarButton';
 
 export default function Navbar({ navbarButtons }) {
   return (

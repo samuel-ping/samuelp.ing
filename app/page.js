@@ -1,15 +1,15 @@
 import Image from 'next/image';
 
-import Button from '@components/OutlineButton';
-import ProjectCard from '@components/ProjectCard';
-import WorkCard from '@components/WorkCard';
+import Button from '@components/outlineButton';
+import ProjectCard from '@components/projectCard';
+import WorkCard from '@components/workCard';
 
 import profilePic from '@public/assets/sam.jpg';
 export default async function Page() {
   return (
     <>
       {/* about me section */}
-      <div className="py-36 flex justify-between">
+      <div className="py-32 flex justify-between">
         <div className="max-w-md flex flex-col space-y-5">
           <span className="text-4xl font-medium">
             Hey! I&apos;m Sam Ping, a...
@@ -65,7 +65,7 @@ export default async function Page() {
       </div>
 
       {/* projects section */}
-      <div className="flex flex-col">
+      <div className="flex flex-col space-y-8">
         <span className="text-4xl font-medium">Projects</span>
         <div className="flex flex-row space-x-2">
           <ProjectCard
