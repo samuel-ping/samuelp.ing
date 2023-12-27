@@ -1,3 +1,5 @@
+'use client';
+
 // envelope from https://flowbite.com/icons/
 const EnvelopeIcon = ({ className }) => {
   return (

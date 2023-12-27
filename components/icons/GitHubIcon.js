@@ -1,3 +1,5 @@
+'use client';
+
 // github from https://flowbite.com/icons/
 const GitHubIcon = ({ className }) => {
   return (

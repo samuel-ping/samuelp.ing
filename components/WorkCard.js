@@ -1,14 +1,16 @@
+'use client';
+
 import Link from 'next/link';
 
-import Chip from 'components/Chip';
-import Arrow from 'components/icons/RightArrowIcon';
+import Chip from '@components/Chip';
+import Arrow from '@components/icons/RightArrowIcon';
 
 const WorkCard = ({ url, title, company, dates, location, tags }) => {
   return (
     <Link href={url}>
       <button
         type="button"
-        className="group w-full flex flex-row items-center space-x-7 space-y-2 px-10 py-6 rounded-3xl border-2 border-green-500 transition-color hover:bg-green-500"
+        className="group w-full flex flex-row items-center space-x-7 space-y-2 px-10 py-6 rounded-3xl border-2 border-green-500 transition-colors hover:bg-green-500"
       >
         <div className="w-full flex flex-col">
           <div className="w-full flex flex-row justify-between">

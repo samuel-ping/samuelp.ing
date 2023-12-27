@@ -1,3 +1,5 @@
+'use client';
+
 const Chip = ({ text }) => {
   return (
     <div class="flex justify-center items-center py-1 px-2 rounded-full text-green-100 bg-green-500 ">

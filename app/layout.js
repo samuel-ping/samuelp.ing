@@ -1,4 +1,4 @@
-import Navbar from '@components/Navbar';
+import Navbar from '@components/navbar';
 import Footer from '@components/Footer';
 
 import NavbarButtons from '@config/NavbarButtons.config';
@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="max-w-screen-lg m-auto bg-green-100">
+      <body className="max-w-screen-lg px-5 py-8 m-auto bg-green-100">
         <Navbar navbarButtons={NavbarButtons} />
         <main>{children}</main>
         <Footer />

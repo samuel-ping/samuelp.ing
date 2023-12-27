@@ -1,3 +1,5 @@
+'use client';
+
 // linkedin from https://flowbite.com/icons/
 const LinkedInIcon = ({ className }) => {
   return (

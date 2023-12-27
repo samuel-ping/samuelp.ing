@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import Button from 'components/OutlineButton';
-import WorkCard from 'components/CardVariants/WorkCard/WorkCard';
+import WorkCard from '@components/WorkCard';
 
 import profilePic from 'public/assets/sam.jpg';
 export default async function Page() {
@@ -24,10 +24,9 @@ export default async function Page() {
         <Image
           src={profilePic}
           alt="Photo of Sam"
-          height="256"
           placeholder="blur"
           priority
-          className="rounded-full object-cover"
+          className="w-64 h-64 rounded-full object-cover"
         />
       </div>
 

@@ -1,3 +1,5 @@
+'use client';
+
 // arrow-right from https://flowbite.com/icons/
 const RightArrowIcon = ({ className }) => {
   return (
