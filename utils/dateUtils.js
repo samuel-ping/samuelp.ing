@@ -16,7 +16,7 @@ const months = [
   'December',
 ];
 
-export const MonthToAbbreviation = {
+const monthToAbbreviation = {
   January: 'Jan',
   February: 'Feb',
   March: 'Mar',
@@ -35,7 +35,7 @@ export const MonthToAbbreviation = {
  * Takes an array and sorts it by month year strings (ex. May 2021) in the end-date.
  * @param {*} cardArray
  */
-const DateSorter = (card1, card2) => {
+export const DateSorter = (card1, card2) => {
   // Check if one project is currently being worked on (denoted by empty string), while the other isn't.
   if (card1.details['end'] === '' && card2.details['end'] !== '') return -1;
   if (card2.details['end'] === '' && card1.details['end'] !== '') return 1;
@@ -73,6 +73,28 @@ const DateSorter = (card1, card2) => {
   return 0;
 };
 
-export default function SortCardsByDate(cardArray) {
-  return cardArray.sort(DateSorter);
-}
+/**
+ * Takes in start and end dates (format: "<month> <year>") and formats it into a presentable date range.
+ * @param {*} start
+ * @param {*} end
+ */
+export const FormatDateStr = (start, end) => {
+  const startMonth = start.split(' ')[0];
+  const startYear = start.split(' ')[1];
+  const endMonth = monthToAbbreviation[end.split(' ')[0]];
+  const endYear = end.split(' ')[1];
+
+  var dateString = '';
+  if (start === end) {
+    // project was completed within a month (start month is same as end month)
+    dateString = `${startMonth} ${startYear}`;
+  } else if (end == '') {
+    // project hasn't been completed
+    dateString = `${monthToAbbreviation[startMonth]} ${startYear} - Present`;
+  } else {
+    // project was completed in different months
+    dateString = `${monthToAbbreviation[startMonth]} ${startYear} - ${endMonth} ${endYear}`;
+  }
+
+  return dateString;
+};

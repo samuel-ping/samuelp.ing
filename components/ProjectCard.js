@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Chip from '@components/chip';
 import { RightArrowIcon as Arrow } from '@components/icons';
 
-const ProjectCard = ({ url, title, dates, blurb, tags }) => {
+const ProjectCard = ({ url, title, dates, gist, tags }) => {
   return (
     <Link href={url}>
       <button
@@ -13,8 +13,8 @@ const ProjectCard = ({ url, title, dates, blurb, tags }) => {
         <div className=" space-y-2">
           <div className="flex flex-col text-left group-hover:text-green-100">
             <span className="text-2xl ">{title}</span>
-            <span className="text-lg font-light italic">{dates}</span>
-            <span className="text-lg">{blurb}</span>
+            <span className=" font-light italic">{dates}</span>
+            <span className="">{gist}</span>
           </div>
 
           {/* tags */}
@@ -28,7 +28,7 @@ const ProjectCard = ({ url, title, dates, blurb, tags }) => {
         </div>
 
         {/* learn more button */}
-        <div className="flex flex-row items-center space-x-2 group-hover:text-green-100">
+        <div className="flex flex-row items-center gap-x-2 group-hover:text-green-100">
           <span className="text-xl">learn more</span>
           <Arrow
             className={

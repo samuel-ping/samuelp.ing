@@ -1,6 +1,6 @@
 import ProjectCard from '@components/projectCard';
 
-import { getProjectDetails } from '@lib/mdxFunctions';
+import { getProjectDetails } from '@lib/mdxUtils';
 
 export default async function Page() {
   const projects = await getProjectDetails();

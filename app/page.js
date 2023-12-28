@@ -6,7 +6,7 @@ import { ProjectCardCarousel } from '@components/projectCardCarousel';
 
 import profilePic from '@public/assets/sam.jpg';
 
-import { getProjectDetails } from '@lib/mdxFunctions';
+import { getProjectDetails } from '@lib/mdxUtils';
 
 export default async function Page() {
   const projects = await getProjectDetails(4);
