@@ -1,9 +1,9 @@
 import ProjectCard from '@components/projectCard';
 
-import { getAllProjectDetails } from '@lib/mdxFunctions';
+import { getProjectDetails } from '@lib/mdxFunctions';
 
 export default async function Page() {
-  const projects = await getAllProjectDetails();
+  const projects = await getProjectDetails();
 
   return (
     <div className="flex flex-col space-y-4">
@@ -15,7 +15,7 @@ export default async function Page() {
               key={project.details.title}
               url={project.details.repo}
               title={project.details.title}
-              dates={project.details.start}
+              dates={project.details.dates}
               gist={project.details.gist}
               tags={project.details.tags}
             />

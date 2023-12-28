@@ -5,7 +5,12 @@ import Button from '@components/outlineButton';
 import { ProjectCardCarousel } from '@components/projectCardCarousel';
 
 import profilePic from '@public/assets/sam.jpg';
+
+import { getProjectDetails } from '@lib/mdxFunctions';
+
 export default async function Page() {
+  const projects = await getProjectDetails(4);
+
   return (
     <>
       {/* about me section */}
@@ -36,14 +41,15 @@ export default async function Page() {
         <div className="flex flex-col space-y-2">
           <span className="text-4xl font-medium">Projects</span>
           <span className="text-base font-light">
-            Here are some of my favorite projects I&apos;ve worked on! Or,{' '}
+            Here are some of my recent projects that I&apos;ve been working on!
+            Or,{' '}
             <Link href="/projects" className="underline">
               see all my projects
             </Link>
             .
           </span>
         </div>
-        <ProjectCardCarousel n={3} />
+        <ProjectCardCarousel projects={projects} />
       </div>
     </>
   );

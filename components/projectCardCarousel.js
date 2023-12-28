@@ -3,37 +3,21 @@
 import Button from '@components/outlineButton';
 import ProjectCard from '@components/projectCard';
 
-export const ProjectCardCarousel = ({ n, projects }) => {
+export const ProjectCardCarousel = ({ projects }) => {
   return (
     <div className="flex snap-x md:snap-none overflow-x-auto space-x-7 pb-5">
-      <ProjectCard
-        url={''}
-        title={'Personal Website'}
-        dates={'May 2020 - Present'}
-        blurb={"The website you're looking at right now!"}
-        tags={['react.js', 'figma']}
-      />
-      <ProjectCard
-        url={''}
-        title={'Personal Website'}
-        dates={'May 2020 - Present'}
-        blurb={"The website you're looking at right now!"}
-        tags={['react.js', 'figma']}
-      />
-      <ProjectCard
-        url={''}
-        title={'Personal Website'}
-        dates={'May 2020 - Present'}
-        blurb={"The website you're looking at right now!"}
-        tags={['react.js', 'figma']}
-      />
-      <ProjectCard
-        url={''}
-        title={'Personal Website'}
-        dates={'May 2020 - Present'}
-        blurb={"The website you're looking at right now!"}
-        tags={['react.js', 'figma']}
-      />
+      {projects.props.projects.map((project) => {
+        return (
+          <ProjectCard
+            key={project.details.title}
+            url={project.details.repo}
+            title={project.details.title}
+            dates={project.details.dates}
+            gist={project.details.gist}
+            tags={project.details.tags}
+          />
+        );
+      })}
       <Button
         text={'see all'}
         url={'projects'}
