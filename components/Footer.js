@@ -19,15 +19,15 @@ const Footer = ({ navbarButtons }) => (
       ))}
     </div>
     <div className="w-full flex flex-row justify-between items-center">
-      <span className="font-light">Made by Sam Ping &copy; 2024</span>
-      <div className="flex flex-row space-x-5">
+      <span className="font-light">Thanks for taking a look!</span>
+      <div className="flex flex-row space-x-5 items-center">
         <Link
           href="https://github.com/samuel-ping"
           target="_blank"
           rel="noopener noreferrer"
         >
           <button className="flex items-center">
-            <GitHubIcon className="h-[28px] w-[28px] text-black hover:text-green-500 transition ease-in-out duration-300" />
+            <GitHubIcon className="h-10 w-10 text-black hover:text-green-500 transition-colors" />
           </button>
         </Link>
         <Link
@@ -36,7 +36,7 @@ const Footer = ({ navbarButtons }) => (
           rel="noopener noreferrer"
         >
           <button className="flex items-center">
-            <LinkedInIcon className="h-[28px] w-[28px] text-black hover:text-green-500 transition ease-in-out duration-300" />
+            <LinkedInIcon className="h-10 w-10 text-black hover:text-green-500 transition-colors" />
           </button>
         </Link>
         <Link
@@ -45,7 +45,7 @@ const Footer = ({ navbarButtons }) => (
           rel="noopener noreferrer"
         >
           <button className="flex items-center">
-            <EnvelopeIcon className="h-[28px] w-[28px] text-black hover:text-green-500 transition ease-in-out duration-300" />
+            <EnvelopeIcon className="h-10 w-10 text-black hover:text-green-500 transition-colors" />
           </button>
         </Link>
       </div>
