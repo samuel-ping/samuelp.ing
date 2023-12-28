@@ -1,15 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Button from '@components/outlineButton';
+import Button from '@components/rightArrowButton';
 import { ProjectCardCarousel } from '@components/projectCardCarousel';
 
 import profilePic from '@public/assets/sam.jpg';
 
-import { getProjectDetails } from '@lib/mdxUtils';
+import { GetProjectDetails } from '@lib/mdxUtils';
 
 export default async function Page() {
-  const projects = await getProjectDetails(4);
+  const projects = await GetProjectDetails(4);
 
   return (
     <>

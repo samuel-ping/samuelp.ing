@@ -1,6 +1,6 @@
 'use client';
 
-// arrow-right from https://flowbite.com/icons/
+// source: adapted from arrow-right from https://flowbite.com/icons/
 export const RightArrowIcon = ({ className }) => {
   return (
     <svg
@@ -16,6 +16,27 @@ export const RightArrowIcon = ({ className }) => {
         strokeLinejoin="round"
         strokeWidth="2"
         d="M1 5h12m0 0L9 1m4 4L9 9"
+      />
+    </svg>
+  );
+};
+
+// source: adapted from arrow-left from https://flowbite.com/icons/
+export const LeftArrowIcon = ({ className }) => {
+  return (
+    <svg
+      className={`${className} w-6 h-6`}
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 14 10"
+    >
+      <path
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M13 5H1m0 0 4 4M1 5l4-4"
       />
     </svg>
   );

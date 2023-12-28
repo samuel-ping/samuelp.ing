@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@components/outlineButton';
+import Button from '@components/rightArrowButton';
 import ProjectCard from '@components/projectCard';
 
 export const ProjectCardCarousel = ({ projects }) => {
@@ -10,7 +10,6 @@ export const ProjectCardCarousel = ({ projects }) => {
         return (
           <ProjectCard
             key={project.details.title}
-            url={project.details.repo}
             title={project.details.title}
             dates={project.details.dates}
             gist={project.details.gist}
@@ -18,11 +17,7 @@ export const ProjectCardCarousel = ({ projects }) => {
           />
         );
       })}
-      <Button
-        text={'see all'}
-        url={'projects'}
-        className={'h-80 space-x-1 rounded-xl'}
-      />
+      <Button text={'see all'} url={'projects'} className={'h-80 pr-4'} />
     </div>
   );
 };

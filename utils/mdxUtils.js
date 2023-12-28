@@ -5,13 +5,15 @@ import { bundleMDX } from 'mdx-bundler';
 
 import { DateSorter, FormatDateStr } from '@lib/dateUtils';
 
+const PATH = 'content/projects';
+
 /**
  * Returns the FrontMatter for the projects. If n is specified, returns the n most recent projects.
  * @param {*} n Number of projects to return
  * @returns
  */
-export async function getProjectDetails(n) {
-  const projectsDirectory = path.join(process.cwd(), 'content/projects');
+export async function GetProjectDetails(n) {
+  const projectsDirectory = path.join(process.cwd(), PATH);
   const filenames = fs.readdirSync(projectsDirectory);
 
   const projectDetails = filenames.map(async (filename) => {
@@ -20,10 +22,11 @@ export async function getProjectDetails(n) {
 
     const { frontmatter } = await bundleMDX({ source: fileContents });
 
-    frontmatter['dates'] = FormatDateStr(frontmatter.start, frontmatter.end);
-
     return {
-      details: frontmatter,
+      details: {
+        ...frontmatter,
+        dates: FormatDateStr(frontmatter.start, frontmatter.end),
+      },
     };
   });
 
@@ -33,6 +36,27 @@ export async function getProjectDetails(n) {
   return {
     props: {
       projects: n === undefined ? sortedProjects : sortedProjects.slice(0, n),
+    },
+  };
+}
+
+export async function GetProject(slug) {
+  const projectFilePath = path.join(
+    process.cwd(),
+    PATH,
+    `${slug.replaceAll(' ', '-')}.mdx`,
+  );
+  const projectFileContents = fs.readFileSync(projectFilePath, 'utf8');
+
+  const { code, frontmatter } = await bundleMDX({
+    source: projectFileContents,
+  });
+
+  return {
+    code,
+    details: {
+      ...frontmatter,
+      dates: FormatDateStr(frontmatter.start, frontmatter.end),
     },
   };
 }
