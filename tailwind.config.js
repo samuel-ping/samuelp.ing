@@ -49,14 +49,5 @@ module.exports = {
       'pink-lace': '#F7D8E3',
       'pistachio-ice-pink': '#C2A7C6',
     },
-    extend: {
-      // tailwind-typography settings (unused at the moment)
-      typography: {
-        DEFAULT: {
-          css: {},
-        },
-      },
-    },
   },
-  plugins: [require('@tailwindcss/typography')],
 };

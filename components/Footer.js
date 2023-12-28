@@ -18,8 +18,7 @@ const Footer = ({ navbarButtons }) => (
         />
       ))}
     </div>
-    <div className="w-full flex flex-row justify-between items-center">
-      <span className="font-light">Thanks for taking a look!</span>
+    <div className="w-full flex flex-row justify-end items-center">
       <div className="flex flex-row space-x-5 items-center">
         <Link
           href="https://github.com/samuel-ping"

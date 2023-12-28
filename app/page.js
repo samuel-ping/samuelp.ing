@@ -9,7 +9,7 @@ export default async function Page() {
   return (
     <>
       {/* about me section */}
-      <div className="py-32 flex justify-between">
+      <div className="pb-32 flex justify-between">
         <div className="max-w-md flex flex-col space-y-5">
           <span className="text-4xl font-medium">
             Hey! I&apos;m Sam Ping, a...

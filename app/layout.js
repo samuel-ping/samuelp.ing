@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="max-w-screen-lg flex flex-col space-y-12 px-5 py-12 m-auto bg-green-100">
+      <body className="max-w-screen-lg flex flex-col space-y-32 px-5 py-12 m-auto bg-green-100">
         <Navbar navbarButtons={NavbarButtons} />
         <main className="flex flex-col space-y-14">{children}</main>
         <Footer navbarButtons={NavbarButtons} />

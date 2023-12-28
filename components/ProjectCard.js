@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 
 import Chip from '@components/chip';
@@ -10,7 +8,7 @@ const ProjectCard = ({ url, title, dates, blurb, tags }) => {
     <Link href={url}>
       <button
         type="button"
-        className="snap-center md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl border-2 border-green-500 transition-colors hover:bg-green-500"
+        className="snap-center md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg transition-colors bg-green-50 hover:bg-green-500"
       >
         <div className=" space-y-2">
           <div className="flex flex-col text-left group-hover:text-green-100">
@@ -20,7 +18,7 @@ const ProjectCard = ({ url, title, dates, blurb, tags }) => {
           </div>
 
           {/* tags */}
-          <div className="w-full flex flex-row space-x-1">
+          <div className="w-full flex flex-row flex-wrap gap-1">
             {tags === undefined || tags.length == 0 ? (
               <></>
             ) : (
