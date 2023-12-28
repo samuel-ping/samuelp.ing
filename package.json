@@ -13,17 +13,12 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.js --ignore-path ./.gitignore"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.7",
-    "@material-tailwind/react": "^1.2.4",
-    "@tabler/icons-react": "^2.44.0",
     "@tailwindcss/typography": "^0.5.8",
-    "@wojtekmaj/react-hooks": "^1.13.0",
     "framer-motion": "^4.1.13",
     "gray-matter": "^4.0.3",
     "next": "^14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-pdf": "^6.2.0",
     "rehype-react": "^6.2.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.1.0",

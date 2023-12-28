@@ -1,8 +1,8 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Button from '@components/outlineButton';
-import ProjectCard from '@components/projectCard';
-import WorkCard from '@components/workCard';
+import { ProjectCardCarousel } from '@components/projectCardCarousel';
 
 import profilePic from '@public/assets/sam.jpg';
 export default async function Page() {
@@ -31,70 +31,19 @@ export default async function Page() {
         />
       </div>
 
-      {/* experience section */}
-      <div className="flex flex-col space-y-8">
-        <span className="text-4xl font-medium">Work Experience</span>
-
-        <div className="flex flex-col space-y-5">
-          <WorkCard
-            url={''}
-            title={'Software Engineer II'}
-            company={'MongoDB'}
-            dates={'Aug 2023 - Present'}
-            location={'New York, NY'}
-          />
-          <WorkCard
-            url={''}
-            title={'Software Engineer II'}
-            company={'MongoDB'}
-            dates={'Aug 2023 - Present'}
-            location={'New York, NY'}
-          />
-          <WorkCard
-            url={''}
-            title={'Software Engineer II'}
-            company={'MongoDB'}
-            dates={'Aug 2023 - Present'}
-            location={'New York, NY'}
-          />
-        </div>
-
-        <div className="flex justify-center">
-          <Button text={'see all experience'} url={'/work'} />
-        </div>
-      </div>
-
       {/* projects section */}
       <div className="flex flex-col space-y-8">
-        <span className="text-4xl font-medium">Projects</span>
-        <div className="flex flex-row space-x-2">
-          <ProjectCard
-            url={''}
-            title={'Personal Website'}
-            dates={'May 2020 - Present'}
-            blurb={"The website you're looking at right now!"}
-            tags={['react.js', 'figma']}
-          />
-          <ProjectCard
-            url={''}
-            title={'Personal Website'}
-            dates={'May 2020 - Present'}
-            blurb={"The website you're looking at right now!"}
-            tags={['react.js', 'figma']}
-          />
-          <ProjectCard
-            url={''}
-            title={'Personal Website'}
-            dates={'May 2020 - Present'}
-            blurb={"The website you're looking at right now!"}
-            tags={['react.js', 'figma']}
-          />
-          <Button
-            text={'view all'}
-            url={'projects'}
-            className={'h-96 space-x-1 rounded-xl'}
-          />
+        <div className="flex flex-col space-y-2">
+          <span className="text-4xl font-medium">Projects</span>
+          <span className="text-base font-light">
+            Here are some of my favorite projects I&apos;ve worked on! Or,{' '}
+            <Link href="/projects" className="underline">
+              see all my projects
+            </Link>
+            .
+          </span>
         </div>
+        <ProjectCardCarousel n={3} />
       </div>
     </>
   );

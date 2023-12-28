@@ -10,7 +10,7 @@ const ProjectCard = ({ url, title, dates, blurb, tags }) => {
     <Link href={url}>
       <button
         type="button"
-        className="group w-64 h-96 flex flex-col justify-between p-7 rounded-xl border-2 border-green-500 transition-colors hover:bg-green-500"
+        className="snap-center md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl border-2 border-green-500 transition-colors hover:bg-green-500"
       >
         <div className=" space-y-2">
           <div className="flex flex-col text-left group-hover:text-green-100">
