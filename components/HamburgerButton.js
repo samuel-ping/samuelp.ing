@@ -11,7 +11,7 @@ export default function HamburgerButton({ isOpen }) {
       fill="none"
       strokeWidth="2"
       stroke="#000000"
-      //   strokeLinecap="round"
+      strokeLinecap="round"
       animate={isOpen ? 'open' : 'closed'}
       className="text-center"
     >

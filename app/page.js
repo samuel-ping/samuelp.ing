@@ -14,7 +14,7 @@ export default async function Page() {
   return (
     <>
       {/* about me section */}
-      <div className="pb-32 flex justify-between">
+      <div className="pb-16 flex flex-col-reverse items-center gap-y-4 md:flex-row md:justify-between md:pb-32">
         <div className="max-w-md flex flex-col space-y-5">
           <span className="text-4xl font-medium">
             Hey! I&apos;m Sam Ping, a...
@@ -32,13 +32,13 @@ export default async function Page() {
           alt="Photo of Sam"
           placeholder="blur"
           priority
-          className="w-64 h-64 rounded-full object-cover"
+          className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover"
         />
       </div>
 
       {/* projects section */}
-      <div className="flex flex-col space-y-8">
-        <div className="flex flex-col space-y-2">
+      <div className="flex flex-col gap-y-8">
+        <div className="flex flex-col gap-y-2">
           <span className="text-4xl font-medium">Projects</span>
           <span className="text-base font-light">
             Here are some of my recent projects that I&apos;ve been working on!

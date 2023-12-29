@@ -2,17 +2,18 @@
 
 import Link from 'next/link';
 
-const NavbarButton = ({ active, title, route, mobile }) => {
+const NavbarButton = ({ active, title, route, mobile, close }) => {
   if (mobile) {
     return (
-      <Link href={route}>
-        <div
-          className="flex px-4 py-2 text-md leading-10 font-medium"
-          // onClick={close}
-          aria-hidden="true"
-        >
-          <span>{title}</span>
-        </div>
+      <Link
+        href={route}
+        className={`${
+          active ? 'text-green-500' : ''
+        } p-12 text-center text-xl transition-colors hover:text-green-500`}
+        onClick={close}
+        aria-hidden="true"
+      >
+        {title}
       </Link>
     );
   }

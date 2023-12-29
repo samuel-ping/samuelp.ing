@@ -8,12 +8,12 @@ const ProjectCard = ({ title, dates, gist, tags }) => {
     <Link href={`projects/${title.replaceAll(' ', '-')}`}>
       <button
         type="button"
-        className="snap-center md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg transition-colors bg-green-50 hover:bg-green-500"
+        className="snap-start md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg transition-colors bg-green-50 hover:bg-green-500"
       >
         <div className=" space-y-2">
           <div className="flex flex-col text-left group-hover:text-green-100">
             <span className="text-2xl ">{title}</span>
-            <span className=" font-light italic">{dates}</span>
+            <span className="font-light italic">{dates}</span>
             <span className="">{gist}</span>
           </div>
 

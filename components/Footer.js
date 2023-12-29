@@ -3,13 +3,11 @@
 import Link from 'next/link';
 
 import NavbarButton from '@components/navbarButton';
-import { EnvelopeIcon } from '@components/icons';
-import { GitHubIcon } from '@components/icons';
-import { LinkedInIcon } from '@components/icons';
+import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from '@components/icons';
 
 const Footer = ({ navbarButtons }) => (
   <footer className="flex flex-col space-y-5">
-    <div className="flex flex-row justify-end space-x-4">
+    <div className="flex flex-row justify-center md:justify-end space-x-4">
       {navbarButtons.map((navButton) => (
         <NavbarButton
           title={navButton.title}
@@ -18,7 +16,7 @@ const Footer = ({ navbarButtons }) => (
         />
       ))}
     </div>
-    <div className="w-full flex flex-row justify-end items-center">
+    <div className="w-full flex flex-row justify-center md:justify-end items-center">
       <div className="flex flex-row space-x-5 items-center">
         <Link
           href="https://github.com/samuel-ping"
