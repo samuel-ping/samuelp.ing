@@ -5,7 +5,8 @@ import { bundleMDX } from 'mdx-bundler';
 
 import { DateSorter, FormatDateStr } from '@lib/dateUtils';
 
-const PATH = 'content/projects';
+const PATH = 'content';
+const PROJECTS = 'projects';
 
 /**
  * Returns the FrontMatter for the projects. If n is specified, returns the n most recent projects.
@@ -13,7 +14,7 @@ const PATH = 'content/projects';
  * @returns
  */
 export async function GetProjectDetails(n) {
-  const projectsDirectory = path.join(process.cwd(), PATH);
+  const projectsDirectory = path.join(process.cwd(), PATH, PROJECTS);
   const filenames = fs.readdirSync(projectsDirectory);
 
   const projectDetails = filenames.map(async (filename) => {
@@ -59,4 +60,15 @@ export async function GetProject(slug) {
       dates: FormatDateStr(frontmatter.start, frontmatter.end),
     },
   };
+}
+
+export async function GetAboutMDX() {
+  const aboutFilePath = path.join(process.cwd(), PATH, 'about.mdx');
+  const aboutFileContents = fs.readFileSync(aboutFilePath, 'utf8');
+
+  const { code } = await bundleMDX({
+    source: aboutFileContents,
+  });
+
+  return { code };
 }

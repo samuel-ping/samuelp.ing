@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const { code, details } = await GetProject(params.slug);
+  const { code, details } = await GetProject(`projects/${params.slug}`);
   const Component = getMDXComponent(code);
 
   const tags = details.tags;

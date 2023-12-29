@@ -1,24 +1,17 @@
-import Image from 'next/image';
+import { getMDXComponent } from 'mdx-bundler/client';
 
-// import mdToReact from 'utils/MarkdownProcessor';
-import profilePic from '@public/assets/sam.jpg';
+import { Components as MDXComponents } from '@components/mdx/components';
+
+import { GetAboutMDX } from '@lib/mdxUtils';
 
 export default async function Page() {
+  const { code } = await GetAboutMDX('about');
+  const Component = getMDXComponent(code);
+
   return (
-    <div className="flex flex-col items-center justify-center">
-      <span className="text-2xl">About Me</span>
-      <Image
-        src={profilePic}
-        alt="Photo of Sam"
-        width="200"
-        height="200"
-        priority
-        placeholder="blur"
-        className="rounded-full object-cover"
-      />
-      <article className="prose prose-md mx-5 lg:prose-lg">
-        {'hello world'}
-      </article>
+    <div className="flex flex-col gap-y-2">
+      <span className="text-4xl font-medium">About me</span>
+      <Component components={MDXComponents} />
     </div>
   );
 }
