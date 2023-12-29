@@ -42,6 +42,46 @@ export const LeftArrowIcon = ({ className }) => {
   );
 };
 
+export const CodeBracketsIcon = ({ className }) => {
+  return (
+    <svg
+      className={`${className} h-4`}
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 20 16"
+    >
+      <path
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"
+      />
+    </svg>
+  );
+};
+
+export const ExternalLinkIcon = ({ className }) => {
+  return (
+    <svg
+      className={`${className} h-4`}
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 18 18"
+    >
+      <path
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"
+      />
+    </svg>
+  );
+};
+
 // source: https://fonts.google.com/icons?selected=Material+Icons:email:&icon.style=Filled&icon.set=Material+Icons
 export const EnvelopeIcon = ({ className }) => {
   return (

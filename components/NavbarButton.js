@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-const NavbarButton = ({ title, route, mobile }) => {
+const NavbarButton = ({ active, title, route, mobile }) => {
   if (mobile) {
     return (
       <Link href={route}>
@@ -18,7 +18,11 @@ const NavbarButton = ({ title, route, mobile }) => {
   }
 
   return (
-    <div className="flex items-center justify-center cursor-pointer text-xl transition-colors hover:text-green-500">
+    <div
+      className={`${
+        active ? 'text-green-500' : ''
+      } flex items-center justify-center cursor-pointer text-xl transition-colors hover:text-green-500`}
+    >
       <Link href={route}>
         <span>{title}</span>
       </Link>
