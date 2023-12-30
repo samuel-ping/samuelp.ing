@@ -35,6 +35,7 @@ jobs:
       # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -42,11 +43,13 @@ jobs:
           echo "command=ci" >> $GITHUB_OUTPUT
           echo "runner=npx --no-install" >> $GITHUB_OUTPUT
           exit 0
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: npm
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
@@ -55,6 +58,7 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
+
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -65,12 +69,23 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
       - name: Install dependencies
         run: npm ci
+
       - name: Build with Next.js
         run: npx next build
+
       - name: Static HTML export with Next.js
         run: npx next export
+
+      - name: Add CNAME and a README to artifact
+        run: |
+          echo "samuelp.ing" > out/CNAME
+          echo "# Hi!" > out/README.md
+          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the [Main branch](https://github.com/samuel-ping/personal-website-v3)!" >> out/README.md
+          echo "#### Note - This message was automatically generated." >> out/README.md
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
