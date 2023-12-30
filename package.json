@@ -1,5 +1,5 @@
 {
-  "name": "personal-website",
+  "name": "samuelp.ing",
   "version": "4.0.0",
   "private": true,
   "scripts": {
@@ -19,12 +19,7 @@
     "mdx-bundler": "^10.0.1",
     "next": "^13.4.13",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rehype-react": "^6.2.0",
-    "remark-parse": "^9.0.0",
-    "remark-rehype": "^8.1.0",
-    "superjson": "^1.7.4",
-    "unified": "^9.2.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.0.7",

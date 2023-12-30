@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-const link = ({ href, ...props }) => {
-  if (href.startsWith('http')) {
+export const NavLink = ({ href, ...props }) => {
+  if (href.startsWith('https')) {
     return (
       <Link
         {...props}
@@ -37,7 +37,7 @@ const unorderedList = (props) => {
 };
 
 export const Components = {
-  a: link,
+  a: NavLink,
   h3: heading3,
   h4: heading4,
   ul: unorderedList,

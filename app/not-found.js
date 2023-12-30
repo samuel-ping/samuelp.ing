@@ -1,5 +1,9 @@
-import NotFound from '@/components/notFound';
+import NotFoundMessage from '@/components/notFoundMessage';
 
-export default function Error() {
-  return <NotFound />;
+export const metadata = {
+  title: '4[shrimp]4',
+};
+
+export default function NotFound() {
+  return <NotFoundMessage />;
 }

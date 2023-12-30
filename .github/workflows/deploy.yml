@@ -63,11 +63,11 @@ jobs:
       - name: Build with Next.js
         run: npx next build
 
-      - name: Add CNAME and a README to artifact
+      - name: Add .nojekyll and a README to artifact
         run: |
-          echo "samuelp.ing" > out/CNAME
+          touch out/.nojekyll
           echo "# Hi!" > out/README.md
-          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the [Main branch](https://github.com/samuel-ping/personal-website)!" >> out/README.md
+          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the [main repository](https://github.com/samuel-ping/samuelp.ing)!" >> out/README.md
           echo "#### Note - This message was automatically generated." >> out/README.md
 
       - name: Push to samuel-ping.github.io
@@ -77,6 +77,9 @@ jobs:
           BRANCH: gh-pages
           FOLDER: ./out
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+
+      - name: Add CNAME
+        run: echo "samuelp.ing" > out/CNAME
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

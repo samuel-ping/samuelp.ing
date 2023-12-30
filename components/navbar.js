@@ -16,7 +16,7 @@ export default function Navbar({ navbarButtons }) {
       {({ open, close }) => (
         <>
           <nav className="flex items-center justify-between">
-            <Logo size={48} visible={true} />
+            <Logo isAnimated size={48} visible={true} />
 
             {/* Desktop nav */}
             <div className="hidden md:flex flex-row gap-x-4">

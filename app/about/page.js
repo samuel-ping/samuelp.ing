@@ -4,6 +4,10 @@ import { Components as MDXComponents } from '@/components/mdx/components';
 
 import { GetAboutMDX } from '@/utils/mdxUtils';
 
+export const metadata = {
+  title: 'About',
+};
+
 export default async function Page() {
   const { code } = await GetAboutMDX('about');
   const Component = getMDXComponent(code);

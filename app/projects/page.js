@@ -2,6 +2,10 @@ import ProjectCard from '@/components/projectCard';
 
 import { GetProjectDetails } from '@/utils/mdxUtils';
 
+export const metadata = {
+  title: 'Projects',
+};
+
 export default async function Page() {
   const projects = await GetProjectDetails();
 

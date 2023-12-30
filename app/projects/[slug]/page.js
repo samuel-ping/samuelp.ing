@@ -16,6 +16,15 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }) {
+  const { details } = await GetProject(`projects/${params.slug}`);
+
+  return {
+    title: details.title,
+    description: details.gist,
+  };
+}
+
 export default async function Page({ params }) {
   const { code, details } = await GetProject(`projects/${params.slug}`);
   const Component = getMDXComponent(code);
