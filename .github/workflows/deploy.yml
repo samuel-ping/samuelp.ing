@@ -1,11 +1,6 @@
-# Builds and pushes frontend to gh-pages branch
-# Pushes backend to server branch
-
 name: deploy next.js site to gh pages
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [main]
   pull_request:
@@ -27,12 +22,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # pushes frontend code to gh-pages branch
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -52,12 +45,6 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: next
 
       - name: Restore cache
         uses: actions/cache@v3
@@ -76,15 +63,20 @@ jobs:
       - name: Build with Next.js
         run: npx next build
 
-      - name: Static HTML export with Next.js
-        run: npx next export
-
       - name: Add CNAME and a README to artifact
         run: |
           echo "samuelp.ing" > out/CNAME
           echo "# Hi!" > out/README.md
-          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the [Main branch](https://github.com/samuel-ping/personal-website-v3)!" >> out/README.md
+          echo "You're currently looking at the build artifacts of my website. To check out the code, switch over to the [Main branch](https://github.com/samuel-ping/personal-website)!" >> out/README.md
           echo "#### Note - This message was automatically generated." >> out/README.md
+
+      - name: Push to samuel-ping.github.io
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: git@github.com:samuel-ping/samuel-ping.github.io.git
+          BRANCH: gh-pages
+          FOLDER: ./out
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
