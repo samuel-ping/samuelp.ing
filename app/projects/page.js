@@ -17,6 +17,7 @@ export default async function Page() {
               dates={project.details.dates}
               gist={project.details.gist}
               tags={project.details.tags}
+              repo={project.details.repo}
             />
           );
         })}

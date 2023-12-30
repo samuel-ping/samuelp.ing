@@ -3,9 +3,14 @@ import Link from 'next/link';
 import Chip from '@/components/chip';
 import { RightArrowIcon as Arrow } from '@/components/icons';
 
-const ProjectCard = ({ title, dates, gist, tags }) => {
+const ProjectCard = ({ repo, title, dates, gist, tags }) => {
   return (
-    <Link href={`projects/${title.replaceAll(' ', '-')}`}>
+    <Link
+      // href={`projects/${title.replaceAll(' ', '-')}`}
+      href={repo}
+      target="_blank"
+      rel="noopener"
+    >
       <button
         type="button"
         className="snap-start md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg transition-colors bg-green-50 hover:bg-green-500"
