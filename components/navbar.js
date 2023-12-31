@@ -46,7 +46,7 @@ export default function Navbar({ navbarButtons }) {
             leaveTo="transform scale-95 opacity-0"
           >
             <div className="md:hidden flex justify-center">
-              <Popover.Panel className="absolute w-screen flex flex-col bg-green-100 shadow-lg divide-y divide-green-200">
+              <Popover.Panel className="absolute w-screen flex flex-col bg-primaryBg shadow-lg divide-y divide-secondaryBg">
                 {navbarButtons.map((button) => (
                   <NavbarButton
                     key={button.title}

@@ -8,8 +8,8 @@ const NavbarButton = ({ active, title, route, mobile, close }) => {
       <Link
         href={route}
         className={`${
-          active ? 'text-green-500' : ''
-        } p-12 text-center text-xl transition-colors hover:text-green-500`}
+          active ? 'text-primaryLargeText' : ''
+        } p-12 text-center text-xl transition-colors hover:text-primaryLargeText`}
         onClick={close}
         aria-hidden="true"
       >
@@ -21,8 +21,8 @@ const NavbarButton = ({ active, title, route, mobile, close }) => {
   return (
     <div
       className={`${
-        active ? 'text-green-500' : ''
-      } flex items-center justify-center cursor-pointer text-xl transition-colors hover:text-green-500`}
+        active ? 'text-primaryLargeText' : ''
+      } flex items-center justify-center cursor-pointer text-xl transition-colors hover:text-primaryLargeText`}
     >
       <Link href={route}>
         <span>{title}</span>

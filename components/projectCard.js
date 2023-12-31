@@ -13,10 +13,10 @@ const ProjectCard = ({ repo, title, dates, gist, tags }) => {
     >
       <button
         type="button"
-        className="snap-start md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg transition-colors bg-green-50 hover:bg-green-500"
+        className="snap-center border border-secondaryBg md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg transition-colors bg-primaryBg hover:bg-secondaryBg"
       >
         <div className=" space-y-2">
-          <div className="flex flex-col text-left group-hover:text-green-100">
+          <div className="flex flex-col text-left ">
             <span className="text-2xl ">{title}</span>
             <span className="font-light italic">{dates}</span>
             <span className="">{gist}</span>
@@ -33,7 +33,7 @@ const ProjectCard = ({ repo, title, dates, gist, tags }) => {
         </div>
 
         {/* learn more button */}
-        <div className="flex flex-row items-center gap-x-2 group-hover:text-green-100">
+        <div className="flex flex-row items-center gap-x-2 ">
           <span className="text-xl">learn more</span>
           <Arrow
             className={

@@ -14,15 +14,16 @@ export default async function Page() {
   return (
     <>
       {/* about me section */}
-      <div className="pb-16 flex flex-col-reverse items-center gap-y-4 md:flex-row md:justify-between md:pb-32">
-        <div className="max-w-md flex flex-col space-y-5">
+      <div className="pb-16 flex flex-col-reverse items-center gap-y-4 md:flex-row md:justify-between md:pb-48">
+        <div className="max-w-lg flex flex-col space-y-5">
           <span className="text-4xl font-medium">
-            Hey! I&apos;m Sam Ping, a...
+            Hey! I&apos;m{' '}
+            <span className="text-primaryLargeText">Sam Ping</span>, a...
           </span>
           <span className="text-2xl font-light">
-            ... software engineer at MongoDB, Rutgers University graduate, avid
-            tennis player, budding boulderer, occasional theater performer, and
-            neglectful plant dad. I&apos;m currently based out of NYC.
+            ... software engineer, Rutgers University graduate, cat lover (but
+            dog liker), avid tennis player, budding boulderer, occasional
+            theater performer, and neglectful plant dad.
           </span>
           <Button text={'more about me'} url={'/about'} />
         </div>
@@ -37,8 +38,8 @@ export default async function Page() {
       </div>
 
       {/* projects section */}
-      <div className="flex flex-col gap-y-8">
-        <div className="flex flex-col gap-y-2">
+      <div className="flex flex-col gap-y-8 bg-secondary/90 rounded-2xl max-w-7xl">
+        <div className="flex flex-col gap-y-2 px-10 pt-16">
           <span className="text-4xl font-medium">Projects</span>
           <span className="text-base font-light">
             Here are some of my more recent projects! Or,{' '}
@@ -48,7 +49,9 @@ export default async function Page() {
             .
           </span>
         </div>
-        <ProjectCardCarousel projects={projects} />
+        <div className="pb-16">
+          <ProjectCardCarousel projects={projects} />
+        </div>
       </div>
     </>
   );

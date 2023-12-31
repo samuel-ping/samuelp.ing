@@ -1,5 +1,6 @@
 const colors = require('tailwindcss/colors');
 
+// https://colorhunt.co/palette/88ab8eafc8adeee7daf2f1eb
 module.exports = {
   content: ['./app/**/*.js', './components/**/*.js', './public/**/*.html'],
   theme: {
@@ -8,20 +9,16 @@ module.exports = {
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
-      gray: colors.gray,
-      emerald: colors.emerald,
-      indigo: colors.indigo,
-      yellow: colors.yellow,
-      green: {
-        10: '#f9fffb',
-        50: '#d8f6e4',
-        100: '#cef3dd',
-        200: '#aae2c0',
-        250: '#90dbae',
-        300: '#6bc58f',
-        400: '#358655',
-        500: '#237242',
-      },
+
+      primaryBg: '#FFF8EB',
+      secondaryBg: '#EEE7DA',
+      text: colors.black,
+      primarySmallTextBg: '#577A5D', // #577A5D
+      primaryLargeText: '#709974',
+      primary: '#88AA8D', // #88AA8D
+      secondary: '#AEC8AC', // #AEC8AC
+      accent: '#6FB7C6',
+      accent2: '#FCBFB7',
     },
   },
 };

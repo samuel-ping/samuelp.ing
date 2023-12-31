@@ -5,7 +5,7 @@ import ProjectCard from '@/components/projectCard';
 
 export const ProjectCardCarousel = ({ projects }) => {
   return (
-    <div className="flex snap-x md:snap-none overflow-x-auto space-x-7 pb-5">
+    <div className="flex snap-x md:snap-none overflow-x-auto space-x-7 px-5 md:px-10 pb-5">
       {projects.props.projects.map((project) => {
         return (
           <ProjectCard
@@ -18,7 +18,14 @@ export const ProjectCardCarousel = ({ projects }) => {
           />
         );
       })}
-      <Button text={'see all'} url={'projects'} className={'h-80 pr-4'} />
+      <Button
+        text={'see all'}
+        url={'projects'}
+        className={
+          'snap-center p-4 rounded-xl bg-primaryBg hover:bg-secondaryBg border border-secondaryBg'
+        }
+        // color="black"
+      />
     </div>
   );
 };

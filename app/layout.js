@@ -14,6 +14,7 @@ export const metadata = {
   applicationName: 'Samuel Ping',
   authors: [{ name: 'Samuel Ping' }],
   creator: 'Samuel Ping',
+  metadataBase: new URL('https://samuelp.ing'),
   openGraph: {
     title: 'Samuel Ping',
     description: "Samuel Ping's personal portfolio website",
@@ -39,7 +40,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen max-w-screen-lg flex flex-col gap-y-32 px-5 py-12 mx-auto bg-green-50">
+      <body className="min-h-screen max-w-screen-lg flex flex-col gap-y-32 px-5 lg:px-0 py-12 mx-auto bg-primaryBg">
         <Navbar navbarButtons={NavbarButtons} />
         <main className="flex flex-col flex-grow gap-y-14">{children}</main>
         <Footer navbarButtons={NavbarButtons} />
