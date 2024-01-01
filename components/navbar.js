@@ -7,6 +7,7 @@ import { Popover, Transition } from '@headlessui/react';
 import HamburgerMenuIcon from '@/components/hamburgerMenuIcon';
 import Logo from '@/components/logo';
 import NavbarButton from '@/components/navbarButton';
+import { ThemeToggle } from './themeToggle';
 
 export default function Navbar({ navbarButtons }) {
   const pathname = usePathname();
@@ -29,6 +30,7 @@ export default function Navbar({ navbarButtons }) {
                   route={button.route}
                 />
               ))}
+              <ThemeToggle />
             </div>
 
             <div className="md:hidden">
@@ -46,7 +48,7 @@ export default function Navbar({ navbarButtons }) {
             leaveTo="transform scale-95 opacity-0"
           >
             <div className="md:hidden flex justify-center">
-              <Popover.Panel className="absolute w-screen flex flex-col bg-primaryBg shadow-lg divide-y divide-secondaryBg">
+              <Popover.Panel className="absolute w-screen flex flex-col bg-beige-100 dark:bg-green-600 shadow-lg dark:shadow-green-700 divide-y divide-beige-200 dark:divide-green-500">
                 {navbarButtons.map((button) => (
                   <NavbarButton
                     key={button.title}
@@ -57,6 +59,9 @@ export default function Navbar({ navbarButtons }) {
                     close={close}
                   />
                 ))}
+                <div className="p-12 flex justify-center">
+                  <ThemeToggle />
+                </div>
               </Popover.Panel>
             </div>
           </Transition>

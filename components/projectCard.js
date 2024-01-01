@@ -13,7 +13,7 @@ const ProjectCard = ({ repo, title, dates, gist, tags }) => {
     >
       <button
         type="button"
-        className="snap-center border border-secondaryBg md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg transition-colors bg-primaryBg hover:bg-secondaryBg"
+        className="snap-center md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg dark:shadow-green-700 transition-colors bg-beige-100 hover:bg-beige-200 border border-beige-200 dark:bg-green-600 dark:hover:bg-green-700 dark:border-green-500"
       >
         <div className=" space-y-2">
           <div className="flex flex-col text-left ">

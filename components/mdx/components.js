@@ -6,7 +6,7 @@ export const NavLink = ({ href, ...props }) => {
       <Link
         {...props}
         href={href}
-        className="underline transition-colors hover:text-green-500"
+        className="underline transition-colors hover:text-green-400 dark:hover:text-green-50"
         target="_blank"
         rel="noopener"
       />
@@ -17,7 +17,7 @@ export const NavLink = ({ href, ...props }) => {
     <Link
       {...props}
       href={href}
-      className="underline transition-colors hover:text-green-500"
+      className="underline transition-colors hover:text-green-400 dark:hover:text-green-50"
     />
   );
 };

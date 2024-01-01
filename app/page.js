@@ -18,7 +18,8 @@ export default async function Page() {
         <div className="max-w-lg flex flex-col space-y-5">
           <span className="text-4xl font-medium">
             Hey! I&apos;m{' '}
-            <span className="text-primaryLargeText">Sam Ping</span>, a...
+            <span className="text-green-300 dark:text-green-50">Sam Ping</span>,
+            a...
           </span>
           <span className="text-2xl font-light">
             ... software engineer, Rutgers University graduate, cat lover (but
@@ -38,7 +39,7 @@ export default async function Page() {
       </div>
 
       {/* projects section */}
-      <div className="flex flex-col gap-y-8 bg-secondary/90 rounded-2xl max-w-7xl">
+      <div className="flex flex-col gap-y-8 bg-green-200/90 dark:bg-green-500/90 rounded-2xl max-w-7xl">
         <div className="flex flex-col gap-y-2 px-10 pt-16">
           <span className="text-4xl font-medium">Projects</span>
           <span className="text-base font-light">

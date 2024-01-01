@@ -30,7 +30,7 @@ const Footer = ({ navbarButtons }) => {
             rel="noopener noreferrer"
           >
             <button className="flex items-center">
-              <GitHubIcon className="h-10 w-10 text-black hover:text-primary transition-colors" />
+              <GitHubIcon className="h-10 w-10 hover:text-green-300 dark:hover:text-green-50 transition-colors" />
             </button>
           </Link>
           <Link
@@ -39,7 +39,7 @@ const Footer = ({ navbarButtons }) => {
             rel="noopener noreferrer"
           >
             <button className="flex items-center">
-              <LinkedInIcon className="h-10 w-10 text-black hover:text-primary transition-colors" />
+              <LinkedInIcon className="h-10 w-10 hover:text-green-300 dark:hover:text-green-50 transition-colors" />
             </button>
           </Link>
           <Link
@@ -48,7 +48,7 @@ const Footer = ({ navbarButtons }) => {
             rel="noopener noreferrer"
           >
             <button className="flex items-center">
-              <EnvelopeIcon className="h-10 w-10 text-black hover:text-primary transition-colors" />
+              <EnvelopeIcon className="h-10 w-10 hover:text-green-300 dark:hover:text-green-50 transition-colors" />
             </button>
           </Link>
         </div>

@@ -22,9 +22,8 @@ export const ProjectCardCarousel = ({ projects }) => {
         text={'see all'}
         url={'projects'}
         className={
-          'snap-center p-4 rounded-xl bg-primaryBg hover:bg-secondaryBg border border-secondaryBg'
+          'snap-center p-4 rounded-xl bg-beige-100 hover:bg-beige-200 border border-beige-200 dark:bg-green-600 dark:hover:bg-green-700 dark:border-green-500'
         }
-        // color="black"
       />
     </div>
   );

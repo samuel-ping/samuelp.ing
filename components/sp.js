@@ -1,15 +1,14 @@
 import { motion } from 'framer-motion';
 
-function SPLogo({ isAnimated, color, size, visible }) {
+function SPLogo({ isAnimated, size, visible }) {
   if (!isAnimated) {
     return (
       <svg
+        className="stroke-2 stroke-black dark:stroke-beige-200"
         xmlns="http://www.w3.org/2000/svg"
         width={size * 0.65}
         height={size}
         viewBox="0 0 14.249 22.02"
-        stroke={color}
-        strokeWidth={2.425}
         strokeOpacity={visible ? 1 : 0}
       >
         <g fill="none">
@@ -46,12 +45,11 @@ function SPLogo({ isAnimated, color, size, visible }) {
 
   return (
     <motion.svg
+      className="stroke-2 stroke-black dark:stroke-beige-200"
       xmlns="http://www.w3.org/2000/svg"
       width={size * 0.65}
       height={size}
       viewBox="0 0 14.249 22.02"
-      stroke={color}
-      strokeWidth={2.425}
       strokeOpacity={visible ? 1 : 0}
       initial="hidden"
       animate="visible"

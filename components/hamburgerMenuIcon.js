@@ -5,15 +5,12 @@ import { motion } from 'framer-motion';
 export default function HamburgerMenuIcon({ isOpen }) {
   return (
     <motion.svg
+      className="stroke-black dark:stroke-beige-100 stroke-2 text-center"
       width="35"
       height="35"
       viewBox="0 0 23 20"
-      fill="none"
-      strokeWidth="2"
-      stroke="#000000"
       strokeLinecap="round"
       animate={isOpen ? 'open' : 'closed'}
-      className="text-center"
     >
       <motion.path
         variants={{
