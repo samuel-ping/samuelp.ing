@@ -26,6 +26,7 @@ export async function GetProjectDetails(n) {
     return {
       details: {
         ...frontmatter,
+        slug: filename.split('.mdx')[0],
         dates: FormatDateStr(frontmatter.start, frontmatter.end),
       },
     };
@@ -42,11 +43,7 @@ export async function GetProjectDetails(n) {
 }
 
 export async function GetProject(slug) {
-  const projectFilePath = path.join(
-    process.cwd(),
-    PATH,
-    `${slug.replaceAll(' ', '-')}.mdx`,
-  );
+  const projectFilePath = path.join(process.cwd(), PATH, `${slug}.mdx`);
   const projectFileContents = fs.readFileSync(projectFilePath, 'utf8');
 
   const { code, frontmatter } = await bundleMDX({

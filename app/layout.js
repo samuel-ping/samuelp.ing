@@ -44,13 +44,13 @@ export default function RootLayout({ children }) {
     // See: https://github.com/pacocoursey/next-themes?tab=readme-ov-file#with-app
     // and: https://github.com/pacocoursey/next-themes/issues/152
     <html lang="en" suppressHydrationWarning>
-      <ThemeProvider>
-        <body className="min-h-screen max-w-screen-lg flex flex-col gap-y-32 px-5 lg:px-0 py-12 mx-auto transition-colors bg-beige-100 dark:bg-green-600 text-black dark:text-beige-200">
+      <body className="min-h-screen max-w-screen-lg flex flex-col gap-y-32 px-5 lg:px-0 py-12 mx-auto transition-colors bg-beige-100 dark:bg-green-600 text-black dark:text-beige-200">
+        <ThemeProvider>
           <Navbar navbarButtons={NavbarButtons} />
           <main className="flex flex-col flex-grow gap-y-14">{children}</main>
           <Footer navbarButtons={NavbarButtons} />
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

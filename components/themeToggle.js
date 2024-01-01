@@ -6,7 +6,7 @@ import { MoonIcon, SunIcon } from './icons';
 
 export const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -16,7 +16,8 @@ export const ThemeToggle = () => {
     return null;
   }
 
-  console.log(theme);
+  // Default theme is 'system', so set the theme to whatever the system theme is.
+  setTheme(resolvedTheme);
 
   if (theme === 'dark') {
     return (
@@ -28,7 +29,7 @@ export const ThemeToggle = () => {
         <MoonIcon />
       </div>
     );
-  } else {
+  } else if (theme === 'light') {
     return (
       <div
         className="flex items-center hover:text-green-300 transition-transform hover:-translate-y-1"
@@ -38,5 +39,7 @@ export const ThemeToggle = () => {
         <SunIcon />
       </div>
     );
+  } else {
+    return <span>hi</span>;
   }
 };

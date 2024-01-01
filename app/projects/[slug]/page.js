@@ -11,9 +11,11 @@ import { GetProject, GetProjectDetails } from '@/utils/mdxUtils';
 export async function generateStaticParams() {
   const projects = await GetProjectDetails();
 
-  return projects.props.projects.map((project) => ({
-    slug: project.title,
+  const pages = projects.props.projects.map((project) => ({
+    slug: project.details.slug,
   }));
+
+  return pages;
 }
 
 export async function generateMetadata({ params }) {
