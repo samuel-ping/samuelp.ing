@@ -1,3 +1,4 @@
+import GoatCounter from '@/components/goatCounter';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import ThemeProvider from '@/components/themeProvider';
@@ -50,6 +51,7 @@ export default function RootLayout({ children }) {
           <main className="flex flex-col flex-grow gap-y-14">{children}</main>
           <Footer navbarButtons={NavbarButtons} />
         </ThemeProvider>
+        <GoatCounter />
       </body>
     </html>
   );

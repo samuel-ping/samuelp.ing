@@ -7,7 +7,7 @@ import { Popover, Transition } from '@headlessui/react';
 import HamburgerMenuIcon from '@/components/hamburgerMenuIcon';
 import Logo from '@/components/logo';
 import NavbarButton from '@/components/navbarButton';
-import { ThemeToggle } from './themeToggle';
+import { ThemeToggle } from '@/components/themeToggle';
 
 export default function Navbar({ navbarButtons }) {
   const pathname = usePathname();
