@@ -18,7 +18,7 @@ export default function Navbar({ navbarButtons }) {
   const pathname = usePathname();
 
   return (
-    <Popover className="relative">
+    <Popover className="z-50">
       {({ open, close }) => (
         <>
           <nav className="h-14 flex items-center justify-between px-6 my-8">
