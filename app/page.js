@@ -1,7 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Button from '@/components/rightArrowButton';
-import { NavLink } from '@/components/mdx/components';
 import { ProjectCardCarousel } from '@/components/projectCardCarousel';
 
 import profilePic from '@/public/assets/sam.jpg';
@@ -14,7 +14,7 @@ export default async function Page() {
   return (
     <div className="max-w-full xl:max-w-screen-lg 2xl:max-w-screen-xl">
       {/* about me section */}
-      <div className="pb-16 mx-6 flex flex-col items-center gap-y-4 md:flex-row-reverse md:justify-between">
+      <div className="md:pt-16 pb-16 mx-6 flex flex-col items-center gap-y-4 md:flex-row-reverse md:justify-between">
         <Image
           src={profilePic}
           alt="Photo of Sam"
@@ -44,9 +44,9 @@ export default async function Page() {
           <span className="text-4xl font-medium">Projects</span>
           <span className="text-base font-light">
             Here are some of my more recent projects! Or,{' '}
-            <NavLink href="/projects" className="underline">
+            <Link href="/projects" className="underline">
               see all my projects
-            </NavLink>
+            </Link>
             .
           </span>
         </div>
