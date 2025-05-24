@@ -42,10 +42,15 @@ const unorderedList = (props) => {
   return <ul className="list-disc list-inside" {...props} />;
 };
 
+const listItem = (props) => {
+  return <li {...props} className="text-base/7 md:text-lg/relaxed" />;
+};
+
 export const Components = {
   a: NavLink,
   h2: heading2,
   h3: heading3,
   p: paragraph,
   ul: unorderedList,
+  li: listItem,
 };
