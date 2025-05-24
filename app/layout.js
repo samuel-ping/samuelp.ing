@@ -41,9 +41,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    // Must enable suppressHydrationWarning at this time to use next-themes.
-    // See: https://github.com/pacocoursey/next-themes?tab=readme-ov-file#with-app
-    // and: https://github.com/pacocoursey/next-themes/issues/152
+    // Must enable suppressHydrationWarning to use next-themes.
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen max-w-screen-lg flex flex-col gap-y-32 px-5 lg:px-0 py-12 mx-auto transition-colors bg-beige-100 dark:bg-green-600 text-black dark:text-beige-200">
         <ThemeProvider>

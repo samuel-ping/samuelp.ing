@@ -2,7 +2,12 @@
 
 import { usePathname } from 'next/navigation';
 
-import { Popover, Transition } from '@headlessui/react';
+import {
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+  Transition,
+} from '@headlessui/react';
 
 import HamburgerMenuIcon from '@/components/hamburgerMenuIcon';
 import Logo from '@/components/logo';
@@ -34,9 +39,9 @@ export default function Navbar({ navbarButtons }) {
             </div>
 
             <div className="md:hidden">
-              <Popover.Button>
+              <PopoverButton>
                 <HamburgerMenuIcon isOpen={open} />
-              </Popover.Button>
+              </PopoverButton>
             </div>
           </nav>
           <Transition
@@ -48,7 +53,7 @@ export default function Navbar({ navbarButtons }) {
             leaveTo="transform scale-95 opacity-0"
           >
             <div className="md:hidden flex justify-center">
-              <Popover.Panel className="absolute w-screen flex flex-col bg-beige-100 dark:bg-green-600 shadow-lg dark:shadow-green-700 divide-y divide-beige-200 dark:divide-green-500">
+              <PopoverPanel className="absolute w-screen flex flex-col bg-beige-100 dark:bg-green-600 shadow-lg dark:shadow-green-700 divide-y divide-beige-200 dark:divide-green-500">
                 {navbarButtons.map((button) => (
                   <NavbarButton
                     key={button.title}
@@ -62,7 +67,7 @@ export default function Navbar({ navbarButtons }) {
                 <div className="p-12 flex justify-center">
                   <ThemeToggle />
                 </div>
-              </Popover.Panel>
+              </PopoverPanel>
             </div>
           </Transition>
         </>
