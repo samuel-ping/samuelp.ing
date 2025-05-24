@@ -14,10 +14,10 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
-    "esbuild": "^0.19.10",
+    "esbuild": "^0.25.4",
     "framer-motion": "^4.1.17",
     "mdx-bundler": "^10.0.1",
-    "next": "15.1.8",
+    "next": "^15.3.2",
     "next-themes": "^0.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0"
