@@ -16,7 +16,7 @@ const GoatCounter = () => {
 
   return (
     <Script
-      data-goatcounter="https://stats.samuelp.ing/count"
+      data-goatcounter="https://ping.goatcounter.com/count"
       async={true}
       src="//gc.zgo.at/count.js"
     />
