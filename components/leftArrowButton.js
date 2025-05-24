@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { LeftArrowIcon as Arrow } from '@/components/icons';
 
-const RightArrowButton = ({ text, url, className }) => {
+const LeftArrowButton = ({ text, url, className }) => {
   return (
     <>
       <Link href={url} className="w-fit">
@@ -19,4 +19,4 @@ const RightArrowButton = ({ text, url, className }) => {
   );
 };
 
-export default RightArrowButton;
+export default LeftArrowButton;

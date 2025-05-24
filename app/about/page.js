@@ -1,6 +1,7 @@
 import { getMDXComponent } from 'mdx-bundler/client';
 
 import { Components as MDXComponents } from '@/components/mdx/components';
+import PageTitle from '@/components/pageTitle';
 
 import { GetAboutMDX } from '@/utils/mdxUtils';
 
@@ -13,8 +14,8 @@ export default async function Page() {
   const Component = getMDXComponent(code);
 
   return (
-    <div className="flex flex-col gap-y-2">
-      <span className="text-4xl font-medium">About me</span>
+    <div className="xl:max-w-screen-lg 2xl:max-w-screen-xl flex flex-col mx-6 md:mx-12">
+      <PageTitle text="About me" />
       <Component components={MDXComponents} />
     </div>
   );

@@ -22,23 +22,30 @@ export const NavLink = ({ href, ...props }) => {
   );
 };
 
-const heading3 = (props) => {
-  return <span {...props} className="text-2xl font-bold" />;
+const heading2 = (props) => {
+  return (
+    <h2 {...props} className="text-2xl/loose md:text-3xl/loose font-semibold" />
+  );
 };
 
-const heading4 = (props) => {
-  return <span {...props} className="text-xl font-medium" />;
+const heading3 = (props) => {
+  return (
+    <h3 {...props} className="text-xl/loose md:text-2xl/loose font-medium" />
+  );
+};
+
+const paragraph = (props) => {
+  return <p {...props} className="text-base/7 md:text-lg/relaxed mb-5" />;
 };
 
 const unorderedList = (props) => {
-  return (
-    <ul className="mb-4 list-disc list-inside leading-relaxed" {...props} />
-  );
+  return <ul className="list-disc list-inside" {...props} />;
 };
 
 export const Components = {
   a: NavLink,
+  h2: heading2,
   h3: heading3,
-  h4: heading4,
+  p: paragraph,
   ul: unorderedList,
 };

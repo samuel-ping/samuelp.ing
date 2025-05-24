@@ -36,10 +36,12 @@ export default async function Page(props) {
   const tags = details.tags;
 
   return (
-    <div className="flex flex-col gap-y-10">
-      <div className="flex flex-col gap-y-2">
+    <div className="xl:max-w-screen-lg 2xl:max-w-screen-xl mx-6 md:mx-12 flex flex-col gap-y-10 items-center">
+      <span className="w-full flex justify-center md:justify-start">
         <BackButton text="all projects" url="/projects" />
-        <span className="text-4xl font-medium">{details.title}</span>
+      </span>
+      <div className="flex flex-col gap-y-2 items-center">
+        <span className="text-4xl font-bold">{details.title}</span>
         <span className="text-xl font-light italic">{details.dates}</span>
         <div className="flex flex-row gap-1">
           {details.repo ? (
@@ -63,7 +65,11 @@ export default async function Page(props) {
           )}
         </div>
       </div>
-      <Component components={MDXComponents} />
+
+      <div>
+        <Component components={MDXComponents} />
+      </div>
+
       {/* tags */}
       <div className="w-full flex flex-row flex-wrap gap-1">
         <span>tags:</span>
