@@ -2,7 +2,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 
 import { CodeBracketsIcon, ExternalLinkIcon } from '@/components/icons';
 import Chip from '@/components/chip';
-import BackButton from '@/components/leftArrowButton';
+import BackButton from '@/components/backButton';
 import { Components as MDXComponents } from '@/components/mdx/components';
 import IconButton from '@/components/iconButton';
 
@@ -38,7 +38,7 @@ export default async function Page(props) {
   return (
     <div className="xl:max-w-screen-lg 2xl:max-w-screen-xl mx-6 md:mx-12 flex flex-col gap-y-10 items-center">
       <span className="w-full flex justify-center md:justify-start">
-        <BackButton text="all projects" url="/projects" />
+        <BackButton text="back" />
       </span>
       <div className="flex flex-col gap-y-2 items-center">
         <span className="text-4xl font-bold">{details.title}</span>
