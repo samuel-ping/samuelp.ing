@@ -14,7 +14,7 @@ export default async function Page() {
   return (
     <div className="max-w-full xl:max-w-screen-lg 2xl:max-w-screen-xl">
       {/* about me section */}
-      <div className="pb-16 mx-6 flex flex-col items-center gap-y-4 md:flex-row-reverse md:justify-between">
+      <div className="md:pt-16 pb-16 mx-6 flex flex-col items-center gap-y-4 md:flex-row-reverse md:justify-between">
         <Image
           src={profilePic}
           alt="Photo of Sam"
