@@ -9,7 +9,7 @@ import profilePic from '@/public/assets/sam.jpg';
 import { GetProjectDetails } from '@/utils/mdxUtils';
 
 export default async function Page() {
-  const projects = await GetProjectDetails(4);
+  const projects = await GetProjectDetails(6);
 
   return (
     <div className="max-w-full xl:max-w-screen-lg 2xl:max-w-screen-xl">

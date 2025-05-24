@@ -13,7 +13,7 @@ export default async function Page() {
   return (
     <div className="flex flex-col items-center gap-y-7">
       <PageTitle text="Projects" />
-      <div className="w-fit grid gap-x-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="w-fit grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {projects.props.projects.map((project) => {
           return (
             <ProjectCard
