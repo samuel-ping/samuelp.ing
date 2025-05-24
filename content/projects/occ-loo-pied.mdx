@@ -15,4 +15,9 @@ My apartment roommate (For anonymity purposes lets call him "Max") and I share a
 
 I built a physical button that lives next to our bathroom entrance. When someone enters the bathroom, they tap the button to signal that the bathroom is occupied. After doing their thing, they tap the button again on their way out to signal that the bathroom is free again.
 
-I set up a notifications system so that when the button is pressed, a push notification is sent to our phones to notify us that the bathroom's occupancy has changed. I'm also hosting a website where you can check the bathroom's current status.
+I set up a [notifications system](https://ntfy.sh) so that when the button is pressed, a push notification is sent to our phones to notify us that the bathroom's occupancy has changed. I'm also hosting a website where you can check the bathroom's current status.
+
+The website also has some extra features:
+
+- There's an admin page, which lets me delete entries for accidental button presses, or clear just the end time for when someone forgets to press the button a second time.
+- The stats page contains some cool visualizations of our bathroom data. The main attraction is a heat chart (similar to GitHub's commit chart) of the number of bathroom usages per day. We can also see the longest bathroom session, as well as the average bathroom session. I have so many more ideas for ways we can analyze this data.
