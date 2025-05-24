@@ -1,3 +1,4 @@
+import PageTitle from '@/components/pageTitle';
 import ProjectCard from '@/components/projectCard';
 
 import { GetProjectDetails } from '@/utils/mdxUtils';
@@ -10,9 +11,9 @@ export default async function Page() {
   const projects = await GetProjectDetails();
 
   return (
-    <div className="flex flex-col gap-y-7">
-      <span className="text-4xl font-medium">Projects</span>
-      <div className="grid grid-cols-1 gap-x-7 gap-y-5 justify-items-center md:justify-items-start sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="flex flex-col items-center gap-y-7">
+      <PageTitle text="Projects" />
+      <div className="w-fit grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {projects.props.projects.map((project) => {
           return (
             <ProjectCard

@@ -10,8 +10,8 @@ const Footer = ({ navbarButtons }) => {
   const pathname = usePathname();
 
   return (
-    <footer className="flex flex-col space-y-5">
-      <div className="flex flex-row justify-center md:justify-end space-x-4">
+    <footer className="mt-auto mb-2 flex flex-col items-center space-y-3 justify-self-end">
+      <div className="flex flex-row justify-center space-x-4">
         {navbarButtons.map((button) => (
           <NavbarButton
             active={`/${pathname.split('/')[1]}` === button.route}
@@ -22,7 +22,7 @@ const Footer = ({ navbarButtons }) => {
         ))}
       </div>
 
-      <div className="w-full flex flex-row justify-center md:justify-end items-center">
+      <div className="w-full flex flex-row justify-center items-center">
         <div className="flex flex-row space-x-5 items-center">
           <Link
             href="https://github.com/samuel-ping"

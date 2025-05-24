@@ -18,10 +18,10 @@ export default function Navbar({ navbarButtons }) {
   const pathname = usePathname();
 
   return (
-    <Popover>
+    <Popover className="z-50">
       {({ open, close }) => (
         <>
-          <nav className="flex items-center justify-between">
+          <nav className="h-14 flex items-center justify-between px-6 my-8">
             <Logo isAnimated size={48} visible={true} />
 
             {/* Desktop nav */}
@@ -53,7 +53,10 @@ export default function Navbar({ navbarButtons }) {
             leaveTo="transform scale-95 opacity-0"
           >
             <div className="md:hidden flex justify-center">
-              <PopoverPanel className="absolute w-screen flex flex-col bg-beige-100 dark:bg-green-600 shadow-lg dark:shadow-green-700 divide-y divide-beige-200 dark:divide-green-500">
+              <PopoverPanel
+                // anchor="bottom"
+                className="absolute w-screen flex flex-col bg-beige-100 dark:bg-green-600 shadow-lg dark:shadow-green-700 divide-y divide-beige-200 dark:divide-green-500"
+              >
                 {navbarButtons.map((button) => (
                   <NavbarButton
                     key={button.title}

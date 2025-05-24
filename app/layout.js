@@ -43,13 +43,16 @@ export default function RootLayout({ children }) {
   return (
     // Must enable suppressHydrationWarning to use next-themes.
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen max-w-screen-lg flex flex-col gap-y-32 px-5 lg:px-0 py-12 mx-auto transition-colors bg-beige-100 dark:bg-green-600 text-black dark:text-beige-200">
-        <ThemeProvider>
-          <Navbar navbarButtons={NavbarButtons} />
-          <main className="flex flex-col flex-grow gap-y-14">{children}</main>
-          <Footer navbarButtons={NavbarButtons} />
-        </ThemeProvider>
-        <GoatCounter />
+      <body className="min-h-screen flex flex-col gap-y-10 md:gap-y-32 transition-colors bg-beige-100 dark:bg-green-600 text-black dark:text-beige-200">
+        {/* Need this div so clicking outside navbar popover on small screens will close it. See: https://github.com/tailwindlabs/headlessui/issues/2752#issuecomment-1724096430 */}
+        <div className="min-h-screen flex flex-col gap-y-10 md:gap-y-32">
+          <ThemeProvider>
+            <Navbar navbarButtons={NavbarButtons} />
+            <main className="flex w-full justify-center">{children}</main>
+            <Footer navbarButtons={NavbarButtons} />
+          </ThemeProvider>
+          <GoatCounter />
+        </div>
       </body>
     </html>
   );

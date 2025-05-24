@@ -1,0 +1,18 @@
+---
+title: occ-loo-pied
+gist: Bathroom occupancy checker for my roommate!
+start: December 2024
+end: February 2025
+repo: https://github.com/samuel-ping/occ-loo-pied
+tags: [c++, golang, svelte]
+---
+
+## Problem
+
+My apartment roommate (For anonymity purposes lets call him "Max") and I share a bathroom in our apartment. However, Max's room and the bathroom are on opposite sides of the apartment. On top of that, he doesn't have a direct line of sight from his room to the bathroom, so he can't just peek his head out the door to see if its in use.
+
+## Solution
+
+I built a physical button that lives next to our bathroom entrance. When someone enters the bathroom, they tap the button to signal that the bathroom is occupied. After doing their thing, they tap the button again on their way out to signal that the bathroom is free again.
+
+I set up a notifications system so that when the button is pressed, a push notification is sent to our phones to notify us that the bathroom's occupancy has changed. I'm also hosting a website where you can check the bathroom's current status.
