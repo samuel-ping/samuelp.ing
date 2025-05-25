@@ -3,12 +3,17 @@ import Link from 'next/link';
 import Chip from '@/components/chip';
 import { RightArrowIcon as Arrow } from '@/components/icons';
 
-const ProjectCard = ({ slug, title, dates, gist, tags }) => {
+/**
+ * @param eventSource suffix to be used as a part of the umami event name. I added this to differentiate between clicking on project cards from the home page carousel versus from the projects page.
+ */
+const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
   return (
     <Link href={`projects/${slug}`}>
       <button
         type="button"
         className="snap-center md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg dark:shadow-green-700 transition-colors bg-beige-100 hover:bg-beige-200 border border-beige-200 dark:bg-green-600 dark:hover:bg-green-700 dark:border-green-500"
+        data-umami-event={`${title} project card`}
+        data-umami-event-source={eventSource}
       >
         <div className=" space-y-2">
           <div className="flex flex-col text-left ">

@@ -12,6 +12,7 @@ const NavbarButton = ({ active, title, route, mobile, close }) => {
         } p-12 text-center text-xl transition-colors hover:text-green-300 dark:hover:text-green-50`}
         onClick={close}
         aria-hidden="true"
+        data-umami-event={`${title} nav button`}
       >
         {title}
       </Link>
@@ -24,7 +25,7 @@ const NavbarButton = ({ active, title, route, mobile, close }) => {
         active ? 'text-green-300 dark:text-green-50' : ''
       } flex items-center justify-center cursor-pointer text-xl transition-colors hover:text-green-300 dark:hover:text-green-50`}
     >
-      <Link href={route}>
+      <Link href={route} data-umami-event={`${title} nav button`}>
         <span>{title}</span>
       </Link>
     </div>

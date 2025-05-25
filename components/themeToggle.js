@@ -22,7 +22,10 @@ export const ThemeToggle = () => {
       <div
         className="flex items-center hover:text-green-300 transition-transform hover:-translate-y-1"
         role="button"
-        onClick={() => setTheme('dark')}
+        onClick={() => {
+          setTheme('dark');
+          if (window.umami) window.umami.track('theme toggled to dark');
+        }}
       >
         <SunIcon />
       </div>
@@ -32,7 +35,10 @@ export const ThemeToggle = () => {
       <div
         className="flex items-center hover:text-green-50 transition-transform hover:-translate-y-1"
         role="button"
-        onClick={() => setTheme('light')}
+        onClick={() => {
+          setTheme('light');
+          if (window.umami) window.umami.track('theme toggled to light');
+        }}
       >
         <MoonIcon />
       </div>

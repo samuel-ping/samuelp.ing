@@ -2,6 +2,7 @@ import GoatCounter from '@/components/goatCounter';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import ThemeProvider from '@/components/themeProvider';
+import Umami from '@/components/umami';
 
 import NavbarButtons from '@/config/navbarButtons.config';
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
             <Footer navbarButtons={NavbarButtons} />
           </ThemeProvider>
           <GoatCounter />
+          <Umami />
         </div>
       </body>
     </html>

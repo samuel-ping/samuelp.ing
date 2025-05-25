@@ -29,7 +29,10 @@ const Footer = ({ navbarButtons }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="flex items-center">
+            <button
+              className="flex items-center"
+              data-umami-event="GitHub profile viewed"
+            >
               <GitHubIcon className="h-10 w-10 hover:text-green-300 dark:hover:text-green-50 transition-colors" />
             </button>
           </Link>
@@ -38,7 +41,10 @@ const Footer = ({ navbarButtons }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="flex items-center">
+            <button
+              className="flex items-center"
+              data-umami-event="LinkedIn profile viewed"
+            >
               <LinkedInIcon className="h-10 w-10 hover:text-green-300 dark:hover:text-green-50 transition-colors" />
             </button>
           </Link>
@@ -47,7 +53,10 @@ const Footer = ({ navbarButtons }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="flex items-center">
+            <button
+              className="flex items-center"
+              data-umami-event="email button clicked"
+            >
               <EnvelopeIcon className="h-10 w-10 hover:text-green-300 dark:hover:text-green-50 transition-colors" />
             </button>
           </Link>

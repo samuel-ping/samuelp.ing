@@ -34,7 +34,11 @@ export default async function Page() {
             dog liker), avid tennis player, occasional runner, even less
             occasional theater performer, and neglectful plant dad.
           </span>
-          <Button text={'more about me'} url={'/about'} />
+          <Button
+            text={'more about me'}
+            url={'/about'}
+            eventName="More about me"
+          />
         </div>
       </div>
 
@@ -44,7 +48,11 @@ export default async function Page() {
           <span className="text-4xl font-medium">Projects</span>
           <span className="text-base font-light">
             Here are some of my more recent projects! Or,{' '}
-            <Link href="/projects" className="underline">
+            <Link
+              href="/projects"
+              className="underline"
+              data-umami-event="See all my projects"
+            >
               see all my projects
             </Link>
             .

@@ -15,6 +15,7 @@ export const ProjectCardCarousel = ({ projects }) => {
             gist={project.details.gist}
             tags={project.details.tags}
             slug={project.details.slug}
+            eventSource="carousel"
           />
         );
       })}
@@ -24,6 +25,7 @@ export const ProjectCardCarousel = ({ projects }) => {
         className={
           'snap-center p-4 rounded-xl bg-beige-100 hover:bg-beige-200 border border-beige-200 dark:bg-green-600 dark:hover:bg-green-700 dark:border-green-500'
         }
+        eventName="See all projects (carousel)"
       />
     </div>
   );
