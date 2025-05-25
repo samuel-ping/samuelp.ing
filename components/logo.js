@@ -4,7 +4,7 @@ import SP from '@/components/sp';
 
 const Logo = ({ isAnimated, size, visible }) => (
   <>
-    <Link href="/">
+    <Link href="/" data-umami-event="logo button clicked">
       <div className="cursor-pointer">
         <SP
           isAnimated={isAnimated}

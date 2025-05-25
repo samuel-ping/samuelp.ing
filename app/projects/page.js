@@ -23,6 +23,7 @@ export default async function Page() {
               gist={project.details.gist}
               tags={project.details.tags}
               slug={project.details.slug}
+              eventSource="/projects"
             />
           );
         })}
