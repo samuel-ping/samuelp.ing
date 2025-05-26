@@ -1,29 +1,7 @@
-import Link from 'next/link';
+import Link from '@/components/linkText';
 
 const components = {
-  a: ({ href, ...props }) => {
-    if (href.startsWith('https')) {
-      return (
-        <Link
-          {...props}
-          href={href}
-          className="underline transition-colors hover:text-green-400 dark:hover:text-green-50"
-          target="_blank"
-          rel="noopener"
-          data-umami-event={`Link clicked`}
-          data-umami-event-link={href.substring(0, 50)}
-        />
-      );
-    }
-
-    return (
-      <Link
-        {...props}
-        href={href}
-        className="underline transition-colors hover:text-green-400 dark:hover:text-green-50"
-      />
-    );
-  },
+  a: Link,
 
   h2: (props) => {
     return (
