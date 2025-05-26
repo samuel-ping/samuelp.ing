@@ -6,6 +6,9 @@
       "@/config/*": ["config/*"],
       "@/utils/*": ["utils/*"],
       "@/public/*": ["public/*"]
-    }
+    },
+    // below two lines needed for 'image-size/fromFile'
+    "target": "ES2017",
+    "moduleResolution": "bundler",
   }
 }

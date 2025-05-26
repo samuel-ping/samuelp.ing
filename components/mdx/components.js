@@ -32,16 +32,16 @@ const components = {
   },
 
   img: ({ src, className, height, width, alt }) => (
-    <div className={className}>
-      <Image
-        layout="responsive"
-        src={src}
-        height={height}
-        width={width}
-        alt={alt}
-      />
-    </div>
+    <Image
+      className={className}
+      src={src}
+      height={height}
+      width={width}
+      alt={alt}
+    />
   ),
+
+  Image: Image,
 };
 
 export const Components = components;
