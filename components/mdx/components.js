@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from '@/components/linkText';
 
 const components = {
@@ -29,6 +30,18 @@ const components = {
   li: (props) => {
     return <li {...props} className="text-base/7 md:text-lg/relaxed" />;
   },
+
+  img: ({ src, className, height, width, alt }) => (
+    <div className={className}>
+      <Image
+        layout="responsive"
+        src={src}
+        height={height}
+        width={width}
+        alt={alt}
+      />
+    </div>
+  ),
 };
 
 export const Components = components;
