@@ -10,7 +10,8 @@ const components = {
           className="underline transition-colors hover:text-green-400 dark:hover:text-green-50"
           target="_blank"
           rel="noopener"
-          data-umami-event={`Link clicked: ${href}`}
+          data-umami-event={`Link clicked`}
+          data-umami-event-link={href.substring(0, 50)}
         />
       );
     }
