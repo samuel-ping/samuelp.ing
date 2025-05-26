@@ -4,6 +4,7 @@ import path from 'path';
 import { bundleMDX } from 'mdx-bundler';
 
 import { DateSorter, FormatDateStr } from '@/utils/dateUtils';
+import imageMetadata from '@/utils/imageUtils';
 
 const PATH = 'content';
 const PROJECTS = 'projects';
@@ -48,6 +49,20 @@ export async function GetProject(slug) {
 
   const { code, frontmatter } = await bundleMDX({
     source: projectFileContents,
+    mdxOptions: (options) => {
+      // Configure the custom image metadata rehype plugin.
+      options.rehypePlugins = [...(options.rehypePlugins ?? []), imageMetadata];
+
+      return options;
+    },
+    esbuildOptions: (options) => {
+      options.loader = {
+        ...options.loader,
+        '.svg': 'dataurl',
+      };
+
+      return options;
+    },
   });
 
   return {

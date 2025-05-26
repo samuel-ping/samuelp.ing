@@ -1,28 +1,8 @@
-import Link from 'next/link';
+import Image from 'next/image';
+import Link from '@/components/linkText';
 
 const components = {
-  a: ({ href, ...props }) => {
-    if (href.startsWith('https')) {
-      return (
-        <Link
-          {...props}
-          href={href}
-          className="underline transition-colors hover:text-green-400 dark:hover:text-green-50"
-          target="_blank"
-          rel="noopener"
-          data-umami-event={`Link clicked: ${href}`}
-        />
-      );
-    }
-
-    return (
-      <Link
-        {...props}
-        href={href}
-        className="underline transition-colors hover:text-green-400 dark:hover:text-green-50"
-      />
-    );
-  },
+  a: Link,
 
   h2: (props) => {
     return (
@@ -44,12 +24,24 @@ const components = {
   },
 
   ul: (props) => {
-    return <ul className="list-disc list-inside" {...props} />;
+    return <ul className="list-disc list-inside mb-5" {...props} />;
   },
 
   li: (props) => {
     return <li {...props} className="text-base/7 md:text-lg/relaxed" />;
   },
+
+  img: ({ src, className, height, width, alt }) => (
+    <Image
+      className={className}
+      src={src}
+      height={height}
+      width={width}
+      alt={alt}
+    />
+  ),
+
+  Image: Image,
 };
 
 export const Components = components;

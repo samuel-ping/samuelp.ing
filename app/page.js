@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import Button from '@/components/rightArrowButton';
+import LinkText from '@/components/linkText';
 import { ProjectCardCarousel } from '@/components/projectCardCarousel';
 
 import profilePic from '@/public/assets/sam.jpg';
@@ -48,13 +48,13 @@ export default async function Page() {
           <span className="text-4xl font-medium">Projects</span>
           <span className="text-base font-light">
             Here are some of my more recent projects! Or,{' '}
-            <Link
+            <LinkText
               href="/projects"
               className="underline"
               data-umami-event="See all my projects"
             >
               see all my projects
-            </Link>
+            </LinkText>
             .
           </span>
         </div>
