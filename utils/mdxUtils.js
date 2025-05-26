@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { bundleMDX } from 'mdx-bundler';
+import remarkGfm from 'remark-gfm';
 
 import { DateSorter, FormatDateStr } from '@/utils/dateUtils';
 import imageMetadata from '@/utils/imageUtils';
@@ -52,6 +53,7 @@ export async function GetProject(slug) {
     mdxOptions: (options) => {
       // Configure the custom image metadata rehype plugin.
       options.rehypePlugins = [...(options.rehypePlugins ?? []), imageMetadata];
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
 
       return options;
     },

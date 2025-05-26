@@ -27,6 +27,10 @@ const components = {
     return <ul className="list-disc list-inside mb-5" {...props} />;
   },
 
+  ol: (props) => {
+    return <ol className="list-decimal list-inside mb-5" {...props} />;
+  },
+
   li: (props) => {
     return <li {...props} className="text-base/7 md:text-lg/relaxed" />;
   },
