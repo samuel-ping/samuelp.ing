@@ -8,3 +8,15 @@ tags: [python3, flask, aws ec2]
 ---
 
 A Slack application that matches interns to full-time employees for coffee chats every week! Built as a part of an internal company hackathon.
+
+## Challenges
+
+I did a lot of research into the best way to match people for our app.
+
+A popular algorithm is the [Gale-Shapley algorithm](https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm), which solves the popular "Stable Marriage Problem." This algorithm wasn't the best fit for our application, though. On paper, it could've been- we just want to match interns to full-timers. However, we would be running multiple rounds of matching each week. This algorithm just wasn't scalable for when we wanted to add additional conditions to the matching. Examples of such conditions would be:
+
+- Not matching people someone they already met with
+- Not matching people who are on the same team
+- Matching people in the same timezone
+
+The algorithm that was the best fit was the [Hungarian matching algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm) (or "Maximum Bipartite Matching"). This let us introduce as many conditions as we wanted while still matching two people the most efficiently.

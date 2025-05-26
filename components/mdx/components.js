@@ -24,7 +24,7 @@ const components = {
   },
 
   ul: (props) => {
-    return <ul className="list-disc list-inside" {...props} />;
+    return <ul className="list-disc list-inside mb-5" {...props} />;
   },
 
   li: (props) => {
