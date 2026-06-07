@@ -12,7 +12,7 @@ export default async function Page() {
   const projects = await GetProjectDetails(6);
 
   return (
-    <div className="max-w-full xl:max-w-screen-lg 2xl:max-w-screen-xl">
+    <div className="max-w-full xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)">
       {/* about me section */}
       <div className="md:pt-16 pb-16 mx-6 flex flex-col items-center gap-y-4 md:flex-row-reverse md:justify-between">
         <Image
@@ -43,7 +43,7 @@ export default async function Page() {
       </div>
 
       {/* projects section */}
-      <div className="flex flex-col gap-y-8 bg-green-200/90 dark:bg-green-500/90 xl:rounded-2xl max-w-screen-xl">
+      <div className="flex flex-col gap-y-8 bg-green-200/90 dark:bg-green-500/90 xl:rounded-2xl max-w-(--breakpoint-xl)">
         <div className="flex flex-col gap-y-2 px-10 pt-16">
           <span className="text-4xl font-medium">Projects</span>
           <span className="text-base font-light">

@@ -36,7 +36,7 @@ export default async function Page(props) {
   const tags = details.tags;
 
   return (
-    <div className="xl:max-w-screen-lg 2xl:max-w-screen-xl mx-6 md:mx-12 flex flex-col gap-y-10 items-center">
+    <div className="xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl) mx-6 md:mx-12 flex flex-col gap-y-10 items-center">
       <span className="w-full flex justify-center md:justify-start">
         <BackButton text="back" />
       </span>
