@@ -14,7 +14,7 @@ export default async function Page() {
   const Component = getMDXComponent(code);
 
   return (
-    <div className="xl:max-w-screen-lg 2xl:max-w-screen-xl flex flex-col mx-6 md:mx-12">
+    <div className="xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl) flex flex-col mx-6 md:mx-12">
       <PageTitle text="About me" />
       <Component components={MDXComponents} />
     </div>
