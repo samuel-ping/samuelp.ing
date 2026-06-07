@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 import profilePic from '@/public/assets/sam.jpg';
@@ -22,32 +22,73 @@ const bioItems = [
   { text: 'neglectful plant dad', photo: monsteraPic },
 ];
 
+const NAME = -1;
+
 export default function BioSection({ button }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [hoveredName, setHoveredName] = useState(false);
+  const [autoIndex, setAutoIndex] = useState(NAME);
 
-  const currentPhoto =
-    hoveredName
+  const activeIndex = hoveredName ? NAME : hoveredIndex !== null ? hoveredIndex : autoIndex;
+
+  useEffect(() => {
+    if (hoveredIndex !== null || hoveredName) return;
+    const timer = setTimeout(() => {
+      setAutoIndex((prev) => (prev === bioItems.length - 1 ? NAME : prev + 1));
+    }, 2300);
+    return () => clearTimeout(timer);
+  }, [autoIndex, hoveredIndex, hoveredName]);
+
+  const targetPhoto =
+    activeIndex === NAME
       ? profilePic
-      : hoveredIndex !== null && bioItems[hoveredIndex].photo
-        ? bioItems[hoveredIndex].photo
-        : profilePic;
+      : bioItems[activeIndex].photo ?? profilePic;
+
+  // Two-slot crossfade: load next photo into the back slot, then swap on next frame
+  const [crossfade, setCrossfade] = useState({
+    photoA: targetPhoto,
+    photoB: targetPhoto,
+    aIsFront: true,
+  });
+
+  useEffect(() => {
+    setCrossfade((prev) => {
+      if (prev.aIsFront) {
+        return { ...prev, photoB: targetPhoto };
+      } else {
+        return { ...prev, photoA: targetPhoto };
+      }
+    });
+    const frame = requestAnimationFrame(() => {
+      setCrossfade((prev) => ({ ...prev, aIsFront: !prev.aIsFront }));
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [targetPhoto]);
 
   return (
     <div className="md:pt-16 pb-16 mx-6 flex flex-col items-center gap-x-12 gap-y-4 md:flex-row-reverse md:justify-between">
-      <Image
-        src={currentPhoto}
-        alt="Photo of Sam"
-        placeholder="blur"
-        priority
-        className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover transition-opacity duration-150"
-      />
+      <div className="relative w-48 h-48 md:w-64 md:h-64">
+        <Image
+          src={crossfade.photoA}
+          alt="Photo of Sam"
+          placeholder="blur"
+          priority
+          className={`absolute inset-0 w-full h-full rounded-full object-cover transition-opacity duration-500 ${crossfade.aIsFront ? 'opacity-100' : 'opacity-0'}`}
+        />
+        <Image
+          src={crossfade.photoB}
+          alt="Photo of Sam"
+          placeholder="blur"
+          priority
+          className={`absolute inset-0 w-full h-full rounded-full object-cover transition-opacity duration-500 ${!crossfade.aIsFront ? 'opacity-100' : 'opacity-0'}`}
+        />
+      </div>
 
       <div className="max-w-lg flex flex-col space-y-5">
         <span className="text-4xl font-medium">
           Hey! I&apos;m{' '}
           <span
-            className={`text-green-300 dark:text-green-50 cursor-default transition-all duration-100 ${hoveredIndex === null ? 'underline decoration-wavy underline-offset-9' : ''}`}
+            className={`text-green-300 dark:text-green-50 cursor-default transition-all duration-100 ${activeIndex === NAME ? 'underline decoration-wavy underline-offset-9' : ''}`}
             onMouseEnter={() => setHoveredName(true)}
             onMouseLeave={() => setHoveredName(false)}
           >Sam Ping</span>,
@@ -63,7 +104,7 @@ export default function BioSection({ button }) {
             >
               <span
                 className={`transition-all duration-100 ${
-                  hoveredIndex === i
+                  activeIndex === i
                     ? 'underline decoration-wavy underline-offset-4'
                     : ''
                 }`}
