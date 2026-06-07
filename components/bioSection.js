@@ -33,7 +33,7 @@ export default function BioSection({ button }) {
         : profilePic;
 
   return (
-    <div className="md:pt-16 pb-16 mx-6 flex flex-col items-center gap-y-4 md:flex-row-reverse md:justify-between">
+    <div className="md:pt-16 pb-16 mx-6 flex flex-col items-center gap-x-12 gap-y-4 md:flex-row-reverse md:justify-between">
       <Image
         src={currentPhoto}
         alt="Photo of Sam"
