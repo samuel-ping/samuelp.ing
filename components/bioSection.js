@@ -46,7 +46,7 @@ export default function BioSection({ button }) {
         <span className="text-4xl font-medium">
           Hey! I&apos;m{' '}
           <span
-            className={`text-green-300 dark:text-green-50 cursor-default transition-all duration-100 ${hoveredName ? 'underline decoration-wavy underline-offset-4' : ''}`}
+            className={`text-green-300 dark:text-green-50 cursor-default transition-all duration-100 ${hoveredIndex === null ? 'underline decoration-wavy underline-offset-4' : ''}`}
             onMouseEnter={() => setHoveredName(true)}
             onMouseLeave={() => setHoveredName(false)}
           >Sam Ping</span>,
