@@ -74,6 +74,28 @@ export const DateSorter = (card1, card2) => {
 };
 
 /**
+ * Takes an array and sorts it by month year strings (ex. May 2021) in the found date, newest first.
+ * @param {*} cardArray
+ */
+export const FoundDateSorter = (item1, item2) => {
+  // Tokenize found dates. 0 index is month, 1 index is year.
+  const item1Date = item1.details['found'].split(' ');
+  const item2Date = item2.details['found'].split(' ');
+
+  // Check which year is more recent
+  if (item1Date[1] !== item2Date[1]) {
+    return item2Date[1] - item1Date[1];
+  }
+  if (item1Date[0] !== item2Date[0]) {
+    // Compare the months if they are not the same.
+    return months.indexOf(item2Date[0]) - months.indexOf(item1Date[0]);
+  }
+
+  // If we reach here, that means the two items have the exact same found date.
+  return 0;
+};
+
+/**
  * Takes in start and end dates (format: "<month> <year>") and formats it into a presentable date range.
  * @param {*} start
  * @param {*} end
