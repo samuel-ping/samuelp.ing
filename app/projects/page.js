@@ -21,7 +21,7 @@ export default async function Page() {
       {/* featured projects */}
       <div className="flex flex-col items-center gap-y-4">
         <h2 className="text-2xl font-medium">Featured</h2>
-        <div className="w-fit grid gap-4 sm:grid-cols-2">
+        <div className="w-fit grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {featured.map((project) => {
             return (
               <ProjectCard
