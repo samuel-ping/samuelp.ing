@@ -8,6 +8,10 @@ const NavbarButtons = [
     route: '/projects',
   },
   {
+    title: 'Lost & Spotted',
+    route: '/spotted',
+  },
+  {
     title: 'About Me',
     route: '/about',
   },
