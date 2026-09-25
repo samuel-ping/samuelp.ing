@@ -2,6 +2,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme inline {
+  --font-sans: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+}
+
 @theme {
   --color-*: initial;
   --color-transparent: transparent;
