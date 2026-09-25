@@ -9,11 +9,17 @@ import Image from 'next/image';
  * one viewport), and a sticky, full-height viewport translates the strip
  * according to scroll progress.
  */
-const BuildingScroller = ({ buildings }) => {
+const BuildingScroller = ({ buildings, sidewalk }) => {
   const sectionRef = useRef(null);
   const stripRef = useRef(null);
   // Horizontal distance (px) the strip needs to travel to reveal its end.
   const [distance, setDistance] = useState(0);
+  // Number of sidewalk tiles needed to cover the strip's full width.
+  const [tileCount, setTileCount] = useState(0);
+
+  const scale = sidewalk.tileHeight / sidewalk.height;
+  const tileWidth = sidewalk.width * scale;
+  const tileStep = tileWidth - sidewalk.tileOverlap;
 
   useEffect(() => {
     const updateTransform = () => {
@@ -34,6 +40,7 @@ const BuildingScroller = ({ buildings }) => {
       const strip = stripRef.current;
       if (!strip) return;
       setDistance(Math.max(0, strip.scrollWidth - window.innerWidth));
+      setTileCount(Math.ceil(strip.scrollWidth / tileStep) + 1);
       updateTransform();
     };
 
@@ -55,18 +62,54 @@ const BuildingScroller = ({ buildings }) => {
       <div className="sticky top-0 h-screen overflow-hidden">
         <div
           ref={stripRef}
-          className="flex h-full w-max items-end will-change-transform"
+          className="relative flex h-full w-max flex-col justify-end will-change-transform"
         >
-          {buildings.map((building) => (
-            <Image
-              key={building.name}
-              src={building.src}
-              alt={building.name}
-              width={building.width}
-              height={building.height}
-              className="h-[50vh] w-auto shrink-0 md:h-[60vh]"
-            />
-          ))}
+          {/* Each building's bottom margin lifts it so the sidewalk band
+              overlaps its bottom by its own `sidewalkOverlap`, falling back
+              to the shared `buildingOverlap`. */}
+          <div className="relative z-10 flex items-end">
+            {buildings.map((building) => (
+              <Image
+                key={building.name}
+                src={building.src}
+                alt={building.name}
+                width={building.width}
+                height={building.height}
+                className="h-[50vh] w-auto shrink-0 md:h-[60vh]"
+                style={{
+                  marginBottom:
+                    sidewalk.tileHeight -
+                    (building.sidewalkOverlap ?? sidewalk.buildingOverlap),
+                }}
+              />
+            ))}
+          </div>
+          {/* Sidewalk ground below the buildings, tiled across the full width
+              of the strip so it pans along with them. Absolutely positioned
+              so the tiles never affect the strip's width, each tile overlaps
+              its neighbor slightly so no gap appears between repeats, and it
+              sits behind the buildings so their bottoms tuck in front of it. */}
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 z-0 flex overflow-hidden"
+            style={{ height: sidewalk.tileHeight }}
+          >
+            {Array.from({ length: tileCount }).map((_, i) => (
+              <Image
+                key={i}
+                src={sidewalk.src}
+                alt=""
+                width={sidewalk.width}
+                height={sidewalk.height}
+                className="shrink-0"
+                style={{
+                  width: tileWidth,
+                  height: sidewalk.tileHeight,
+                  marginLeft: i === 0 ? 0 : -sidewalk.tileOverlap,
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
