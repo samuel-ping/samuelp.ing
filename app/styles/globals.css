@@ -48,3 +48,34 @@
     cursor: pointer;
   }
 }
+
+/*
+  The /spotted street always uses the site's light theme, including the
+  navbar and footer — the dark mode toggle does not affect this page. These
+  rules are unlayered so they win over Tailwind's layered utilities,
+  including `dark:` variants.
+*/
+body.spotted-theme {
+  background-color: var(--color-beige-100);
+  color: var(--color-black);
+}
+
+/* Mobile nav menu panel. */
+body.spotted-theme .bg-beige-100 {
+  background-color: var(--color-beige-100);
+}
+
+body.spotted-theme .dark\:text-beige-200,
+body.spotted-theme .dark\:text-green-50 {
+  color: var(--color-black);
+}
+
+/* Navbar logo. */
+body.spotted-theme .dark\:stroke-beige-200 {
+  stroke: var(--color-black);
+}
+
+body.spotted-theme .dark\:hover\:text-green-50:hover,
+body.spotted-theme .dark\:hover\:text-green-300:hover {
+  color: var(--color-green-300);
+}
