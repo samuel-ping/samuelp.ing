@@ -10,7 +10,7 @@ import 'leaflet/dist/leaflet.css';
 // default white-square divIcon styles.
 const pinIcon = L.divIcon({
   html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 36" width="24" height="36">
-    <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#e11d48"/>
+    <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#375954"/>
     <circle cx="12" cy="12" r="5" fill="#ffffff"/>
   </svg>`,
   className: '',
@@ -23,14 +23,16 @@ const pinIcon = L.divIcon({
  * `next/dynamic` in the modal — Leaflet touches `window` at import time.
  * No `dark:` classes — the /spotted page is pinned to the light theme.
  */
-const SpottedItemMap = ({ lat, lng }) => (
+const SpottedItemMap = ({ lat, lng, className }) => (
   // `relative z-0` keeps Leaflet's absolutely-positioned, high-z-index panes
-  // from escaping the modal's stacking context.
+  // from escaping the modal's stacking context. `className` fully owns height
+  // and corner radius — never append a height class alongside the default
+  // `h-64`, since conflicting Tailwind utilities resolve by stylesheet order.
   <MapContainer
     center={[lat, lng]}
     zoom={16}
     scrollWheelZoom={false}
-    className="relative z-0 h-64 w-full rounded-xl"
+    className={`relative z-0 w-full ${className ?? 'h-64 rounded-xl'}`}
   >
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

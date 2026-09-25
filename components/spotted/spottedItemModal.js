@@ -12,7 +12,6 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import dynamic from 'next/dynamic';
 
 import { Components as MDXComponents } from '@/components/mdx/components';
-import Chip from '@/components/ui/chip';
 
 // Leaflet touches `window` at import time, so the map loads client-only.
 const SpottedItemMap = dynamic(
@@ -37,43 +36,65 @@ const SpottedItemModal = ({ item, onClose }) => {
   if (!item) return null;
   const { title, found, neighborhood, lat, lng, image, alt, width, height } =
     item.details;
+  const hasCoords = lat != null && lng != null;
 
   return (
     <Dialog open={true} onClose={onClose} className="relative z-50">
       <DialogBackdrop className="fixed inset-0 bg-black/40" />
       <div className="fixed inset-0 overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">
-          <DialogPanel className="w-full max-w-xl rounded-2xl bg-beige-100 p-6 text-black shadow-xl md:p-8">
-            <div className="flex items-start justify-between gap-4">
-              <DialogTitle className="text-2xl font-semibold md:text-3xl">
-                {title}
-              </DialogTitle>
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label="Close"
-                className="text-2xl leading-none"
-              >
-                &times;
-              </button>
-            </div>
-            <div className="mt-2 flex flex-wrap gap-2">
-              <Chip text={`Found ${found}`} />
-              <Chip text={neighborhood} />
-            </div>
+          {/* `relative` anchors the floating close button. */}
+          <DialogPanel className="relative w-full max-w-xl rounded-2xl bg-beige-100 p-6 text-black shadow-xl md:p-8">
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="absolute right-4 top-4 z-10 text-2xl leading-none text-green-600 hover:text-green-500"
+            >
+              &times;
+            </button>
+            {/* Bare cutout, same treatment as the items on the sidewalk. */}
             <Image
               src={image}
               alt={alt}
               width={width}
               height={height}
-              className="mx-auto my-6 max-h-64 w-auto"
+              className="mx-auto my-6 max-h-56 w-auto drop-shadow-lg md:max-h-64"
             />
-            {Body && <Body components={MDXComponents} />}
-            {lat != null && lng != null && (
-              <div className="mt-6">
-                <SpottedItemMap lat={lat} lng={lng} />
+            {/* Info card */}
+            <div className="rounded-md bg-green-200 p-4 md:p-5">
+              <div className="md:flex md:items-start md:gap-6">
+                <div className="min-w-0 md:flex-1">
+                  <DialogTitle className="text-xl font-semibold md:text-2xl">
+                    {title}
+                  </DialogTitle>
+                  <dl className="mt-3 space-y-1.5">
+                    <div className="flex">
+                      <dt className="w-20 shrink-0 text-sm font-medium text-green-500">
+                        Found
+                      </dt>
+                      <dd className="text-sm">{found}</dd>
+                    </div>
+                    <div className="flex">
+                      <dt className="w-20 shrink-0 text-sm font-medium text-green-500">
+                        Location
+                      </dt>
+                      <dd className="text-sm">{neighborhood}</dd>
+                    </div>
+                  </dl>
+                </div>
+                {hasCoords && (
+                  <figure className="mt-4 md:mt-0 md:w-44 md:shrink-0">
+                    <SpottedItemMap
+                      lat={lat}
+                      lng={lng}
+                      className="h-32 rounded-sm border border-green-700/25 md:h-40"
+                    />
+                  </figure>
+                )}
               </div>
-            )}
+            </div>
+            <div className="mt-6">{Body && <Body components={MDXComponents} />}</div>
           </DialogPanel>
         </div>
       </div>
