@@ -41,7 +41,7 @@ export default async function Page() {
       {/* past projects */}
       <div className="flex flex-col items-center gap-y-4 w-full max-w-3xl">
         <h2 className="text-2xl font-medium">Past projects</h2>
-        <div className="w-full flex flex-col divide-y divide-beige-200 dark:divide-green-600">
+        <div className="w-full flex flex-col divide-y divide-beige-200 dark:divide-green-700">
           {past.map((project) => {
             return (
               <ProjectRow

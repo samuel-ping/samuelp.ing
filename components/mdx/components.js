@@ -8,14 +8,17 @@ const components = {
     return (
       <h2
         {...props}
-        className="text-2xl/loose md:text-3xl/loose font-semibold"
+        className="text-2xl md:text-3xl font-semibold leading-snug mt-10 mb-3"
       />
     );
   },
 
   h3: (props) => {
     return (
-      <h3 {...props} className="text-xl/loose md:text-2xl/loose font-medium" />
+      <h3
+        {...props}
+        className="text-xl md:text-2xl font-medium leading-snug mt-8 mb-2"
+      />
     );
   },
 
@@ -24,11 +27,11 @@ const components = {
   },
 
   ul: (props) => {
-    return <ul className="list-disc list-inside mb-5" {...props} />;
+    return <ul className="list-disc list-outside pl-6 mb-5" {...props} />;
   },
 
   ol: (props) => {
-    return <ol className="list-decimal list-inside mb-5" {...props} />;
+    return <ol className="list-decimal list-outside pl-6 mb-5" {...props} />;
   },
 
   li: (props) => {

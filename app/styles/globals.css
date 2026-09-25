@@ -2,6 +2,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme inline {
+  --font-sans: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+}
+
 @theme {
   --color-*: initial;
   --color-transparent: transparent;
@@ -12,14 +16,15 @@
   --color-beige-100: #fff8eb;
   --color-beige-200: #eee7da;
 
-  --color-green-50: #d1ffd1;
-  --color-green-100: #9aaa68;
+  --color-green-50: #e8f5e9;
+  --color-green-100: #c8e6c9;
   --color-green-200: #aec8ac;
-  --color-green-300: #709974;
+  --color-green-300: #86ab8a;
   --color-green-400: #577a5d;
-  --color-green-500: #375954;
-  --color-green-600: #28413d;
-  --color-green-700: #233835;
+  --color-green-500: #4a6e50;
+  --color-green-600: #375954;
+  --color-green-700: #28413d;
+  --color-green-800: #233835;
 }
 
 /*

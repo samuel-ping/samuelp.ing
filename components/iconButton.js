@@ -11,7 +11,7 @@ const iconButton = ({ text, icon, url }) => {
       data-umami-event={`${text} button clicked`}
       data-umami-event-url={url}
     >
-      <div className="w-fit flex justify-center items-center gap-x-2 font-medium p-2 rounded-sm text-beige-100 dark:text-green-50 bg-green-400 dark:bg-green-500 transition-opacity hover:opacity-85">
+      <div className="w-fit flex justify-center items-center gap-x-2 font-medium p-2 rounded-sm text-beige-100 dark:text-green-50 bg-green-400 hover:bg-green-500 dark:bg-green-600 dark:hover:bg-green-700 transition-colors">
         {icon}
         <div className="text-sm font-normal leading-none max-w-full flex-initial">
           {text}
