@@ -88,7 +88,7 @@ export default function BioSection({ button }) {
         <span className="text-4xl font-medium">
           Hey! I&apos;m{' '}
           <span
-            className={`text-green-600 dark:text-green-100 cursor-default transition-all duration-100 ${activeIndex === NAME ? 'underline decoration-wavy underline-offset-9' : ''}`}
+            className={`text-green-600 dark:text-green-100 cursor-default transition-all duration-100 ${activeIndex === NAME ? 'underline decoration-wavy decoration-2 underline-offset-9' : ''}`}
             onMouseEnter={() => setHoveredName(true)}
             onMouseLeave={() => setHoveredName(false)}
           >Sam Ping</span>,
@@ -105,7 +105,7 @@ export default function BioSection({ button }) {
               <span
                 className={`transition-all duration-100 ${
                   activeIndex === i
-                    ? 'underline decoration-wavy underline-offset-4'
+                    ? 'underline decoration-wavy decoration-2 underline-offset-4'
                     : ''
                 }`}
               >
