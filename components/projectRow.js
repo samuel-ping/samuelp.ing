@@ -20,7 +20,7 @@ const ProjectRow = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
         <span className="font-light italic text-sm">{dates}</span>
       </div>
 
-      <span className="flex-1 font-light">{gist}</span>
+      <span className="flex-1">{gist}</span>
 
       <div className="flex flex-row items-center gap-x-2">
         {tags === undefined || tags.length == 0 ? (
