@@ -9,9 +9,16 @@ import {
   DialogTitle,
 } from '@headlessui/react';
 import { getMDXComponent } from 'mdx-bundler/client';
+import dynamic from 'next/dynamic';
 
 import { Components as MDXComponents } from '@/components/mdx/components';
 import Chip from '@/components/ui/chip';
+
+// Leaflet touches `window` at import time, so the map loads client-only.
+const SpottedItemMap = dynamic(
+  () => import('@/components/spotted/spottedItemMap'),
+  { ssr: false }
+);
 
 /**
  * Detail modal for a found item. Mounted by the parent only while an item is
@@ -28,7 +35,7 @@ const SpottedItemModal = ({ item, onClose }) => {
   );
 
   if (!item) return null;
-  const { title, found, neighborhood, image, alt, width, height } =
+  const { title, found, neighborhood, lat, lng, image, alt, width, height } =
     item.details;
 
   return (
@@ -62,6 +69,11 @@ const SpottedItemModal = ({ item, onClose }) => {
               className="mx-auto my-6 max-h-64 w-auto"
             />
             {Body && <Body components={MDXComponents} />}
+            {lat != null && lng != null && (
+              <div className="mt-6">
+                <SpottedItemMap lat={lat} lng={lng} />
+              </div>
+            )}
           </DialogPanel>
         </div>
       </div>
