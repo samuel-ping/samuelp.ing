@@ -1,45 +1,75 @@
 'use client';
 
-import L from 'leaflet';
-import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { divIcon } from 'leaflet';
+import { useEffect } from 'react';
+import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 
-// Leaflet's default marker image URLs break under bundlers, so draw the pin
-// as an inline SVG divIcon instead. `className` is blanked to skip the
-// default white-square divIcon styles.
-const pinIcon = L.divIcon({
-  html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 36" width="24" height="36">
-    <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#375954"/>
-    <circle cx="12" cy="12" r="5" fill="#ffffff"/>
-  </svg>`,
+// OpenStreetMap's keyless tile CDN. (CARTO's basemaps — used by the old
+// specimen lightbox — now require an API key.)
+const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const TILE_ATTRIBUTION = '© OpenStreetMap contributors';
+
+const DEFAULT_ZOOM = 16;
+
+// A pin drawn as a DOM element instead of Leaflet's default marker image —
+// the default icon's asset URLs break under bundlers. Styled from the site
+// palette's CSS variables (the ones @theme emits in globals.css).
+const pinIcon = divIcon({
   className: '',
-  iconSize: [24, 36],
-  iconAnchor: [12, 36],
+  html: `<div style="
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-green-500);
+    border: 3px solid var(--color-beige-100);
+    box-shadow: 0 0 0 1px var(--color-green-500), 0 1px 4px rgb(0 0 0 / 0.35);
+  "></div>`,
+  iconSize: [18, 18],
+  iconAnchor: [9, 9],
 });
+
+/**
+ * A map initialized inside a freshly-opened dialog measures its container
+ * before the panel has settled and renders gray or quarter-drawn. Calling
+ * invalidateSize once the dialog transition has had its duration fixes that.
+ */
+function SizeSettler() {
+  const map = useMap();
+  useEffect(() => {
+    map.invalidateSize();
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+    }, 350);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [map]);
+  return null;
+}
 
 /**
  * Map showing where a found item was spotted. Loaded client-only via
  * `next/dynamic` in the modal — Leaflet touches `window` at import time.
  * No `dark:` classes — the /spotted page is pinned to the light theme.
  */
-const SpottedItemMap = ({ lat, lng, className }) => (
-  // `relative z-0` keeps Leaflet's absolutely-positioned, high-z-index panes
-  // from escaping the modal's stacking context. `className` fully owns height
-  // and corner radius — never append a height class alongside the default
-  // `h-64`, since conflicting Tailwind utilities resolve by stylesheet order.
-  <MapContainer
-    center={[lat, lng]}
-    zoom={16}
-    scrollWheelZoom={false}
-    className={`relative z-0 w-full ${className ?? 'h-64 rounded-xl'}`}
-  >
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Marker position={[lat, lng]} icon={pinIcon} />
-  </MapContainer>
+const SpottedItemMap = ({ lat, lng }) => (
+  // relative + z-0 gives the map its own stacking context, so Leaflet's
+  // high internal pane z-indexes can never climb over the panel's close
+  // button. The fixed height keeps the layout stable while the chunk loads.
+  <div className="relative z-0 h-44 w-full overflow-hidden rounded-lg ring-1 ring-green-500/25 md:h-56">
+    <MapContainer
+      center={[lat, lng]}
+      zoom={DEFAULT_ZOOM}
+      scrollWheelZoom={false}
+      className="h-full w-full"
+    >
+      <TileLayer url={TILE_URL} attribution={TILE_ATTRIBUTION} />
+      <Marker position={[lat, lng]} icon={pinIcon} keyboard={false} />
+      <SizeSettler />
+    </MapContainer>
+  </div>
 );
 
 export default SpottedItemMap;

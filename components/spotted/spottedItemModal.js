@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import {
   Dialog,
@@ -20,81 +20,102 @@ const SpottedItemMap = dynamic(
 );
 
 /**
- * Detail modal for a found item. Mounted by the parent only while an item is
- * selected. No `dark:` classes — the /spotted page is pinned to the light
- * theme (see `body.spotted-theme` in globals.css, which also reaches this
- * portal).
+ * Detail modal for a found item: the cutout floats half-in, half-out of the
+ * panel's top edge — the object dropped onto its own label — with the
+ * title, found line, map, and story in a single column below.
+ *
+ * Headless UI owns the focus trap, Escape, scroll locking, and focus
+ * restore. The outer container scrolls (not the panel), so the floating
+ * cutout scrolls away with the content instead of sticking in place; the
+ * panel itself never clips it. `min-h-full` + `items-center` keeps short
+ * panels centered, and the extra `pt` reserves headroom for the overhang.
+ *
+ * No `dark:` classes — the /spotted page is pinned to the light theme (see
+ * `body.spotted-theme` in globals.css, which also reaches this portal).
  */
 const SpottedItemModal = ({ item, onClose }) => {
+  // Keep the last-open item around while the dialog fades out, so the
+  // contents don't vanish mid-transition. On open, `item` wins immediately.
+  const [lastItem, setLastItem] = useState(null);
+  useEffect(() => {
+    if (item) setLastItem(item);
+  }, [item]);
+  const shown = item ?? lastItem;
+
   // getMDXComponent evaluates the bundled MDX code string; memoize per item.
-  // Hooks must run unconditionally, so guard inside the memo.
   const Body = useMemo(
-    () => (item ? getMDXComponent(item.code) : null),
-    [item]
+    () => (shown ? getMDXComponent(shown.code) : null),
+    [shown]
   );
 
-  if (!item) return null;
-  const { title, found, neighborhood, lat, lng, image, alt, width, height } =
-    item.details;
-  const hasCoords = lat != null && lng != null;
+  const details = shown?.details;
+  const hasCoords = details?.lat != null && details?.lng != null;
 
   return (
-    <Dialog open={true} onClose={onClose} className="relative z-50">
-      <DialogBackdrop className="fixed inset-0 bg-black/40" />
+    <Dialog open={item != null} onClose={onClose} className="relative z-50">
+      {/* Dim the street behind. */}
+      <DialogBackdrop
+        transition
+        className="fixed inset-0 bg-green-700/75 transition-opacity duration-300 ease-out data-closed:pointer-events-none data-closed:opacity-0"
+      />
+
       <div className="fixed inset-0 overflow-y-auto">
-        <div className="flex min-h-full items-center justify-center p-4">
-          {/* `relative` anchors the floating close button. */}
-          <DialogPanel className="relative w-full max-w-xl rounded-2xl bg-beige-100 p-6 text-black shadow-xl md:p-8">
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close"
-              className="absolute right-4 top-4 z-10 text-2xl leading-none text-green-600 hover:text-green-500"
+        <div className="flex min-h-full items-center justify-center p-4 pt-20 sm:p-8 sm:pt-24">
+          <DialogPanel
+            transition
+            className="relative w-full max-w-xl rounded-2xl bg-beige-100 text-black shadow-2xl ring-1 ring-green-500/25 transition duration-300 ease-out data-closed:pointer-events-none data-closed:opacity-0"
+          >
+          {/* Quiet close control. Esc and the backdrop also close, but touch
+          users have neither, and the trap needs a focusable to cycle. */}
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close"
+            className="absolute right-3 top-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-beige-200 text-green-600 ring-1 ring-green-500/25 transition hover:bg-green-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+          >
+            <svg
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="h-4 w-4"
+              aria-hidden="true"
             >
-              &times;
-            </button>
-            {/* Bare cutout, same treatment as the items on the sidewalk. */}
-            <Image
-              src={image}
-              alt={alt}
-              width={width}
-              height={height}
-              className="mx-auto my-6 max-h-56 w-auto drop-shadow-lg md:max-h-64"
-            />
-            {/* Info card */}
-            <div className="rounded-md bg-green-200 p-4 md:p-5">
-              <div className="md:flex md:items-start md:gap-6">
-                <div className="min-w-0 md:flex-1">
-                  <DialogTitle className="text-xl font-semibold md:text-2xl">
-                    {title}
-                  </DialogTitle>
-                  <dl className="mt-3 space-y-1.5">
-                    <div className="flex">
-                      <dt className="w-20 shrink-0 text-sm font-medium text-green-500">
-                        Found
-                      </dt>
-                      <dd className="text-sm">{found}</dd>
-                    </div>
-                    <div className="flex">
-                      <dt className="w-20 shrink-0 text-sm font-medium text-green-500">
-                        Location
-                      </dt>
-                      <dd className="text-sm">{neighborhood}</dd>
-                    </div>
-                  </dl>
-                </div>
+              <path d="M5 5l10 10M15 5L5 15" strokeLinecap="round" />
+            </svg>
+          </button>
+          {details && (
+            <>
+              {/* The cutout, breaking the panel's top edge. `-top-*` is half
+              of `max-h-*` so exactly half sticks out; the panel's `pt-*`
+              below clears the half that overlaps. */}
+              <Image
+                src={details.image}
+                alt={details.alt}
+                width={details.width}
+                height={details.height}
+                className="absolute -top-16 left-1/2 z-10 max-h-32 w-auto max-w-3/5 -translate-x-1/2 object-contain drop-shadow-lg md:-top-20 md:max-h-40"
+              />
+              <div className="p-6 pt-20 md:p-8 md:pt-24">
+                <DialogTitle className="text-center text-2xl font-semibold md:text-3xl">
+                  {details.title}
+                </DialogTitle>
+                <p className="mt-2 text-center text-sm uppercase tracking-wide text-green-500">
+                  Found {details.found} · {details.neighborhood}
+                </p>
+
                 {hasCoords && (
-                  <figure className="mt-4 md:mt-0 md:w-44 md:shrink-0">
-                    <SpottedItemMap
-                      lat={lat}
-                      lng={lng}
-                      className="h-32 rounded-sm border border-green-700/25 md:h-40"
-                    />
-                  </figure>
+                  <div className="mt-5">
+                    <SpottedItemMap lat={details.lat} lng={details.lng} />
+                  </div>
                 )}
+
+                <div className="mt-5">
+                  {Body && <Body components={MDXComponents} />}
+                </div>
               </div>
-            </div>
-            <div className="mt-6">{Body && <Body components={MDXComponents} />}</div>
+            </>
+          )}
           </DialogPanel>
         </div>
       </div>
