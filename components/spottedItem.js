@@ -12,7 +12,7 @@ import Image from 'next/image';
  * - `size`: the rendered height in rem (the sidewalk band is 11rem tall, so
  *   sensible values are roughly 2-8).
  */
-const SpottedItem = ({ item }) => {
+const SpottedItem = ({ item, onSelect }) => {
   const { x, y, size, image, alt, width, height, title } = item.details;
 
   const clamp = (v, fallback) => Math.min(1, Math.max(0, v ?? fallback));
@@ -27,7 +27,8 @@ const SpottedItem = ({ item }) => {
     >
       <button
         type="button"
-        aria-label={title}
+        onClick={() => onSelect(item)}
+        aria-label={`View details for ${title}`}
         className="-translate-x-1/2 block transition-transform duration-150 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
         style={{
           height: `${size}rem`,

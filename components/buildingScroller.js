@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import SpottedItem from '@/components/spottedItem';
+import SpottedItemModal from '@/components/spottedItemModal';
 
 /**
  * A street of storefront illustrations that pans horizontally as the page is
@@ -14,6 +15,8 @@ import SpottedItem from '@/components/spottedItem';
 const BuildingScroller = ({ buildings, sidewalk, items = [] }) => {
   const sectionRef = useRef(null);
   const stripRef = useRef(null);
+  // The item whose detail modal is open, if any.
+  const [selected, setSelected] = useState(null);
   // Horizontal distance (px) the strip needs to travel to reveal its end.
   const [distance, setDistance] = useState(0);
   // Number of sidewalk tiles needed to cover the strip's full width.
@@ -124,11 +127,16 @@ const BuildingScroller = ({ buildings, sidewalk, items = [] }) => {
             {[...items]
               .sort((a, b) => (a.details.x ?? 0.5) - (b.details.x ?? 0.5))
               .map((item) => (
-                <SpottedItem key={item.details.slug} item={item} />
+                <SpottedItem
+                  key={item.details.slug}
+                  item={item}
+                  onSelect={setSelected}
+                />
               ))}
           </div>
         </div>
       </div>
+      <SpottedItemModal item={selected} onClose={() => setSelected(null)} />
     </section>
   );
 };
