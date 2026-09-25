@@ -23,9 +23,9 @@ export const Sidewalk = {
 //   sensible values are roughly 2-8).
 export const SpottedItemLayout = {
   'contact-lens': { x: 0.12, y: 0.45, size: 1 },
-  photostrip: { x: 0.38, y: 0.3, size: 4 },
-  'movie-binder': { x: 0.62, y: 0.5, size: 4 },
-  'planty-card': { x: 0.85, y: 0.35, size: 4 },
+  photostrip: { x: 0.38, y: 0.3, size: 1 },
+  'movie-binder': { x: 0.62, y: 0.5, size: 3 },
+  'planty-card': { x: 0.85, y: 0.35, size: 1 },
 };
 
 // Storefront illustrations for the /spotted street, in the order they appear
