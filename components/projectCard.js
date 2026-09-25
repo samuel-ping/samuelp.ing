@@ -11,7 +11,7 @@ const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
     <Link href={`projects/${slug}`}>
       <button
         type="button"
-        className="snap-center md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg dark:shadow-green-700 transition-colors bg-beige-100 hover:bg-beige-200 border border-beige-200 dark:bg-green-600 dark:hover:bg-green-700 dark:border-green-500"
+        className="snap-center md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg dark:shadow-green-800 transition-colors bg-beige-100 hover:bg-beige-200 border border-beige-200 dark:bg-green-700 dark:hover:bg-green-800 dark:border-green-600"
         data-umami-event={`${title} project card`}
         data-umami-event-source={eventSource}
       >

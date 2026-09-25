@@ -11,7 +11,7 @@ const ProjectRow = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
   return (
     <Link
       href={`projects/${slug}`}
-      className="group flex flex-col gap-y-1 px-4 py-3 rounded-lg transition-colors hover:bg-beige-200 sm:flex-row sm:items-center sm:gap-x-4 dark:hover:bg-green-700"
+      className="group flex flex-col gap-y-1 px-4 py-3 rounded-lg transition-colors hover:bg-beige-200 sm:flex-row sm:items-center sm:gap-x-4 dark:hover:bg-green-800"
       data-umami-event={`${title} project row`}
       data-umami-event-source={eventSource}
     >
