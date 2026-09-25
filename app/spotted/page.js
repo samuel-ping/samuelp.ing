@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full">
       <div className="mx-6 md:mx-12">
         <PageTitle text="Lost & Spotted" />
       </div>
