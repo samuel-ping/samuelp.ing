@@ -24,7 +24,7 @@ const SpottedItem = ({ item, onSelect }) => {
         type="button"
         onClick={() => onSelect(item)}
         aria-label={`View details for ${title}`}
-        className="-translate-x-1/2 block transition-transform duration-150 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
+        className="-translate-x-1/2 block origin-center motion-safe:hover:animate-wiggle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
         style={{
           height: `${size}rem`,
           width: `${(size * width) / height}rem`,

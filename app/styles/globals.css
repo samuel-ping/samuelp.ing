@@ -25,6 +25,21 @@
   --color-green-600: #375954;
   --color-green-700: #28413d;
   --color-green-800: #233835;
+
+  /* Spotted items do a little dance on hover: a two-frame animation that
+     snaps between a slight rotation each way, with no easing. */
+  --animate-wiggle: wiggle 0.5s linear infinite;
+
+  @keyframes wiggle {
+    0%,
+    49.99% {
+      transform: rotate(-5deg);
+    }
+    50%,
+    100% {
+      transform: rotate(5deg);
+    }
+  }
 }
 
 /*
