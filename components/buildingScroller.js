@@ -3,13 +3,15 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+import SpottedItem from '@/components/spottedItem';
+
 /**
  * A street of storefront illustrations that pans horizontally as the page is
  * scrolled vertically. The section is made as tall as the strip is wide (plus
  * one viewport), and a sticky, full-height viewport translates the strip
  * according to scroll progress.
  */
-const BuildingScroller = ({ buildings, sidewalk }) => {
+const BuildingScroller = ({ buildings, sidewalk, items = [] }) => {
   const sectionRef = useRef(null);
   const stripRef = useRef(null);
   // Horizontal distance (px) the strip needs to travel to reveal its end.
@@ -109,6 +111,21 @@ const BuildingScroller = ({ buildings, sidewalk }) => {
                 }}
               />
             ))}
+          </div>
+          {/* Found items scattered on the sidewalk. A separate layer from the
+              aria-hidden, overflow-hidden tile band; absolute so it never
+              affects the strip's measured width. z-20 keeps items clickable
+              above the building bases. Sorted by x so tab order follows the
+              street left to right. */}
+          <div
+            className="absolute inset-x-0 bottom-0 z-20"
+            style={{ height: sidewalk.tileHeight }}
+          >
+            {[...items]
+              .sort((a, b) => (a.details.x ?? 0.5) - (b.details.x ?? 0.5))
+              .map((item) => (
+                <SpottedItem key={item.details.slug} item={item} />
+              ))}
           </div>
         </div>
       </div>
