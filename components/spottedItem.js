@@ -3,14 +3,9 @@
 import Image from 'next/image';
 
 /**
- * A found item sitting on the sidewalk. Position and size come from the
- * item's MDX frontmatter:
- * - `x`: the item's horizontal center as a fraction (0-1) of the full street
- *   width.
- * - `y`: where the item's bottom edge rests as a fraction (0-1) of the
- *   sidewalk band height.
- * - `size`: the rendered height in rem (the sidewalk band is 11rem tall, so
- *   sensible values are roughly 2-8).
+ * A found item sitting on the sidewalk. Position (`x`/`y`) and `size` are
+ * merged into the item's details from SpottedItemLayout in
+ * config/spotted.config.js — see that file for what each value means.
  */
 const SpottedItem = ({ item, onSelect }) => {
   const { x, y, size, image, alt, width, height, title } = item.details;

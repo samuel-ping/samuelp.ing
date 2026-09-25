@@ -2,7 +2,10 @@ import PageTitle from '@/components/pageTitle';
 import BodyClassName from '@/components/bodyClassName';
 import BuildingScroller from '@/components/buildingScroller';
 
-import SpottedBuildings, { Sidewalk } from '@/config/spottedBuildings.config';
+import SpottedBuildings, {
+  Sidewalk,
+  SpottedItemLayout,
+} from '@/config/spotted.config';
 
 import { GetSpottedItems } from '@/utils/mdxUtils';
 
@@ -14,6 +17,12 @@ export const metadata = {
 
 export default async function Page() {
   const items = await GetSpottedItems();
+  // Merge each item's display placement (x/y/size) from the config into its
+  // details so the components read a single object.
+  const itemsWithLayout = items.map((item) => ({
+    ...item,
+    details: { ...item.details, ...SpottedItemLayout[item.details.slug] },
+  }));
 
   return (
     <div className="w-full">
@@ -24,7 +33,7 @@ export default async function Page() {
       <BuildingScroller
         buildings={SpottedBuildings}
         sidewalk={Sidewalk}
-        items={items}
+        items={itemsWithLayout}
       />
     </div>
   );

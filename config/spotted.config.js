@@ -13,6 +13,21 @@ export const Sidewalk = {
   buildingOverlap: 32,
 };
 
+// Display placement for each found item, keyed by its MDX slug
+// (content/spotted/<slug>.mdx):
+// - `x`: the item's horizontal center as a fraction (0-1) of the full street
+//   width.
+// - `y`: where the item's bottom edge rests as a fraction (0-1) of the
+//   sidewalk band height.
+// - `size`: the rendered height in rem (the sidewalk band is 11rem tall, so
+//   sensible values are roughly 2-8).
+export const SpottedItemLayout = {
+  'contact-lens': { x: 0.12, y: 0.45, size: 1 },
+  photostrip: { x: 0.38, y: 0.3, size: 4 },
+  'movie-binder': { x: 0.62, y: 0.5, size: 4 },
+  'planty-card': { x: 0.85, y: 0.35, size: 4 },
+};
+
 // Storefront illustrations for the /spotted street, in the order they appear
 // along the sidewalk (left to right).
 const SpottedBuildings = [
