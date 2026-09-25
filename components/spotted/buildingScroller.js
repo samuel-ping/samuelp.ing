@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
-import SpottedItem from '@/components/spottedItem';
-import SpottedItemModal from '@/components/spottedItemModal';
+import SpottedItem from '@/components/spotted/spottedItem';
+import SpottedItemModal from '@/components/spotted/spottedItemModal';
 
 /**
  * A street of storefront illustrations that pans horizontally as the page is

@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import NavbarButton from '@/components/navbarButton';
-import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
+import NavbarButton from '@/components/layout/navbarButton';
+import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from '@/components/ui/icons';
 
 const Footer = ({ navbarButtons }) => {
   const pathname = usePathname();

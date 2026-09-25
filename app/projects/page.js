@@ -1,6 +1,6 @@
-import PageTitle from '@/components/pageTitle';
-import ProjectCard from '@/components/projectCard';
-import ProjectRow from '@/components/projectRow';
+import PageTitle from '@/components/ui/pageTitle';
+import ProjectCard from '@/components/projects/projectCard';
+import ProjectRow from '@/components/projects/projectRow';
 
 import { GetProjectDetails } from '@/utils/mdxUtils';
 

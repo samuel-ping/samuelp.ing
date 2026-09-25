@@ -1,5 +1,5 @@
-import Button from '@/components/rightArrowButton';
-import BioSection from '@/components/bioSection';
+import Button from '@/components/ui/rightArrowButton';
+import BioSection from '@/components/home/bioSection';
 
 import { GetProjectDetails } from '@/utils/mdxUtils';
 

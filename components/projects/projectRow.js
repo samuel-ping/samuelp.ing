@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import Chip from '@/components/chip';
-import { RightArrowIcon as Arrow } from '@/components/icons';
+import Chip from '@/components/ui/chip';
+import { RightArrowIcon as Arrow } from '@/components/ui/icons';
 
 /**
  * Compact single-row alternative to ProjectCard, used for past projects on the projects page.

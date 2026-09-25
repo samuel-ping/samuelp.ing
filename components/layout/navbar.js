@@ -9,10 +9,10 @@ import {
   Transition,
 } from '@headlessui/react';
 
-import HamburgerMenuIcon from '@/components/hamburgerMenuIcon';
-import Logo from '@/components/logo';
-import NavbarButton from '@/components/navbarButton';
-import { ThemeToggle } from '@/components/themeToggle';
+import HamburgerMenuIcon from '@/components/layout/hamburgerMenuIcon';
+import Logo from '@/components/layout/logo';
+import NavbarButton from '@/components/layout/navbarButton';
+import { ThemeToggle } from '@/components/layout/themeToggle';
 
 export default function Navbar({ navbarButtons }) {
   const pathname = usePathname();

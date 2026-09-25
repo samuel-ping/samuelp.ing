@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import SP from '@/components/sp';
+import SP from '@/components/layout/sp';
 
 const Logo = ({ isAnimated, size, visible }) => (
   <>

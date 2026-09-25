@@ -1,5 +1,5 @@
 import MDXContent from '@/components/mdx/mdxContent';
-import PageTitle from '@/components/pageTitle';
+import PageTitle from '@/components/ui/pageTitle';
 
 import { GetAboutMDX } from '@/utils/mdxUtils';
 

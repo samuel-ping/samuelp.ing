@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import Chip from '@/components/chip';
-import { RightArrowIcon as Arrow } from '@/components/icons';
+import Chip from '@/components/ui/chip';
+import { RightArrowIcon as Arrow } from '@/components/ui/icons';
 
 /**
  * @param eventSource suffix to be used as a part of the umami event name. I added this to differentiate between clicking on project cards from the home page carousel versus from the projects page.

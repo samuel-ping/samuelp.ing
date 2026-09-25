@@ -1,6 +1,6 @@
-import PageTitle from '@/components/pageTitle';
-import BodyClassName from '@/components/bodyClassName';
-import BuildingScroller from '@/components/buildingScroller';
+import PageTitle from '@/components/ui/pageTitle';
+import BodyClassName from '@/components/layout/bodyClassName';
+import BuildingScroller from '@/components/spotted/buildingScroller';
 
 import SpottedBuildings, {
   Sidewalk,

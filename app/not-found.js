@@ -1,4 +1,4 @@
-import NotFoundMessage from '@/components/notFoundMessage';
+import NotFoundMessage from '@/components/ui/notFoundMessage';
 
 export const metadata = {
   title: '4[shrimp]4',

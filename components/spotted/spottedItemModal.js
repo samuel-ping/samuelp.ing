@@ -11,7 +11,7 @@ import {
 import { getMDXComponent } from 'mdx-bundler/client';
 
 import { Components as MDXComponents } from '@/components/mdx/components';
-import Chip from '@/components/chip';
+import Chip from '@/components/ui/chip';
 
 /**
  * Detail modal for a found item. Mounted by the parent only while an item is
