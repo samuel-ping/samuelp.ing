@@ -1,9 +1,7 @@
-import { getMDXComponent } from 'mdx-bundler/client';
-
 import { CodeBracketsIcon, ExternalLinkIcon } from '@/components/icons';
 import Chip from '@/components/chip';
 import BackButton from '@/components/backButton';
-import { Components as MDXComponents } from '@/components/mdx/components';
+import MDXContent from '@/components/mdx/mdxContent';
 import IconButton from '@/components/iconButton';
 
 import { GetProject, GetProjectDetails } from '@/utils/mdxUtils';
@@ -31,7 +29,6 @@ export async function generateMetadata(props) {
 export default async function Page(props) {
   const params = await props.params;
   const { code, details } = await GetProject(`projects/${params.slug}`);
-  const Component = getMDXComponent(code);
 
   const tags = details.tags;
 
@@ -67,7 +64,7 @@ export default async function Page(props) {
       </div>
 
       <div className="w-full max-w-2xl">
-        <Component components={MDXComponents} />
+        <MDXContent code={code} />
       </div>
 
       {/* tags */}

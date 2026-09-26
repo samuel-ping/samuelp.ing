@@ -52,17 +52,25 @@ export default function BioSection({ button }) {
   });
 
   useEffect(() => {
-    setCrossfade((prev) => {
-      if (prev.aIsFront) {
-        return { ...prev, photoB: targetPhoto };
-      } else {
-        return { ...prev, photoA: targetPhoto };
-      }
+    let swapFrame;
+    // Load the next photo into the back slot on one frame...
+    const loadFrame = requestAnimationFrame(() => {
+      setCrossfade((prev) => {
+        if (prev.aIsFront) {
+          return { ...prev, photoB: targetPhoto };
+        } else {
+          return { ...prev, photoA: targetPhoto };
+        }
+      });
+      // ...then swap slots on the following frame so it fades in
+      swapFrame = requestAnimationFrame(() => {
+        setCrossfade((prev) => ({ ...prev, aIsFront: !prev.aIsFront }));
+      });
     });
-    const frame = requestAnimationFrame(() => {
-      setCrossfade((prev) => ({ ...prev, aIsFront: !prev.aIsFront }));
-    });
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(loadFrame);
+      if (swapFrame) cancelAnimationFrame(swapFrame);
+    };
   }, [targetPhoto]);
 
   return (
