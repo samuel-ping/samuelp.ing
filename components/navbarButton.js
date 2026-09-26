@@ -23,7 +23,7 @@ const NavbarButton = ({ active, title, route, mobile, close }) => {
     <div
       className={`${
         active ? 'text-green-400 dark:text-green-100' : ''
-      } flex items-center justify-center cursor-pointer text-xl transition-colors hover:text-green-400 dark:hover:text-green-50`}
+      } flex cursor-pointer items-center justify-center text-xl transition-colors hover:text-green-400 dark:hover:text-green-50`}
     >
       <Link href={route} data-umami-event={`${title} nav button`}>
         <span>{title}</span>

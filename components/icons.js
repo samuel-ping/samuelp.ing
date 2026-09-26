@@ -4,7 +4,7 @@
 export const MoonIcon = ({ className }) => {
   return (
     <svg
-      className={`${className} w-5 h-5`}
+      className={`${className} size-5`}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -19,7 +19,7 @@ export const MoonIcon = ({ className }) => {
 export const SunIcon = ({ className }) => {
   return (
     <svg
-      className={`${className} w-5 h-5`}
+      className={`${className} size-5`}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -34,7 +34,7 @@ export const SunIcon = ({ className }) => {
 export const RightArrowIcon = ({ className }) => {
   return (
     <svg
-      className={`${className} w-6 h-6`}
+      className={`${className} size-6`}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -55,7 +55,7 @@ export const RightArrowIcon = ({ className }) => {
 export const LeftArrowIcon = ({ className }) => {
   return (
     <svg
-      className={`${className} w-6 h-6`}
+      className={`${className} size-6`}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -116,7 +116,7 @@ export const ExternalLinkIcon = ({ className }) => {
 export const EnvelopeIcon = ({ className }) => {
   return (
     <svg
-      className={className ? className : 'w-6 h-6 text-black'}
+      className={className ? className : 'size-6 text-black'}
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
@@ -133,7 +133,7 @@ export const EnvelopeIcon = ({ className }) => {
 export const GitHubIcon = ({ className }) => {
   return (
     <svg
-      className={className ? className : 'w-6 h-6 text-black'}
+      className={className ? className : 'size-6 text-black'}
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
@@ -149,7 +149,7 @@ export const GitHubIcon = ({ className }) => {
 export const LinkedInIcon = ({ className }) => {
   return (
     <svg
-      className={className ? className : 'w-6 h-6 text-black'}
+      className={className ? className : 'size-6 text-black'}
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"

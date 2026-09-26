@@ -8,7 +8,7 @@ const components = {
     return (
       <h2
         {...props}
-        className="text-2xl md:text-3xl font-semibold leading-snug mt-10 mb-3"
+        className="mt-10 mb-3 text-2xl leading-snug font-semibold md:text-3xl"
       />
     );
   },
@@ -17,21 +17,21 @@ const components = {
     return (
       <h3
         {...props}
-        className="text-xl md:text-2xl font-medium leading-snug mt-8 mb-2"
+        className="mt-8 mb-2 text-xl leading-snug font-medium md:text-2xl"
       />
     );
   },
 
   p: (props) => {
-    return <p {...props} className="text-base/7 md:text-lg/relaxed mb-5" />;
+    return <p {...props} className="mb-5 text-base/7 md:text-lg/relaxed" />;
   },
 
   ul: (props) => {
-    return <ul className="list-disc list-outside pl-6 mb-5" {...props} />;
+    return <ul className="mb-5 list-outside list-disc pl-6" {...props} />;
   },
 
   ol: (props) => {
-    return <ol className="list-decimal list-outside pl-6 mb-5" {...props} />;
+    return <ol className="mb-5 list-outside list-decimal pl-6" {...props} />;
   },
 
   li: (props) => {

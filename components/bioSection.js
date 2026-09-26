@@ -74,29 +74,29 @@ export default function BioSection({ button }) {
   }, [targetPhoto]);
 
   return (
-    <div className="md:pt-16 pb-16 mx-6 flex flex-col items-center gap-x-12 gap-y-4 md:flex-row-reverse md:justify-between">
-      <div className="relative w-48 h-48 md:w-64 md:h-64">
+    <div className="mx-6 flex flex-col items-center gap-x-12 gap-y-4 pb-16 md:flex-row-reverse md:justify-between md:pt-16">
+      <div className="relative size-48 md:size-64">
         <Image
           src={crossfade.photoA}
           alt="Photo of Sam"
           placeholder="blur"
           priority
-          className={`absolute inset-0 w-full h-full rounded-full object-cover transition-opacity duration-500 ${crossfade.aIsFront ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 size-full rounded-full object-cover transition-opacity duration-500 ${crossfade.aIsFront ? 'opacity-100' : 'opacity-0'}`}
         />
         <Image
           src={crossfade.photoB}
           alt="Photo of Sam"
           placeholder="blur"
           priority
-          className={`absolute inset-0 w-full h-full rounded-full object-cover transition-opacity duration-500 ${!crossfade.aIsFront ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 size-full rounded-full object-cover transition-opacity duration-500 ${!crossfade.aIsFront ? 'opacity-100' : 'opacity-0'}`}
         />
       </div>
 
-      <div className="max-w-lg flex flex-col space-y-5">
+      <div className="flex max-w-lg flex-col space-y-5">
         <span className="text-4xl font-medium">
           Hey! I&apos;m{' '}
           <span
-            className={`text-green-600 dark:text-green-100 cursor-default transition-all duration-100 ${activeIndex === NAME ? 'underline decoration-wavy decoration-2 underline-offset-9' : ''}`}
+            className={`cursor-default text-green-600 transition-all duration-100 dark:text-green-100 ${activeIndex === NAME ? 'underline decoration-wavy decoration-2 underline-offset-9' : ''}`}
             onMouseEnter={() => setHoveredName(true)}
             onMouseLeave={() => setHoveredName(false)}
           >Sam Ping</span>,

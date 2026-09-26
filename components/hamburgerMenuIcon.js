@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export default function HamburgerMenuIcon({ isOpen }) {
   return (
     <motion.svg
-      className="stroke-black dark:stroke-beige-100 stroke-2 text-center"
+      className="stroke-black stroke-2 text-center dark:stroke-beige-100"
       width="35"
       height="35"
       viewBox="0 0 23 20"

@@ -22,8 +22,8 @@ const Footer = ({ navbarButtons }) => {
         ))}
       </div>
 
-      <div className="w-full flex flex-row justify-center items-center">
-        <div className="flex flex-row space-x-5 items-center">
+      <div className="flex w-full flex-row items-center justify-center">
+        <div className="flex flex-row items-center space-x-5">
           <Link
             href="https://github.com/samuel-ping"
             target="_blank"
@@ -33,7 +33,7 @@ const Footer = ({ navbarButtons }) => {
               className="flex items-center"
               data-umami-event="GitHub profile viewed"
             >
-              <GitHubIcon className="h-10 w-10 hover:text-green-400 dark:hover:text-green-50 transition-colors" />
+              <GitHubIcon className="size-10 transition-colors hover:text-green-400 dark:hover:text-green-50" />
             </button>
           </Link>
           <Link
@@ -45,7 +45,7 @@ const Footer = ({ navbarButtons }) => {
               className="flex items-center"
               data-umami-event="LinkedIn profile viewed"
             >
-              <LinkedInIcon className="h-10 w-10 hover:text-green-400 dark:hover:text-green-50 transition-colors" />
+              <LinkedInIcon className="size-10 transition-colors hover:text-green-400 dark:hover:text-green-50" />
             </button>
           </Link>
           <Link
@@ -57,7 +57,7 @@ const Footer = ({ navbarButtons }) => {
               className="flex items-center"
               data-umami-event="email button clicked"
             >
-              <EnvelopeIcon className="h-10 w-10 hover:text-green-400 dark:hover:text-green-50 transition-colors" />
+              <EnvelopeIcon className="size-10 transition-colors hover:text-green-400 dark:hover:text-green-50" />
             </button>
           </Link>
         </div>

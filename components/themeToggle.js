@@ -23,7 +23,7 @@ export const ThemeToggle = () => {
   if (theme === 'light') {
     return (
       <div
-        className="flex items-center hover:text-green-400 transition-transform hover:-translate-y-1"
+        className="flex items-center transition-transform hover:-translate-y-1 hover:text-green-400"
         role="button"
         onClick={() => {
           setTheme('dark');
@@ -36,7 +36,7 @@ export const ThemeToggle = () => {
   } else {
     return (
       <div
-        className="flex items-center hover:text-green-50 transition-transform hover:-translate-y-1"
+        className="flex items-center transition-transform hover:-translate-y-1 hover:text-green-50"
         role="button"
         onClick={() => {
           setTheme('light');

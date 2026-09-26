@@ -21,7 +21,7 @@ export default async function Page() {
       {/* featured projects */}
       <div className="flex flex-col items-center gap-y-4">
         <h2 className="text-2xl font-medium">Featured</h2>
-        <div className="w-fit grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-fit gap-4 md:grid-cols-2 lg:grid-cols-4">
           {featured.map((project) => {
             return (
               <ProjectCard
@@ -39,9 +39,9 @@ export default async function Page() {
       </div>
 
       {/* past projects */}
-      <div className="flex flex-col items-center gap-y-4 w-full max-w-3xl">
+      <div className="flex w-full max-w-3xl flex-col items-center gap-y-4">
         <h2 className="text-2xl font-medium">Past projects</h2>
-        <div className="w-full flex flex-col divide-y divide-beige-200 dark:divide-green-700">
+        <div className="flex w-full flex-col divide-y divide-beige-200 dark:divide-green-700">
           {past.map((project) => {
             return (
               <ProjectRow

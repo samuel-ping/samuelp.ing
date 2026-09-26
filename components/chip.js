@@ -2,8 +2,8 @@
 
 const Chip = ({ text }) => {
   return (
-    <div className="flex justify-center items-center py-1 px-2 rounded-full text-beige-100 bg-green-400 dark:bg-green-600">
-      <div className="text-sm font-normal leading-none max-w-full flex-initial">
+    <div className="flex items-center justify-center rounded-full bg-green-400 px-2 py-1 text-beige-100 dark:bg-green-600">
+      <div className="max-w-full flex-initial text-sm leading-none font-normal">
         {text}
       </div>
     </div>
