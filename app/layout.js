@@ -52,9 +52,9 @@ export default function RootLayout({ children }) {
   return (
     // Must enable suppressHydrationWarning to use next-themes.
     <html lang="en" className={karla.variable} suppressHydrationWarning>
-      <body className="transition-colors bg-beige-100 dark:bg-green-700 text-black dark:text-beige-200">
+      <body className="bg-beige-100 text-black transition-colors dark:bg-green-700 dark:text-beige-200">
         {/* Need this div so clicking outside navbar popover on small screens will close it. See: https://github.com/tailwindlabs/headlessui/issues/2752#issuecomment-1724096430 */}
-        <div className="min-h-screen flex flex-col gap-y-10 md:gap-y-18">
+        <div className="flex min-h-screen flex-col gap-y-10 md:gap-y-18">
           <ThemeProvider>
             <Navbar navbarButtons={NavbarButtons} />
             <main className="flex w-full justify-center">{children}</main>

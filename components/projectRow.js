@@ -11,13 +11,13 @@ const ProjectRow = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
   return (
     <Link
       href={`projects/${slug}`}
-      className="group flex flex-col gap-y-1 px-4 py-3 rounded-lg transition-colors hover:bg-beige-200 sm:flex-row sm:items-center sm:gap-x-4 dark:hover:bg-green-800"
+      className="group flex flex-col gap-y-1 rounded-lg px-4 py-3 transition-colors hover:bg-beige-200 sm:flex-row sm:items-center sm:gap-x-4 dark:hover:bg-green-800"
       data-umami-event={`${title} project row`}
       data-umami-event-source={eventSource}
     >
-      <div className="flex flex-col sm:w-52 shrink-0">
+      <div className="flex shrink-0 flex-col sm:w-52">
         <span className="text-lg">{title}</span>
-        <span className="font-light italic text-sm">{dates}</span>
+        <span className="text-sm font-light italic">{dates}</span>
       </div>
 
       <span className="flex-1">{gist}</span>
@@ -30,7 +30,7 @@ const ProjectRow = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
         )}
         <Arrow
           className={
-            'w-5 transition ease-in-out duration-300 group-hover:translate-x-2'
+            'w-5 transition duration-300 ease-in-out group-hover:translate-x-2'
           }
         />
       </div>

@@ -1,17 +1,20 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
 
 import { MoonIcon, SunIcon } from '@/components/icons';
 
-export const ThemeToggle = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+export const ThemeToggle = () => {
+  // Hydration guard: false on the server and first client render, true after.
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+  const { theme, setTheme } = useTheme();
 
   if (!mounted) {
     return null;
@@ -20,7 +23,7 @@ export const ThemeToggle = () => {
   if (theme === 'light') {
     return (
       <div
-        className="flex items-center hover:text-green-400 transition-transform hover:-translate-y-1"
+        className="flex items-center transition-transform hover:-translate-y-1 hover:text-green-400"
         role="button"
         onClick={() => {
           setTheme('dark');
@@ -33,7 +36,7 @@ export const ThemeToggle = () => {
   } else {
     return (
       <div
-        className="flex items-center hover:text-green-50 transition-transform hover:-translate-y-1"
+        className="flex items-center transition-transform hover:-translate-y-1 hover:text-green-50"
         role="button"
         onClick={() => {
           setTheme('light');

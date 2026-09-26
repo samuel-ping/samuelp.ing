@@ -11,7 +11,7 @@ const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
     <Link href={`projects/${slug}`}>
       <button
         type="button"
-        className="snap-center md:snap-none group w-64 h-80 flex flex-col justify-between p-7 rounded-xl shadow-lg dark:shadow-green-800 transition-colors bg-beige-100 hover:bg-beige-200 border border-beige-200 dark:bg-green-700 dark:hover:bg-green-800 dark:border-green-600"
+        className="group flex h-80 w-64 snap-center flex-col justify-between rounded-xl border border-beige-200 bg-beige-100 p-7 shadow-lg transition-colors hover:bg-beige-200 md:snap-none dark:border-green-600 dark:bg-green-700 dark:shadow-green-800 dark:hover:bg-green-800"
         data-umami-event={`${title} project card`}
         data-umami-event-source={eventSource}
       >
@@ -23,7 +23,7 @@ const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
           </div>
 
           {/* tags */}
-          <div className="w-full flex flex-row flex-wrap gap-1">
+          <div className="flex w-full flex-row flex-wrap gap-1">
             {tags === undefined || tags.length == 0 ? (
               <></>
             ) : (
@@ -37,7 +37,7 @@ const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
           <span className="text-xl">learn more</span>
           <Arrow
             className={
-              'w-6 transition ease-in-out duration-300 group-hover:translate-x-4'
+              'w-6 transition duration-300 ease-in-out group-hover:translate-x-4'
             }
           />
         </div>

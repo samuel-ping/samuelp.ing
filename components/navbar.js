@@ -21,11 +21,11 @@ export default function Navbar({ navbarButtons }) {
     <Popover className="z-50">
       {({ open, close }) => (
         <>
-          <nav className="h-14 flex items-center justify-between px-6 my-8">
+          <nav className="my-8 flex h-14 items-center justify-between px-6">
             <Logo isAnimated size={48} visible={true} />
 
             {/* Desktop nav */}
-            <div className="hidden md:flex flex-row gap-x-4">
+            <div className="hidden flex-row gap-x-4 md:flex">
               {navbarButtons.map((button) => (
                 <NavbarButton
                   key={button.route}
@@ -52,8 +52,8 @@ export default function Navbar({ navbarButtons }) {
             leaveFrom="transform scale-100 opacity-100"
             leaveTo="transform scale-95 opacity-0"
           >
-            <div className="md:hidden flex justify-center">
-              <PopoverPanel className="absolute w-screen flex flex-col bg-beige-100 dark:bg-green-700 shadow-lg dark:shadow-green-800 divide-y divide-beige-200 dark:divide-green-600">
+            <div className="flex justify-center md:hidden">
+              <PopoverPanel className="absolute flex w-screen flex-col divide-y divide-beige-200 bg-beige-100 shadow-lg dark:divide-green-600 dark:bg-green-700 dark:shadow-green-800">
                 {navbarButtons.map((button) => (
                   <NavbarButton
                     key={button.title}
@@ -64,7 +64,7 @@ export default function Navbar({ navbarButtons }) {
                     close={close}
                   />
                 ))}
-                <div className="p-12 flex justify-center">
+                <div className="flex justify-center p-12">
                   <ThemeToggle />
                 </div>
               </PopoverPanel>

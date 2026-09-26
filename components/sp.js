@@ -4,7 +4,7 @@ function SPLogo({ isAnimated, size, visible }) {
   if (!isAnimated) {
     return (
       <svg
-        className="stroke-2 stroke-black dark:stroke-beige-200"
+        className="stroke-black stroke-2 dark:stroke-beige-200"
         xmlns="http://www.w3.org/2000/svg"
         width={size * 0.65}
         height={size}
@@ -45,7 +45,7 @@ function SPLogo({ isAnimated, size, visible }) {
 
   return (
     <motion.svg
-      className="stroke-2 stroke-black dark:stroke-beige-200"
+      className="stroke-black stroke-2 dark:stroke-beige-200"
       xmlns="http://www.w3.org/2000/svg"
       width={size * 0.65}
       height={size}

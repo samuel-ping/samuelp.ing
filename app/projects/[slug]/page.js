@@ -1,9 +1,7 @@
-import { getMDXComponent } from 'mdx-bundler/client';
-
 import { CodeBracketsIcon, ExternalLinkIcon } from '@/components/icons';
 import Chip from '@/components/chip';
 import BackButton from '@/components/backButton';
-import { Components as MDXComponents } from '@/components/mdx/components';
+import MDXContent from '@/components/mdx/mdxContent';
 import IconButton from '@/components/iconButton';
 
 import { GetProject, GetProjectDetails } from '@/utils/mdxUtils';
@@ -31,16 +29,15 @@ export async function generateMetadata(props) {
 export default async function Page(props) {
   const params = await props.params;
   const { code, details } = await GetProject(`projects/${params.slug}`);
-  const Component = getMDXComponent(code);
 
   const tags = details.tags;
 
   return (
-    <div className="xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl) mx-8 md:mx-16 flex flex-col gap-y-10 items-center">
-      <span className="w-full flex justify-center md:justify-start">
+    <div className="mx-8 flex flex-col items-center gap-y-10 md:mx-16 xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)">
+      <span className="flex w-full justify-center md:justify-start">
         <BackButton text="back" />
       </span>
-      <div className="flex flex-col gap-y-2 items-center">
+      <div className="flex flex-col items-center gap-y-2">
         <span className="text-4xl font-bold">{details.title}</span>
         <span className="text-xl font-light italic">{details.dates}</span>
         <div className="flex flex-row gap-1">
@@ -67,11 +64,11 @@ export default async function Page(props) {
       </div>
 
       <div className="w-full max-w-2xl">
-        <Component components={MDXComponents} />
+        <MDXContent code={code} />
       </div>
 
       {/* tags */}
-      <div className="w-full flex flex-row flex-wrap gap-1">
+      <div className="flex w-full flex-row flex-wrap gap-1">
         <span>tags:</span>
         {tags === undefined || tags.length == 0 ? (
           <></>
