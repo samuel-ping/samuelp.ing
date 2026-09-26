@@ -29,6 +29,7 @@ export default async function Page() {
       <BodyClassName className="spotted-theme" />
       <div className="mx-6 md:mx-12">
         <PageTitle text="Lost & Spotted" />
+        <span>Throughout my time living in New York, I've picked up some items from the ground, to my roommate's (and possibly your) disgust. As you scroll down and stroll along the sidewalk, you might be able to spot some of the items I've picked up. Try and find them!</span>
       </div>
       <BuildingScroller
         buildings={SpottedBuildings}
