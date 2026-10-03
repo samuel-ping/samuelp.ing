@@ -5,6 +5,7 @@ import Image from 'next/image';
 
 import SpottedItem from '@/components/spotted/spottedItem';
 import SpottedItemModal from '@/components/spotted/spottedItemModal';
+import { DownArrowIcon } from '@/components/ui/icons';
 
 /**
  * A street of storefront illustrations that pans horizontally as the page is
@@ -21,6 +22,8 @@ const BuildingScroller = ({ buildings, sidewalk, items = [] }) => {
   const [distance, setDistance] = useState(0);
   // Number of sidewalk tiles needed to cover the strip's full width.
   const [tileCount, setTileCount] = useState(0);
+  // Once the visitor starts strolling, the scroll hint has done its job.
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const scale = sidewalk.tileHeight / sidewalk.height;
   const tileWidth = sidewalk.width * scale;
@@ -39,6 +42,13 @@ const BuildingScroller = ({ buildings, sidewalk, items = [] }) => {
           : 0;
       const maxShift = strip.scrollWidth - window.innerWidth;
       strip.style.transform = `translateX(${-progress * maxShift}px)`;
+
+      // React bails out on unchanged state, so this re-renders only when
+      // the hint shows or hides — not on every scroll frame.
+      setHasScrolled((prev) => {
+        const next = progress > 0.02;
+        return prev === next ? prev : next;
+      });
     };
 
     const measure = () => {
@@ -133,6 +143,18 @@ const BuildingScroller = ({ buildings, sidewalk, items = [] }) => {
                   onSelect={setSelected}
                 />
               ))}
+          </div>
+        </div>
+        {/* Scroll hint */}
+        <div className="pointer-events-none fixed inset-x-0 bottom-6 z-30 flex justify-center">
+          <div
+            aria-hidden="true"
+            className={`flex items-center gap-1.5 rounded-full bg-beige-100 px-3.5 py-1.5 text-xs tracking-wide text-green-600 shadow-md backdrop-blur-sm transition-opacity duration-500 ${
+              hasScrolled ? 'opacity-0' : 'opacity-100'
+            }`}
+          >
+            <span>scroll to stroll</span>
+            <DownArrowIcon className="size-3.5 motion-safe:animate-scroll-hint" />
           </div>
         </div>
       </div>
