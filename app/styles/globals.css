@@ -97,6 +97,31 @@
     );
     --marker-height: 62%;
     --marker-top: 79%;
+
+    /*
+      The wave, shared by the nav's active underline and the footer's rule. It
+      lives here for the same reason the marker band does: two utilities need the
+      identical stroke, and a second copy of the data URI would be a second thing
+      to keep in sync.
+
+      It is a wavy rule replacing `text-decoration: wavy`, whose squiggle is far
+      too dense at display sizes. `0.87em` per tile gives two humps, matching the
+      reference the design was signed off against; the tile is stretched slightly
+      wider than tall, which is what flattens it out. The geometry is in `em`, so
+      the wave scales with whatever it is drawn on rather than with a fixed size.
+
+      `stroke-linecap='round'` is load-bearing, not decoration. The wave has to
+      reach the tile's left and right edges for the humps to join up when the
+      tile repeats, and a butt cap there is cut off at an angle — Chrome
+      antialiases that cut, so every seam came out as a faint notch. A round cap
+      pushes the stroke *past* the tile edge instead, where the viewport clips it
+      square, so the boundary column is fully opaque and the join disappears. The
+      cap radius is the stroke's half-width, so it stays inside the band and the
+      wave reads no thicker.
+    */
+    --wavy-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='8'%3E%3Cpath d='M0 4 Q 6.5 0 13 4 T 26 4' fill='none' stroke='%23fff' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E");
+    --wavy-tile: 0.87em;
+    --wavy-thickness: 0.16em;
   }
 
   a,
@@ -234,31 +259,16 @@
 }
 
 /*
-  Wavy rule, replacing `text-decoration: wavy` — the browser's squiggle is far
-  too dense at display sizes. This draws a wider, calmer wave that scales with
-  the font.
-
-  The stroke is carried as a *mask* and painted with `currentColor`, so the rule
-  always matches the text it underlines in both themes without a second copy of
-  the artwork. `0.87em` per tile gives two humps, matching the reference the
-  design was signed off against; the tile is stretched slightly wider than tall,
-  which is what flattens it out.
+  The wave as an underline, drawn beneath the text it belongs to. The stroke is
+  carried as a *mask* and painted with `currentColor`, so the rule always matches
+  the text it underlines in both themes without a second copy of the artwork. The
+  artwork and its geometry live in `@layer base` because `wavy-rule` below draws
+  the same stroke.
 
   The pseudo-element is positioned against the inline box's content edge (the
-  descender line), so the offsets below are tuned to sit just clear of it.
-
-  `stroke-linecap='round'` is load-bearing, not decoration. The wave has to
-  reach the tile's left and right edges for the humps to join up when the tile
-  repeats, and a butt cap there is cut off at an angle — Chrome antialiases
-  that cut, so every seam came out as a faint notch. A round cap pushes the
-  stroke *past* the tile edge instead, where the viewport clips it square, so
-  the boundary column is fully opaque and the join disappears. The cap radius
-  is the stroke's half-width, so it stays inside the band and the wave reads
-  no thicker.
+  descender line), so the offset below is tuned to sit just clear of it.
 */
 @utility wavy-underline {
-  --wavy-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='8'%3E%3Cpath d='M0 4 Q 6.5 0 13 4 T 26 4' fill='none' stroke='%23fff' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E");
-
   position: relative;
 
   &::after {
@@ -267,15 +277,36 @@
     left: 0;
     right: 0;
     bottom: -0.04em;
-    height: 0.16em;
+    height: var(--wavy-thickness);
     background-color: currentColor;
     -webkit-mask-image: var(--wavy-mask);
     mask-image: var(--wavy-mask);
     -webkit-mask-repeat: repeat-x;
     mask-repeat: repeat-x;
-    -webkit-mask-size: 0.87em 100%;
-    mask-size: 0.87em 100%;
+    -webkit-mask-size: var(--wavy-tile) 100%;
+    mask-size: var(--wavy-tile) 100%;
   }
+}
+
+/*
+  The same wave drawn as a rule: the element *is* the stroke, rather than
+  carrying one beneath its text. The footer divider uses this so it reads as the
+  nav's active underline without being an underline.
+
+  The element needs no content, and its `height` is the wave's own thickness —
+  a div with this utility and a width is the whole rule. Colour comes from
+  `currentColor`, so the call site picks it with a `text-*` class exactly as
+  `wavy-underline` does.
+*/
+@utility wavy-rule {
+  height: var(--wavy-thickness);
+  background-color: currentColor;
+  -webkit-mask-image: var(--wavy-mask);
+  mask-image: var(--wavy-mask);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-size: var(--wavy-tile) 100%;
+  mask-size: var(--wavy-tile) 100%;
 }
 
 @keyframes wavy-draw {
