@@ -125,6 +125,20 @@
 }
 
 /*
+  Site-wide side gutter. One value, applied by the navbar, <main> and the
+  footer, so every page shares the same left and right edge — pages must not
+  add horizontal margins of their own. Defined once here rather than repeated
+  as `px-*` classes in three components, which is how the edges drifted apart.
+*/
+@utility gutter-x {
+  padding-inline: 2rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 6rem;
+  }
+}
+
+/*
   Page-load reveal. Elements marked `.ink` *bleed* in: they resolve out of a
   blur instead of sliding, so the entrance reads as ink soaking into the paper
   canvas rather than the generic fade-and-rise. CSS-only, so it works in server

@@ -8,7 +8,7 @@ import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
  */
 const Footer = () => {
   return (
-    <footer className="mt-auto mb-2 flex w-full items-center justify-center gap-x-4 px-6 md:px-16">
+    <footer className="mt-auto mb-2 flex w-full items-center justify-center gap-x-4 gutter-x">
       <Link
         href="https://github.com/samuel-ping"
         target="_blank"
