@@ -77,7 +77,7 @@ export default function RootLayout({ children }) {
             <main className="flex w-full flex-1 items-start justify-center px-6 pt-4 md:px-16 md:pt-8">
               <div className="w-full max-w-5xl">{children}</div>
             </main>
-            <Footer navbarButtons={NavbarButtons} />
+            <Footer />
           </ThemeProvider>
           <GoatCounter />
           <Umami />

@@ -1,58 +1,41 @@
-'use client';
-
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
-import NavbarButton from '@/components/navbarButton';
 import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
 
-const Footer = ({ navbarButtons }) => {
-  const pathname = usePathname();
-
+/**
+ * Site footer. The header nav is always on screen, so repeating the same links
+ * here was pure duplication — the footer carries only the outbound links.
+ */
+const Footer = () => {
   return (
-    <footer className="mt-auto mb-2 flex w-full flex-col items-center gap-y-4 justify-self-end px-6 md:px-16">
-      <div className="flex flex-row justify-center gap-x-4">
-        {navbarButtons.map((button) => (
-          <NavbarButton
-            active={`/${pathname.split('/')[1]}` === button.route}
-            title={button.title}
-            route={button.route}
-            key={button.route}
-          />
-        ))}
-      </div>
-
-      <div className="flex w-full flex-row items-center justify-center">
-        <div className="flex flex-row items-center gap-x-4">
-          <Link
-            href="https://github.com/samuel-ping"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
-            data-umami-event="GitHub profile viewed"
-          >
-            <GitHubIcon className="size-10" />
-          </Link>
-          <Link
-            href="https://linkedin.com/in/samuelping"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
-            data-umami-event="LinkedIn profile viewed"
-          >
-            <LinkedInIcon className="size-10" />
-          </Link>
-          <Link
-            href="mailto:samuel.y.ping@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
-            data-umami-event="email button clicked"
-          >
-            <EnvelopeIcon className="size-10" />
-          </Link>
-        </div>
-      </div>
+    <footer className="mt-auto mb-2 flex w-full items-center justify-center gap-x-4 px-6 md:px-16">
+      <Link
+        href="https://github.com/samuel-ping"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
+        data-umami-event="GitHub profile viewed"
+      >
+        <GitHubIcon className="size-10" />
+      </Link>
+      <Link
+        href="https://linkedin.com/in/samuelping"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
+        data-umami-event="LinkedIn profile viewed"
+      >
+        <LinkedInIcon className="size-10" />
+      </Link>
+      <Link
+        href="mailto:samuel.y.ping@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
+        data-umami-event="email button clicked"
+      >
+        <EnvelopeIcon className="size-10" />
+      </Link>
     </footer>
   );
 };
