@@ -34,9 +34,9 @@
      against the dark background. Dark cards therefore have no idle shadow and
      only need one on hover, where it has to be stronger to register. */
   --shadow-card: 0 2px 4px rgb(0 0 0 / 0.05), 0 8px 24px rgb(0 0 0 / 0.1);
-  --shadow-card-hover: 0 4px 8px rgb(0 0 0 / 0.06), 0 14px 32px rgb(0 0 0 / 0.13);
-  --shadow-card-hover-dark: 0 4px 10px rgb(0 0 0 / 0.3),
-    0 14px 32px rgb(0 0 0 / 0.35);
+  --shadow-card-hover: 0 3px 6px rgb(0 0 0 / 0.06), 0 10px 28px rgb(0 0 0 / 0.11);
+  --shadow-card-hover-dark: 0 3px 8px rgb(0 0 0 / 0.18),
+    0 10px 24px rgb(0 0 0 / 0.2);
 }
 
 /*
