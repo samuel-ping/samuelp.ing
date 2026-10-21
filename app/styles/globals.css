@@ -139,27 +139,33 @@
 }
 
 /*
-  Page-load reveal. Elements marked `.ink` *bleed* in: they resolve out of a
-  blur instead of sliding, so the entrance reads as ink soaking into the paper
-  canvas rather than the generic fade-and-rise. CSS-only, so it works in server
-  components with no wrapper elements and no hydration cost. `both` fill keeps
-  elements hidden until their delay elapses, then holds the final state.
+  Page-load reveal. Elements marked `.settle` drop in like a sheet of paper
+  landing on a desk: a slight rotation and scale-down that overshoot and settle.
+  CSS-only, so it works in server components with no wrapper elements and no
+  hydration cost. `both` fill keeps elements hidden until their delay elapses,
+  then holds the final state.
+
+  The overshoot is carried by the easing curve (`y` above 1) rather than by the
+  keyframes, so the element passes its resting position and comes back without
+  a second keyframe to correct it.
+
+  This replaced an earlier blur-bleed (`ink`) on 2026-10-21.
 */
-@keyframes ink-in {
+@keyframes settle-in {
   from {
     opacity: 0;
-    filter: blur(11px);
+    transform: translateY(16px) rotate(-1.6deg) scale(0.97);
   }
   to {
     opacity: 1;
-    filter: blur(0);
+    transform: none;
   }
 }
 
-@utility ink {
-  animation: ink-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+@utility settle {
+  animation: settle-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 
-  /* Honour reduced-motion: show content at rest, no blur. */
+  /* Honour reduced-motion: show content at rest, no transform. */
   @media (prefers-reduced-motion: reduce) {
     animation: none;
   }

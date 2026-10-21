@@ -21,7 +21,7 @@ export default async function Page() {
       {/* featured projects */}
       <div className="flex flex-col gap-y-4">
         <h2
-          className="ink font-display text-2xl font-medium"
+          className="settle font-display text-2xl font-medium"
           style={{ animationDelay: '80ms' }}
         >
           Featured
@@ -31,7 +31,7 @@ export default async function Page() {
             return (
               <div
                 key={project.details.title}
-                className="ink"
+                className="settle"
                 style={{ animationDelay: `${140 + i * 70}ms` }}
               >
                 <ProjectCard

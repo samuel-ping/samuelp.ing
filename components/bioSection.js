@@ -95,7 +95,7 @@ export default function BioSection({ button }) {
       </div>
 
       <div className="flex max-w-xl flex-col gap-y-5">
-        <h1 className="ink font-display text-5xl leading-display tracking-tight md:text-6xl">
+        <h1 className="settle font-display text-5xl leading-display tracking-tight md:text-6xl">
           Hey! I&apos;m{' '}
           {/* The wavy rule is the page's signature, so it now lives under the
               name permanently and draws itself in on load, rather than
@@ -111,7 +111,7 @@ export default function BioSection({ button }) {
           a...
         </h1>
         <span
-          className="ink text-xl font-light md:text-2xl"
+          className="settle text-xl font-light md:text-2xl"
           style={{ animationDelay: '90ms' }}
           onMouseLeave={() => setHoveredIndex(null)}
         >

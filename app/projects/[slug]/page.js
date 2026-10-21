@@ -36,7 +36,7 @@ export default async function Page(props) {
     <div className="flex w-full flex-col gap-y-8">
       <BackButton text="back" />
       <div
-        className="flex max-w-2xl ink flex-col gap-y-2"
+        className="flex max-w-2xl settle flex-col gap-y-2"
         style={{ animationDelay: '60ms' }}
       >
         <h1 className="font-display text-4xl font-bold md:text-5xl">
@@ -69,7 +69,7 @@ export default async function Page(props) {
       </div>
 
       <div
-        className="w-full max-w-2xl ink"
+        className="w-full max-w-2xl settle"
         style={{ animationDelay: '140ms' }}
       >
         <MDXContent code={code} />
@@ -77,7 +77,7 @@ export default async function Page(props) {
 
       {/* tags */}
       <div
-        className="flex w-full ink flex-row flex-wrap gap-2"
+        className="flex w-full settle flex-row flex-wrap gap-2"
         style={{ animationDelay: '210ms' }}
       >
         <span className="text-muted">tags:</span>

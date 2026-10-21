@@ -11,7 +11,7 @@ export default function Page() {
             text={'more about me'}
             url={'/about'}
             eventName="More about me"
-            className="ink"
+            className="settle"
             style={{ animationDelay: '170ms' }}
           />
         }

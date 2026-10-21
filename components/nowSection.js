@@ -35,7 +35,7 @@ export default function NowSection() {
   return (
     <section className="flex w-full flex-col gap-y-4">
       <h2
-        className="ink font-display text-2xl font-medium"
+        className="settle font-display text-2xl font-medium"
         style={{ animationDelay: '200ms' }}
       >
         Now
@@ -46,13 +46,13 @@ export default function NowSection() {
         {nowItems.map((item, i) => (
           <Fragment key={item.label}>
             <dt
-              className="ink text-sm text-muted"
+              className="settle text-sm text-muted"
               style={{ animationDelay: `${260 + i * 60}ms` }}
             >
               {item.label}
             </dt>
             <dd
-              className="max-w-prose ink"
+              className="max-w-prose settle"
               style={{ animationDelay: `${260 + i * 60}ms` }}
             >
               {item.text}

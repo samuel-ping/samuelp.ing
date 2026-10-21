@@ -16,7 +16,7 @@ export default async function Page() {
       {/* Prose lives in a block container so its element margins collapse
           consistently, matching the project detail page. It also carries the
           measure: the page column is 5xl, but prose stays readable at 2xl. */}
-      <div className="max-w-2xl ink" style={{ animationDelay: '90ms' }}>
+      <div className="max-w-2xl settle" style={{ animationDelay: '90ms' }}>
         <MDXContent code={code} />
       </div>
     </div>
