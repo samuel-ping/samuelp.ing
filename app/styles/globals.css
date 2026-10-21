@@ -28,6 +28,15 @@
 
   /* Secondary text: dates, metadata, labels. Overridden for dark mode below. */
   --color-muted: #375954;
+
+  /* Card elevation. Light surfaces read as raised via shadow; dark surfaces
+     read as raised via a lighter tone instead, since a shadow is invisible
+     against the dark background. Dark cards therefore have no idle shadow and
+     only need one on hover, where it has to be stronger to register. */
+  --shadow-card: 0 2px 4px rgb(0 0 0 / 0.05), 0 8px 24px rgb(0 0 0 / 0.1);
+  --shadow-card-hover: 0 4px 8px rgb(0 0 0 / 0.06), 0 14px 32px rgb(0 0 0 / 0.13);
+  --shadow-card-hover-dark: 0 4px 10px rgb(0 0 0 / 0.3),
+    0 14px 32px rgb(0 0 0 / 0.35);
 }
 
 /*
