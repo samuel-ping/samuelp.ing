@@ -1,5 +1,6 @@
 import MDXContent from '@/components/mdx/mdxContent';
 import PageTitle from '@/components/pageTitle';
+import NowSection from '@/components/nowSection';
 
 import { GetAboutMDX } from '@/utils/mdxUtils';
 
@@ -21,6 +22,7 @@ export default async function Page() {
       <div className="settle" style={{ animationDelay: '90ms' }}>
         <MDXContent code={code} />
       </div>
+      <NowSection />
     </div>
   );
 }

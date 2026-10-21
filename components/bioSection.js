@@ -10,7 +10,7 @@ import sophiaPic from '@/public/assets/sophia.jpg';
 import tennisPic from '@/public/assets/tennis.jpg';
 import runningPic from '@/public/assets/running.jpg';
 import theatrePic from '@/public/assets/theatre.jpg';
-import monsteraPic from '@/public/assets/thai.jpg'
+import monsteraPic from '@/public/assets/thai.jpg';
 
 const bioItems = [
   { text: 'software engineer', photo: swePic },
@@ -29,7 +29,11 @@ export default function BioSection({ button }) {
   const [hoveredName, setHoveredName] = useState(false);
   const [autoIndex, setAutoIndex] = useState(NAME);
 
-  const activeIndex = hoveredName ? NAME : hoveredIndex !== null ? hoveredIndex : autoIndex;
+  const activeIndex = hoveredName
+    ? NAME
+    : hoveredIndex !== null
+      ? hoveredIndex
+      : autoIndex;
 
   useEffect(() => {
     if (hoveredIndex !== null || hoveredName) return;
@@ -44,7 +48,7 @@ export default function BioSection({ button }) {
   const targetPhoto =
     activeIndex === NAME
       ? profilePic
-      : bioItems[activeIndex].photo ?? profilePic;
+      : (bioItems[activeIndex].photo ?? profilePic);
 
   // Two-slot crossfade: load next photo into the back slot, then swap on next frame
   const [crossfade, setCrossfade] = useState({
@@ -75,9 +79,13 @@ export default function BioSection({ button }) {
     };
   }, [targetPhoto]);
 
+  // The photo and the text sit side by side only from `lg`, where the page
+  // column is wide enough to hold both at their full size; below that the pair
+  // stacks. `shrink-0` keeps the photo circular — without it flex narrows the
+  // box and the circle becomes an ellipse.
   return (
-    <div className="flex flex-col items-center gap-x-12 gap-y-4 md:flex-row-reverse md:justify-between">
-      <div className="relative size-48 md:size-64">
+    <div className="flex flex-col items-center gap-x-12 gap-y-4 lg:flex-row-reverse lg:justify-center">
+      <div className="relative size-48 shrink-0 md:size-64">
         <Image
           src={crossfade.photoA}
           alt="Photo of Sam"
@@ -107,8 +115,10 @@ export default function BioSection({ button }) {
             className={`wavy-underline wavy-draw cursor-default whitespace-nowrap text-green-600 dark:text-green-100 ${activeIndex === NAME ? 'marker-active' : ''}`}
             onMouseEnter={() => setHoveredName(true)}
             onMouseLeave={() => setHoveredName(false)}
-          >Sam Ping</span>,
-          a...
+          >
+            Sam Ping
+          </span>
+          , a...
         </h1>
         <span
           className="settle text-xl font-light md:text-2xl"
