@@ -119,7 +119,7 @@ export default function BioSection({ button }) {
               className="cursor-default"
               onMouseEnter={() => setHoveredIndex(i)}
             >
-              <span className={activeIndex === i ? 'wavy-underline' : ''}>
+              <span className={activeIndex === i ? 'marker-active' : ''}>
                 {item.text}
               </span>
               {i < bioItems.length - 2

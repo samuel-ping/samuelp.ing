@@ -294,3 +294,49 @@
     transition: color 0.2s ease;
   }
 }
+
+@keyframes marker-sweep {
+  from {
+    background-size: 0% 46%;
+  }
+  to {
+    background-size: 100% 46%;
+  }
+}
+
+/*
+  The landed state of the link marker, used to flag the active item in a list
+  whose items are hover-linked (the home page's bio list, where the band tracks
+  which photo is showing). Same band and text colour as `link-marker` at hover,
+  but the sweep runs on its own the moment the item becomes active rather than
+  waiting for a pointer, and there is no dotted rule underneath — the rule
+  exists to advertise "this is a link", which a plain list item is not.
+*/
+@utility marker-active {
+  --band: rgb(134 171 138 / 0.8);
+
+  background-image: linear-gradient(
+    100deg,
+    rgb(134 171 138 / 0) 0%,
+    var(--band) 7%,
+    var(--band) 93%,
+    rgb(134 171 138 / 0) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 86%;
+  background-size: 100% 46%;
+  color: var(--color-green-700);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  animation: marker-sweep 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  &:is(.dark *) {
+    --band: rgb(87 122 93 / 0.8);
+    color: var(--color-beige-100);
+  }
+
+  /* Reduced motion: hold the landed band, drop the sweep. */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
