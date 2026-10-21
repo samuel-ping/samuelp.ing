@@ -14,7 +14,12 @@ const ProjectRow = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
       // The radius is scoped to hover: at rest the row has no surface to round,
       // and leaving it on would bend the divider (the row's bottom border) into
       // a hook at both ends.
-      className="group flex flex-col gap-y-1 px-4 py-3 transition-[background-color,border-radius] hover:rounded-lg hover:bg-beige-200 sm:flex-row sm:items-center sm:gap-x-4 dark:hover:bg-green-700"
+      //
+      // The row's own bottom border rounds with the highlight, so the divider
+      // below melts in. The divider *above* is the previous row's bottom border,
+      // which would jut straight past the highlight's rounded top corners — so
+      // it is dropped while the next row is hovered.
+      className="group flex flex-col gap-y-1 px-4 py-3 transition-[background-color,border-color,border-radius] hover:rounded-lg hover:bg-beige-200 sm:flex-row sm:items-center sm:gap-x-4 dark:hover:bg-green-700 [&:has(+a:hover)]:border-b-transparent"
       data-umami-event={`${title} project row`}
       data-umami-event-source={eventSource}
     >
