@@ -25,6 +25,9 @@
   --color-green-600: #375954;
   --color-green-700: #28413d;
   --color-green-800: #233835;
+
+  /* Secondary text: dates, metadata, labels. Overridden for dark mode below. */
+  --color-muted: #375954;
 }
 
 /*
@@ -46,6 +49,10 @@
 
   a, button {
     cursor: pointer;
+  }
+
+  html.dark {
+    --color-muted: var(--color-green-200);
   }
 
   /* On-palette focus ring for keyboard users, replacing the browser default.

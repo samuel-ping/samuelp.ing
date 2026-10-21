@@ -38,8 +38,10 @@ export default async function Page(props) {
         <BackButton text="back" />
       </span>
       <div className="flex flex-col items-center gap-y-2">
-        <span className="text-4xl font-bold">{details.title}</span>
-        <span className="text-xl font-light italic">{details.dates}</span>
+        <h1 className="text-4xl font-bold">{details.title}</h1>
+        <span className="text-xl font-light text-muted italic">
+          {details.dates}
+        </span>
         <div className="flex flex-row gap-1">
           {details.repo ? (
             <IconButton
@@ -69,7 +71,7 @@ export default async function Page(props) {
 
       {/* tags */}
       <div className="flex w-full flex-row flex-wrap gap-2">
-        <span>tags:</span>
+        <span className="text-muted">tags:</span>
         {tags === undefined || tags.length == 0 ? (
           <></>
         ) : (

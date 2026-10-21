@@ -17,7 +17,7 @@ const ProjectRow = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
     >
       <div className="flex shrink-0 flex-col sm:w-52">
         <span className="text-lg">{title}</span>
-        <span className="text-sm font-light italic">{dates}</span>
+        <span className="text-sm font-light text-muted italic">{dates}</span>
       </div>
 
       <span className="flex-1">{gist}</span>

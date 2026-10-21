@@ -95,7 +95,7 @@ export default function BioSection({ button }) {
       </div>
 
       <div className="flex max-w-lg flex-col gap-y-5">
-        <span className="text-4xl font-medium">
+        <h1 className="text-4xl font-medium">
           Hey! I&apos;m{' '}
           <span
             className={`cursor-default text-green-600 transition-all duration-100 dark:text-green-100 ${activeIndex === NAME ? 'underline decoration-wavy decoration-2 underline-offset-9' : ''}`}
@@ -103,7 +103,7 @@ export default function BioSection({ button }) {
             onMouseLeave={() => setHoveredName(false)}
           >Sam Ping</span>,
           a...
-        </span>
+        </h1>
         <span className="text-2xl font-light" onMouseLeave={() => setHoveredIndex(null)}>
           {'... '}
           {bioItems.map((item, i) => (

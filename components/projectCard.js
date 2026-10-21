@@ -17,7 +17,7 @@ const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
       <div className="flex flex-col gap-y-2">
         <div className="flex flex-col text-left ">
           <span className="text-2xl ">{title}</span>
-          <span className="font-light italic">{dates}</span>
+          <span className="font-light text-muted italic">{dates}</span>
           <span className="">{gist}</span>
         </div>
 
