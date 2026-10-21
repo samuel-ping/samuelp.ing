@@ -28,37 +28,28 @@ const Footer = ({ navbarButtons }) => {
             href="https://github.com/samuel-ping"
             target="_blank"
             rel="noopener noreferrer"
+            className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
+            data-umami-event="GitHub profile viewed"
           >
-            <button
-              className="flex items-center"
-              data-umami-event="GitHub profile viewed"
-            >
-              <GitHubIcon className="size-10 transition-colors hover:text-green-400 dark:hover:text-green-50" />
-            </button>
+            <GitHubIcon className="size-10" />
           </Link>
           <Link
             href="https://linkedin.com/in/samuelping"
             target="_blank"
             rel="noopener noreferrer"
+            className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
+            data-umami-event="LinkedIn profile viewed"
           >
-            <button
-              className="flex items-center"
-              data-umami-event="LinkedIn profile viewed"
-            >
-              <LinkedInIcon className="size-10 transition-colors hover:text-green-400 dark:hover:text-green-50" />
-            </button>
+            <LinkedInIcon className="size-10" />
           </Link>
           <Link
             href="mailto:samuel.y.ping@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
+            className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
+            data-umami-event="email button clicked"
           >
-            <button
-              className="flex items-center"
-              data-umami-event="email button clicked"
-            >
-              <EnvelopeIcon className="size-10 transition-colors hover:text-green-400 dark:hover:text-green-50" />
-            </button>
+            <EnvelopeIcon className="size-10" />
           </Link>
         </div>
       </div>

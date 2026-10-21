@@ -47,4 +47,16 @@
   a, button {
     cursor: pointer;
   }
+
+  /* On-palette focus ring for keyboard users, replacing the browser default.
+     The darker green reads against the light background, the lighter one
+     against the dark background. */
+  :focus-visible {
+    outline: 2px solid var(--color-green-600);
+    outline-offset: 2px;
+  }
+
+  .dark :focus-visible {
+    outline-color: var(--color-green-200);
+  }
 }

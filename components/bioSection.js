@@ -33,6 +33,8 @@ export default function BioSection({ button }) {
 
   useEffect(() => {
     if (hoveredIndex !== null || hoveredName) return;
+    // Don't cycle photos on a timer for visitors who ask for less motion.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = setTimeout(() => {
       setAutoIndex((prev) => (prev === bioItems.length - 1 ? NAME : prev + 1));
     }, 2300);
