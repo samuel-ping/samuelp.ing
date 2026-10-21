@@ -176,10 +176,19 @@
 }
 
 /*
-  Tint on hover, shared by the nav buttons and the footer's icon links. One
-  definition rather than the same two `hover:text-*` classes repeated at every
-  call site, so the nav and the footer can't drift apart. Each call site keeps
-  its own `transition-colors`, since what transitions differs per element.
+  Tint on hover, shared by the nav buttons, the theme toggle and the footer's
+  icon links. One definition rather than the same two `hover:text-*` classes
+  repeated at every call site, so the nav and the footer can't drift apart.
+  Each call site keeps its own `transition-colors`, since what transitions
+  differs per element.
+
+  The dark tint steps *down* to green-200 rather than up to green-50. In dark
+  mode the rest colour is already beige-200, which is only 1.09:1 from
+  green-50 — hovering did nothing but swap one near-white for another, so the
+  link read as fading out rather than lighting up. green-200 is 1.47:1 from
+  beige-200 (visible, still quiet) while keeping 6.9:1 against the green-800
+  page, and it stays clear of the green-100 the active nav link already uses.
+  Light mode can brighten, since its rest colour is black.
 */
 @utility hover-tint {
   &:hover {
@@ -187,7 +196,7 @@
   }
 
   &:is(.dark *):hover {
-    color: var(--color-green-50);
+    color: var(--color-green-200);
   }
 }
 
