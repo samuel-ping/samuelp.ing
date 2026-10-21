@@ -10,7 +10,7 @@ const Footer = ({ navbarButtons }) => {
   const pathname = usePathname();
 
   return (
-    <footer className="mt-auto mb-2 flex flex-col items-center space-y-3 justify-self-end">
+    <footer className="mt-auto mb-2 flex w-full flex-col items-center space-y-3 justify-self-end px-6 md:px-16">
       <div className="flex flex-row justify-center space-x-4">
         {navbarButtons.map((button) => (
           <NavbarButton

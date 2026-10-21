@@ -11,7 +11,7 @@ export default async function Page() {
   const { code } = await GetAboutMDX('about');
 
   return (
-    <div className="mx-8 flex w-full max-w-2xl flex-col md:mx-16">
+    <div className="flex w-full max-w-2xl flex-col">
       <PageTitle text="About me" />
       <MDXContent code={code} />
     </div>

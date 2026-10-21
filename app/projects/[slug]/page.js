@@ -33,7 +33,7 @@ export default async function Page(props) {
   const tags = details.tags;
 
   return (
-    <div className="mx-8 flex flex-col items-center gap-y-10 md:mx-16 xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)">
+    <div className="flex w-full flex-col items-center gap-y-10 xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)">
       <span className="flex w-full justify-center md:justify-start">
         <BackButton text="back" />
       </span>

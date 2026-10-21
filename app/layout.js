@@ -57,7 +57,10 @@ export default function RootLayout({ children }) {
         <div className="flex min-h-screen flex-col gap-y-10 md:gap-y-18">
           <ThemeProvider>
             <Navbar navbarButtons={NavbarButtons} />
-            <main className="flex w-full justify-center">{children}</main>
+            {/* px-6 md:px-16 is the site-wide side gutter. Every page inherits it here, so pages should not add their own horizontal margins. */}
+            <main className="flex w-full justify-center px-6 md:px-16">
+              {children}
+            </main>
             <Footer navbarButtons={NavbarButtons} />
           </ThemeProvider>
           <GoatCounter />

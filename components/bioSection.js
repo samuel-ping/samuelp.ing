@@ -74,7 +74,7 @@ export default function BioSection({ button }) {
   }, [targetPhoto]);
 
   return (
-    <div className="mx-6 flex flex-col items-center gap-x-12 gap-y-4 pb-16 md:flex-row-reverse md:justify-between md:pt-16">
+    <div className="flex flex-col items-center gap-x-12 gap-y-4 pb-16 md:flex-row-reverse md:justify-between md:pt-16">
       <div className="relative size-48 md:size-64">
         <Image
           src={crossfade.photoA}

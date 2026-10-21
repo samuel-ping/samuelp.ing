@@ -16,7 +16,7 @@ export default function NotFoundMessage() {
         />
         <span className="text-8xl font-extrabold">4</span>
       </div>
-      <span className="mx-6 text-xl">
+      <span className="max-w-xl text-center text-xl">
         The page you&apos;re looking for does not exist. Instead, here&apos;s
         Shrimp, my <span className="italic">echeveria fleur blanc</span> :&#41;
       </span>

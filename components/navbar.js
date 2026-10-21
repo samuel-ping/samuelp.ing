@@ -21,7 +21,7 @@ export default function Navbar({ navbarButtons }) {
     <Popover className="z-50">
       {({ open, close }) => (
         <>
-          <nav className="my-8 flex h-14 items-center justify-between px-6">
+          <nav className="my-8 flex h-14 items-center justify-between px-6 md:px-16">
             <Logo isAnimated size={48} visible={true} />
 
             {/* Desktop nav */}
