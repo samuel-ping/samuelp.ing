@@ -15,13 +15,13 @@ export default async function Page() {
   const past = allProjects.filter((project) => !project.details.featured);
 
   return (
-    <div className="flex w-full flex-col items-center gap-y-8">
+    <div className="flex w-full max-w-5xl flex-col gap-y-8">
       <PageTitle text="Projects" />
 
       {/* featured projects */}
-      <div className="flex flex-col items-center gap-y-4">
+      <div className="flex flex-col gap-y-4">
         <h2 className="text-2xl font-medium">Featured</h2>
-        <div className="grid w-fit gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {featured.map((project) => {
             return (
               <ProjectCard
@@ -39,7 +39,7 @@ export default async function Page() {
       </div>
 
       {/* past projects */}
-      <div className="flex w-full max-w-3xl flex-col items-center gap-y-4">
+      <div className="flex w-full flex-col gap-y-4">
         <h2 className="text-2xl font-medium">Past projects</h2>
         <div className="flex w-full flex-col divide-y divide-beige-200 dark:divide-green-500">
           {past.map((project) => {

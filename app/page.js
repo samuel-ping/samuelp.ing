@@ -1,11 +1,7 @@
 import Button from '@/components/rightArrowButton';
 import BioSection from '@/components/bioSection';
 
-import { GetProjectDetails } from '@/utils/mdxUtils';
-
-export default async function Page() {
-  const projects = await GetProjectDetails(6);
-
+export default function Page() {
   return (
     <div className="max-w-full xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)">
       <BioSection

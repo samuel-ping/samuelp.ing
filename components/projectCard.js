@@ -10,7 +10,7 @@ const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
   return (
     <Link
       href={`projects/${slug}`}
-      className="group flex h-80 w-64 snap-center flex-col justify-between rounded-xl border border-green-200 bg-beige-100 p-6 shadow-lg transition-colors hover:border-green-400 hover:bg-beige-200 md:snap-none dark:border-green-500 dark:bg-green-700 dark:shadow-green-800 dark:hover:border-green-300 dark:hover:bg-green-800"
+      className="group flex w-full flex-col justify-between rounded-lg border border-green-200 bg-beige-100 p-6 shadow-lg transition-colors hover:border-green-400 hover:bg-beige-200 md:h-80 dark:border-green-500 dark:bg-green-700 dark:shadow-green-800 dark:hover:border-green-300 dark:hover:bg-green-800"
       data-umami-event={`${title} project card`}
       data-umami-event-source={eventSource}
     >

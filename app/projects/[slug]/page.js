@@ -33,11 +33,9 @@ export default async function Page(props) {
   const tags = details.tags;
 
   return (
-    <div className="flex w-full flex-col items-center gap-y-8 xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)">
-      <span className="flex w-full justify-center md:justify-start">
-        <BackButton text="back" />
-      </span>
-      <div className="flex flex-col items-center gap-y-2">
+    <div className="flex w-full max-w-2xl flex-col gap-y-8">
+      <BackButton text="back" />
+      <div className="flex flex-col gap-y-2">
         <h1 className="text-4xl font-bold">{details.title}</h1>
         <span className="text-xl font-light text-muted italic">
           {details.dates}
@@ -65,7 +63,7 @@ export default async function Page(props) {
         </div>
       </div>
 
-      <div className="w-full max-w-2xl">
+      <div className="w-full">
         <MDXContent code={code} />
       </div>
 

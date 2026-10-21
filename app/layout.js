@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
           <ThemeProvider>
             <Navbar navbarButtons={NavbarButtons} />
             {/* px-6 md:px-16 is the site-wide side gutter. Every page inherits it here, so pages should not add their own horizontal margins. */}
-            <main className="flex w-full justify-center px-6 md:px-16">
+            <main className="flex w-full flex-1 items-center justify-center px-6 md:px-16">
               {children}
             </main>
             <Footer navbarButtons={NavbarButtons} />
