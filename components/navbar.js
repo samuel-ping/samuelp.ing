@@ -64,7 +64,7 @@ export default function Navbar({ navbarButtons }) {
                     close={close}
                   />
                 ))}
-                <div className="flex justify-center p-12">
+                <div className="flex justify-center py-6">
                   <ThemeToggle />
                 </div>
               </PopoverPanel>

@@ -68,7 +68,7 @@ export default async function Page(props) {
       </div>
 
       {/* tags */}
-      <div className="flex w-full flex-row flex-wrap gap-1">
+      <div className="flex w-full flex-row flex-wrap gap-2">
         <span>tags:</span>
         {tags === undefined || tags.length == 0 ? (
           <></>

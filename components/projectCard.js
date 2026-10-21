@@ -11,7 +11,7 @@ const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
     <Link href={`projects/${slug}`}>
       <button
         type="button"
-        className="group flex h-80 w-64 snap-center flex-col justify-between rounded-xl border border-beige-200 bg-beige-100 p-7 shadow-lg transition-colors hover:bg-beige-200 md:snap-none dark:border-green-600 dark:bg-green-700 dark:shadow-green-800 dark:hover:bg-green-800"
+        className="group flex h-80 w-64 snap-center flex-col justify-between rounded-xl border border-beige-200 bg-beige-100 p-6 shadow-lg transition-colors hover:bg-beige-200 md:snap-none dark:border-green-600 dark:bg-green-700 dark:shadow-green-800 dark:hover:bg-green-800"
         data-umami-event={`${title} project card`}
         data-umami-event-source={eventSource}
       >
@@ -23,7 +23,7 @@ const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
           </div>
 
           {/* tags */}
-          <div className="flex w-full flex-row flex-wrap gap-1">
+          <div className="flex w-full flex-row flex-wrap gap-2">
             {tags === undefined || tags.length == 0 ? (
               <></>
             ) : (
