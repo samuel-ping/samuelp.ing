@@ -8,17 +8,15 @@ const BackButton = ({ text }) => {
   const router = useRouter();
 
   return (
-    <>
-      <div className="w-fit">
-        <button
-          onClick={() => router.back()}
-          className="group flex flex-row items-center gap-x-2 rounded-sm bg-transparent text-lg font-medium text-green-400 transition-colors hover:underline dark:text-green-100"
-        >
-          <Arrow className="w-4 text-green-400 transition duration-300 ease-in-out group-hover:-translate-x-1 dark:text-green-100" />
-          <span>{text}</span>
-        </button>
-      </div>
-    </>
+    <div className="w-fit">
+      <button
+        onClick={() => router.back()}
+        className="group flex items-center gap-x-2 rounded-sm text-lg font-medium text-green-400 transition-colors hover:underline dark:text-green-100"
+      >
+        <Arrow className="w-4 transition duration-300 ease-in-out group-hover:-translate-x-1" />
+        <span>{text}</span>
+      </button>
+    </div>
   );
 };
 

@@ -9,11 +9,11 @@ const RightArrowButton = ({ text, url, eventName, className, style }) => {
     <Link
       href={url}
       style={style}
-      className={`${className ?? ''} group flex w-fit flex-row items-center gap-x-2 rounded-sm text-2xl font-medium text-green-600 transition-colors hover:underline dark:text-green-100`}
+      className={`${className ?? ''} group flex w-fit items-center gap-x-2 rounded-sm text-2xl font-medium text-green-600 transition-colors hover:underline dark:text-green-100`}
       data-umami-event={eventName}
     >
       <span>{text}</span>
-      <Arrow className="w-6 text-green-600 transition duration-300 ease-in-out group-hover:translate-x-2 dark:text-green-100" />
+      <Arrow className="w-6 transition duration-300 ease-in-out group-hover:translate-x-2" />
     </Link>
   );
 };

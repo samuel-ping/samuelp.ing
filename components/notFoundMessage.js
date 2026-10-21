@@ -5,7 +5,7 @@ import Shrimp from '@/public/assets/shrimp.webp';
 export default function NotFoundMessage() {
   return (
     <div className="flex flex-col items-center gap-y-8">
-      <div className="flex flex-row items-center">
+      <div className="flex items-center">
         <span className="text-8xl font-extrabold">4</span>
         <Image
           src={Shrimp}

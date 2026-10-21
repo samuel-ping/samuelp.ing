@@ -13,7 +13,7 @@ const Footer = () => {
         href="https://github.com/samuel-ping"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
+        className="flex items-center hover-tint transition-colors"
         data-umami-event="GitHub profile viewed"
       >
         <GitHubIcon className="size-10" />
@@ -22,7 +22,7 @@ const Footer = () => {
         href="https://linkedin.com/in/samuelping"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
+        className="flex items-center hover-tint transition-colors"
         data-umami-event="LinkedIn profile viewed"
       >
         <LinkedInIcon className="size-10" />
@@ -31,7 +31,7 @@ const Footer = () => {
         href="mailto:samuel.y.ping@gmail.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center transition-colors hover:text-green-400 dark:hover:text-green-50"
+        className="flex items-center hover-tint transition-colors"
         data-umami-event="email button clicked"
       >
         <EnvelopeIcon className="size-10" />

@@ -13,7 +13,7 @@ const iconButton = ({ text, icon, url }) => {
       data-umami-event-url={url}
     >
       {icon}
-      <span className="max-w-full flex-initial text-sm leading-none font-normal">
+      <span className="max-w-full text-sm leading-none font-normal">
         {text}
       </span>
     </Link>

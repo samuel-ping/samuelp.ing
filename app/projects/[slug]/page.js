@@ -45,11 +45,11 @@ export default async function Page(props) {
         <span className="text-xl font-light text-muted italic">
           {details.dates}
         </span>
-        <div className="flex flex-row gap-1">
+        <div className="flex gap-1">
           {details.repo ? (
             <IconButton
               text="view code"
-              icon={<CodeBracketsIcon className={''} />}
+              icon={<CodeBracketsIcon />}
               url={details.repo}
             />
           ) : (
@@ -59,7 +59,7 @@ export default async function Page(props) {
           {details.website ? (
             <IconButton
               text="view site"
-              icon={<ExternalLinkIcon className={''} />}
+              icon={<ExternalLinkIcon />}
               url={details.website}
             />
           ) : (
@@ -77,7 +77,7 @@ export default async function Page(props) {
 
       {/* tags */}
       <div
-        className="flex w-full settle flex-row flex-wrap gap-2"
+        className="flex w-full settle flex-wrap gap-2"
         style={{ animationDelay: '210ms' }}
       >
         <span className="text-muted">tags:</span>

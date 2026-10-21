@@ -42,34 +42,51 @@
      against the dark background. Dark cards therefore have no idle shadow and
      only need one on hover, where it has to be stronger to register. */
   --shadow-card: 0 2px 4px rgb(0 0 0 / 0.05), 0 8px 24px rgb(0 0 0 / 0.1);
-  --shadow-card-hover: 0 3px 6px rgb(0 0 0 / 0.06), 0 10px 28px rgb(0 0 0 / 0.11);
-  --shadow-card-hover-dark: 0 3px 8px rgb(0 0 0 / 0.18),
-    0 10px 24px rgb(0 0 0 / 0.2);
+  --shadow-card-hover:
+    0 3px 6px rgb(0 0 0 / 0.06), 0 10px 28px rgb(0 0 0 / 0.11);
+  --shadow-card-hover-dark:
+    0 3px 8px rgb(0 0 0 / 0.18), 0 10px 24px rgb(0 0 0 / 0.2);
 }
 
 /*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
+  Note for borders: Tailwind v4 defaults `border-color` to `currentcolor`, and
+  this palette wipes the built-in greys with `--color-*: initial`, so a
+  v3-style `border-color: var(--color-gray-200, currentcolor)` shim resolves to
+  `currentcolor` anyway. It was removed on 2026-10-21 — every border on the site
+  sets its colour explicitly, so nothing depended on it.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+  /*
+    The marker band: the highlighter stroke behind a prose link on hover, and
+    behind the home page's active bio item. It lives here rather than in either
+    utility because both need the same gradient, and the band has to change with
+    the theme.
+
+    `--marker-image` picks up whichever `--marker-band` the theme sets: both are
+    declared on `html`, and a `var()` inside a custom property is substituted
+    where that property is declared, so the dark override below reaches the
+    gradient. The gradient's transparent ends stay green-300 based in both
+    themes — they are a fade-out of the same hue, not the band colour.
+  */
+  :root {
+    --marker-band: rgb(134 171 138 / 0.8);
+    --marker-image: linear-gradient(
+      100deg,
+      rgb(134 171 138 / 0) 0%,
+      var(--marker-band) 7%,
+      var(--marker-band) 93%,
+      rgb(134 171 138 / 0) 100%
+    );
   }
 
-  a, button {
+  a,
+  button {
     cursor: pointer;
   }
 
   html.dark {
     --color-muted: var(--color-green-200);
+    --marker-band: rgb(87 122 93 / 0.8);
   }
 
   /*
@@ -135,6 +152,22 @@
 
   @media (width >= 48rem) {
     padding-inline: 6rem;
+  }
+}
+
+/*
+  Tint on hover, shared by the nav buttons and the footer's icon links. One
+  definition rather than the same two `hover:text-*` classes repeated at every
+  call site, so the nav and the footer can't drift apart. Each call site keeps
+  its own `transition-colors`, since what transitions differs per element.
+*/
+@utility hover-tint {
+  &:hover {
+    color: var(--color-green-400);
+  }
+
+  &:is(.dark *):hover {
+    color: var(--color-green-50);
   }
 }
 
@@ -253,9 +286,10 @@
   without it the band would be stretched once across the whole inline box
   instead of restarting on each line.
 
-  Theme is carried by `--rule`/`--band` rather than by restating properties in
-  a dark selector, so the dark rule can never outrank the `:hover` rules below
-  it and strand the rule un-faded under the band.
+  The dark rule is carried by `--rule` rather than by restating properties in a
+  dark selector, so the dark rule can never outrank the `:hover` rules below it
+  and strand the rule un-faded under the band. The band itself comes from
+  `--marker-image`, declared once in `@layer base`.
 
   Contrast, measured against the page canvas: the dotted rule is 5.47:1 in
   light and 4.86:1 in dark (needs 3:1 as a UI affordance), and the text sitting
@@ -263,20 +297,13 @@
 */
 @utility link-marker {
   --rule: var(--color-green-500);
-  --band: rgb(134 171 138 / 0.8);
 
   text-decoration-line: underline;
   text-decoration-style: dotted;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 0.2em;
   text-decoration-color: var(--rule);
-  background-image: linear-gradient(
-    100deg,
-    rgb(134 171 138 / 0) 0%,
-    var(--band) 7%,
-    var(--band) 93%,
-    rgb(134 171 138 / 0) 100%
-  );
+  background-image: var(--marker-image);
   background-repeat: no-repeat;
   background-position: 0 86%;
   background-size: 0% 46%;
@@ -287,11 +314,10 @@
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 
-  /* A lighter band would glare against green-800, so dark mode drops it to
-     green-400 and lifts the text to beige as the band lands. */
+  /* Dark mode lifts the text to beige as the band lands; the band itself is
+     already darker via `--marker-band`. */
   &:is(.dark *) {
     --rule: var(--color-green-300);
-    --band: rgb(87 122 93 / 0.8);
   }
 
   &:hover {
@@ -328,15 +354,7 @@
   exists to advertise "this is a link", which a plain list item is not.
 */
 @utility marker-active {
-  --band: rgb(134 171 138 / 0.8);
-
-  background-image: linear-gradient(
-    100deg,
-    rgb(134 171 138 / 0) 0%,
-    var(--band) 7%,
-    var(--band) 93%,
-    rgb(134 171 138 / 0) 100%
-  );
+  background-image: var(--marker-image);
   background-repeat: no-repeat;
   background-position: 0 86%;
   background-size: 100% 46%;
@@ -346,7 +364,6 @@
   animation: marker-sweep 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
 
   &:is(.dark *) {
-    --band: rgb(87 122 93 / 0.8);
     color: var(--color-beige-100);
   }
 
