@@ -67,6 +67,24 @@
     where that property is declared, so the dark override below reaches the
     gradient. The gradient's transparent ends stay green-300 based in both
     themes — they are a fade-out of the same hue, not the band colour.
+
+    The band's geometry lives here for the same reason: `link-marker`,
+    `marker-active` and the `marker-sweep` keyframes all sweep the one stroke,
+    so the two numbers are declared once rather than hardcoded in three places.
+    Both are percentages of the inline content box — the font's ascent plus
+    descent, not the line-height — so the band tracks the type rather than the
+    leading.
+
+    They are set to cover the x-height and stop. On Karla at 18px the content
+    box is 22px, the baseline 17px down and the x-height 8.6px, so 62% / 79%
+    puts the band's top edge 1.7px above the x-height line and its foot 3.3px
+    below the baseline: the ascenders and descenders stay clear, which is what
+    keeps the band reading as a marker stroke rather than a selection fill. The
+    previous 46% / 86% sliced through the lowercase letters at about four
+    fifths of their height. Newsreader's x-height sits higher in its content
+    box than Karla's (43.5% against 39.2%), and MDX renders links through this
+    utility inside `h2`/`h3` too, so the height is set for the tighter of the
+    two — the same numbers clear Newsreader's x-height by only 0.4px.
   */
   :root {
     --marker-band: rgb(134 171 138 / 0.8);
@@ -77,6 +95,8 @@
       var(--marker-band) 93%,
       rgb(134 171 138 / 0) 100%
     );
+    --marker-height: 62%;
+    --marker-top: 79%;
   }
 
   a,
@@ -305,8 +325,8 @@
   text-decoration-color: var(--rule);
   background-image: var(--marker-image);
   background-repeat: no-repeat;
-  background-position: 0 86%;
-  background-size: 0% 46%;
+  background-position: 0 var(--marker-top);
+  background-size: 0% var(--marker-height);
   transition:
     background-size 0.34s cubic-bezier(0.22, 1, 0.36, 1),
     color 0.2s ease,
@@ -321,7 +341,7 @@
   }
 
   &:hover {
-    background-size: 100% 46%;
+    background-size: 100% var(--marker-height);
     color: var(--color-green-700);
     text-decoration-color: transparent;
   }
@@ -338,10 +358,10 @@
 
 @keyframes marker-sweep {
   from {
-    background-size: 0% 46%;
+    background-size: 0% var(--marker-height);
   }
   to {
-    background-size: 100% 46%;
+    background-size: 100% var(--marker-height);
   }
 }
 
@@ -356,8 +376,8 @@
 @utility marker-active {
   background-image: var(--marker-image);
   background-repeat: no-repeat;
-  background-position: 0 86%;
-  background-size: 100% 46%;
+  background-position: 0 var(--marker-top);
+  background-size: 100% var(--marker-height);
   color: var(--color-green-700);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
