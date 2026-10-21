@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={karla.variable} suppressHydrationWarning>
       <body className="bg-beige-100 text-black transition-colors dark:bg-green-700 dark:text-beige-200">
         {/* Need this div so clicking outside navbar popover on small screens will close it. See: https://github.com/tailwindlabs/headlessui/issues/2752#issuecomment-1724096430 */}
-        <div className="flex min-h-screen flex-col gap-y-10 md:gap-y-18">
+        <div className="flex min-h-screen flex-col gap-y-8 md:gap-y-12">
           <ThemeProvider>
             <Navbar navbarButtons={NavbarButtons} />
             {/* px-6 md:px-16 is the site-wide side gutter. Every page inherits it here, so pages should not add their own horizontal margins. */}

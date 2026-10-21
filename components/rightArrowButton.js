@@ -8,7 +8,7 @@ const RightArrowButton = ({ text, url, eventName, className }) => {
   return (
     <Link href={url} className="flex w-fit items-center">
       <button
-        className={`${className} group flex flex-row items-center space-x-2 rounded-sm text-2xl font-medium text-green-600 transition-colors hover:underline dark:text-green-100`}
+        className={`${className} group flex flex-row items-center gap-x-2 rounded-sm text-2xl font-medium text-green-600 transition-colors hover:underline dark:text-green-100`}
         data-umami-event={eventName}
       >
         <span>{text}</span>

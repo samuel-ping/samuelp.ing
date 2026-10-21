@@ -15,7 +15,7 @@ export default async function Page() {
   const past = allProjects.filter((project) => !project.details.featured);
 
   return (
-    <div className="flex w-full flex-col items-center gap-y-7">
+    <div className="flex w-full flex-col items-center gap-y-8">
       <PageTitle text="Projects" />
 
       {/* featured projects */}

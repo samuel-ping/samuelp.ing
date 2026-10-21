@@ -8,7 +8,7 @@ const components = {
     return (
       <h2
         {...props}
-        className="mt-10 mb-3 text-2xl leading-snug font-semibold first:mt-0 last:mb-0 md:text-3xl"
+        className="mt-8 mb-4 text-2xl leading-snug font-semibold first:mt-0 last:mb-0 md:text-3xl"
       />
     );
   },
@@ -17,7 +17,7 @@ const components = {
     return (
       <h3
         {...props}
-        className="mt-8 mb-2 text-xl leading-snug font-medium first:mt-0 last:mb-0 md:text-2xl"
+        className="mt-6 mb-3 text-xl leading-snug font-medium first:mt-0 last:mb-0 md:text-2xl"
       />
     );
   },
@@ -26,7 +26,7 @@ const components = {
     return (
       <p
         {...props}
-        className="mb-5 text-base/7 first:mt-0 last:mb-0 md:text-lg/relaxed"
+        className="mb-4 text-base/7 first:mt-0 last:mb-0 md:text-lg/relaxed"
       />
     );
   },
@@ -34,7 +34,7 @@ const components = {
   ul: (props) => {
     return (
       <ul
-        className="mb-5 list-outside list-disc pl-6 first:mt-0 last:mb-0"
+        className="mb-4 list-outside list-disc pl-6 first:mt-0 last:mb-0"
         {...props}
       />
     );
@@ -43,7 +43,7 @@ const components = {
   ol: (props) => {
     return (
       <ol
-        className="mb-5 list-outside list-decimal pl-6 first:mt-0 last:mb-0"
+        className="mb-4 list-outside list-decimal pl-6 first:mt-0 last:mb-0"
         {...props}
       />
     );

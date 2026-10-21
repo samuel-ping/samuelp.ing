@@ -92,7 +92,7 @@ export default function BioSection({ button }) {
         />
       </div>
 
-      <div className="flex max-w-lg flex-col space-y-5">
+      <div className="flex max-w-lg flex-col gap-y-5">
         <span className="text-4xl font-medium">
           Hey! I&apos;m{' '}
           <span
