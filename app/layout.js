@@ -75,7 +75,11 @@ export default function RootLayout({ children }) {
             {/* `gutter-x` (globals.css) is the site-wide side gutter. Every page inherits it here, so pages should not add their own horizontal margins.
                 The single max-width lives here too, so every page shares one content column and the same left edge. items-start (not items-center) keeps short pages near the top instead of floating in dead space. */}
             <main className="flex w-full flex-1 items-start justify-center gutter-x pt-4 md:pt-8">
-              <div className="w-full max-w-5xl">{children}</div>
+              {/* `self-stretch` lets the column fill <main>, which is inert for
+                  every page whose content is taller than the viewport (that is
+                  all of them but the home page) and gives a page that wants to
+                  centre itself a definite height to centre within. */}
+              <div className="w-full max-w-5xl self-stretch">{children}</div>
             </main>
             <Footer />
           </ThemeProvider>
