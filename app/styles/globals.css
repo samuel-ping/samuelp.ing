@@ -23,6 +23,9 @@
   --color-green-400: #577a5d;
   --color-green-500: #4a6e50;
   --color-green-600: #375954;
+  /* The 700 -> 600 step is too big to use as a hover shade (1.42:1 against
+     green-700, where the light theme's hover step is only 1.16:1). */
+  --color-green-650: #2e4b46;
   --color-green-700: #28413d;
   --color-green-800: #233835;
 
