@@ -1,18 +1,22 @@
 import Button from '@/components/rightArrowButton';
 import BioSection from '@/components/bioSection';
+import NowSection from '@/components/nowSection';
 
 export default function Page() {
   return (
-    <div className="max-w-full xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)">
+    <div className="flex w-full flex-col gap-y-16">
       <BioSection
         button={
           <Button
             text={'more about me'}
             url={'/about'}
             eventName="More about me"
+            className="ink"
+            style={{ animationDelay: '170ms' }}
           />
         }
       />
+      <NowSection />
     </div>
   );
 }
