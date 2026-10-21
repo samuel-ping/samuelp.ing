@@ -178,9 +178,18 @@
 
   The pseudo-element is positioned against the inline box's content edge (the
   descender line), so the offsets below are tuned to sit just clear of it.
+
+  `stroke-linecap='round'` is load-bearing, not decoration. The wave has to
+  reach the tile's left and right edges for the humps to join up when the tile
+  repeats, and a butt cap there is cut off at an angle — Chrome antialiases
+  that cut, so every seam came out as a faint notch. A round cap pushes the
+  stroke *past* the tile edge instead, where the viewport clips it square, so
+  the boundary column is fully opaque and the join disappears. The cap radius
+  is the stroke's half-width, so it stays inside the band and the wave reads
+  no thicker.
 */
 @utility wavy-underline {
-  --wavy-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='8'%3E%3Cpath d='M0 4 Q 6.5 0 13 4 T 26 4' fill='none' stroke='%23fff' stroke-width='1.7'/%3E%3C/svg%3E");
+  --wavy-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='8'%3E%3Cpath d='M0 4 Q 6.5 0 13 4 T 26 4' fill='none' stroke='%23fff' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E");
 
   position: relative;
 
