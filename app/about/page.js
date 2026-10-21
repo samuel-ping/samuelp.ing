@@ -11,9 +11,13 @@ export default async function Page() {
   const { code } = await GetAboutMDX('about');
 
   return (
-    <div className="flex w-full max-w-2xl flex-col">
+    <div className="flex w-full max-w-2xl flex-col gap-y-8">
       <PageTitle text="About me" />
-      <MDXContent code={code} />
+      {/* Prose lives in a block container so its element margins collapse
+          consistently, matching the project detail page. */}
+      <div>
+        <MDXContent code={code} />
+      </div>
     </div>
   );
 }
