@@ -31,8 +31,6 @@ const ProjectCard = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
         </div>
       </div>
 
-      {/* The whole card is the link, so an arrow alone carries the affordance —
-          repeating "learn more" on every card was just noise. */}
       <Arrow className="w-6 transition duration-300 ease-in-out group-hover:translate-x-4" />
     </Link>
   );
