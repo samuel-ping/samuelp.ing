@@ -11,7 +11,10 @@ const ProjectRow = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
   return (
     <Link
       href={`projects/${slug}`}
-      className="group flex flex-col gap-y-1 rounded-lg px-4 py-3 transition-colors hover:bg-beige-200 sm:flex-row sm:items-center sm:gap-x-4 dark:hover:bg-green-700"
+      // The radius is scoped to hover: at rest the row has no surface to round,
+      // and leaving it on would bend the divider (the row's bottom border) into
+      // a hook at both ends.
+      className="group flex flex-col gap-y-1 px-4 py-3 transition-[background-color,border-radius] hover:rounded-lg hover:bg-beige-200 sm:flex-row sm:items-center sm:gap-x-4 dark:hover:bg-green-700"
       data-umami-event={`${title} project row`}
       data-umami-event-source={eventSource}
     >
