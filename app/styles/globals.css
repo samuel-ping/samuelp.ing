@@ -210,3 +210,73 @@
 }
 
 /*
+  Inline prose link.
+
+  At rest it carries a dotted rule rather than a solid one: inside a paragraph
+  the link has to be unmistakable without leaning on colour alone, and dotted
+  reads as "interactive" in a way the solid rule every other site uses does
+  not. On hover a chisel-tip marker band sweeps in from the left and the rule
+  fades out as it lands, so the band takes over rather than stacking on top of
+  the rule. The transparent ends of the gradient are what make it read as a
+  marker rather than a rectangle.
+
+  `box-decoration-break: clone` matters here: prose links wrap across lines, and
+  without it the band would be stretched once across the whole inline box
+  instead of restarting on each line.
+
+  Theme is carried by `--rule`/`--band` rather than by restating properties in
+  a dark selector, so the dark rule can never outrank the `:hover` rules below
+  it and strand the rule un-faded under the band.
+
+  Contrast, measured against the page canvas: the dotted rule is 5.47:1 in
+  light and 4.86:1 in dark (needs 3:1 as a UI affordance), and the text sitting
+  on the landed band is 5.23:1 and 5.49:1 (needs 4.5:1).
+*/
+@utility link-marker {
+  --rule: var(--color-green-500);
+  --band: rgb(134 171 138 / 0.8);
+
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--rule);
+  background-image: linear-gradient(
+    100deg,
+    rgb(134 171 138 / 0) 0%,
+    var(--band) 7%,
+    var(--band) 93%,
+    rgb(134 171 138 / 0) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 86%;
+  background-size: 0% 46%;
+  transition:
+    background-size 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.2s ease,
+    text-decoration-color 0.26s ease;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+
+  /* A lighter band would glare against green-800, so dark mode drops it to
+     green-400 and lifts the text to beige as the band lands. */
+  &:is(.dark *) {
+    --rule: var(--color-green-300);
+    --band: rgb(87 122 93 / 0.8);
+  }
+
+  &:hover {
+    background-size: 100% 46%;
+    color: var(--color-green-700);
+    text-decoration-color: transparent;
+  }
+
+  &:is(.dark *):hover {
+    color: var(--color-beige-100);
+  }
+
+  /* Reduced motion: keep the band, drop the sweep — it snaps in instead. */
+  @media (prefers-reduced-motion: reduce) {
+    transition: color 0.2s ease;
+  }
+}
