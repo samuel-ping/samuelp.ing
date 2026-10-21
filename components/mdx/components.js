@@ -8,7 +8,7 @@ const components = {
     return (
       <h2
         {...props}
-        className="mt-8 mb-4 text-2xl leading-snug font-semibold first:mt-0 last:mb-0 md:text-3xl"
+        className="mt-8 mb-4 font-display text-2xl leading-snug font-semibold first:mt-0 last:mb-0 md:text-3xl"
       />
     );
   },
@@ -17,7 +17,7 @@ const components = {
     return (
       <h3
         {...props}
-        className="mt-6 mb-3 text-xl leading-snug font-medium first:mt-0 last:mb-0 md:text-2xl"
+        className="mt-6 mb-3 font-display text-xl leading-snug font-medium first:mt-0 last:mb-0 md:text-2xl"
       />
     );
   },

@@ -4,6 +4,8 @@
 
 @theme inline {
   --font-sans: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+  /* Display face for headings and the hero name; Karla stays the body face. */
+  --font-display: var(--font-newsreader), Georgia, 'Times New Roman', serif;
 }
 
 @theme {
@@ -31,6 +33,9 @@
 
   /* Secondary text: dates, metadata, labels. Overridden for dark mode below. */
   --color-muted: #375954;
+
+  /* Tight leading for the display face at hero sizes. */
+  --leading-display: 1.05;
 
   /* Card elevation. Light surfaces read as raised via shadow; dark surfaces
      read as raised via a lighter tone instead, since a shadow is invisible
@@ -67,6 +72,45 @@
     --color-muted: var(--color-green-200);
   }
 
+  /*
+    Page canvas. The palette's neutrals are too tight for a card to separate
+    from the page by fill alone — a white card on beige-100 is only ~1.04:1,
+    invisible — so the *canvas* carries the depth instead, and cards keep
+    reading as raised purely via their shadow. Two gradient layers do the
+    work, with no pattern: a soft vignette that deepens the gutters so the
+    centred column sits forward, and a gentle wash that deepens toward the
+    foot of the page, as if the light comes from above.
+
+    Dark mode mirrors the same two cues but darkens rather than lightens: the
+    vignette must never rise above the card's green-700, or cards would read
+    as recessed. Darkening keeps the page strictly below the card surface.
+  */
+  body {
+    background-color: var(--color-beige-100);
+    background-image:
+      radial-gradient(
+        125% 105% at 50% 18%,
+        rgb(238 231 218 / 0) 45%,
+        rgb(238 231 218 / 0.8) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(238 231 218 / 0) 65%,
+        rgb(238 231 218 / 0.5) 100%
+      );
+  }
+
+  html.dark body {
+    background-color: var(--color-green-800);
+    background-image:
+      radial-gradient(
+        125% 105% at 50% 18%,
+        rgb(0 0 0 / 0) 46%,
+        rgb(0 0 0 / 0.22) 100%
+      ),
+      linear-gradient(to bottom, rgb(0 0 0 / 0) 68%, rgb(0 0 0 / 0.12) 100%);
+  }
+
   /* On-palette focus ring for keyboard users, replacing the browser default.
      The darker green reads against the light background, the lighter one
      against the dark background. */
@@ -79,3 +123,90 @@
     outline-color: var(--color-green-200);
   }
 }
+
+/*
+  Page-load reveal. Elements marked `.ink` *bleed* in: they resolve out of a
+  blur instead of sliding, so the entrance reads as ink soaking into the paper
+  canvas rather than the generic fade-and-rise. CSS-only, so it works in server
+  components with no wrapper elements and no hydration cost. `both` fill keeps
+  elements hidden until their delay elapses, then holds the final state.
+*/
+@keyframes ink-in {
+  from {
+    opacity: 0;
+    filter: blur(11px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@utility ink {
+  animation: ink-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  /* Honour reduced-motion: show content at rest, no blur. */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/*
+  Wavy rule, replacing `text-decoration: wavy` — the browser's squiggle is far
+  too dense at display sizes. This draws a wider, calmer wave that scales with
+  the font.
+
+  The stroke is carried as a *mask* and painted with `currentColor`, so the rule
+  always matches the text it underlines in both themes without a second copy of
+  the artwork. `0.87em` per tile gives two humps, matching the reference the
+  design was signed off against; the tile is stretched slightly wider than tall,
+  which is what flattens it out.
+
+  The pseudo-element is positioned against the inline box's content edge (the
+  descender line), so the offsets below are tuned to sit just clear of it.
+*/
+@utility wavy-underline {
+  --wavy-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='8'%3E%3Cpath d='M0 4 Q 6.5 0 13 4 T 26 4' fill='none' stroke='%23fff' stroke-width='1.7'/%3E%3C/svg%3E");
+
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.04em;
+    height: 0.16em;
+    background-color: currentColor;
+    -webkit-mask-image: var(--wavy-mask);
+    mask-image: var(--wavy-mask);
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    -webkit-mask-size: 0.87em 100%;
+    mask-size: 0.87em 100%;
+  }
+}
+
+@keyframes wavy-draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Draws the rule in from the left — the hero name's entrance. */
+@utility wavy-draw {
+  &::after {
+    animation: wavy-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      animation: none;
+    }
+  }
+}
+
+/*

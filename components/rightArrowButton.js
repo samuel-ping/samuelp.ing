@@ -4,11 +4,12 @@ import Link from 'next/link';
 
 import { RightArrowIcon as Arrow } from '@/components/icons';
 
-const RightArrowButton = ({ text, url, eventName, className }) => {
+const RightArrowButton = ({ text, url, eventName, className, style }) => {
   return (
     <Link
       href={url}
-      className={`${className} group flex w-fit flex-row items-center gap-x-2 rounded-sm text-2xl font-medium text-green-600 transition-colors hover:underline dark:text-green-100`}
+      style={style}
+      className={`${className ?? ''} group flex w-fit flex-row items-center gap-x-2 rounded-sm text-2xl font-medium text-green-600 transition-colors hover:underline dark:text-green-100`}
       data-umami-event={eventName}
     >
       <span>{text}</span>

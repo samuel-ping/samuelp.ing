@@ -76,8 +76,8 @@ export default function BioSection({ button }) {
   }, [targetPhoto]);
 
   return (
-    <div className="flex flex-col items-center gap-x-12 gap-y-4 pb-16 md:flex-row-reverse md:justify-between md:pt-16">
-      <div className="relative size-48 md:size-64">
+    <div className="flex flex-col items-center gap-x-12 gap-y-4 md:flex-row-reverse md:justify-between">
+      <div className="relative size-48 md:size-72 xl:size-96">
         <Image
           src={crossfade.photoA}
           alt="Photo of Sam"
@@ -94,17 +94,24 @@ export default function BioSection({ button }) {
         />
       </div>
 
-      <div className="flex max-w-lg flex-col gap-y-5">
-        <h1 className="text-4xl font-medium">
+      <div className="flex max-w-xl flex-col gap-y-5">
+        <h1 className="ink font-display text-5xl leading-display tracking-tight md:text-6xl">
           Hey! I&apos;m{' '}
+          {/* The wavy rule is the page's signature, so it now lives under the
+              name permanently and draws itself in on load, rather than
+              appearing only while the name is the active photo. */}
           <span
-            className={`cursor-default text-green-600 transition-all duration-100 dark:text-green-100 ${activeIndex === NAME ? 'underline decoration-wavy decoration-2 underline-offset-9' : ''}`}
+            className="wavy-underline wavy-draw cursor-default whitespace-nowrap text-green-600 dark:text-green-100"
             onMouseEnter={() => setHoveredName(true)}
             onMouseLeave={() => setHoveredName(false)}
           >Sam Ping</span>,
           a...
         </h1>
-        <span className="text-2xl font-light" onMouseLeave={() => setHoveredIndex(null)}>
+        <span
+          className="ink text-xl font-light md:text-2xl"
+          style={{ animationDelay: '90ms' }}
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
           {'... '}
           {bioItems.map((item, i) => (
             <span
@@ -112,13 +119,7 @@ export default function BioSection({ button }) {
               className="cursor-default"
               onMouseEnter={() => setHoveredIndex(i)}
             >
-              <span
-                className={`transition-all duration-100 ${
-                  activeIndex === i
-                    ? 'underline decoration-wavy decoration-2 underline-offset-4'
-                    : ''
-                }`}
-              >
+              <span className={activeIndex === i ? 'wavy-underline' : ''}>
                 {item.text}
               </span>
               {i < bioItems.length - 2
