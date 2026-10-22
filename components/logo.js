@@ -3,7 +3,7 @@ import Link from 'next/link';
 import SP from '@/components/sp';
 
 const Logo = ({ isAnimated, size, visible }) => (
-  <Link href="/" data-umami-event="logo button clicked">
+  <Link href="/" data-umami-event="Logo Click">
     <div>
       <SP
         isAnimated={isAnimated}

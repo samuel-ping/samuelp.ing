@@ -34,7 +34,7 @@ export default async function Page(props) {
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-y-8">
-      <BackButton text="back" />
+      <BackButton text="back" project={params.slug} />
       <div
         className="flex settle flex-col gap-y-2"
         style={{ animationDelay: '60ms' }}
@@ -51,6 +51,7 @@ export default async function Page(props) {
               text="view code"
               icon={<CodeBracketsIcon />}
               url={details.repo}
+              project={params.slug}
             />
           ) : (
             <></>
@@ -61,6 +62,7 @@ export default async function Page(props) {
               text="view site"
               icon={<ExternalLinkIcon />}
               url={details.website}
+              project={params.slug}
             />
           ) : (
             <></>

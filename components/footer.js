@@ -19,7 +19,9 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={linkClass}
-            data-umami-event="GitHub profile viewed"
+            data-umami-event="Outbound Click"
+            data-umami-event-url="https://github.com/samuel-ping"
+            data-umami-event-label="GitHub"
           >
             <GitHubIcon className="size-6" />
           </Link>
@@ -28,7 +30,9 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={linkClass}
-            data-umami-event="LinkedIn profile viewed"
+            data-umami-event="Outbound Click"
+            data-umami-event-url="https://linkedin.com/in/samuelping"
+            data-umami-event-label="LinkedIn"
           >
             <LinkedInIcon className="size-6" />
           </Link>
@@ -37,7 +41,9 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={linkClass}
-            data-umami-event="email button clicked"
+            data-umami-event="Outbound Click"
+            data-umami-event-url="mailto:samuel.y.ping@gmail.com"
+            data-umami-event-label="Email"
           >
             <EnvelopeIcon className="size-6" />
           </Link>

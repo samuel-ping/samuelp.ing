@@ -4,15 +4,18 @@ import Chip from '@/components/chip';
 import { RightArrowIcon as Arrow } from '@/components/icons';
 
 /**
- * @param eventSource suffix to be used as a part of the umami event name. I added this to differentiate between clicking on project rows from the projects page versus other pages.
+ * @param list which project list the row belongs to ("featured" or "past"); sent as an umami property.
+ * @param position the row's index within its list; sent as an umami property.
  */
-const ProjectRow = ({ slug, title, dates, gist, tags, eventSource = '' }) => {
+const ProjectRow = ({ slug, title, dates, gist, tags, list, position }) => {
   return (
     <Link
       href={`projects/${slug}`}
       className="group flex flex-col gap-y-1 px-4 py-3 transition-[background-color,border-color,border-radius] hover:rounded-lg hover:bg-beige-200 sm:flex-row sm:items-center sm:gap-x-4 dark:hover:bg-green-700 [&:has(+a:hover)]:border-b-transparent"
-      data-umami-event={`${title} project row`}
-      data-umami-event-source={eventSource}
+      data-umami-event="Project Open"
+      data-umami-event-project={slug}
+      data-umami-event-list={list}
+      data-umami-event-position={position}
     >
       <div className="flex shrink-0 flex-col sm:w-52">
         <span className="text-lg">{title}</span>

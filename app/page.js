@@ -10,7 +10,6 @@ export default function Page() {
           <Button
             text={'more about me'}
             url={'/about'}
-            eventName="More about me"
             className="settle"
             style={{ animationDelay: '170ms' }}
           />

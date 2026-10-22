@@ -41,7 +41,8 @@ export default async function Page() {
                   gist={project.details.gist}
                   tags={project.details.tags}
                   slug={project.details.slug}
-                  eventSource="/projects"
+                  list="featured"
+                  position={i}
                 />
               </div>
             );
@@ -53,7 +54,7 @@ export default async function Page() {
       <div className="flex w-full flex-col gap-y-4">
         <h2 className="font-display text-2xl font-medium">Past projects</h2>
         <div className="flex w-full flex-col divide-y divide-beige-200 dark:divide-green-700">
-          {past.map((project) => {
+          {past.map((project, i) => {
             return (
               <ProjectRow
                 key={project.details.title}
@@ -62,7 +63,8 @@ export default async function Page() {
                 gist={project.details.gist}
                 tags={project.details.tags}
                 slug={project.details.slug}
-                eventSource="/projects"
+                list="past"
+                position={i}
               />
             );
           })}

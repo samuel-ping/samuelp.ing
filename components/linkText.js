@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 const LinkText = ({ href, className, ...props }) => {
   const classes = className ? `link-marker ${className}` : 'link-marker';
+  const kind = href.startsWith('https') ? 'external' : 'internal';
 
   if (href.startsWith('https')) {
     return (
@@ -11,8 +12,9 @@ const LinkText = ({ href, className, ...props }) => {
         className={classes}
         target="_blank"
         rel="noopener"
-        data-umami-event={`Link clicked`}
-        data-umami-event-link={href.substring(0, 50)}
+        data-umami-event="Link Click"
+        data-umami-event-url={href}
+        data-umami-event-kind={kind}
       />
     );
   }
@@ -22,8 +24,9 @@ const LinkText = ({ href, className, ...props }) => {
       {...props}
       href={href}
       className={classes}
-      data-umami-event={`Link clicked`}
-      data-umami-event-link={href.substring(0, 50)}
+      data-umami-event="Link Click"
+      data-umami-event-url={href}
+      data-umami-event-kind={kind}
     />
   );
 };

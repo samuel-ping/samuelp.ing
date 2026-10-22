@@ -28,10 +28,9 @@ export const ThemeToggle = () => {
       type="button"
       aria-label={`Switch to ${nextTheme} theme`}
       className="relative flex items-center hover-tint transition-[transform,color] before:absolute before:-inset-3 before:content-[''] hover:-translate-y-1"
-      onClick={() => {
-        setTheme(nextTheme);
-        if (window.umami) window.umami.track(`theme toggled to ${nextTheme}`);
-      }}
+      data-umami-event="Theme Toggle"
+      data-umami-event-theme={nextTheme}
+      onClick={() => setTheme(nextTheme)}
     >
       {isLight ? <SunIcon /> : <MoonIcon />}
     </button>

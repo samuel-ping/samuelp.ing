@@ -39,7 +39,7 @@ export default function Navbar({ navbarButtons }) {
             </div>
 
             <div className="md:hidden">
-              <PopoverButton>
+              <PopoverButton data-umami-event="Mobile Nav Open">
                 <HamburgerMenuIcon isOpen={open} />
               </PopoverButton>
             </div>
