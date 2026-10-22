@@ -332,6 +332,56 @@
 }
 
 /*
+  The same draw, on hover — the nav's inactive links and the home page's CTA.
+  `wavy-underline` supplies the stroke; `wavy-draw-hover` arms it, holding the
+  clip shut at rest, and `wavy-drawn` is the state it opens to.
+
+  Two utilities rather than one because the trigger differs by call site, and
+  the trigger is a *variant*: a nav link draws under its own pointer, while the
+  CTA's label has to draw when the pointer is anywhere on the button — arrow
+  and gap included — so it keys off the ancestor's `group`. Splitting the pair
+  keeps one copy of the timing and one of the rest state; folding the trigger
+  in would have meant either a second copy of the clip or a utility that
+  silently fires inside any `group` ancestor.
+
+  A transition rather than the keyframes above, for two reasons. A hover is
+  interruptible: the pointer can leave mid-draw, and a transition resumes from
+  wherever the clip got to, where an animation would jump back to its first
+  keyframe and start over. And the transition is what makes the draw
+  reversible, so the rule retracts to the right as the pointer leaves — the
+  mirror of how it arrived.
+
+  The stroke is `currentColor`, so the wave lands in whatever colour the text
+  has settled on — the nav's `hover-tint` green-400, or the CTA's unchanged
+  green-600.
+
+  Faster than `wavy-draw` and with no delay — that one waits out the page's
+  entrance stagger, which would read as lag under a pointer.
+*/
+@utility wavy-draw-hover {
+  &::after {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Reduced motion keeps the cue and drops the travel: the rule is simply
+     there once the trigger applies. */
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      transition: none;
+    }
+  }
+}
+
+/* The drawn end of `wavy-draw-hover` — apply it behind `hover:` or
+   `group-hover:` to pick what triggers the draw. */
+@utility wavy-drawn {
+  &::after {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/*
   Inline prose link.
 
   At rest it carries a dotted rule rather than a solid one: inside a paragraph
