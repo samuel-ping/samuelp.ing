@@ -11,12 +11,14 @@ const BackButton = ({ text, project }) => {
     <div className="w-fit">
       <button
         onClick={() => router.back()}
-        className="group flex items-center gap-x-2 rounded-sm text-lg font-medium text-green-400 transition-colors hover:underline dark:text-green-100"
+        className="group flex items-center gap-x-2 rounded-sm text-lg font-medium text-green-400 dark:text-green-100"
         data-umami-event="Back Click"
         data-umami-event-project={project}
       >
         <Arrow className="w-4 transition duration-300 ease-in-out group-hover:-translate-x-1" />
-        <span>{text}</span>
+        <span className="wavy-underline wavy-draw-hover group-hover:wavy-drawn">
+          {text}
+        </span>
       </button>
     </div>
   );
