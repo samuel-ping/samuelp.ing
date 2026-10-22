@@ -2,8 +2,7 @@ import Link from 'next/link';
 
 import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
 
-const linkClass =
-  "relative flex items-center before:absolute before:-inset-3 before:content-[''] hover-tint transition-colors";
+const linkClass = 'flex items-center hover-tint transition-colors';
 
 const Footer = () => {
   return (
