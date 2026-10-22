@@ -26,20 +26,9 @@ export default async function Page() {
         >
           Featured
         </h2>
-        {/* `w-fit` keeps the grid as narrow as the cards, so dropping to two or
-            one column groups them tightly in the middle of the page instead of
-            stranding them at the edges of a full-width grid. */}
+
         <div className="mx-auto grid w-fit gap-4 md:grid-cols-2 xl:grid-cols-4">
           {featured.map((project, i) => {
-            // The cards keep the portrait shape and the width they have on a
-            // large screen, and only the grid reflows. Without the cap a card
-            // stretches with its column and the copy — which is short — leaves
-            // a growing void above the arrow.
-            //
-            // The shape lives on the grid item rather than on the card: the card
-            // is `size-full`, so it inherits whatever height the item ends up
-            // with, and a grid item's automatic minimum height means a card with
-            // unusually long copy grows instead of being clipped by the ratio.
             return (
               <div
                 key={project.details.title}

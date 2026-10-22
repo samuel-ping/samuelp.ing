@@ -79,10 +79,6 @@ export default function BioSection({ button }) {
     };
   }, [targetPhoto]);
 
-  // The photo and the text sit side by side only from `lg`, where the page
-  // column is wide enough to hold both at their full size; below that the pair
-  // stacks. `shrink-0` keeps the photo circular — without it flex narrows the
-  // box and the circle becomes an ellipse.
   return (
     <div className="flex flex-col items-center gap-x-12 gap-y-4 lg:flex-row-reverse lg:justify-center">
       <div className="relative size-48 shrink-0 md:size-64">
@@ -105,12 +101,6 @@ export default function BioSection({ button }) {
       <div className="flex max-w-xl flex-col gap-y-5">
         <h1 className="settle font-display text-5xl leading-display tracking-tight md:text-6xl">
           Hey! I&apos;m{' '}
-          {/* The wavy rule is the page's signature, so it now lives under the
-              name permanently and draws itself in on load, rather than
-              appearing only while the name is the active photo. The name is
-              the last stop in the same photo cycle as the bio list, so while
-              it is the active item it also takes the marker band, exactly as
-              the list items do. */}
           <span
             className={`wavy-underline wavy-draw cursor-default whitespace-nowrap text-green-600 dark:text-green-100 ${activeIndex === NAME ? 'marker-active' : ''}`}
             onMouseEnter={() => setHoveredName(true)}

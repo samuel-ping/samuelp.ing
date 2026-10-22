@@ -32,10 +32,6 @@ export default async function Page(props) {
 
   const tags = details.tags;
 
-  // The measure sits on the page root and is centred with `mx-auto`, matching
-  // the about page. Capping the individual children instead left them at the
-  // start edge of the 5xl page column — a flex child is stretched to its
-  // `max-width` and stays put — so the text hugged the left gutter.
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-y-8">
       <BackButton text="back" />
