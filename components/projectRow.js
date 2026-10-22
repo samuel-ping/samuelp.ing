@@ -30,7 +30,7 @@ const ProjectRow = ({ slug, title, dates, gist, tags, list, position }) => {
         ) : (
           tags.slice(0, 2).map((tag) => <Chip text={tag} key={tag} />)
         )}
-        <Arrow className="w-5 transition duration-300 ease-in-out group-hover:translate-x-2" />
+        <Arrow className="w-5 transition duration-300 ease-in-out group-hover:translate-x-1" />
       </div>
     </Link>
   );

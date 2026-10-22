@@ -34,7 +34,7 @@ const ProjectCard = ({ slug, title, dates, gist, tags, list, position }) => {
         </div>
       </div>
 
-      <Arrow className="w-6 transition duration-300 ease-in-out group-hover:translate-x-4" />
+      <Arrow className="w-6 transition duration-300 ease-in-out group-hover:translate-x-1" />
     </Link>
   );
 };
