@@ -21,27 +21,29 @@ export default function Navbar({ navbarButtons }) {
     <Popover className="z-50">
       {({ open, close }) => (
         <>
-          <nav className="mt-8 flex h-14 items-center justify-between gutter-x">
-            <Logo isAnimated size={48} visible={true} />
+          <nav className="mt-8 gutter-x">
+            <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between">
+              <Logo isAnimated size={48} visible={true} />
 
-            {/* Desktop nav */}
-            <div className="hidden flex-row gap-x-4 md:flex">
-              {navbarButtons.map((button) => (
-                <NavbarButton
-                  key={button.route}
-                  // active even when multiple levels deep
-                  active={`/${pathname.split('/')[1]}` === button.route}
-                  title={button.title}
-                  route={button.route}
-                />
-              ))}
-              <ThemeToggle />
-            </div>
+              {/* Desktop nav */}
+              <div className="hidden flex-row gap-x-4 md:flex">
+                {navbarButtons.map((button) => (
+                  <NavbarButton
+                    key={button.route}
+                    // active even when multiple levels deep
+                    active={`/${pathname.split('/')[1]}` === button.route}
+                    title={button.title}
+                    route={button.route}
+                  />
+                ))}
+                <ThemeToggle />
+              </div>
 
-            <div className="md:hidden">
-              <PopoverButton data-umami-event="Mobile Nav Open">
-                <HamburgerMenuIcon isOpen={open} />
-              </PopoverButton>
+              <div className="md:hidden">
+                <PopoverButton data-umami-event="Mobile Nav Open">
+                  <HamburgerMenuIcon isOpen={open} />
+                </PopoverButton>
+              </div>
             </div>
           </nav>
           <Transition
