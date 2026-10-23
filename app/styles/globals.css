@@ -207,13 +207,12 @@
   Each call site keeps its own `transition-colors`, since what transitions
   differs per element.
 
-  The dark tint steps *down* to green-200 rather than up to green-50. In dark
-  mode the rest colour is already beige-200, which is only 1.09:1 from
-  green-50 — hovering did nothing but swap one near-white for another, so the
-  link read as fading out rather than lighting up. green-200 is 1.47:1 from
-  beige-200 (visible, still quiet) while keeping 6.9:1 against the green-800
-  page, and it stays clear of the green-100 the active nav link already uses.
-  Light mode can brighten, since its rest colour is black.
+  The tint matches the active nav link in both themes — green-400 in light,
+  green-100 in dark — so hovering a link previews the colour it will take once
+  it becomes the current page. Light mode brightens away from its black rest
+  colour. Dark mode's rest colour is beige-200, and green-100 is only 1.09:1
+  from it, so the cue there is the shift from a warm beige to a cool green
+  rather than a step in brightness.
 */
 @utility hover-tint {
   &:hover {
@@ -221,7 +220,7 @@
   }
 
   &:is(.dark *):hover {
-    color: var(--color-green-200);
+    color: var(--color-green-100);
   }
 }
 
