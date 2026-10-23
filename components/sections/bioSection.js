@@ -99,7 +99,7 @@ export default function BioSection({ button }) {
       </div>
 
       <div className="flex max-w-xl flex-col gap-y-5">
-        <h1 className="settle font-display text-5xl leading-display tracking-tight md:text-6xl">
+        <h1 className="font-display text-5xl leading-display tracking-tight md:text-6xl">
           Hey! I&apos;m{' '}
           <span
             className={`wavy-underline wavy-draw cursor-default whitespace-nowrap text-green-600 dark:text-green-100 ${activeIndex === NAME ? 'marker-active' : ''}`}
@@ -111,8 +111,7 @@ export default function BioSection({ button }) {
           , a...
         </h1>
         <span
-          className="settle text-xl font-light md:text-2xl"
-          style={{ animationDelay: '90ms' }}
+          className="text-xl font-light md:text-2xl"
           onMouseLeave={() => setHoveredIndex(null)}
         >
           {'... '}

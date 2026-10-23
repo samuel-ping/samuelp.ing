@@ -12,11 +12,11 @@ export default async function Page() {
   const { code } = await GetAboutMDX('about');
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col gap-y-8">
+    <div className="mx-auto flex w-full max-w-2xl page-fade flex-col gap-y-8">
       <PageTitle text="About me" />
       {/* Prose lives in a block container so its element margins collapse
           consistently, matching the project detail page. */}
-      <div className="settle" style={{ animationDelay: '90ms' }}>
+      <div>
         <MDXContent code={code} />
       </div>
       <NowSection />
