@@ -12,8 +12,6 @@ import {
 import Globe from 'react-globe.gl';
 import * as THREE from 'three';
 
-import { GetCountryName } from '@/utils/countryNames';
-
 const PALETTE = ['#29413c', '#375954', '#4a6e50', '#86ab8a', '#c8e6c9'];
 const numberFormat = new Intl.NumberFormat('en-US');
 
@@ -63,6 +61,11 @@ export default function VisitorGlobe({
 
   const visitorsByCode = useMemo(
     () => new Map(countries.map((country) => [country.code, country.visitors])),
+    [countries],
+  );
+
+  const namesByCode = useMemo(
+    () => new Map(countries.map((country) => [country.code, country.name])),
     [countries],
   );
 
@@ -307,7 +310,9 @@ export default function VisitorGlobe({
           style={{ transform: 'translate(-50%, -100%)' }}
         >
           <p className="font-medium">
-            {GetCountryName(hovered.id, hovered.properties?.name)}
+            {namesByCode.get(hovered.id) ??
+              hovered.properties?.name ??
+              hovered.id}
           </p>
           <p className="text-green-600">
             {hovered.visitors > 0

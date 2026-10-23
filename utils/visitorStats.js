@@ -1,11 +1,25 @@
 import snapshot from '@/data/umami-country-stats.json';
 
+import { GetCountryName } from '@/utils/countryNames';
+
 const isValidCode = (code) => /^[A-Z]{2}$/.test(code) && code !== 'ZZ';
+
+const dateFormat = new Intl.DateTimeFormat('en-US', {
+  dateStyle: 'medium',
+  timeZone: 'UTC',
+});
 
 /**
  * Normalizes the committed Umami snapshot for the stats components.
  * This is intentionally synchronous: the snapshot is baked into the static build.
- * @returns {{ generatedAt: string | null, totalVisitors: number, countries: Array<{ code: string, visitors: number }> }}
+ *
+ * Country names and the formatted "updated" date are resolved here, on the
+ * server, and passed to the client as props. `Intl.DisplayNames` is not stable
+ * across ICU versions (Node renders "Hong Kong SAR China" where Chrome renders
+ * "Hong Kong"), so resolving names during render on both sides would cause
+ * hydration mismatches. Dates are preformatted for the same reason.
+ *
+ * @returns {{ generatedAt: string | null, updatedAt: string | null, totalVisitors: number, countries: Array<{ code: string, name: string, visitors: number }> }}
  */
 export function GetVisitorStats() {
   const merged = new Map();
@@ -25,7 +39,11 @@ export function GetVisitorStats() {
   }
 
   const countries = [...merged]
-    .map(([code, visitors]) => ({ code, visitors }))
+    .map(([code, visitors]) => ({
+      code,
+      name: GetCountryName(code),
+      visitors,
+    }))
     .sort((a, b) => b.visitors - a.visitors || a.code.localeCompare(b.code));
 
   const attributedVisitors = countries.reduce(
@@ -37,9 +55,17 @@ export function GetVisitorStats() {
     ? Math.max(reportedVisitors, attributedVisitors)
     : attributedVisitors;
 
+  const generatedAt =
+    typeof snapshot.generatedAt === 'string' ? snapshot.generatedAt : null;
+  const generatedDate = generatedAt ? new Date(generatedAt) : null;
+  const updatedAt =
+    generatedDate && !Number.isNaN(generatedDate.getTime())
+      ? dateFormat.format(generatedDate)
+      : null;
+
   return {
-    generatedAt:
-      typeof snapshot.generatedAt === 'string' ? snapshot.generatedAt : null,
+    generatedAt,
+    updatedAt,
     totalVisitors,
     countries,
   };

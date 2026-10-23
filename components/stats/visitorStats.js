@@ -5,7 +5,6 @@ import { useMemo, useState } from 'react';
 
 import GlobeErrorBoundary from '@/components/stats/globeErrorBoundary';
 import GlobeSkeleton from '@/components/stats/globeSkeleton';
-import { GetCountryName } from '@/utils/countryNames';
 
 const VisitorGlobe = dynamic(() => import('./visitorGlobe'), {
   ssr: false,
@@ -13,10 +12,6 @@ const VisitorGlobe = dynamic(() => import('./visitorGlobe'), {
 });
 
 const numberFormat = new Intl.NumberFormat('en-US');
-const dateFormat = new Intl.DateTimeFormat('en-US', {
-  dateStyle: 'medium',
-  timeZone: 'UTC',
-});
 
 const formatPercent = (value) => {
   if (value > 0 && value < 1) return '<1%';
@@ -44,7 +39,7 @@ function TopCountriesList({
           className="flex flex-col gap-y-2"
         >
           {countries.map((country, index) => {
-            const name = GetCountryName(country.code);
+            const name = country.name ?? country.code;
             const percentage =
               attributedVisitors > 0
                 ? (country.visitors / attributedVisitors) * 100
@@ -101,7 +96,7 @@ function TopCountriesList({
 export default function VisitorStats({ data }) {
   const [highlightedCode, setHighlightedCode] = useState(null);
 
-  const { generatedAt, totalVisitors, countries } = data;
+  const { updatedAt, totalVisitors, countries } = data;
 
   const { attributedVisitors, topCountries } = useMemo(() => {
     const totals = countries.reduce(
@@ -116,8 +111,6 @@ export default function VisitorStats({ data }) {
   }, [countries]);
 
   const hasData = attributedVisitors > 0;
-  const updatedAt = generatedAt ? new Date(generatedAt) : null;
-  const hasValidDate = updatedAt !== null && !Number.isNaN(updatedAt.getTime());
 
   return (
     <section
@@ -142,11 +135,7 @@ export default function VisitorStats({ data }) {
           <p className="text-muted">No visitor data yet.</p>
         )}
 
-        {hasValidDate && (
-          <p className="text-sm text-muted">
-            Updated {dateFormat.format(updatedAt)}
-          </p>
-        )}
+        {updatedAt && <p className="text-sm text-muted">Updated {updatedAt}</p>}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]">

@@ -150,13 +150,15 @@ Rules:
 
 ```js
 {
-  generatedAt: string | null,
+  updatedAt: string | null,
   totalVisitors: number,
-  countries: Array<{ code: string, visitors: number }>,
+  countries: Array<{ code: string, name: string, visitors: number }>,
 }
 ```
 
 No other props are required. Optional `className` is allowed but not required. The component must not import page-specific modules.
+
+`name` and `updatedAt` are resolved on the server so the client never calls `Intl.DisplayNames` or `Intl.DateTimeFormat` during render. ICU data differs between Node and browsers (Node renders `Hong Kong SAR China` where Chrome renders `Hong Kong`), which causes hydration mismatches.
 
 ### 7.3 Normalized data
 
@@ -167,8 +169,10 @@ No other props are required. Optional `className` is allowed but not required. T
 - Coerce `visitors` to a finite number and drop values `<= 0`.
 - Merge duplicate codes by summing.
 - Sort by `visitors` descending, then `code` ascending for deterministic ties.
+- Resolve `name` per country with the server-side `GetCountryName`.
 - Clamp `totalVisitors` to at least the sum of country visitors.
-- Return `{ generatedAt, totalVisitors, countries }`.
+- Preformat the snapshot date as `updatedAt` with `Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZone: 'UTC' })`.
+- Return `{ generatedAt, updatedAt, totalVisitors, countries }`.
 
 ## 8. Dependencies and scripts
 
@@ -425,7 +429,7 @@ Summary copy:
 
 - With data: `{formatted totalVisitors} visitors from {totalCountries} countries`.
 - Without data: `No visitor data yet.`
-- Updated line only when `generatedAt` is non-null: `Updated {date}` using `Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZone: 'UTC' })`.
+- Updated line only when `updatedAt` is non-null: render the preformatted server string as `Updated {updatedAt}`.
 - Use `Intl.NumberFormat('en-US')` for all counts.
 
 Top list:
