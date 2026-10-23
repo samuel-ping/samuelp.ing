@@ -1,20 +1,13 @@
-import Button from '@/components/rightArrowButton';
-import BioSection from '@/components/bioSection';
+import Button from '@/components/ui/rightArrowButton';
+import BioSection from '@/components/sections/bioSection';
 
-import { GetProjectDetails } from '@/utils/mdxUtils';
-
-export default async function Page() {
-  const projects = await GetProjectDetails(6);
-
+export default function Page() {
+  // `pb-8` cancels the `pt-8` on `<main>`, without it the hero sits low.
   return (
-    <div className="max-w-full xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)">
+    <div className="flex page-fade flex-col lg:h-full lg:justify-center lg:pb-8">
       <BioSection
         button={
-          <Button
-            text={'more about me'}
-            url={'/about'}
-            eventName="More about me"
-          />
+          <Button text={'more about me'} url={'/about'} />
         }
       />
     </div>

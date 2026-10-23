@@ -1,8 +1,8 @@
-import { CodeBracketsIcon, ExternalLinkIcon } from '@/components/icons';
-import Chip from '@/components/chip';
-import BackButton from '@/components/backButton';
+import { CodeBracketsIcon, ExternalLinkIcon } from '@/components/ui/icons';
+import Chip from '@/components/ui/chip';
+import BackButton from '@/components/ui/backButton';
 import MDXContent from '@/components/mdx/mdxContent';
-import IconButton from '@/components/iconButton';
+import IconButton from '@/components/ui/iconButton';
 
 import { GetProject, GetProjectDetails } from '@/utils/mdxUtils';
 
@@ -33,19 +33,22 @@ export default async function Page(props) {
   const tags = details.tags;
 
   return (
-    <div className="mx-8 flex flex-col items-center gap-y-10 md:mx-16 xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)">
-      <span className="flex w-full justify-center md:justify-start">
-        <BackButton text="back" />
-      </span>
-      <div className="flex flex-col items-center gap-y-2">
-        <span className="text-4xl font-bold">{details.title}</span>
-        <span className="text-xl font-light italic">{details.dates}</span>
-        <div className="flex flex-row gap-1">
+    <div className="mx-auto flex w-full max-w-2xl page-fade flex-col gap-y-8">
+      <BackButton text="back" project={params.slug} />
+      <div className="flex flex-col gap-y-2">
+        <h1 className="font-display text-4xl font-bold md:text-5xl">
+          {details.title}
+        </h1>
+        <span className="text-xl font-light text-muted italic">
+          {details.dates}
+        </span>
+        <div className="flex gap-1">
           {details.repo ? (
             <IconButton
               text="view code"
-              icon={<CodeBracketsIcon className={''} />}
+              icon={<CodeBracketsIcon />}
               url={details.repo}
+              project={params.slug}
             />
           ) : (
             <></>
@@ -54,8 +57,9 @@ export default async function Page(props) {
           {details.website ? (
             <IconButton
               text="view site"
-              icon={<ExternalLinkIcon className={''} />}
+              icon={<ExternalLinkIcon />}
               url={details.website}
+              project={params.slug}
             />
           ) : (
             <></>
@@ -63,13 +67,13 @@ export default async function Page(props) {
         </div>
       </div>
 
-      <div className="w-full max-w-2xl">
+      <div className="w-full">
         <MDXContent code={code} />
       </div>
 
       {/* tags */}
-      <div className="flex w-full flex-row flex-wrap gap-1">
-        <span>tags:</span>
+      <div className="flex w-full flex-wrap gap-2">
+        <span className="text-muted">tags:</span>
         {tags === undefined || tags.length == 0 ? (
           <></>
         ) : (

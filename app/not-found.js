@@ -1,9 +1,15 @@
-import NotFoundMessage from '@/components/notFoundMessage';
+import NotFoundMessage from '@/components/sections/notFoundMessage';
+import NotFoundTracker from '@/components/analytics/notFoundTracker';
 
 export const metadata = {
   title: '4[shrimp]4',
 };
 
 export default function NotFound() {
-  return <NotFoundMessage />;
+  return (
+    <>
+      <NotFoundTracker />
+      <NotFoundMessage />
+    </>
+  );
 }

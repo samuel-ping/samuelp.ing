@@ -4,6 +4,8 @@
 
 @theme inline {
   --font-sans: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+  /* Display face for headings and the hero name; Karla stays the body face. */
+  --font-display: var(--font-newsreader), Georgia, 'Times New Roman', serif;
 }
 
 @theme {
@@ -23,28 +25,467 @@
   --color-green-400: #577a5d;
   --color-green-500: #4a6e50;
   --color-green-600: #375954;
+  /* The 700 -> 600 step is too big to use as a hover shade (1.42:1 against
+     green-700, where the light theme's hover step is only 1.16:1). */
+  --color-green-650: #2e4b46;
   --color-green-700: #28413d;
   --color-green-800: #233835;
+
+  /* Secondary text: dates, metadata, labels. Overridden for dark mode below. */
+  --color-muted: #375954;
+
+  /* Tight leading for the display face at hero sizes. */
+  --leading-display: 1.05;
+
+  /* Card elevation. Light surfaces read as raised via shadow; dark surfaces
+     read as raised via a lighter tone instead, since a shadow is invisible
+     against the dark background. Dark cards therefore have no idle shadow and
+     only need one on hover, where it has to be stronger to register. */
+  --shadow-card: 0 2px 4px rgb(0 0 0 / 0.05), 0 8px 24px rgb(0 0 0 / 0.1);
+  --shadow-card-hover:
+    0 3px 6px rgb(0 0 0 / 0.06), 0 10px 28px rgb(0 0 0 / 0.11);
+  --shadow-card-hover-dark:
+    0 3px 8px rgb(0 0 0 / 0.18), 0 10px 24px rgb(0 0 0 / 0.2);
+
+  /*
+    The navbar's own breakpoint, far below Tailwind's `sm`. The navbar keeps
+    its single row — mark, then links and toggle — as long as it fits, and only
+    stacks below this width. Measured, that row's content is ~15.25rem (a 31px
+    mark plus 213px of links and toggle) and the site gutter adds 4rem, so it
+    stops fitting at about 19.25rem. 21rem is the lowest step that still leaves
+    a comfortable gap between the mark and the first link (~1.75rem), and it
+    sits under every phone in use — the narrowest common width is 360px — so
+    the stacked fallback is a safety net rather than the phone layout.
+  */
+  --breakpoint-xs: 21rem;
 }
 
 /*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
+  Note for borders: Tailwind v4 defaults `border-color` to `currentcolor`, and
+  this palette wipes the built-in greys with `--color-*: initial`, so a
+  v3-style `border-color: var(--color-gray-200, currentcolor)` shim resolves to
+  `currentcolor` anyway. It was removed on 2026-10-21 — every border on the site
+  sets its colour explicitly, so nothing depended on it.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+  /*
+    The marker band: the highlighter stroke behind a prose link on hover, and
+    behind the home page's active bio item. It lives here rather than in either
+    utility because both need the same gradient, and the band has to change with
+    the theme.
+
+    `--marker-image` picks up whichever `--marker-band` the theme sets: both are
+    declared on `html`, and a `var()` inside a custom property is substituted
+    where that property is declared, so the dark override below reaches the
+    gradient. The gradient's transparent ends stay green-300 based in both
+    themes — they are a fade-out of the same hue, not the band colour.
+
+    The band's geometry lives here for the same reason: `link-marker`,
+    `marker-active` and the `marker-sweep` keyframes all sweep the one stroke,
+    so the two numbers are declared once rather than hardcoded in three places.
+    Both are percentages of the inline content box — the font's ascent plus
+    descent, not the line-height — so the band tracks the type rather than the
+    leading.
+
+    They are set to cover the x-height and stop. On Karla at 18px the content
+    box is 22px, the baseline 17px down and the x-height 8.6px, so 62% / 79%
+    puts the band's top edge 1.7px above the x-height line and its foot 3.3px
+    below the baseline: the ascenders and descenders stay clear, which is what
+    keeps the band reading as a marker stroke rather than a selection fill. The
+    previous 46% / 86% sliced through the lowercase letters at about four
+    fifths of their height. Newsreader's x-height sits higher in its content
+    box than Karla's (43.5% against 39.2%), and MDX renders links through this
+    utility inside `h2`/`h3` too, so the height is set for the tighter of the
+    two — the same numbers clear Newsreader's x-height by only 0.4px.
+  */
+  :root {
+    --marker-band: rgb(134 171 138 / 0.8);
+    --marker-image: linear-gradient(
+      100deg,
+      rgb(134 171 138 / 0) 0%,
+      var(--marker-band) 7%,
+      var(--marker-band) 93%,
+      rgb(134 171 138 / 0) 100%
+    );
+    --marker-height: 62%;
+    --marker-top: 79%;
+
+    /*
+      The wave, shared by the nav's active underline and the footer's rule. It
+      lives here for the same reason the marker band does: two utilities need the
+      identical stroke, and a second copy of the data URI would be a second thing
+      to keep in sync.
+
+      It is a wavy rule replacing `text-decoration: wavy`, whose squiggle is far
+      too dense at display sizes. `0.87em` per tile gives two humps, matching the
+      reference the design was signed off against; the tile is stretched slightly
+      wider than tall, which is what flattens it out. The geometry is in `em`, so
+      the wave scales with whatever it is drawn on rather than with a fixed size.
+
+      `stroke-linecap='round'` is load-bearing, not decoration. The wave has to
+      reach the tile's left and right edges for the humps to join up when the
+      tile repeats, and a butt cap there is cut off at an angle — Chrome
+      antialiases that cut, so every seam came out as a faint notch. A round cap
+      pushes the stroke *past* the tile edge instead, where the viewport clips it
+      square, so the boundary column is fully opaque and the join disappears. The
+      cap radius is the stroke's half-width, so it stays inside the band and the
+      wave reads no thicker.
+    */
+    --wavy-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='8'%3E%3Cpath d='M0 4 Q 6.5 0 13 4 T 26 4' fill='none' stroke='%23fff' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E");
+    --wavy-tile: 0.87em;
+    --wavy-thickness: 0.16em;
   }
 
-  a, button {
+  a,
+  button {
     cursor: pointer;
+  }
+
+  html.dark {
+    --color-muted: var(--color-green-200);
+    --marker-band: rgb(87 122 93 / 0.8);
+  }
+
+  /*
+    Page canvas. The palette's neutrals are too tight for a card to separate
+    from the page by fill alone — a white card on beige-100 is only ~1.04:1,
+    invisible — so the *canvas* carries the depth instead, and cards keep
+    reading as raised purely via their shadow. Two gradient layers do the
+    work, with no pattern: a soft vignette that deepens the gutters so the
+    centred column sits forward, and a gentle wash that deepens toward the
+    foot of the page, as if the light comes from above.
+
+    Dark mode mirrors the same two cues but darkens rather than lightens: the
+    vignette must never rise above the card's green-700, or cards would read
+    as recessed. Darkening keeps the page strictly below the card surface.
+  */
+  body {
+    background-color: var(--color-beige-100);
+    background-image:
+      radial-gradient(
+        125% 105% at 50% 18%,
+        rgb(238 231 218 / 0) 45%,
+        rgb(238 231 218 / 0.8) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(238 231 218 / 0) 65%,
+        rgb(238 231 218 / 0.5) 100%
+      );
+  }
+
+  html.dark body {
+    background-color: var(--color-green-800);
+    background-image:
+      radial-gradient(
+        125% 105% at 50% 18%,
+        rgb(0 0 0 / 0) 46%,
+        rgb(0 0 0 / 0.22) 100%
+      ),
+      linear-gradient(to bottom, rgb(0 0 0 / 0) 68%, rgb(0 0 0 / 0.12) 100%);
+  }
+
+  /* On-palette focus ring for keyboard users, replacing the browser default.
+     The darker green reads against the light background, the lighter one
+     against the dark background. */
+  :focus-visible {
+    outline: 2px solid var(--color-green-600);
+    outline-offset: 2px;
+  }
+
+  .dark :focus-visible {
+    outline-color: var(--color-green-200);
+  }
+}
+
+/*
+  Site-wide side gutter. One value, applied by the navbar, <main> and the
+  footer, so every page shares the same left and right edge — pages must not
+  add horizontal margins of their own. Defined once here rather than repeated
+  as `px-*` classes in three components, which is how the edges drifted apart.
+*/
+@utility gutter-x {
+  padding-inline: 2rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 6rem;
+  }
+}
+
+/*
+  Tint on hover, shared by the nav buttons, the theme toggle and the footer's
+  icon links. One definition rather than the same two `hover:text-*` classes
+  repeated at every call site, so the nav and the footer can't drift apart.
+  Each call site keeps its own `transition-colors`, since what transitions
+  differs per element.
+
+  The tint matches the active nav link in both themes — green-400 in light,
+  green-100 in dark — so hovering a link previews the colour it will take once
+  it becomes the current page. Light mode brightens away from its black rest
+  colour. Dark mode's rest colour is beige-200, and green-100 is only 1.09:1
+  from it, so the cue there is the shift from a warm beige to a cool green
+  rather than a step in brightness.
+*/
+@utility hover-tint {
+  &:hover {
+    color: var(--color-green-400);
+  }
+
+  &:is(.dark *):hover {
+    color: var(--color-green-100);
+  }
+}
+
+/*
+  Page transition. Each page's outer container carries `.page-fade`, so moving
+  between routes crossfades the new content in. Opacity only — no transform — so
+  it can't disturb a page's own layout (the home page centres itself with
+  `lg:h-full`, which a transform or an extra wrapper element could offset).
+  CSS-only, so it works in server components with no hydration cost. `both`
+  fill keeps content hidden until the animation starts.
+
+  This replaced a staggered drop-in reveal (translate/rotate/scale, 0.8s, with
+  per-element delays) on 2026-10-23.
+*/
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility page-fade {
+  animation: page-fade 0.2s ease-out both;
+
+  /* Honour reduced-motion: show content at rest. */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/*
+  The wave as an underline, drawn beneath the text it belongs to. The stroke is
+  carried as a *mask* and painted with `currentColor`, so the rule always matches
+  the text it underlines in both themes without a second copy of the artwork. The
+  artwork and its geometry live in `@layer base` because `wavy-rule` below draws
+  the same stroke.
+
+  The pseudo-element is positioned against the inline box's content edge (the
+  descender line), so the offset below is tuned to sit just clear of it.
+*/
+@utility wavy-underline {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.04em;
+    height: var(--wavy-thickness);
+    background-color: currentColor;
+    -webkit-mask-image: var(--wavy-mask);
+    mask-image: var(--wavy-mask);
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    -webkit-mask-size: var(--wavy-tile) 100%;
+    mask-size: var(--wavy-tile) 100%;
+  }
+}
+
+/*
+  The same wave drawn as a rule: the element *is* the stroke, rather than
+  carrying one beneath its text. The footer divider uses this so it reads as the
+  nav's active underline without being an underline.
+
+  The element needs no content, and its `height` is the wave's own thickness —
+  a div with this utility and a width is the whole rule. Colour comes from
+  `currentColor`, so the call site picks it with a `text-*` class exactly as
+  `wavy-underline` does.
+*/
+@utility wavy-rule {
+  height: var(--wavy-thickness);
+  background-color: currentColor;
+  -webkit-mask-image: var(--wavy-mask);
+  mask-image: var(--wavy-mask);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-size: var(--wavy-tile) 100%;
+  mask-size: var(--wavy-tile) 100%;
+}
+
+@keyframes wavy-draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Draws the rule in from the left — the hero name's entrance. */
+@utility wavy-draw {
+  &::after {
+    animation: wavy-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      animation: none;
+    }
+  }
+}
+
+/*
+  The same draw, on hover — the nav's inactive links and the home page's CTA.
+  `wavy-underline` supplies the stroke; `wavy-draw-hover` arms it, holding the
+  clip shut at rest, and `wavy-drawn` is the state it opens to.
+
+  Two utilities rather than one because the trigger differs by call site, and
+  the trigger is a *variant*: a nav link draws under its own pointer, while the
+  CTA's label has to draw when the pointer is anywhere on the button — arrow
+  and gap included — so it keys off the ancestor's `group`. Splitting the pair
+  keeps one copy of the timing and one of the rest state; folding the trigger
+  in would have meant either a second copy of the clip or a utility that
+  silently fires inside any `group` ancestor.
+
+  A transition rather than the keyframes above, for two reasons. A hover is
+  interruptible: the pointer can leave mid-draw, and a transition resumes from
+  wherever the clip got to, where an animation would jump back to its first
+  keyframe and start over. And the transition is what makes the draw
+  reversible, so the rule retracts to the right as the pointer leaves — the
+  mirror of how it arrived.
+
+  The stroke is `currentColor`, so the wave lands in whatever colour the text
+  has settled on — the nav's `hover-tint` green-400, or the CTA's unchanged
+  green-600.
+
+  Faster than `wavy-draw` and with no delay — that one waits out the page's
+  entrance stagger, which would read as lag under a pointer.
+*/
+@utility wavy-draw-hover {
+  &::after {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Reduced motion keeps the cue and drops the travel: the rule is simply
+     there once the trigger applies. */
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      transition: none;
+    }
+  }
+}
+
+/* The drawn end of `wavy-draw-hover` — apply it behind `hover:` or
+   `group-hover:` to pick what triggers the draw. */
+@utility wavy-drawn {
+  &::after {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/*
+  Inline prose link.
+
+  At rest it carries a dotted rule rather than a solid one: inside a paragraph
+  the link has to be unmistakable without leaning on colour alone, and dotted
+  reads as "interactive" in a way the solid rule every other site uses does
+  not. On hover a chisel-tip marker band sweeps in from the left and the rule
+  fades out as it lands, so the band takes over rather than stacking on top of
+  the rule. The transparent ends of the gradient are what make it read as a
+  marker rather than a rectangle.
+
+  `box-decoration-break: clone` matters here: prose links wrap across lines, and
+  without it the band would be stretched once across the whole inline box
+  instead of restarting on each line.
+
+  The dark rule is carried by `--rule` rather than by restating properties in a
+  dark selector, so the dark rule can never outrank the `:hover` rules below it
+  and strand the rule un-faded under the band. The band itself comes from
+  `--marker-image`, declared once in `@layer base`.
+
+  Contrast, measured against the page canvas: the dotted rule is 5.47:1 in
+  light and 4.86:1 in dark (needs 3:1 as a UI affordance), and the text sitting
+  on the landed band is 5.23:1 and 5.49:1 (needs 4.5:1).
+*/
+@utility link-marker {
+  --rule: var(--color-green-500);
+
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--rule);
+  background-image: var(--marker-image);
+  background-repeat: no-repeat;
+  background-position: 0 var(--marker-top);
+  background-size: 0% var(--marker-height);
+  transition:
+    background-size 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.2s ease,
+    text-decoration-color 0.26s ease;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+
+  /* Dark mode lifts the text to beige as the band lands; the band itself is
+     already darker via `--marker-band`. */
+  &:is(.dark *) {
+    --rule: var(--color-green-300);
+  }
+
+  &:hover {
+    background-size: 100% var(--marker-height);
+    color: var(--color-green-700);
+    text-decoration-color: transparent;
+  }
+
+  &:is(.dark *):hover {
+    color: var(--color-beige-100);
+  }
+
+  /* Reduced motion: keep the band, drop the sweep — it snaps in instead. */
+  @media (prefers-reduced-motion: reduce) {
+    transition: color 0.2s ease;
+  }
+}
+
+@keyframes marker-sweep {
+  from {
+    background-size: 0% var(--marker-height);
+  }
+  to {
+    background-size: 100% var(--marker-height);
+  }
+}
+
+/*
+  The landed state of the link marker, used to flag the active item in a list
+  whose items are hover-linked (the home page's bio list, where the band tracks
+  which photo is showing). Same band and text colour as `link-marker` at hover,
+  but the sweep runs on its own the moment the item becomes active rather than
+  waiting for a pointer, and there is no dotted rule underneath — the rule
+  exists to advertise "this is a link", which a plain list item is not.
+*/
+@utility marker-active {
+  background-image: var(--marker-image);
+  background-repeat: no-repeat;
+  background-position: 0 var(--marker-top);
+  background-size: 100% var(--marker-height);
+  color: var(--color-green-700);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  animation: marker-sweep 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  &:is(.dark *) {
+    color: var(--color-beige-100);
+  }
+
+  /* Reduced motion: hold the landed band, drop the sweep. */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
   }
 }
