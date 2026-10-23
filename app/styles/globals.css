@@ -46,6 +46,18 @@
     0 3px 6px rgb(0 0 0 / 0.06), 0 10px 28px rgb(0 0 0 / 0.11);
   --shadow-card-hover-dark:
     0 3px 8px rgb(0 0 0 / 0.18), 0 10px 24px rgb(0 0 0 / 0.2);
+
+  /*
+    The navbar's own breakpoint, far below Tailwind's `sm`. The navbar keeps
+    its single row — mark, then links and toggle — as long as it fits, and only
+    stacks below this width. Measured, that row's content is ~15.25rem (a 31px
+    mark plus 213px of links and toggle) and the site gutter adds 4rem, so it
+    stops fitting at about 19.25rem. 21rem is the lowest step that still leaves
+    a comfortable gap between the mark and the first link (~1.75rem), and it
+    sits under every phone in use — the narrowest common width is 360px — so
+    the stacked fallback is a safety net rather than the phone layout.
+  */
+  --breakpoint-xs: 21rem;
 }
 
 /*

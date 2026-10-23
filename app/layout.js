@@ -65,7 +65,6 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <body className="text-black transition-colors dark:text-beige-200">
-        {/* Need this div so clicking outside navbar popover on small screens will close it. See: https://github.com/tailwindlabs/headlessui/issues/2752#issuecomment-1724096430 */}
         <div className="flex min-h-screen flex-col gap-y-8 md:gap-y-12">
           <ThemeProvider>
             <Navbar navbarButtons={NavbarButtons} />
