@@ -375,7 +375,7 @@ Tooltip:
 Panel markup:
 
 - Outer wrapper: `relative` (tooltip lives here, no `overflow-hidden`).
-- Inner canvas panel: fixed height `h-80 sm:h-105 lg:h-120`, `w-full`, `overflow-hidden`, `rounded-xl`, `bg-beige-200`, `shadow-card`, `ring-1 ring-green-200/70`, with `dark:bg-green-700 dark:shadow-none dark:ring-green-600/60`.
+- Inner canvas panel: `size-full min-h-80 overflow-hidden rounded-xl bg-beige-200 shadow-card ring-1 ring-green-200/70 sm:min-h-105 lg:min-h-120 dark:bg-green-700 dark:shadow-none dark:ring-green-600/60`. The grid row stretches, so the globe panel matches the top-countries column height instead of leaving dead space under the globe.
 - Put `aria-hidden="true"` only on the inner div that hosts the Three.js canvas, not on the panel. The pause button must be a sibling of that div so it stays keyboard- and screen-reader-accessible.
 - Canvas is decorative for assistive tech; the top list is the accessible representation.
 
@@ -407,7 +407,7 @@ Structure:
       Updated daily · Tracking since May 2025
     </p>
   </div>
-  <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
+  <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
     <GlobePanel />
     <TopCountriesList />
   </div>
@@ -424,6 +424,8 @@ Derived values (compute once per render with `useMemo`):
 - `totalCountries` = `countries.length`.
 - `topCountries` = first 10.
 - `hasData` = `countries.length > 0 && attributedVisitors > 0`.
+
+The grid stretches by default, so the globe panel and the top-countries column end on the same line. Keep the list rows compact (`gap-y-1` between rows, `py-0.5` per row, `mt-0.5` above the bar, `h-1` bar) so the list stays close to the globe's `lg:min-h-120` height.
 
 Summary copy:
 
@@ -455,7 +457,7 @@ const VisitorGlobe = dynamic(() => import('./visitorGlobe'), {
 ```
 
 - `next/dynamic` with `ssr: false` is valid here because this file is a client component. Do not move the dynamic import into the server page.
-- `GlobeSkeleton` uses the same fixed panel heights (`h-80 sm:h-105 lg:h-120`), rounded corners, and theme-aware panel colors as the real globe, with `animate-pulse motion-reduce:animate-none`, so there is no layout shift.
+- `GlobeSkeleton` uses the same `size-full min-h-80 sm:min-h-105 lg:min-h-120` sizing, rounded corners, and theme-aware panel colors as the real globe, with `animate-pulse motion-reduce:animate-none`, so there is no layout shift.
 - Wrap the dynamic component in `GlobeErrorBoundary`.
 
 ### 9.6 Hidden page

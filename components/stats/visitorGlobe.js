@@ -315,14 +315,14 @@ export default function VisitorGlobe({
   return (
     <div
       ref={wrapperRef}
-      className="relative"
+      className="relative h-full"
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
       onPointerMove={handlePointerMove}
     >
       <div
         ref={containerRef}
-        className="relative h-80 w-full overflow-hidden rounded-xl bg-beige-200 shadow-card ring-1 ring-green-200/70 sm:h-105 lg:h-120 dark:bg-green-700 dark:shadow-none dark:ring-green-600/60"
+        className="relative size-full min-h-80 overflow-hidden rounded-xl bg-beige-200 shadow-card ring-1 ring-green-200/70 sm:min-h-105 lg:min-h-120 dark:bg-green-700 dark:shadow-none dark:ring-green-600/60"
       >
         {panelContent}
       </div>

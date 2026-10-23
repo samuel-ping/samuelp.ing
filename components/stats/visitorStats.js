@@ -30,7 +30,7 @@ function TopCountriesList({
   onHighlight,
 }) {
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-3">
       <h3 className="font-display text-xl font-medium">Top countries</h3>
 
       {countries.length === 0 ? (
@@ -38,7 +38,7 @@ function TopCountriesList({
       ) : (
         <ol
           aria-label="Top countries by visitors"
-          className="flex flex-col gap-y-2"
+          className="flex flex-col gap-y-1"
         >
           {countries.map((country, index) => {
             const name = country.name ?? country.code;
@@ -53,7 +53,7 @@ function TopCountriesList({
                 key={country.code}
                 onMouseEnter={() => onHighlight(country.code)}
                 onMouseLeave={() => onHighlight(null)}
-                className={`rounded-md px-2 py-1 transition-colors ${
+                className={`rounded-md px-2 py-0.5 transition-colors ${
                   isHighlighted
                     ? 'bg-green-100/60 dark:bg-green-700/40'
                     : 'bg-transparent'
@@ -73,8 +73,8 @@ function TopCountriesList({
                   </span>
                 </div>
 
-                <div className="mt-1 ml-7 flex items-center gap-x-2">
-                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-green-100 dark:bg-green-700">
+                <div className="mt-0.5 ml-7 flex items-center gap-x-2">
+                  <div className="h-1 flex-1 overflow-hidden rounded-full bg-green-100 dark:bg-green-700">
                     <div
                       className="h-full rounded-full bg-green-500 dark:bg-green-300"
                       style={{
@@ -156,6 +156,10 @@ export default function VisitorStats({ data }) {
           onHighlight={setHighlightedCode}
         />
       </div>
+
+      <p className="text-sm text-muted">
+        Country totals exclude visitors whose location could not be determined.
+      </p>
     </section>
   );
 }
