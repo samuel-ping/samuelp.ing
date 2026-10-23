@@ -13,6 +13,8 @@ const VisitorGlobe = dynamic(() => import('./visitorGlobe'), {
 
 const numberFormat = new Intl.NumberFormat('en-US');
 
+const UPDATED_LABEL = 'Updated daily · Tracking since May 2025';
+
 const formatPercent = (value) => {
   if (value > 0 && value < 1) return '<1%';
   return `${Math.round(value)}%`;
@@ -96,7 +98,7 @@ function TopCountriesList({
 export default function VisitorStats({ data }) {
   const [highlightedCode, setHighlightedCode] = useState(null);
 
-  const { updatedAt, totalVisitors, countries } = data;
+  const { totalVisitors, countries } = data;
 
   const { attributedVisitors, topCountries } = useMemo(() => {
     const totals = countries.reduce(
@@ -135,7 +137,7 @@ export default function VisitorStats({ data }) {
           <p className="text-muted">No visitor data yet.</p>
         )}
 
-        {updatedAt && <p className="text-sm text-muted">Updated {updatedAt}</p>}
+        <p className="text-sm text-muted">{UPDATED_LABEL}</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
@@ -154,10 +156,6 @@ export default function VisitorStats({ data }) {
           onHighlight={setHighlightedCode}
         />
       </div>
-
-      <p className="text-sm text-muted">
-        Country totals exclude visitors whose location could not be determined.
-      </p>
     </section>
   );
 }

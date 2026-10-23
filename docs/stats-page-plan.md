@@ -26,7 +26,7 @@ Add a reusable visitor-stats component and render it on a hidden `/stats` page:
 - A 3D globe with one extruded polygon per country.
 - Hovering a country shows its name and all-time unique visitor count.
 - A "Top countries" list beside/below the globe.
-- Data comes from a weekly snapshot of the self-hosted Umami instance, baked into the static build.
+- Data comes from a daily snapshot of the self-hosted Umami instance, baked into the static build.
 - The Umami API key never reaches the browser or the repo.
 
 ## 2. Locked decisions
@@ -35,12 +35,12 @@ Add a reusable visitor-stats component and render it on a hidden `/stats` page:
 | ---------------- | -------------------------------------------------------------------------- |
 | Map renderer     | `react-globe.gl` (Three.js globe), client-only and lazy-loaded             |
 | Data source      | Umami HTTP API, fetched by a standalone Node script before `next build`    |
-| Snapshot cadence | GitHub Actions schedule, Mondays 06:00 UTC, plus every push to `main`      |
+| Snapshot cadence | GitHub Actions schedule, daily 06:00 UTC, plus every push to `main`        |
 | Snapshot storage | `data/umami-country-stats.json`, committed to the repo                     |
 | API auth         | `Authorization: Bearer umami_...` from the `UMAMI_API_KEY` Actions secret  |
 | Page             | `app/stats/page.js`, not linked from navbar/footer, `noindex, nofollow`    |
 | Reuse            | One public component, `<VisitorStats data={...} />`, with no page coupling |
-| Globe theme      | Always-dark green panel in both light and dark site themes                 |
+| Globe theme      | Theme-aware: pale green panel in light mode, dark green in dark mode       |
 | Country geometry | Natural Earth 110m, prebuilt to a committed GeoJSON asset                  |
 | Top list size    | 10 countries, sorted descending                                            |
 | Tooltip          | Custom React tooltip positioned from pointer coordinates                   |
@@ -73,7 +73,7 @@ Add a reusable visitor-stats component and render it on a hidden `/stats` page:
 Umami HTTP API
       │
       │  scripts/update-umami-snapshot.mjs
-      │  (weekly CI + manual local run, uses UMAMI_API_KEY)
+      │  (daily CI + manual local run, uses UMAMI_API_KEY)
       ▼
 data/umami-country-stats.json
       │
@@ -88,7 +88,7 @@ app/stats/page.js (server component, static)
       └── top-countries list
 ```
 
-The weekly workflow refreshes the snapshot file in the CI workspace, then builds. It does not commit the refreshed file. The committed file is the fallback and the local-development dataset.
+The daily workflow refreshes the snapshot file in the CI workspace, then builds. It does not commit the refreshed file. The committed file is the fallback and the local-development dataset.
 
 ## 6. File map
 
@@ -114,7 +114,7 @@ The weekly workflow refreshes the snapshot file in the CI workspace, then builds
 | ------------------------------------ | -------------------------------------------------- |
 | `package.json` / `package-lock.json` | Add `react-globe.gl`, `three`; add two npm scripts |
 | `jsconfig.json`                      | Add `@/data/*` alias                               |
-| `.github/workflows/deploy.yml`       | Add Monday cron + snapshot-refresh step            |
+| `.github/workflows/deploy.yml`       | Add daily cron + snapshot-refresh step             |
 
 ### Explicitly unchanged
 
@@ -150,7 +150,6 @@ Rules:
 
 ```js
 {
-  updatedAt: string | null,
   totalVisitors: number,
   countries: Array<{ code: string, name: string, visitors: number }>,
 }
@@ -158,7 +157,7 @@ Rules:
 
 No other props are required. Optional `className` is allowed but not required. The component must not import page-specific modules.
 
-`name` and `updatedAt` are resolved on the server so the client never calls `Intl.DisplayNames` or `Intl.DateTimeFormat` during render. ICU data differs between Node and browsers (Node renders `Hong Kong SAR China` where Chrome renders `Hong Kong`), which causes hydration mismatches.
+`name` is resolved on the server so the client never calls `Intl.DisplayNames` during render. ICU data differs between Node and browsers (Node renders `Hong Kong SAR China` where Chrome renders `Hong Kong`), which causes hydration mismatches.
 
 ### 7.3 Normalized data
 
@@ -171,8 +170,7 @@ No other props are required. Optional `className` is allowed but not required. T
 - Sort by `visitors` descending, then `code` ascending for deterministic ties.
 - Resolve `name` per country with the server-side `GetCountryName`.
 - Clamp `totalVisitors` to at least the sum of country visitors.
-- Preformat the snapshot date as `updatedAt` with `Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZone: 'UTC' })`.
-- Return `{ generatedAt, updatedAt, totalVisitors, countries }`.
+- Return `{ totalVisitors, countries }`.
 
 ## 8. Dependencies and scripts
 
@@ -377,7 +375,7 @@ Tooltip:
 Panel markup:
 
 - Outer wrapper: `relative` (tooltip lives here, no `overflow-hidden`).
-- Inner canvas panel: fixed height `h-[320px] sm:h-[420px] lg:h-[480px]`, `w-full`, `overflow-hidden`, `rounded-xl`, `bg-green-800`, `shadow-card dark:shadow-none`, `ring-1 ring-green-700/60`.
+- Inner canvas panel: fixed height `h-80 sm:h-105 lg:h-120`, `w-full`, `overflow-hidden`, `rounded-xl`, `bg-green-50`, `shadow-card`, `ring-1 ring-green-200/70`, with `dark:bg-green-700 dark:shadow-none dark:ring-green-600/60`.
 - Put `aria-hidden="true"` only on the inner div that hosts the Three.js canvas, not on the panel. The pause button must be a sibling of that div so it stays keyboard- and screen-reader-accessible.
 - Canvas is decorative for assistive tech; the top list is the accessible representation.
 
@@ -405,7 +403,9 @@ Structure:
   </h2>
   <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
     <p>...</p>
-    <p className="text-sm text-muted">Updated ...</p>
+    <p className="text-sm text-muted">
+      Updated daily · Tracking since May 2025
+    </p>
   </div>
   <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
     <GlobePanel />
@@ -429,7 +429,7 @@ Summary copy:
 
 - With data: `{formatted totalVisitors} visitors from {totalCountries} countries`.
 - Without data: `No visitor data yet.`
-- Updated line only when `updatedAt` is non-null: render the preformatted server string as `Updated {updatedAt}`.
+- Updated line is static copy: `Updated daily · Tracking since May 2025`.
 - Use `Intl.NumberFormat('en-US')` for all counts.
 
 Top list:
@@ -455,7 +455,7 @@ const VisitorGlobe = dynamic(() => import('./visitorGlobe'), {
 ```
 
 - `next/dynamic` with `ssr: false` is valid here because this file is a client component. Do not move the dynamic import into the server page.
-- `GlobeSkeleton` uses the same fixed panel heights (`h-[320px] sm:h-[420px] lg:h-[480px]`), rounded corners, and dark background as the real globe, with `animate-pulse motion-reduce:animate-none`, so there is no layout shift.
+- `GlobeSkeleton` uses the same fixed panel heights (`h-80 sm:h-105 lg:h-120`), rounded corners, and theme-aware panel colors as the real globe, with `animate-pulse motion-reduce:animate-none`, so there is no layout shift.
 - Wrap the dynamic component in `GlobeErrorBoundary`.
 
 ### 9.6 Hidden page
@@ -488,7 +488,7 @@ export default function Page() {
 - Do not add the route to `config/navbarButtons.config.js` or the footer.
 - Do not add an API route.
 
-### 9.7 Weekly snapshot workflow
+### 9.7 Daily snapshot workflow
 
 Modify `.github/workflows/deploy.yml`:
 
@@ -497,7 +497,7 @@ on:
   push:
     branches: [main]
 
-  # Refresh the visitor snapshot and redeploy every Monday at 06:00 UTC.
+  # Refresh the visitor snapshot and redeploy every day at 06:00 UTC.
   # GitHub may delay scheduled runs; workflow_dispatch is the manual fallback.
   schedule:
     - cron: '0 6 * * 1'
@@ -555,7 +555,7 @@ Add to `jsconfig.json` under `compilerOptions.paths`:
 | Page title         | `Stats` via `PageTitle`                                                   |
 | Section SR heading | `Visitors by country`                                                     |
 | Summary            | `{n} visitors from {n} countries`                                         |
-| Updated            | `Updated Oct 19, 2026` (UTC, `dateStyle: 'medium'`)                       |
+| Updated            | `Updated daily · Tracking since May 2025`                                 |
 | Empty summary      | `No visitor data yet.`                                                    |
 | List heading       | `Top countries`                                                           |
 | Tooltip with data  | `{Country}` / `{n} visitors`                                              |
@@ -568,11 +568,12 @@ Add to `jsconfig.json` under `compilerOptions.paths`:
 Styling:
 
 - Page: `max-w-4xl`, `gap-y-8`, `page-fade`.
-- Panel: always dark green, rounded, shadowed; fixed height.
+- Panel: pale green (`bg-green-50`) in light mode, dark green (`dark:bg-green-700`) in dark mode; rounded, shadowed, fixed height.
 - List: theme-aware Tailwind classes using the existing palette (`green-*`, `beige-*`, `text-muted`).
 - Bars: `bg-green-500 dark:bg-green-300`, track `bg-green-100 dark:bg-green-700`.
 - Numbers: `tabular-nums`.
-- No arbitrary colors outside the existing palette except the globe's fixed WebGL colors listed above.
+- No arbitrary colors outside the existing palette except the globe's fixed WebGL theme colors.
+- Globe WebGL colors switch with `resolvedTheme` from `next-themes`: light mode uses a pale ocean (`#e3ebe0`) and a light-to-dark land ramp (`#c2d6bd` → `#233835`); dark mode uses a dark ocean (`#0b1a17`) and a dark-to-light land ramp (`#29413c` → `#c8e6c9`).
 
 ## 12. Accessibility
 
@@ -606,7 +607,7 @@ Manual checks in `npm run dev`:
 
 1. Visit `/stats`. The page is not in the navbar or footer.
 2. View source / devtools: `noindex, nofollow` meta is present.
-3. Globe appears inside the dark panel and rotates slowly.
+3. Globe appears inside the themed panel and rotates slowly.
 4. Hover the US (or the top country): tooltip shows the correct count.
 5. Hover a country with zero visitors: tooltip shows `No recorded visitors`.
 6. Hover a top-list row: the matching country gets a light outline.
@@ -625,7 +626,7 @@ gh workflow run deploy.yml --repo samuel-ping/samuelp.ing
 gh run watch --repo samuel-ping/samuelp.ing
 ```
 
-Confirm the `Refresh visitor stats snapshot` step logs a country count and the deployed page's "Updated" date matches the run date.
+Confirm the `Refresh visitor stats snapshot` step logs a country count and the deployed page shows the refreshed totals.
 
 ## 14. Acceptance criteria
 
@@ -638,7 +639,7 @@ Confirm the `Refresh visitor stats snapshot` step logs a country count and the d
 - [ ] Hovering a list row highlights the matching country.
 - [ ] Auto-rotation pauses on hover and can be paused/resumed with a button.
 - [ ] Reduced-motion and no-WebGL paths work.
-- [ ] Weekly cron refreshes data; API failure falls back to the committed snapshot without failing the build.
+- [ ] Daily cron refreshes data; API failure falls back to the committed snapshot without failing the build.
 - [ ] `UMAMI_API_KEY` is never present in `out/` or client bundles.
 - [ ] `npm run lint` and `npm run build` pass.
 - [ ] No unrelated files are modified or staged.
