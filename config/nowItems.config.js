@@ -1,35 +1,47 @@
+import {
+  GemIcon,
+  HomeServerIcon,
+  PlantsIcon,
+  Printer3DIcon,
+  RunningIcon,
+  TennisIcon,
+} from '@/components/ui/icons';
+
 /**
- * The /now convention: a short, hand-updated snapshot of what's currently
- * occupying my time. Update the copy below whenever it drifts — it's meant to
- * go stale, unlike the rest of the site.
- *
- * Links go inline in the copy as `[label](href)`, the same syntax the MDX
- * content uses, so a link can sit wherever the sentence needs it and an item can
- * carry as many as it needs. It replaced a `link: { href, text }` field, which
- * could only ever tack one link onto the end of the sentence — that is what
- * produced "Updating self-hosted services. the setup".
+ * `label` is kept as the accessible name for the row; the icon stands in for it
+ * visually.
  */
 const NowItems = [
   {
-    label: '3D printing',
-    text: 'Re-levelling my printer for the 9000th time in a row (just to print more spaghetti again yum)',
+    label: 'Tennis',
+    icon: TennisIcon,
+    text: 'Grinding groundstrokes at Astoria Park (usually), but currently resting due to a wrist injury 🤕',
   },
-  {
-    label: 'Rehab',
-    text: 'Resting my wrist because one of my forearm bones is too long and hitting my wrist cartilage :\\',
+    {
+    label: 'Home server',
+    icon: HomeServerIcon,
+    text: 'Tinkering with [my home server](/projects/home-server) and finding new services to host',
   },
   {
     label: 'Running',
-    text: 'Looking for destination races as an excuse to travel with my friends!',
+    icon: RunningIcon,
+    text: 'Jogging around Gantry Park (the best park) with my friends',
   },
   {
     label: 'Plants',
-    text: 'Watering my likely-parched thai constellation...',
+    icon: PlantsIcon,
+    text: 'Quenching the thirst of my parched monstera thai constellation...',
   },
   {
-    label: 'Home server',
-    text: 'Keeping my services up to date and finding cool new ones to host 8)',
+    label: '3D printing',
+    icon: Printer3DIcon,
+    text: 'Re-levelling my 3d printer for the thousandth time (just to print more spaghetti again yum)',
   },
+  {
+    label: 'Spotting items on the ground',
+    icon: GemIcon,
+    text: 'Picking up treasure (others may disagree) from the ground'
+  }
 ];
 
 export default NowItems;

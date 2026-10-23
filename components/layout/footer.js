@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from '@/components/ui/icons';
+import { EmailIcon, GitHubIcon, LinkedInIcon } from '@/components/ui/icons';
 
 const linkClass = 'flex items-center hover-tint transition-colors';
 
@@ -44,7 +44,7 @@ const Footer = () => {
             data-umami-event-url="mailto:samuel.y.ping@gmail.com"
             data-umami-event-label="Email"
           >
-            <EnvelopeIcon className="size-6" />
+            <EmailIcon className="size-6" />
           </Link>
         </div>
       </div>

@@ -10,18 +10,17 @@ export default function NowSection() {
         className="settle font-display text-2xl font-medium"
         style={{ animationDelay: '200ms' }}
       >
-        Now
+        Currently
       </h2>
-      {/* A definition list, laid out as label/value rows on wider screens and
-          stacked on mobile. */}
-      <dl className="grid gap-x-8 gap-y-4 sm:grid-cols-[8rem_1fr]">
+      <dl className="grid gap-x-6 gap-y-4 sm:grid-cols-[1.25rem_1fr]">
         {NowItems.map((item, i) => (
           <Fragment key={item.label}>
             <dt
-              className="settle text-sm text-muted"
+              className="flex h-6 settle items-center text-muted"
               style={{ animationDelay: `${260 + i * 60}ms` }}
             >
-              {item.label}
+              <item.icon className="size-5" />
+              <span className="sr-only">{item.label}</span>
             </dt>
             <dd
               className="max-w-prose settle"
