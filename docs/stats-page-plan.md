@@ -31,19 +31,19 @@ Add a reusable visitor-stats component and render it on a hidden `/stats` page:
 
 ## 2. Locked decisions
 
-| Area             | Decision                                                                   |
-| ---------------- | -------------------------------------------------------------------------- |
-| Map renderer     | `react-globe.gl` (Three.js globe), client-only and lazy-loaded             |
-| Data source      | Umami HTTP API, fetched by a standalone Node script before `next build`    |
-| Snapshot cadence | GitHub Actions schedule, daily 06:00 UTC, plus every push to `main`        |
-| Snapshot storage | `data/umami-country-stats.json`, committed to the repo                     |
-| API auth         | `Authorization: Bearer umami_...` from the `UMAMI_API_KEY` Actions secret  |
-| Page             | `app/stats/page.js`, not linked from navbar/footer, `noindex, nofollow`    |
-| Reuse            | One public component, `<VisitorStats data={...} />`, with no page coupling |
-| Globe theme      | Theme-aware: pale green panel in light mode, dark green in dark mode       |
-| Country geometry | Natural Earth 110m, prebuilt to a committed GeoJSON asset                  |
-| Top list size    | 10 countries, sorted descending                                            |
-| Tooltip          | Custom React tooltip positioned from pointer coordinates                   |
+| Area             | Decision                                                                                             |
+| ---------------- | ---------------------------------------------------------------------------------------------------- |
+| Map renderer     | `react-globe.gl` (Three.js globe), client-only and lazy-loaded                                       |
+| Data source      | Umami HTTP API, fetched by a standalone Node script before `next build`                              |
+| Snapshot cadence | GitHub Actions schedule, daily 06:00 UTC, plus every push to `main`                                  |
+| Snapshot storage | `data/umami-country-stats.json`, committed to the repo                                               |
+| API auth         | `Authorization: Bearer umami_...` from the `UMAMI_API_KEY` Actions secret                            |
+| Page             | `app/stats/page.js`, not linked from navbar/footer, `noindex, nofollow`                              |
+| Reuse            | One public component, `<VisitorStats data={...} />`, with no page coupling                           |
+| Globe theme      | Theme-aware: warm beige panel + slate-blue ocean in light mode, dark panel + dark ocean in dark mode |
+| Country geometry | Natural Earth 110m, prebuilt to a committed GeoJSON asset                                            |
+| Top list size    | 10 countries, sorted descending                                                                      |
+| Tooltip          | Custom React tooltip positioned from pointer coordinates                                             |
 
 ## 3. Why this shape
 
@@ -375,7 +375,7 @@ Tooltip:
 Panel markup:
 
 - Outer wrapper: `relative` (tooltip lives here, no `overflow-hidden`).
-- Inner canvas panel: fixed height `h-80 sm:h-105 lg:h-120`, `w-full`, `overflow-hidden`, `rounded-xl`, `bg-green-50`, `shadow-card`, `ring-1 ring-green-200/70`, with `dark:bg-green-700 dark:shadow-none dark:ring-green-600/60`.
+- Inner canvas panel: fixed height `h-80 sm:h-105 lg:h-120`, `w-full`, `overflow-hidden`, `rounded-xl`, `bg-beige-200`, `shadow-card`, `ring-1 ring-green-200/70`, with `dark:bg-green-700 dark:shadow-none dark:ring-green-600/60`.
 - Put `aria-hidden="true"` only on the inner div that hosts the Three.js canvas, not on the panel. The pause button must be a sibling of that div so it stays keyboard- and screen-reader-accessible.
 - Canvas is decorative for assistive tech; the top list is the accessible representation.
 
@@ -568,12 +568,12 @@ Add to `jsconfig.json` under `compilerOptions.paths`:
 Styling:
 
 - Page: `max-w-4xl`, `gap-y-8`, `page-fade`.
-- Panel: pale green (`bg-green-50`) in light mode, dark green (`dark:bg-green-700`) in dark mode; rounded, shadowed, fixed height.
+- Panel: warm beige (`bg-beige-200`) in light mode, dark green (`dark:bg-green-700`) in dark mode; rounded, shadowed, fixed height.
 - List: theme-aware Tailwind classes using the existing palette (`green-*`, `beige-*`, `text-muted`).
 - Bars: `bg-green-500 dark:bg-green-300`, track `bg-green-100 dark:bg-green-700`.
 - Numbers: `tabular-nums`.
 - No arbitrary colors outside the existing palette except the globe's fixed WebGL theme colors.
-- Globe WebGL colors switch with `resolvedTheme` from `next-themes`: light mode uses a pale ocean (`#e3ebe0`) and a light-to-dark land ramp (`#c2d6bd` → `#233835`); dark mode uses a dark ocean (`#0b1a17`) and a dark-to-light land ramp (`#29413c` → `#c8e6c9`).
+- Globe WebGL colors switch with `resolvedTheme` from `next-themes`: light mode uses a muted slate-blue ocean (`#9cbec9`) with atmosphere `#b6d0d8` and a pale-to-dark land ramp (`#e2ecdb` → `#aec8ac` → `#577a5d` → `#375954` → `#233835`); dark mode uses a dark ocean (`#0b1a17`) and a dark-to-light land ramp (`#29413c` → `#c8e6c9`).
 
 ## 12. Accessibility
 

@@ -17,12 +17,12 @@ import * as THREE from 'three';
 // to dark so the map reads on a pale panel; dark mode ramps dark to light.
 const THEMES = {
   light: {
-    ocean: '#e3ebe0',
-    land: ['#c2d6bd', '#8fb28f', '#577a5d', '#375954', '#233835'],
+    ocean: '#9cbec9',
+    land: ['#e2ecdb', '#aec8ac', '#577a5d', '#375954', '#233835'],
     side: 'rgba(35, 56, 53, 0.28)',
     stroke: 'rgba(35, 56, 53, 0.22)',
     highlight: '#233835',
-    atmosphere: '#aec8ac',
+    atmosphere: '#b6d0d8',
   },
   dark: {
     ocean: '#0b1a17',
@@ -322,7 +322,7 @@ export default function VisitorGlobe({
     >
       <div
         ref={containerRef}
-        className="relative h-80 w-full overflow-hidden rounded-xl bg-green-50 shadow-card ring-1 ring-green-200/70 sm:h-105 lg:h-120 dark:bg-green-700 dark:shadow-none dark:ring-green-600/60"
+        className="relative h-80 w-full overflow-hidden rounded-xl bg-beige-200 shadow-card ring-1 ring-green-200/70 sm:h-105 lg:h-120 dark:bg-green-700 dark:shadow-none dark:ring-green-600/60"
       >
         {panelContent}
       </div>
