@@ -40,7 +40,7 @@ const NowItems = [
   {
     label: 'Spotting items on the ground',
     icon: GemIcon,
-    text: 'Picking up treasure (others may disagree) from the ground'
+    text: 'Spotting and taking home treasure (others may disagree) from the ground'
   }
 ];
 
