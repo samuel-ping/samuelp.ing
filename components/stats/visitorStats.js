@@ -156,10 +156,6 @@ export default function VisitorStats({ data }) {
           onHighlight={setHighlightedCode}
         />
       </div>
-
-      <p className="text-sm text-muted">
-        Country totals exclude visitors whose location could not be determined.
-      </p>
     </section>
   );
 }

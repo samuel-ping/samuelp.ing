@@ -411,11 +411,10 @@ Structure:
     <GlobePanel />
     <TopCountriesList />
   </div>
-  <p className="text-sm text-muted">
-    Country totals exclude visitors whose location could not be determined.
-  </p>
 </section>
 ```
+
+Do not add a footnote below the grid; the location-coverage note was intentionally removed.
 
 Derived values (compute once per render with `useMemo`):
 
@@ -552,20 +551,20 @@ Add to `jsconfig.json` under `compilerOptions.paths`:
 
 ## 11. Visual and copy reference
 
-| Element            | Copy / style                                                              |
-| ------------------ | ------------------------------------------------------------------------- |
-| Page title         | `Stats` via `PageTitle`                                                   |
-| Section SR heading | `Visitors by country`                                                     |
-| Summary            | `{n} visitors from {n} countries`                                         |
-| Updated            | `Updated daily · Tracking since May 2025`                                 |
-| Empty summary      | `No visitor data yet.`                                                    |
-| List heading       | `Top countries`                                                           |
-| Tooltip with data  | `{Country}` / `{n} visitors`                                              |
-| Tooltip empty      | `{Country}` / `No recorded visitors`                                      |
-| Footnote           | `Country totals exclude visitors whose location could not be determined.` |
-| Globe loading      | `Loading globe…`                                                          |
-| Globe error        | `Map unavailable.`                                                        |
-| Rotation button    | `Pause rotation` / `Resume rotation`                                      |
+| Element            | Copy / style                              |
+| ------------------ | ----------------------------------------- |
+| Page title         | `Stats` via `PageTitle`                   |
+| Section SR heading | `Visitors by country`                     |
+| Summary            | `{n} visitors from {n} countries`         |
+| Updated            | `Updated daily · Tracking since May 2025` |
+| Empty summary      | `No visitor data yet.`                    |
+| List heading       | `Top countries`                           |
+| Tooltip with data  | `{Country}` / `{n} visitors`              |
+| Tooltip empty      | `{Country}` / `No recorded visitors`      |
+| Footnote           | none (intentionally removed)              |
+| Globe loading      | `Loading globe…`                          |
+| Globe error        | `Map unavailable.`                        |
+| Rotation button    | `Pause rotation` / `Resume rotation`      |
 
 Styling:
 
@@ -663,7 +662,7 @@ Confirm the `Refresh visitor stats snapshot` step logs a country count and the d
 - **React 19 compatibility:** `react-globe.gl@2.38.0` declares `react: "*"`. If it fails under React 19, fall back to using `globe.gl` directly: create the instance in a `useEffect` on a `div` ref, apply the same props, and dispose on unmount. Do not switch to a 2D map.
 - **Scheduled workflow drift:** GitHub delays cron runs and disables schedules after long repo inactivity. `workflow_dispatch` remains available.
 - **Snapshot staleness:** CI does not commit the refreshed file. The committed snapshot is only a fallback; the deployed page is fresh. Refresh the committed file manually with `npm run stats:snapshot` when desired.
-- **Unknown locations:** Umami excludes visitors without a resolvable country, so the sum of country counts can be lower than `totalVisitors`. The footnote covers this.
+- **Unknown locations:** Umami excludes visitors without a resolvable country, so the sum of country counts can be lower than `totalVisitors`. This is intentionally not called out in the UI.
 - **Unmatched codes:** A country code returned by Umami may not exist in Natural Earth. It still appears in the top list (via `Intl.DisplayNames`) but has no polygon to highlight. Do not drop it from the list.
 - **Hidden is not private:** `noindex` keeps it out of search results, but GitHub Pages serves it to anyone with the URL. Do not put sensitive data on this page.
 - **Natural Earth quirks:** v5.1.2 marks a few disputed territories with `-99`; they are intentionally omitted. Kosovo uses `XK` and is included.
