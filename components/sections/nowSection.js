@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import InlineLinks from '@/components/inlineLinks';
+import InlineLinks from '@/components/ui/inlineLinks';
 import NowItems from '@/config/nowItems.config';
 
 export default function NowSection() {

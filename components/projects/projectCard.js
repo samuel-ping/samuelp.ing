@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import Chip from '@/components/chip';
-import { RightArrowIcon as Arrow } from '@/components/icons';
+import Chip from '@/components/ui/chip';
+import { RightArrowIcon as Arrow } from '@/components/ui/icons';
 
 /**
  * @param list which project list the card belongs to ("featured" or "past"); sent as an umami property.

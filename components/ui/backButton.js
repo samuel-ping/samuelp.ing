@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { LeftArrowIcon as Arrow } from '@/components/icons';
+import { LeftArrowIcon as Arrow } from '@/components/ui/icons';
 
 const BackButton = ({ text, project }) => {
   const router = useRouter();

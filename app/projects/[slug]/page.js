@@ -1,8 +1,8 @@
-import { CodeBracketsIcon, ExternalLinkIcon } from '@/components/icons';
-import Chip from '@/components/chip';
-import BackButton from '@/components/backButton';
+import { CodeBracketsIcon, ExternalLinkIcon } from '@/components/ui/icons';
+import Chip from '@/components/ui/chip';
+import BackButton from '@/components/ui/backButton';
 import MDXContent from '@/components/mdx/mdxContent';
-import IconButton from '@/components/iconButton';
+import IconButton from '@/components/ui/iconButton';
 
 import { GetProject, GetProjectDetails } from '@/utils/mdxUtils';
 

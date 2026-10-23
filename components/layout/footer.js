@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
+import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from '@/components/ui/icons';
 
 const linkClass = 'flex items-center hover-tint transition-colors';
 

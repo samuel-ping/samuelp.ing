@@ -1,4 +1,4 @@
-import LinkText from '@/components/linkText';
+import LinkText from '@/components/ui/linkText';
 
 /*
   `[label](href)` — the same inline link syntax the MDX content uses, so there is

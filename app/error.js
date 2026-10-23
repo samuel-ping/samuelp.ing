@@ -1,6 +1,6 @@
 'use client';
 
-import NotFoundMessage from '@/components/notFoundMessage';
+import NotFoundMessage from '@/components/sections/notFoundMessage';
 
 export const metadata = {
   title: '4[shrimp]4',

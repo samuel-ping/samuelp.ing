@@ -1,10 +1,10 @@
 import { Karla, Newsreader } from 'next/font/google';
 
-import GoatCounter from '@/components/goatCounter';
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
-import ThemeProvider from '@/components/themeProvider';
-import Umami from '@/components/umami';
+import GoatCounter from '@/components/analytics/goatCounter';
+import Navbar from '@/components/layout/navbar';
+import Footer from '@/components/layout/footer';
+import ThemeProvider from '@/components/layout/themeProvider';
+import Umami from '@/components/analytics/umami';
 
 import NavbarButtons from '@/config/navbarButtons.config';
 

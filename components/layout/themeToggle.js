@@ -3,7 +3,7 @@
 import { useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
 
-import { MoonIcon, SunIcon } from '@/components/icons';
+import { MoonIcon, SunIcon } from '@/components/ui/icons';
 
 const emptySubscribe = () => () => {};
 

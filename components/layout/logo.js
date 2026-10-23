@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import SP from '@/components/sp';
+import SP from '@/components/ui/sp';
 
 const Logo = ({ isAnimated, size, visible }) => (
   <Link href="/" data-umami-event="Logo Click">

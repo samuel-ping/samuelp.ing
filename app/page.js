@@ -1,5 +1,5 @@
-import Button from '@/components/rightArrowButton';
-import BioSection from '@/components/bioSection';
+import Button from '@/components/ui/rightArrowButton';
+import BioSection from '@/components/sections/bioSection';
 
 export default function Page() {
   // `pb-8` cancels the `pt-8` on `<main>`, without it the hero sits low.

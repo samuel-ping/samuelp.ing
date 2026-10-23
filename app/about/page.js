@@ -1,6 +1,6 @@
 import MDXContent from '@/components/mdx/mdxContent';
-import PageTitle from '@/components/pageTitle';
-import NowSection from '@/components/nowSection';
+import PageTitle from '@/components/ui/pageTitle';
+import NowSection from '@/components/sections/nowSection';
 
 import { GetAboutMDX } from '@/utils/mdxUtils';
 

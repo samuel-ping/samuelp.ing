@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from '@/components/linkText';
+import Link from '@/components/ui/linkText';
 
 const components = {
   a: Link,

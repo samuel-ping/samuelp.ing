@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { RightArrowIcon as Arrow } from '@/components/icons';
+import { RightArrowIcon as Arrow } from '@/components/ui/icons';
 
 const RightArrowButton = ({ text, url, className, style }) => {
   return (
