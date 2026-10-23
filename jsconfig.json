@@ -3,11 +3,12 @@
     "paths": {
       "@/components/*": ["./components/*"],
       "@/config/*": ["./config/*"],
+      "@/data/*": ["./data/*"],
       "@/utils/*": ["./utils/*"],
       "@/public/*": ["./public/*"]
     },
     // below two lines needed for 'image-size/fromFile'
     "target": "ES2017",
-    "moduleResolution": "bundler",
+    "moduleResolution": "bundler"
   }
 }
