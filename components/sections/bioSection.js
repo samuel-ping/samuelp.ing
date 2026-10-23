@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-import profilePic from '@/public/assets/sam.jpg';
-import swePic from '@/public/assets/swe.jpg';
-import gradPic from '@/public/assets/grad.jpg';
-import sophiaPic from '@/public/assets/sophia.jpg';
-import tennisPic from '@/public/assets/tennis.jpg';
-import runningPic from '@/public/assets/running.jpg';
-import theatrePic from '@/public/assets/theatre.jpg';
-import monsteraPic from '@/public/assets/thai.jpg';
+import profilePic from '@/public/assets/sam.webp';
+import swePic from '@/public/assets/swe.webp';
+import gradPic from '@/public/assets/grad.webp';
+import sophiaPic from '@/public/assets/sophia.webp';
+import tennisPic from '@/public/assets/tennis.webp';
+import runningPic from '@/public/assets/running.webp';
+import theatrePic from '@/public/assets/theatre.webp';
+import monsteraPic from '@/public/assets/thai.webp';
 
 const bioItems = [
   { text: 'software engineer', photo: swePic },
