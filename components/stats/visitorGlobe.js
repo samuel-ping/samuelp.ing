@@ -190,14 +190,6 @@ export default function VisitorGlobe({
       controls.enablePan = false;
       controls.autoRotateSpeed = 0.35;
       controls.autoRotate = rotating && !pointerInside;
-
-      // OrbitControls sets `touch-action: none` on the canvas, which makes the
-      // globe swallow every swipe. `pan-y` hands vertical gestures back to the
-      // page (so a phone can scroll past the globe) while horizontal drags
-      // still rotate it.
-      if (controls.domElement) {
-        controls.domElement.style.touchAction = 'pan-y';
-      }
     });
 
     return () => cancelAnimationFrame(frame);
