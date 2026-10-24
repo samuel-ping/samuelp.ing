@@ -4,10 +4,12 @@ on:
   push:
     branches: [main]
 
-  # Refresh the visitor snapshot and redeploy every day at 06:00 UTC.
-  # GitHub may delay scheduled runs; workflow_dispatch is the manual fallback.
+  # Refresh snapshots and redeploy daily. The visitor snapshot runs at 06:00
+  # UTC and the latest-run snapshot at 13:17 UTC. GitHub may delay scheduled
+  # runs; workflow_dispatch is the manual fallback.
   schedule:
     - cron: '0 6 * * *'
+    - cron: '17 13 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -43,7 +45,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: npm
 
       - name: Setup Pages
@@ -67,6 +69,25 @@ jobs:
         env:
           UMAMI_API_KEY: ${{ secrets.UMAMI_API_KEY }}
         run: npm run stats:snapshot
+
+      - name: Restore Playwright browser cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Fetch latest run map
+        env:
+          DREEVE_API_URL: ${{ secrets.DREEVE_API_URL }}
+          DREEVE_API_KEY: ${{ secrets.DREEVE_API_KEY }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://samuelp.ing' }}
+          MAP_RENDER_TIMEOUT_MS: '30000'
+        run: npm run fetch:last-run
 
       - name: Build with Next.js
         run: npx next build
