@@ -10,6 +10,7 @@
     "stats:geojson": "node scripts/build-country-geojson.mjs",
     "stats:snapshot": "node scripts/update-umami-snapshot.mjs",
     "stats:goatcounter": "node scripts/build-goatcounter-snapshot.mjs",
+    "fetch:last-run": "node scripts/fetch-last-run.mjs",
     "export": "npm run build && next export",
     "old-lint": "eslint . --ignore-path ./.gitignore",
     "old-lint-fix": "eslint --fix . --ignore-path ./.gitignore",
@@ -20,6 +21,7 @@
     "esbuild": "^0.28.2",
     "framer-motion": "^13.4.4",
     "image-size": "^2.0.2",
+    "maplibre-gl": "^6.15.0",
     "mdx-bundler": "^10.1.1",
     "next": "^16.2.7",
     "next-themes": "^0.4.6",
@@ -40,8 +42,10 @@
     "eslint-config-prettier": "^10.1.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-tailwindcss": "^4.4.0",
+    "playwright": "^1.64.1",
     "postcss": "^8.5.28",
     "prettier": "^3.9.9",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3"
   },
   "overrides": {

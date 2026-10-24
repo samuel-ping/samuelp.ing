@@ -213,6 +213,23 @@
 }
 
 /*
+  Latest-run map surface. The component sets the two custom properties from the
+  build-time snapshot; only the active theme's image is requested. Keeping this
+  in CSS rather than rendering two <img> elements prevents the hidden image from
+  loading on every page view.
+*/
+@utility last-run-map {
+  background-image: var(--last-run-map-light);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &:is(.dark *) {
+    background-image: var(--last-run-map-dark);
+  }
+}
+
+/*
   Tint on hover, shared by the nav buttons, the theme toggle and the footer's
   icon links. One definition rather than the same two `hover:text-*` classes
   repeated at every call site, so the nav and the footer can't drift apart.

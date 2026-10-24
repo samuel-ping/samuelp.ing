@@ -4,10 +4,11 @@ on:
   push:
     branches: [main]
 
-  # Refresh the visitor snapshot and redeploy every day at 06:00 UTC.
+  # Refresh snapshots and redeploy daily. Both refresh jobs run concurrently
+  # off a single 07:00 UTC schedule; the build waits for both to finish.
   # GitHub may delay scheduled runs; workflow_dispatch is the manual fallback.
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '0 7 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,25 +26,102 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  visitor-stats:
+    name: Refresh visitor stats snapshot
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          echo "manager=npm" >> $GITHUB_OUTPUT
-          echo "command=ci" >> $GITHUB_OUTPUT
-          echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-          exit 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Kept strict: the Umami snapshot is gitignored and required for the
+      # build to compile, so a failed fetch should fail the pipeline.
+      - name: Refresh visitor stats snapshot
+        env:
+          UMAMI_API_KEY: ${{ secrets.UMAMI_API_KEY }}
+        run: npm run stats:snapshot
+
+      - name: Upload visitor stats snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: visitor-stats-snapshot
+          path: data/umami-country-stats.json
+          retention-days: 1
+
+  last-run:
+    name: Refresh latest run map
+    runs-on: ubuntu-latest
+    # Chromium setup or the Dreeve fetch can fail without breaking the deploy:
+    # the script falls back to the previous deployment snapshot, and the build
+    # omits the Latest run section if no snapshot exists at all.
+    continue-on-failure: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Restore Playwright browser cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Fetch latest run map
+        env:
+          DREEVE_API_URL: ${{ secrets.DREEVE_API_URL }}
+          DREEVE_API_KEY: ${{ secrets.DREEVE_API_KEY }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://samuelp.ing' }}
+          MAP_RENDER_TIMEOUT_MS: '30000'
+        run: npm run fetch:last-run
+
+      # Upload whatever snapshot the job produced; an empty upload (total
+      # failure) is fine and the build simply omits the section.
+      - name: Upload latest run snapshot
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: latest-run-snapshot
+          path: |
+            public/last-run.json
+            public/last-run
+          retention-days: 1
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [visitor-stats, last-run]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
           cache: npm
 
       - name: Setup Pages
@@ -63,10 +141,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Refresh visitor stats snapshot
-        env:
-          UMAMI_API_KEY: ${{ secrets.UMAMI_API_KEY }}
-        run: npm run stats:snapshot
+      - name: Download visitor stats snapshot
+        uses: actions/download-artifact@v4
+        with:
+          name: visitor-stats-snapshot
+          path: data
+
+      # The latest-run job is continue-on-failure, so its artifact may be
+      # missing entirely; treat that as an omission, not a build failure.
+      - name: Download latest run snapshot
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: latest-run-snapshot
+          path: public
 
       - name: Build with Next.js
         run: npx next build

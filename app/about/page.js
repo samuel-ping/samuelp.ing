@@ -1,5 +1,6 @@
 import MDXContent from '@/components/mdx/mdxContent';
 import PageTitle from '@/components/ui/pageTitle';
+import LastRunSection from '@/components/sections/lastRunSection';
 import NowSection from '@/components/sections/nowSection';
 
 import { GetAboutMDX } from '@/utils/mdxUtils';
@@ -20,6 +21,7 @@ export default async function Page() {
         <MDXContent code={code} />
       </div>
       <NowSection />
+      <LastRunSection />
     </div>
   );
 }
