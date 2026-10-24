@@ -1,4 +1,5 @@
 import {
+  BarChartIcon,
   GemIcon,
   HomeServerIcon,
   PlantsIcon,
@@ -25,7 +26,7 @@ const NowItems = [
   {
     label: 'Running',
     icon: RunningIcon,
-    text: 'Jogging around Gantry Park (the best park) with my friends',
+    text: 'Jogging around [Gantry Park](https://maps.app.goo.gl/xDbvJLN8Vet21nx76) (the best park) with my friends',
   },
   {
     label: 'Plants',
@@ -41,6 +42,11 @@ const NowItems = [
     label: 'Spotting items on the ground',
     icon: GemIcon,
     text: 'Spotting and taking home treasure (others may disagree) from the ground'
+  },
+  {
+    label: 'Visitor stats',
+    icon: BarChartIcon,
+    text: 'Checking out [where in the world people are viewing this site from](/stats)'
   }
 ];
 

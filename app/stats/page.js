@@ -17,7 +17,7 @@ export default function Page() {
 
   return (
     <div className="mx-auto flex w-full max-w-4xl page-fade flex-col gap-y-8">
-      <PageTitle text="Stats" />
+      <PageTitle text="Visitor Stats" />
       <VisitorStats data={stats} />
     </div>
   );
