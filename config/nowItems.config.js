@@ -26,7 +26,7 @@ const NowItems = [
   {
     label: 'Running',
     icon: RunningIcon,
-    text: 'Jogging around [Gantry Park](https://maps.app.goo.gl/xDbvJLN8Vet21nx76) (the best park) with my friends',
+    text: 'Frolicking in [Gantry Park](https://maps.app.goo.gl/xDbvJLN8Vet21nx76) (the best park)',
   },
   {
     label: 'Plants',
@@ -44,9 +44,9 @@ const NowItems = [
     text: 'Spotting and taking home treasure (others may disagree) from the ground'
   },
   {
-    label: 'Visitor stats',
+    label: 'Checking out visitor stats',
     icon: BarChartIcon,
-    text: 'Checking out [where in the world people are viewing this site from](/stats)'
+    text: 'Checking out [where in the world people are viewing this site from](/stats)!'
   }
 ];
 
