@@ -64,7 +64,6 @@ jobs:
         run: npm ci
 
       - name: Refresh visitor stats snapshot
-        continue-on-error: true
         env:
           UMAMI_API_KEY: ${{ secrets.UMAMI_API_KEY }}
         run: npm run stats:snapshot

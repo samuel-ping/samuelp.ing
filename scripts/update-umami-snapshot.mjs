@@ -55,8 +55,9 @@ const main = async () => {
   const apiKey = getApiKey();
 
   if (!apiKey) {
-    console.warn('UMAMI_API_KEY not set; keeping existing snapshot.');
-    return;
+    throw new Error(
+      'UMAMI_API_KEY is not set; cannot refresh the visitor stats snapshot.',
+    );
   }
 
   const baseUrl = (process.env.UMAMI_URL ?? DEFAULT_URL).replace(/\/+$/, '');
@@ -84,9 +85,7 @@ const main = async () => {
   const countries = normalizeCountries(metricsPayload);
 
   if (countries.length === 0) {
-    throw new Error(
-      'Umami returned no country rows; keeping existing snapshot.',
-    );
+    throw new Error('Umami returned no country rows; aborting.');
   }
 
   const attributedVisitors = countries.reduce(

@@ -1,16 +1,16 @@
 # Visitor stats data pipeline
 
-How the hidden `/stats` page gets its data. Two committed snapshots are merged
-at build time by `utils/visitorStats.js` (synchronous, network-free):
+How the hidden `/stats` page gets its data. Two snapshots are merged at build
+time by `utils/visitorStats.js` (synchronous, network-free):
 
 - **Umami** (`stats.samuelp.ing`) — from May 2025 onward.
 - **GoatCounter** — January 2024 to 24 May 2025, before Umami existed.
 
-| File                                  | Written by                       | Committed?           |
-| ------------------------------------- | -------------------------------- | -------------------- |
-| `data/umami-country-stats.json`       | `update-umami-snapshot.mjs`      | Yes — fallback       |
-| `data/goatcounter-country-stats.json` | `build-goatcounter-snapshot.mjs` | Yes — frozen history |
-| `public/data/countries-110m.geojson`  | `build-country-geojson.mjs`      | Yes — map geometry   |
+| File                                  | Written by                       | Committed?                       |
+| ------------------------------------- | -------------------------------- | -------------------------------- |
+| `data/umami-country-stats.json`       | `update-umami-snapshot.mjs`      | No — generated before each build |
+| `data/goatcounter-country-stats.json` | `build-goatcounter-snapshot.mjs` | Yes — frozen history             |
+| `public/data/countries-110m.geojson`  | `build-country-geojson.mjs`      | Yes — map geometry               |
 
 ## Scripts
 
@@ -25,11 +25,11 @@ rounds coordinates, cleans rings, and writes minified
 
 ### `npm run stats:snapshot` — `update-umami-snapshot.mjs`
 
-Refreshes the Umami snapshot from the Umami HTTP API. Reads `UMAMI_API_KEY`
-(missing → warn, exit `0`, keep the file), fetches country metrics + overall
-stats in parallel (15s timeout), normalizes to `{ code, visitors }`, and writes
-`data/umami-country-stats.json` atomically. Bails without touching the file if
-zero countries come back.
+Refreshes the Umami snapshot from the Umami HTTP API. Requires
+`UMAMI_API_KEY` (missing → error, non-zero exit), fetches country metrics +
+overall stats in parallel (15s timeout), normalizes to `{ code, visitors }`, and
+writes `data/umami-country-stats.json` atomically. Any failure — missing key,
+non-OK response, zero countries — exits non-zero without writing.
 
 ### `npm run stats:goatcounter` — `build-goatcounter-snapshot.mjs`
 
@@ -43,15 +43,20 @@ writes `data/goatcounter-country-stats.json` atomically. Run once; no CI job.
 
 Export it from GoatCounter → Settings → Export → JSON, from date `2024-01-01`.
 
-## Is the Umami snapshot fetched at build time?
+## Build-time refresh
 
-Yes, in CI — just not by Next.js. `deploy.yml` runs `npm run stats:snapshot`
-**before** `npx next build`, so each run bakes fresh data into `out/`. It's a
-separate pre-build script because the API key must never reach the browser or
-the Next bundle; a fetch inside `next build` would need the key in the Next
-environment. The committed file is only a fallback for local dev and for when
-the key/API is unavailable (`continue-on-error: true`). Refresh it by hand with
-`UMAMI_API_KEY=umami_... npm run stats:snapshot`.
+`data/umami-country-stats.json` is **not committed**. `deploy.yml` runs
+`npm run stats:snapshot` **before** `npx next build`, so each run bakes fresh
+data into `out/`; if the fetch fails the step fails and the whole deploy stops.
+There is no fallback snapshot, so local `npm run dev` / `npm run build` need the
+file generated first:
+
+```bash
+UMAMI_API_KEY=umami_... npm run stats:snapshot
+```
+
+The fetch is a separate pre-build script rather than a step inside Next.js so
+the API key never reaches the browser or the Next bundle.
 
 `UMAMI_API_KEY` is a GitHub Actions secret (`gh secret set UMAMI_API_KEY`),
 created in Umami → Profile → Settings → API keys.
