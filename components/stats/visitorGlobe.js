@@ -74,6 +74,9 @@ export default function VisitorGlobe({
   const [features, setFeatures] = useState(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [hovered, setHovered] = useState(null);
+  // Pinned by tap/click so touch devices, which have no hover, can still read a
+  // country's count. Hover wins while it lasts, then the selection shows again.
+  const [selected, setSelected] = useState(null);
   const [rotating, setRotating] = useState(true);
   const [pointerInside, setPointerInside] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -187,6 +190,14 @@ export default function VisitorGlobe({
       controls.enablePan = false;
       controls.autoRotateSpeed = 0.35;
       controls.autoRotate = rotating && !pointerInside;
+
+      // OrbitControls sets `touch-action: none` on the canvas, which makes the
+      // globe swallow every swipe. `pan-y` hands vertical gestures back to the
+      // page (so a phone can scroll past the globe) while horizontal drags
+      // still rotate it.
+      if (controls.domElement) {
+        controls.domElement.style.touchAction = 'pan-y';
+      }
     });
 
     return () => cancelAnimationFrame(frame);
@@ -219,33 +230,65 @@ export default function VisitorGlobe({
     tooltip.style.top = `${y}px`;
   }, []);
 
+  const setPointerFromEvent = useCallback(
+    (event) => {
+      const wrapper = wrapperRef.current;
+      if (!wrapper || !event) return;
+
+      const rect = wrapper.getBoundingClientRect();
+      pointerRef.current = {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top,
+      };
+      updateTooltipPosition();
+    },
+    [updateTooltipPosition],
+  );
+
+  const active = hovered ?? selected;
+
   useLayoutEffect(() => {
     updateTooltipPosition();
-  }, [hovered, size, updateTooltipPosition]);
-
-  const handlePointerMove = (event) => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
-
-    const rect = wrapper.getBoundingClientRect();
-    pointerRef.current = {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top,
-    };
-    updateTooltipPosition();
-  };
+  }, [active, size, updateTooltipPosition]);
 
   const handlePointerEnter = () => setPointerInside(true);
 
   const handlePointerLeave = () => {
     setPointerInside(false);
     setHovered(null);
-    onHoverCountry?.(null);
+    onHoverCountry?.(selected?.id ?? null);
   };
 
   const handlePolygonHover = (polygon) => {
     setHovered(polygon ?? null);
-    onHoverCountry?.(polygon?.id ?? null);
+    onHoverCountry?.(polygon?.id ?? selected?.id ?? null);
+  };
+
+  const handlePolygonClick = (polygon, event) => {
+    if (!polygon) return;
+
+    // Mouse users already get the tooltip on hover; only pin for touch/pen,
+    // where hover does not exist.
+    if (event?.pointerType === 'mouse') return;
+
+    setPointerFromEvent(event);
+
+    // Tapping the same country again clears the pin.
+    if (selected?.id === polygon.id) {
+      setSelected(null);
+      onHoverCountry?.(hovered?.id ?? null);
+      return;
+    }
+
+    setSelected(polygon);
+    onHoverCountry?.(polygon.id);
+  };
+
+  const handleGlobeClick = (coords, event) => {
+    if (event?.pointerType === 'mouse') return;
+
+    setSelected(null);
+    onHoverCountry?.(hovered?.id ?? null);
   };
 
   const showGlobe =
@@ -299,6 +342,8 @@ export default function VisitorGlobe({
             polygonsTransitionDuration={prefersReducedMotion ? 0 : 600}
             animateIn={!prefersReducedMotion}
             onPolygonHover={handlePolygonHover}
+            onPolygonClick={handlePolygonClick}
+            onGlobeClick={handleGlobeClick}
           />
         </div>
       </>
@@ -311,7 +356,7 @@ export default function VisitorGlobe({
       className="relative h-full"
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
-      onPointerMove={handlePointerMove}
+      onPointerMove={setPointerFromEvent}
     >
       <div
         ref={containerRef}
@@ -320,20 +365,18 @@ export default function VisitorGlobe({
         {panelContent}
       </div>
 
-      {hovered && (
+      {active && (
         <div
           ref={tooltipRef}
-          className="pointer-events-none absolute z-10 min-w-36 rounded-md bg-beige-100 px-3 py-2 text-sm text-green-800 shadow-card ring-1 ring-green-700/20"
+          className="pointer-events-none absolute z-10 max-w-[calc(100%-1rem)] min-w-36 rounded-md bg-beige-100 px-3 py-2 text-sm text-green-800 shadow-card ring-1 ring-green-700/20"
           style={{ transform: 'translate(-50%, -100%)' }}
         >
           <p className="font-medium">
-            {namesByCode.get(hovered.id) ??
-              hovered.properties?.name ??
-              hovered.id}
+            {namesByCode.get(active.id) ?? active.properties?.name ?? active.id}
           </p>
           <p className="text-green-600">
-            {hovered.visitors > 0
-              ? `${numberFormat.format(hovered.visitors)} visitors`
+            {active.visitors > 0
+              ? `${numberFormat.format(active.visitors)} visitors`
               : 'No recorded visitors'}
           </p>
         </div>
