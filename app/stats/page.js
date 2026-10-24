@@ -3,15 +3,6 @@ import PageTitle from '@/components/ui/pageTitle';
 
 import { GetVisitorStats } from '@/utils/visitorStats';
 
-export const metadata = {
-  title: 'Stats',
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-  },
-};
-
 export default function Page() {
   const stats = GetVisitorStats();
 
