@@ -301,13 +301,6 @@ export default function VisitorGlobe({
             onPolygonHover={handlePolygonHover}
           />
         </div>
-        <button
-          type="button"
-          onClick={() => setRotating((value) => !value)}
-          className="absolute right-3 bottom-3 z-10 rounded-full bg-beige-100/90 px-3 py-1.5 text-xs text-green-800 ring-1 ring-green-700/20 backdrop-blur transition-colors hover:bg-beige-200 dark:bg-green-800/80 dark:text-beige-200 dark:ring-beige-200/20 dark:hover:bg-green-700"
-        >
-          {rotating ? 'Pause rotation' : 'Resume rotation'}
-        </button>
       </>
     );
   }

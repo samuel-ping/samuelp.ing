@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "stats:geojson": "node scripts/build-country-geojson.mjs",
     "stats:snapshot": "node scripts/update-umami-snapshot.mjs",
+    "stats:goatcounter": "node scripts/build-goatcounter-snapshot.mjs",
     "export": "npm run build && next export",
     "old-lint": "eslint . --ignore-path ./.gitignore",
     "old-lint-fix": "eslint --fix . --ignore-path ./.gitignore",

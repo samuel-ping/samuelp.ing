@@ -13,7 +13,20 @@ const VisitorGlobe = dynamic(() => import('./visitorGlobe'), {
 
 const numberFormat = new Intl.NumberFormat('en-US');
 
-const UPDATED_LABEL = 'Updated daily · Tracking since May 2025';
+const monthFormat = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+const UPDATED_LABEL = 'Updated daily · Since January 2024';
+
+const formatMonth = (value) => {
+  if (!value) return null;
+
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : monthFormat.format(date);
+};
 
 const formatPercent = (value) => {
   if (value > 0 && value < 1) return '<1%';

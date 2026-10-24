@@ -1,0 +1,69 @@
+{
+  "source": "goatcounter",
+  "generatedAt": "2026-10-24T00:43:22.163Z",
+  "periodStart": "2024-01-01T00:00:00Z",
+  "periodEnd": "2025-05-25T00:00:00Z",
+  "totalVisitors": 314,
+  "countries": [
+    {
+      "code": "US",
+      "visitors": 282
+    },
+    {
+      "code": "FR",
+      "visitors": 6
+    },
+    {
+      "code": "HK",
+      "visitors": 6
+    },
+    {
+      "code": "PL",
+      "visitors": 5
+    },
+    {
+      "code": "CN",
+      "visitors": 3
+    },
+    {
+      "code": "CA",
+      "visitors": 2
+    },
+    {
+      "code": "GB",
+      "visitors": 2
+    },
+    {
+      "code": "FI",
+      "visitors": 1
+    },
+    {
+      "code": "IE",
+      "visitors": 1
+    },
+    {
+      "code": "IL",
+      "visitors": 1
+    },
+    {
+      "code": "IR",
+      "visitors": 1
+    },
+    {
+      "code": "NL",
+      "visitors": 1
+    },
+    {
+      "code": "PH",
+      "visitors": 1
+    },
+    {
+      "code": "RU",
+      "visitors": 1
+    },
+    {
+      "code": "SC",
+      "visitors": 1
+    }
+  ]
+}
